@@ -95,7 +95,7 @@ public class Speler
 
     /**
      * Methode om het wachtwoord van de speler in te stellen
-     * @param wachtwoord wachtwoord die de speler kiest 
+     *  wachtwoord wachtwoord die de speler kiest 
      */
     public void setWachtwoord(String wachtwoord)
     {
@@ -111,7 +111,7 @@ public class Speler
 
     /**
      * wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
-     * @return geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
+     * @returnµ geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
      */
     private boolean isCorrectWachtwoord(String wachtwoord)
     {

@@ -11,4 +11,9 @@ public class SpelerMapper
 		return null;
 	}
 
+	public void voegToe(Speler speler)
+	{
+		
+	}
+
 }

@@ -40,6 +40,22 @@ public class DomeinController
             throw new IllegalArgumentException("Verkeerde login!");
         }
 	}
+	/**
+     * Methode om te kijken of de speler een admin is
+     *
+     * @return geeft terug of de speler wel/geen admin is
+     */
+    public boolean isAdmin() {
+        return this.speler.isAdminrechten();
+    }
+
+    public void registreer(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam) {
+
+        Speler nieuweSpeler = new Speler(gebruikersnaam, wachtwoord, adminrechten, naam, voornaam);
+        setSpeler(nieuweSpeler);
+        spelerRepository.voegToe(nieuweSpeler);
+
+    }
 	
 
 }

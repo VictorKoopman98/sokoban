@@ -3,6 +3,7 @@ package domein;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import persistentie.SpelerMapper;
 
 public class SpelerRepository
@@ -35,4 +36,29 @@ public class SpelerRepository
     	}
     	return null;
     }
+    
+    /**
+     * Methode om na te kijken of de speler niet al reeds bestaat in de databank
+     *  gebruikersnaam gebruikersnaam waarvan we willen weten of de speler al bestaat
+     *  geeft een boolean terug om aan te duiden of de speler al dan niet bestaat
+     */
+    private boolean bestaatSpeler(String gebruikersnaam)
+    {
+	return mapper.geefSpeler(gebruikersnaam) != null;
+    }
+
+    /**
+     * Methode om een speler toe te voegen in de databank
+     * @param speler spelerobject dat aangemaakt moet worden in de databank
+     */
+    public void voegToe(Speler speler)
+    {
+	if (bestaatSpeler(speler.getGebruikersnaam()))
+	{
+	    throw new IllegalArgumentException("Speler bestaat al!");
+	}
+
+	mapper.voegToe(speler);
+    }
 }
+
