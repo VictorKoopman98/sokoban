@@ -9,5 +9,9 @@ public class OngeldigGebruikersnaamException
     {
     }
     
+    /* 
+     * Me
+     */
+    
    
 }

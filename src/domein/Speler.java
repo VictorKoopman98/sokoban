@@ -13,12 +13,12 @@ public class Speler
     //Constructors
 
     /**
-     * Constructor om een speler object aan te maken met of zonder adminrechten
-     * @param gebruikersnaam gebruikersnaam die de speler kiest
-     * @param wachtwoord wachtwoord die de speler kiest
-     * @param adminrechten kijken of de speler wel/geen adminrechten krijgt
-     * @param naam familienaam van de speler 
-     * @param voornaam voornaam van de speler
+     *Constructor om een speler object aan te maken met of zonder adminrechten
+     *ebruikersnaam gebruikersnaam die de speler kiest
+     * wachtwoord wachtwoord die de speler kiest
+     *adminrechten kijken of de speler wel/geen adminrechten krijgt
+     *naam familienaam van de speler 
+     * voornaam voornaam van de speler
      */
         public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)
     {
@@ -79,16 +79,16 @@ public class Speler
 
     /**
      * Methode om de gebruikersnaam van een speler in te stellen
-     * @param gebruikersnaam gebruikersnaam die de speler kiest
+     *gebruikersnaam gebruikersnaam die de speler kiest
      */
         public void setGebruikersnaam(String gebruikersnaam)
     {
 	if (gebruikersnaam == null || gebruikersnaam.length() == 0)
 	{
-	    throw new OngeldigGebruikersnaamException("Gebruikersnaam is verplicht in te vullen."); // Alles veranderen
+	    throw new IllegalArgumentException("Gebruikersnaam is verplicht in te vullen."); // Alles veranderen
 	} else if (gebruikersnaam.length() < 8)
 	{
-	    throw new OngeldigGebruikersnaamException("Gebruikersnaam is minstens 8 tekens lang");
+	    throw new IllegalArgumentException("Gebruikersnaam is minstens 8 tekens lang");
 	}
 	this.gebruikersnaam = gebruikersnaam;
     }
@@ -101,16 +101,16 @@ public class Speler
     {
 	if (wachtwoord == null || wachtwoord.length() == 0)
 	{
-	    throw new OngeldigWachtwoordException("Wachtwoord is verplicht in te vullen.");
+	    throw new IllegalArgumentException("Wachtwoord is verplicht in te vullen.");
 	} else if (isCorrectWachtwoord(wachtwoord) == false)
 	{
-	    throw new OngeldigWachtwoordException("Wachtwoord is minstens 8 tekens lang,bevat minstens 1 hoofdletter, 1 kleine letter en 1 cijfer");
+	    throw new IllegalArgumentException("Wachtwoord is minstens 8 tekens lang");
 	}
 	this.wachtwoord = wachtwoord;
     }
 
     /**
-     * @param wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
+     * wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
      * @return geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
      */
     private boolean isCorrectWachtwoord(String wachtwoord)
