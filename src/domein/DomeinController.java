@@ -31,7 +31,7 @@ public class DomeinController
 	}
 	
 	public void meldAan(String gebruikersnaam, String wachtwoord) {
-        Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord)
+        Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
 
         if (gevondenSpeler != null) {
             setSpeler(gevondenSpeler);

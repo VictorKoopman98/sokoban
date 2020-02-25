@@ -1,10 +1,20 @@
 package domein;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import persistentie.SpelerMapper;
+
 public class SpelerRepository
 {
 	
-	
-	
+	private final SpelerMapper mapper;
+	private final List<Speler> spelers = new ArrayList();
+	 
+	public SpelerRepository()
+	{
+		mapper = new SpelerMapper();
+	}
 	
 	/**
      * Methode om de huidige speler terug te geven
@@ -14,6 +24,15 @@ public class SpelerRepository
      */
     public Speler geefSpeler(String gebruikersnaam, String wachtwoord)
     {
-    	
+    	Speler speler = mapper.geefSpeler(gebruikersnaam);
+
+    	if (speler != null)
+    	{
+    	    if (speler.getWachtwoord().equals(wachtwoord))
+    	    {
+    		return speler;
+    	    }
+    	}
+    	return null;
     }
 }
