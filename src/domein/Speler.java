@@ -1,7 +1,6 @@
 package domein;
 
 
-
 public class Speler
 {
 	private String gebruikersnaam;
@@ -20,7 +19,7 @@ public class Speler
      *naam familienaam van de speler 
      * voornaam voornaam van de speler
      */
-        public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)
+    public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)
     {
 	this.setGebruikersnaam(gebruikersnaam);
 	this.setWachtwoord(wachtwoord);
@@ -89,8 +88,10 @@ public class Speler
 	} else if (gebruikersnaam.length() < 8)
 	{
 	    throw new IllegalArgumentException("Gebruikersnaam is minstens 8 tekens lang");
-	}
+	}else 
+	{
 	this.gebruikersnaam = gebruikersnaam;
+	}
     }
 
     /**
@@ -105,9 +106,11 @@ public class Speler
 	} else if (isCorrectWachtwoord(wachtwoord) == false)
 	{
 	    throw new IllegalArgumentException("Wachtwoord is minstens 8 tekens lang");
-	}
+	} else 
+	{
 	this.wachtwoord = wachtwoord;
     }
+	}
 
     /**
      * wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
@@ -117,12 +120,10 @@ public class Speler
     {
 
 	boolean isMinstens8TekensLang = wachtwoord.length() >= 8;
-	boolean bevatKleineLetter = !wachtwoord.equals(wachtwoord.toLowerCase());
-	boolean bevatGroteLetter = !wachtwoord.equals(wachtwoord.toUpperCase());
-	boolean bevatCijfer = wachtwoord.matches(".*[0-9].*");
+	//boolean bevatKleineLetter = !wachtwoord.equals(wachtwoord.toLowerCase());
+	//boolean bevatGroteLetter = !wachtwoord.equals(wachtwoord.toUpperCase());
+	//boolean bevatCijfer = wachtwoord.matches(".*[0-9].*");
 
-	return (isMinstens8TekensLang && bevatKleineLetter && bevatGroteLetter && bevatCijfer);
-
+	return (isMinstens8TekensLang);// && bevatKleineLetter && bevatGroteLetter && bevatCijfer);
     }
-
 }

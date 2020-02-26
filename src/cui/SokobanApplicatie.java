@@ -16,15 +16,19 @@ public class SokobanApplicatie
 		this.domeincontroller = domeincontroller;
 	}
 	
-	public void toonHoofdpaneel()
+	public int toonHoofdpaneel()
 	{
-		boolean validatie = false;
-		int keuze = 0;
-		kiesTaal();
+		System.out.printf("\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu");
 		
 		
-		System.out.printf("%s%n", taal.getText("Welkom Hoofdpaneel"));
+//		boolean validatie = false;
+		int keuze = input.nextInt();
 		
+//		kiesTaal();
+//		
+//		
+//		System.out.printf("%s%n", taal.getText("Welkom Hoofdpaneel"));
+		return keuze;
 	}
 
 	private void kiesTaal()
@@ -32,7 +36,23 @@ public class SokobanApplicatie
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+
+	public void run() 
+	{
+	int keuze;
+		do 
+		{
+			keuze = toonHoofdpaneel();
+			
+			switch(keuze) 
+			{
+			case 1: 
+				new UC1Test(domeincontroller).meldAan();
+				break;
+			case 2:
+				new UC2Test(domeincontroller).registreer();
+				break;
+			}
+		}while(keuze != 3);
+	}	
 }

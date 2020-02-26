@@ -8,9 +8,9 @@ public class DomeinController
 	
 	/* Constructor om een DomeinController aan te maken */
 	
-	public DomeinController() {
+	public DomeinController() 
+	{
 		spelerRepository = new SpelerRepository();
-
 	}
 	
 	/* Methode om de gebruikersnaam van een speler terug te gegven
@@ -18,8 +18,8 @@ public class DomeinController
 	 * return geeft de gebruikersnaam van een speler terug
 	 * */
 	
-	public String geefGebruikersnaam() {
-
+	public String geefGebruikersnaam() 
+	{
 		return this.speler.getGebruikersnaam();
 	}
 	
@@ -30,7 +30,8 @@ public class DomeinController
 		this.speler = speler;
 	}
 	
-	public void meldAan(String gebruikersnaam, String wachtwoord) {
+	public void meldAan(String gebruikersnaam, String wachtwoord) 
+	{
         Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
 
         if (gevondenSpeler != null) {
@@ -45,17 +46,15 @@ public class DomeinController
      *
      * @return geeft terug of de speler wel/geen admin is
      */
-    public boolean isAdmin() {
+    public boolean isAdmin() 
+    {
         return this.speler.isAdminrechten();
     }
 
-    public void registreer(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam) {
-
+    public void registreer(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam) 
+    {
         Speler nieuweSpeler = new Speler(gebruikersnaam, wachtwoord, adminrechten, naam, voornaam);
         setSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);
-
     }
-	
-
 }

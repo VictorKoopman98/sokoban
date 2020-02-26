@@ -4,20 +4,22 @@ import java.util.Scanner;
 
 import domein.DomeinController;
 
-public class UC1Test
+public class UC2Test 
 {
-	private final  DomeinController dc;
+	DomeinController dc;
 	
-	public UC1Test (DomeinController dc) 
+	public UC2Test (DomeinController dc) 
 	{
 		this.dc =dc;
 	}
 	
-	public void meldAan()
+	public  void registreer()
 	{
 		Scanner input = new Scanner(System.in);
 		String gebruikersnaam = "";
 		String wachtwoord = "";
+		String naam = "";
+		String voornaam = "";
 //		String stoppen = "";
 //		SokobanApplicatie sb;
 		boolean blijvenHerhalenFlag;
@@ -31,10 +33,17 @@ public class UC1Test
                     System.out.print("\nGebruikersnaam: ");
                     gebruikersnaam = input.next();
 
-                    System.out.print("\nWachtwoord: \n");
+                    System.out.print("\nWachtwoord: ");
                     wachtwoord = input.next();
                     
-                   dc.meldAan(gebruikersnaam, wachtwoord);
+                    System.out.print("\nNaam: ");
+                    naam = input.next();
+                    
+                    System.out.print("\nVoornaam: \n");
+                    voornaam = input.next();
+                    
+                    dc.registreer(gebruikersnaam, wachtwoord, false
+                    		, naam, voornaam);
 
                     blijvenHerhalenFlag = false;
                 } 
