@@ -1,5 +1,7 @@
 package domein;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Speler
 {
@@ -27,6 +29,11 @@ public class Speler
 	this.naam = naam;
 	this.voornaam = voornaam;
     }
+    
+    public Speler(String naam, String voornaam, String wachtwoord, String gebruikersnaam, boolean adminrechten) {
+        this(gebruikersnaam, wachtwoord, false, naam, voornaam);
+    }
+    
 //Getters
 
     /**
@@ -114,7 +121,7 @@ public class Speler
 
     /**
      * wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
-     * @returnµ geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
+     * @returnÂµ geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
      */
     private boolean isCorrectWachtwoord(String wachtwoord)
     {
@@ -126,4 +133,5 @@ public class Speler
 
 	return (isMinstens8TekensLang);// && bevatKleineLetter && bevatGroteLetter && bevatCijfer);
     }
+    
 }

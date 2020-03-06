@@ -45,7 +45,4 @@ public class Taal
 	{
 		return taal;
 	}
-	
-	
-	
 }

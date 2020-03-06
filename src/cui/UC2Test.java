@@ -39,11 +39,12 @@ public class UC2Test
                     System.out.print("\nNaam: ");
                     naam = input.next();
                     
-                    System.out.print("\nVoornaam: \n");
+                    System.out.print("\nVoornaam: ");
                     voornaam = input.next();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false
                     		, naam, voornaam);
+                    
 
                     blijvenHerhalenFlag = false;
                 } 

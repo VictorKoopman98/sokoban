@@ -18,7 +18,7 @@ public class SokobanApplicatie
 	
 	public int toonHoofdpaneel()
 	{
-		System.out.printf("\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu");
+		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu");
 		
 		
 //		boolean validatie = false;

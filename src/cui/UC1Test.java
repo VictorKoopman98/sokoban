@@ -21,9 +21,12 @@ public class UC1Test
 //		String stoppen = "";
 //		SokobanApplicatie sb;
 		boolean blijvenHerhalenFlag;
+       
+//		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
+//		anders skipt het die stap en gaat direct naar exceptions.
 		
 		blijvenHerhalenFlag = true;
-       
+		
             do
             {
                 try
@@ -31,7 +34,7 @@ public class UC1Test
                     System.out.print("\nGebruikersnaam: ");
                     gebruikersnaam = input.next();
 
-                    System.out.print("\nWachtwoord: \n");
+                    System.out.print("\nWachtwoord: ");
                     wachtwoord = input.next();
                     
                    dc.meldAan(gebruikersnaam, wachtwoord);
