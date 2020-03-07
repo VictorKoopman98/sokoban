@@ -3,6 +3,9 @@ package domein;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import Exceptions.OngeldigGebruikersnaamException;
+import Exceptions.OngeldigWachtwoordException;
+
 public class Speler
 {
 	private String gebruikersnaam;
@@ -91,10 +94,10 @@ public class Speler
     {
 	if (gebruikersnaam == null || gebruikersnaam.length() == 0)
 	{
-	    throw new IllegalArgumentException("Gebruikersnaam is verplicht in te vullen."); // Alles veranderen
+	    throw new OngeldigGebruikersnaamException("Gebruikersnaam is verplicht in te vullen."); // Alles veranderen
 	} else if (gebruikersnaam.length() < 8)
 	{
-	    throw new IllegalArgumentException("Gebruikersnaam is minstens 8 tekens lang");
+	    throw new OngeldigGebruikersnaamException("Gebruikersnaam is minstens 8 tekens lang");
 	}else 
 	{
 	this.gebruikersnaam = gebruikersnaam;
@@ -109,10 +112,10 @@ public class Speler
     {
 	if (wachtwoord == null || wachtwoord.length() == 0)
 	{
-	    throw new IllegalArgumentException("Wachtwoord is verplicht in te vullen.");
+	    throw new OngeldigWachtwoordException("Wachtwoord is verplicht in te vullen.");
 	} else if (isCorrectWachtwoord(wachtwoord) == false)
 	{
-	    throw new IllegalArgumentException("Wachtwoord is minstens 8 tekens lang");
+	    throw new OngeldigWachtwoordException("Wachtwoord is minstens 8 tekens lang");
 	} else 
 	{
 	this.wachtwoord = wachtwoord;

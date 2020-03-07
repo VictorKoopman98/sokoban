@@ -1,21 +1,19 @@
 package domein;
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 import persistentie.SpelerMapper;
 
 public class SpelerRepository
 {
 	
-	private final SpelerMapper mapper;
+	private final SpelerMapper spelerMapper;
 	private final List<Speler> spelers = new ArrayList();
 	 
 	public SpelerRepository()
 	{
-		mapper = new SpelerMapper();
+		spelerMapper = new SpelerMapper();
 	}
 	
 	/**
@@ -26,7 +24,7 @@ public class SpelerRepository
      */
     public Speler geefSpeler(String gebruikersnaam, String wachtwoord)
     {
-    	Speler speler = mapper.geefSpeler(gebruikersnaam);
+    	Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
 
     	if (speler != null)
     	{
@@ -45,7 +43,7 @@ public class SpelerRepository
      */
     private boolean bestaatSpeler(String gebruikersnaam)
     {
-	return mapper.geefSpeler(gebruikersnaam) != null;
+	return spelerMapper.geefSpeler(gebruikersnaam) != null;
     }
 
     /**
@@ -59,7 +57,7 @@ public class SpelerRepository
 	    throw new IllegalArgumentException("Speler bestaat al!");
 	}
 
-	mapper.voegToe(speler);
+	spelerMapper.voegToe(speler);
     }
 }
 
