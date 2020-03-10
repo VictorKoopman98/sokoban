@@ -128,13 +128,48 @@ public class Speler
      */
     private boolean isCorrectWachtwoord(String wachtwoord)
     {
-
-	boolean isMinstens8TekensLang = wachtwoord.length() >= 8;
-	//boolean bevatKleineLetter = !wachtwoord.equals(wachtwoord.toLowerCase());
-	//boolean bevatGroteLetter = !wachtwoord.equals(wachtwoord.toUpperCase());
-	//boolean bevatCijfer = wachtwoord.matches(".*[0-9].*");
-
-	return (isMinstens8TekensLang);// && bevatKleineLetter && bevatGroteLetter && bevatCijfer);
+    	if(wachtwoord.length() > 7)
+    	{
+    		if(checkWachtwoord(wachtwoord))
+    		{
+    			return true;
+    		}
+    		else
+    		{
+    			return false;
+    		}
+    	}
+    	else 
+    	{
+    		return false;
+    	}
     }
     
+    public static boolean checkWachtwoord(String wachtwoord) 
+    {
+    	boolean heeftNummer = false; boolean heeftHoofdletter = false; boolean heeftKleineLetter = false; char c;
+    	
+    	for(int i = 0; i < wachtwoord.length(); i++)
+    	{
+    		c = wachtwoord.charAt(i);
+    		
+    		if(Character.isDigit(c))
+    		{
+    			heeftNummer = true;
+    		}
+    		else if(Character.isUpperCase(c))
+    		{
+    			heeftHoofdletter = true;
+    		}
+    		else if(Character.isLowerCase(c))
+    		{
+    			heeftKleineLetter = true;
+    		}
+    		if(heeftNummer && heeftHoofdletter && heeftKleineLetter)
+    		{
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }
