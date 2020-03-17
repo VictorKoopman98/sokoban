@@ -7,9 +7,15 @@ public class Vak {
 	
 	private int locatie;
 	private String karakter;
+	
 
 	public Vak() {
-		// TODO Auto-generated constructor stub
+		
+		
+	}
+	
+	public void pasKarakterAan(char karakter)
+	{
 		
 	}
 	
@@ -23,6 +29,11 @@ public class Vak {
 	
 	public int getLocatie() {
 		return locatie;
+	}
+	
+	public void setLocatie()
+	{
+		this.locatie = locatie;
 	}
 	
 	

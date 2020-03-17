@@ -58,4 +58,13 @@ public class UC2Test
                 
             } while (blijvenHerhalenFlag);	
 	}
+	//Taalkiezen
+   /* public void kiesTaal() {
+    	Scanner input = new Scanner(System.in);
+        String taal = "";
+        System.out.println("Kies uw taal/ Choose your language/ Choisissez votre langue");
+        taal = input.nextLine();
+
+    }
+*/
 }

@@ -9,7 +9,7 @@ public class SokobanApplicatie
 {
 	Scanner input = new Scanner(System.in);
 	private DomeinController domeincontroller;
-	private Taal taal;
+	private Taal taalObj;
 	
 	public SokobanApplicatie(DomeinController domeincontroller)
 	{
@@ -24,18 +24,15 @@ public class SokobanApplicatie
 //		boolean validatie = false;
 		int keuze = input.nextInt();
 		
-//		kiesTaal();
+
+		
 //		
 //		
-//		System.out.printf("%s%n", taal.getText("Welkom Hoofdpaneel"));
+	//System.out.printf("%s%n", taalObj.getText("Welkom Hoofdpaneel"));
 		return keuze;
 	}
 
-	private void kiesTaal()
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public void run() 
 	{
@@ -55,4 +52,26 @@ public class SokobanApplicatie
 			}
 		}while(keuze != 3);
 	}	
+	
+	public void kiesTaal()
+    {
+	String taal = "";
+	do
+	{
+	    System.out.print("Kies een taal (nl)/ choose a language (en)/ Choisissez une langue(fr): ");
+	    try
+	    {
+		taal = input.nextLine();
+		if (!(("nl".equals(taal)) || ("en".equals(taal)) || ("fr".equals(taal))))
+		{
+		    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
+		}
+	    } catch (IllegalArgumentException ie)
+	    {
+		System.out.println(ie.getMessage());
+	    }
+	} while (!(taal.equals("nl") || taal.equals("fr") || taal.equals("en")));
+	taalObj = new Taal(taal);
+    }
+    
 }

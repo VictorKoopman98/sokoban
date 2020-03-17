@@ -1,9 +1,7 @@
 package domein;
 
-public class Muur {
+public class Muur extends Vak
+{
 
-	public Muur() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 }
