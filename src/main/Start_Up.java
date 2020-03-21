@@ -1,6 +1,7 @@
 package main;
 
 import cui.SokobanApplicatie;
+
 import domein.DomeinController;
 
 public class Start_Up 
@@ -10,7 +11,7 @@ public class Start_Up
 	{
 		DomeinController dc = new DomeinController();
 		SokobanApplicatie sa = new SokobanApplicatie(dc);
-		sa.run();
+		sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
 	}
 
 }

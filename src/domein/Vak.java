@@ -1,21 +1,22 @@
 package domein;
 
-import domein.Muur;
-import domein.Veld;
+
+
+//karakterlegende:
+//	muur = w
+//	man = m
+//	kist = k
+//	leeg veld = v
+	
 
 public class Vak {
 	
 	private int locatie;
 	private String karakter;
-	
+	private boolean isDoel;
 
 	public Vak() {
-		
-		
-	}
-	
-	public void pasKarakterAan(char karakter)
-	{
+		// TODO Auto-generated constructor stub
 		
 	}
 	
@@ -29,11 +30,6 @@ public class Vak {
 	
 	public int getLocatie() {
 		return locatie;
-	}
-	
-	public void setLocatie()
-	{
-		this.locatie = locatie;
 	}
 	
 	

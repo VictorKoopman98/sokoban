@@ -13,6 +13,7 @@ public class UC2Test
 		this.dc =dc;
 	}
 	
+	
 	public  void registreer()
 	{
 		Scanner input = new Scanner(System.in);
@@ -20,12 +21,10 @@ public class UC2Test
 		String wachtwoord = "";
 		String naam = "";
 		String voornaam = "";
-//		String stoppen = "";
-//		SokobanApplicatie sb;
 		boolean blijvenHerhalenFlag;
 		
-		blijvenHerhalenFlag = true;
-       
+		blijvenHerhalenFlag = true;         //		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
+                                            //		anders skipt het die stap en gaat direct naar exceptions.
             do
             {
                 try
@@ -42,29 +41,17 @@ public class UC2Test
                     System.out.print("\nVoornaam: ");
                     voornaam = input.next();
                     
-                    dc.registreer(gebruikersnaam, wachtwoord, false
-                    		, naam, voornaam);
+                    dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);
                     
-
                     blijvenHerhalenFlag = false;
                 } 
                 
                 catch (IllegalArgumentException e)
                 {
                     System.err.println(e);
-                    
-                    //e.printStackTrace();
                 } 
                 
             } while (blijvenHerhalenFlag);	
 	}
-	//Taalkiezen
-   /* public void kiesTaal() {
-    	Scanner input = new Scanner(System.in);
-        String taal = "";
-        System.out.println("Kies uw taal/ Choose your language/ Choisissez votre langue");
-        taal = input.nextLine();
-
-    }
-*/
+	
 }

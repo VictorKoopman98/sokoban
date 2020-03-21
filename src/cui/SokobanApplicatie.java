@@ -3,6 +3,7 @@ package cui;
 import java.util.Scanner;
 
 import domein.DomeinController;
+
 import gui.Taal;
 
 public class SokobanApplicatie
@@ -11,30 +12,23 @@ public class SokobanApplicatie
 	private DomeinController domeincontroller;
 	private Taal taalObj;
 	
+	
 	public SokobanApplicatie(DomeinController domeincontroller)
 	{
 		this.domeincontroller = domeincontroller;
 	}
 	
-	public int toonHoofdpaneel()
+	
+	public int toonHoofdpaneel()    //menu spler kan inloggen, registreren of stoppen
 	{
 		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu");
-		
-		
-//		boolean validatie = false;
 		int keuze = input.nextInt();
 		
-
-		
-//		
-//		
-	//System.out.printf("%s%n", taalObj.getText("Welkom Hoofdpaneel"));
 		return keuze;
 	}
 
 	
-
-	public void run() 
+	public void run()    //verschillende use cases in volgorde laten runnen
 	{
 	int keuze;
 		do 
@@ -50,8 +44,22 @@ public class SokobanApplicatie
 				new UC2Test(domeincontroller).registreer();
 				break;
 			}
+			
+			if(keuze == 1 || keuze == 2) 
+			{
+				new UC3Test(domeincontroller).kiesSpel();
+			}
+			
 		}while(keuze != 3);
+		
 	}	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void kiesTaal()
     {
