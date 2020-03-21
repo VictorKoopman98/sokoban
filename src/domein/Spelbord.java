@@ -103,7 +103,7 @@ public class Spelbord {
 //		}
 //		
 //	}
-	public Veld[] getKistenVeld() {
+	public Kist[] getKisten() {
 		//geef een lijst of array met alle objecten van de klasse kist in
 		//steek voor elk object de returnwaarde van de methode getVeld in de array'kisten'
 		return kisten;
