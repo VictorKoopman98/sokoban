@@ -15,5 +15,4 @@ public class OngeldigGebruikersnaamException extends RuntimeException
 		
 	}
      
-   
 }

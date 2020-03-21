@@ -3,6 +3,9 @@ package domein;
 import java.util.Arrays;
 import java.util.List;
 
+import domein.Kist;
+import domein.Man;
+
 public class DomeinController
 {
 	private final SpelerRepository spelerRepository;
@@ -101,6 +104,46 @@ public class DomeinController
     	return list.get(index);           // naam omzetten naar een spel 
     }
     
+    
+    
+    //---------------------------------------------------------------------
+    
+    public char[][] toonSpelbord() 
+    {
+        char[][] output = new char[10][10];
+        Veld[][] velden = this.Spel.getSpelbord().getVelden();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (velden[i][j].isMuur(i, j)) 
+                {
+                    output[i][j] = "X";
+                } else if (velden[i][j].isDoel() && velden[i][j] == Kist.getVeld()) 
+                {
+                    output[i][j] = "V";
+                } else if (velden[i][j].isDoel() && !velden[i][j] == Man.getVeld())) 
+                {
+                    output[i][j] = ".";
+                } else if (!velden[i][j].isDoel() && !velden[i][j].bevatKist() && !velden[i][j].bevatMan()) 
+                {
+                    output[i][j] = " ";
+                } else if (velden[i][j].bevatMan() && !velden[i][j].isDoel()) 
+                {
+                    output[i][j] = "@";
+                } else if (velden[i][j].bevatKist()) 
+                {
+                    output[i][j] = "*";
+                } else if (velden[i][j].isDoel() && velden[i][j].bevatMan()) 
+                {
+                    output[i][j] = "#";
+                }
+            }
+        }
+        return output;
+
+    }
+    
+   //--------------------------------------------------------------------------------------------  
 }
 
 
