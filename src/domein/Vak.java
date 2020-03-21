@@ -1,24 +1,40 @@
 package domein;
 
-import domein.Muur;
-import domein.Veld;
+import domein.Man;
+import domein.Kist;
+
+
 
 public class Vak {
 	
 	private int locatie;
-	private String karakter;
+	private boolean isMuur;
+	private boolean isDoel;
+	
 
 	public Vak() {
 		// TODO Auto-generated constructor stub
 		
 	}
 	
-	public String getKarakter() {
-		return karakter;
+	public boolean getIsDoel() {
+		return isDoel;
 	}
 	
-	public void setKarakter(String karakter) {
-		this.karakter = karakter;
+	public void setIsDoel(boolean doel) {
+		this.isDoel = doel;
+	}
+	
+	public boolean getIsMuur() {
+		return isMuur;
+	}
+	
+	public void setIsMuur(boolean muur) {
+		this.isMuur = muur;
+	}
+	
+	public void setLocatie(int locatie) {
+		this.locatie = locatie;
 	}
 	
 	public int getLocatie() {
