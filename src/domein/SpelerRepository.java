@@ -1,32 +1,28 @@
 package domein;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import persistentie.SpelerMapper;
 
 public class SpelerRepository
 {
-	
 	private final SpelerMapper spelerMapper;
-	private final List<Speler> spelers = new ArrayList();
+	private final List<Speler> spelers = new ArrayList<>();
 	 
+	
 	public SpelerRepository()
 	{
 		spelerMapper = new SpelerMapper();
 	}
 	
-	/**
-     * Methode om de huidige speler terug te geven
-     * gebruikersnaam gebruikersnaam van persoon die zich wil aanmelden
-     * wachtwoord wachtwoord van de persoon die zich wil aanmelden
-     * geeft een speler object terug indien speler gevonden wordt dat voldoet aan de voorwaarden (parameters)
-     */
-    public Speler geefSpeler(String gebruikersnaam, String wachtwoord)
+	
+    public Speler geefSpeler(String gebruikersnaam, String wachtwoord)   //Methode om de huidige speler terug te geven, geeft een speler object terug indien speler gevonden wordt dat voldoet aan de voorwaarden (parameters)
     {
-    	Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
+    	Speler speler = spelerMapper.geefSpeler(gebruikersnaam);    //speler wordt opgevraagd adhv gebruikersnaam
 
-    	if (speler != null)
+    	if (speler != null)    //als speler niet null is en wachtwoord = wachtwoord van in databank return speler
     	{
     	    if (speler.getWachtwoord().equals(wachtwoord))
     	    {
@@ -36,28 +32,30 @@ public class SpelerRepository
     	return null;
     }
     
-    /**
-     * Methode om na te kijken of de speler niet al reeds bestaat in de databank
-     *  gebruikersnaam gebruikersnaam waarvan we willen weten of de speler al bestaat
-     *  geeft een boolean terug om aan te duiden of de speler al dan niet bestaat
-     */
-    private boolean bestaatSpeler(String gebruikersnaam)
+    
+    private boolean bestaatSpeler(String gebruikersnaam)    //Methode om na te kijken of de speler niet al reeds bestaat in de databank, geeft een boolean terug om aan te duiden of de speler al dan niet bestaat
     {
-	return spelerMapper.geefSpeler(gebruikersnaam) != null;
+    	return spelerMapper.geefSpeler(gebruikersnaam) != null;
     }
 
-    /**
-     * Methode om een speler toe te voegen in de databank
-     * @param speler spelerobject dat aangemaakt moet worden in de databank
-     */
-    public void voegToe(Speler speler)
+    
+    
+    public void voegToe(Speler speler)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
     {
 	if (bestaatSpeler(speler.getGebruikersnaam()))
 	{
 	    throw new IllegalArgumentException("Speler bestaat al!");
 	}
-
 	spelerMapper.voegToe(speler);
     }
+    
+    
 }
+
+
+
+
+
+
+
 

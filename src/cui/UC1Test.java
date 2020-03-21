@@ -8,25 +8,22 @@ public class UC1Test
 {
 	private final  DomeinController dc;
 	
+	
 	public UC1Test (DomeinController dc) 
 	{
 		this.dc =dc;
 	}
+	
 	
 	public void meldAan()
 	{
 		Scanner input = new Scanner(System.in);
 		String gebruikersnaam = "";
 		String wachtwoord = "";
-//		String stoppen = "";
-//		SokobanApplicatie sb;
 		boolean blijvenHerhalenFlag;
-       
-//		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
-//		anders skipt het die stap en gaat direct naar exceptions.
 		
-		blijvenHerhalenFlag = true;
-		
+		blijvenHerhalenFlag = true;     //		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
+                                        //		anders skipt het die stap en gaat direct naar exceptions.
             do
             {
                 try
@@ -46,9 +43,9 @@ public class UC1Test
                 {
                     System.err.println(e);
                     
-                    //e.printStackTrace();
                 } 
                 
             } while (blijvenHerhalenFlag);	
 	}
+	 
 }

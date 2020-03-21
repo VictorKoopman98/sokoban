@@ -18,7 +18,7 @@ public class SpelerMapper
             + "VALUES (?, ?, ?, ?, ?)";
 	
 
-	public Speler geefSpeler(String gebruikersnaam)
+	public Speler geefSpeler(String gebruikersnaam)    //methode om een speler op te halen uit de databank
 	{
 		Speler speler = null;
 
@@ -41,11 +41,11 @@ public class SpelerMapper
     {
         throw new RuntimeException(ex);
     }
-
     return speler;
 	}
 
-	public void voegToe(Speler speler)
+	
+	public void voegToe(Speler speler)     //methode om een speler toe te voegen in de databank
 	{
 		 try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
 	                PreparedStatement query = conn.prepareStatement(INSERT_SPELER)) {
@@ -61,7 +61,9 @@ public class SpelerMapper
 	        }
 	}
 	
-	public List<Speler> geefSpelers() {
+	
+	public List<Speler> geefSpelers()    //methode om een lijst van spelers op te halen uit de databank => nodig?
+	{
         List<Speler> spelers = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
@@ -82,10 +84,8 @@ public class SpelerMapper
         {
             throw new RuntimeException(ex);
         }
-
         return spelers;
     }
-	
-	
+		
 
 }
