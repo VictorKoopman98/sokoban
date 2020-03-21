@@ -34,6 +34,10 @@ public class Spel {
 		
 	}
 	
+	public Spelbord getSpelbord() {
+		return spelbord;
+	}
+	
 	
 	public int getAantalSpelbordenVoltooid()
 	{

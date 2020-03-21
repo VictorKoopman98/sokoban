@@ -2,7 +2,7 @@ package domein;
 
 public class Kist {
 	
-	private char karakter;
+//	private char karakter;
 	private Veld veld;
 
 	/**
@@ -26,19 +26,19 @@ public class Kist {
 	 * Methode om karakter van de kist in te stellen
 	 */
 	
-	public void setKarakter(char karakter)
-	{
-		this.karakter = karakter;
-	}
-	
-	
-	/*
-	 * Methode om de karakter waarp een kist staat terug te geven
-	 * geeft karakter terug van de kist
-	 */ 
-	public char getKarakter()
-	{
-		return karakter;
-	}
+//	public void setKarakter(char karakter)
+//	{
+//		this.karakter = karakter;
+//	}
+//	
+//	
+//	/*
+//	 * Methode om de karakter waarp een kist staat terug te geven
+//	 * geeft karakter terug van de kist
+//	 */ 
+//	public char getKarakter()
+//	{
+//		return karakter;
+//	}
 
 }

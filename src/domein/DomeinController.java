@@ -5,14 +5,15 @@ import java.util.List;
 
 import domein.Kist;
 import domein.Man;
-import domein.Spel;
+
 
 public class DomeinController
 {
 	private final SpelerRepository spelerRepository;
 	private final SpelRepository spelRepository;
 	private Speler speler;
-	List<Spel> list = SpelRepository.geefSpellenList();     // hier geplaatst want zetNaamOmInSpel en geefLijstSpellen gebruiken het
+	private Spel spel;
+	List<Spel> spellenLijst = SpelRepository.geefSpellenList();     // hier geplaatst want zetNaamOmInSpel en geefLijstSpellen gebruiken het
 	
 	
 	public DomeinController()   //Constructor om een DomeinController aan te maken
@@ -67,11 +68,11 @@ public class DomeinController
     public String[] geefLijstSpellen()    //array maken van namen van spellen
     {
     	
-          String[] namen = new String[list.size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          String[] namen = new String[spellenLijst.size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
           
-          for(int i = 0; i < list.size(); i++) 
+          for(int i = 0; i < spellenLijst.size(); i++) 
           {
-        	  namen [i] = list.get(i).getNaam();     //elke naam wordt opgevraagd
+        	  namen [i] = spellenLijst.get(i).getNaam();     //elke naam wordt opgevraagd
           }
           
           return namen;
@@ -102,10 +103,10 @@ public class DomeinController
     {
     	List<String> lijstje = Arrays.asList(geefLijstSpellen());        //zet array van geefLijstSpellen om naar list
     	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
-    	return list.get(index);           // naam omzetten naar een spel 
+    	return spellenLijst.get(index);           // naam omzetten naar een spel 
     }
     
-<<<<<<< HEAD
+
     
     
     //---------------------------------------------------------------------
@@ -113,44 +114,54 @@ public class DomeinController
     public char[][] toonSpelbord() 
     {
         char[][] output = new char[10][10];
-        Veld[][] velden = this.Spel.getSpelbord().getVelden();
-        Kist[] kisten = this.Spel.getSpelbord.
+        Veld[][] velden = this.spel.getSpelbord().getVakken();
+        Veld[] kisten = this.spel.getSpelbord().getKistenVeld();
+        List<Veld> kistenLijst = Arrays.asList(kisten);
+        
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                if (velden[i][j].isMuur(i, j)) 
+                if (velden[i][j].getIsMuur()) 
                 {
-                    output[i][j] = "X";
-                } else if (velden[i][j].isDoel() && velden[i][j] == Kist.getVeld()) 
+                    output[i][j] = 'W'; //veld met een muur op is W (wall)
+                } 
+                else if (velden[i][j].getIsDoel() && kistenLijst.contains(velden[i][j])) 
                 {
-                    output[i][j] = "V";
-                } else if (velden[i][j].isDoel() && !(velden[i][j] == Man.getVeld())) 
+                    output[i][j] = 'F'; //veld met een doel en een kist op is F (finish)
+                } 
+                else if (velden[i][j].getIsDoel() && !(velden[i][j] == this.spel.getSpelbord().getMan().getVeld())) 
                 {
-                    output[i][j] = ".";
-                } else if (!velden[i][j].isDoel() && !velden[i][j]  && !velden[i][j].bevatMan()) 
+                    output[i][j] = 'G';//veld met doel zonder man en zonder kist (Goal)
+                } 
+                else if (!velden[i][j].getIsDoel() && !kistenLijst.contains(velden[i][j])  && !(velden[i][j] == this.spel.getSpelbord().getMan().getVeld())) 
                 {
-                    output[i][j] = " ";
-                } else if (velden[i][j].bevatMan() && !velden[i][j].isDoel()) 
+                    output[i][j] = 'N';//veld dat geen doel is, waar geen man of kist op staat (Nothing)
+                } 
+                else if (velden[i][j] == this.spel.getSpelbord().getMan().getVeld()) 
                 {
-                    output[i][j] = "@";
-                } else if (velden[i][j].bevatKist()) 
+                    output[i][j] = 'M';//veld dat een man bevat (Man)
+                } 
+                else if (kistenLijst.contains(velden[i][j])) 
                 {
-                    output[i][j] = "*";
-                } else if (velden[i][j].isDoel() && velden[i][j].bevatMan()) 
-                {
-                    output[i][j] = "#";
-                }
+                    output[i][j] = 'K';//veld met een kist (Kist)
+                } 
+                
             }
         }
         return output;
 
     }
     
+    //verplaatsMan()
+    
+    //geefAantalVerplaatsingen
+    
+    //isEindeSpelbordBereikt()
+    
    //--------------------------------------------------------------------------------------------  
 }
 
 
 
-=======
-}
->>>>>>> branch 'master' of https://github.com/HoGentTIProjecten1/sokoban-g39.git
+
+

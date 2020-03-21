@@ -7,13 +7,11 @@ public class Veld
 	private boolean isDoel;
 
 	
-	public boolean bevatMan() 
-	{
-		
+	public boolean getIsMuur() {
+		return isMuur;
 	}
 	
-	public boolean bevatKist() 
-	{
-		
+	public boolean getIsDoel() {
+		return isDoel;
 	}
 }
