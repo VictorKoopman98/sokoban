@@ -1,19 +1,16 @@
 package domein;
 
-import domein.Vak;
+import domein.Veld;
 
 public class Spelbord {
 	
 	private boolean isVoltooid;
 	private int aantalVerplaatsingen;
-	private int locatieMan=-1;
-	
-	
+	private int locatieMan;
 	
 
-
-	public Spelbord() {
-		// TODO Auto-generated constructor stub	
+	public Spelbord() 
+	{
 		
 	}
 	
@@ -104,7 +101,8 @@ public class Spelbord {
 		
 	}	
 	
-	public Vak[] getSpelbord() {
+	public Veld[][] getSpelbord() 
+	{
 		return spelbord;
 	} 
 	

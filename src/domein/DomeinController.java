@@ -5,6 +5,7 @@ import java.util.List;
 
 import domein.Kist;
 import domein.Man;
+import domein.Spel;
 
 public class DomeinController
 {
@@ -112,6 +113,7 @@ public class DomeinController
     {
         char[][] output = new char[10][10];
         Veld[][] velden = this.Spel.getSpelbord().getVelden();
+        Kist[] kisten = this.Spel.getSpelbord.
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -121,10 +123,10 @@ public class DomeinController
                 } else if (velden[i][j].isDoel() && velden[i][j] == Kist.getVeld()) 
                 {
                     output[i][j] = "V";
-                } else if (velden[i][j].isDoel() && !velden[i][j] == Man.getVeld())) 
+                } else if (velden[i][j].isDoel() && !(velden[i][j] == Man.getVeld())) 
                 {
                     output[i][j] = ".";
-                } else if (!velden[i][j].isDoel() && !velden[i][j].bevatKist() && !velden[i][j].bevatMan()) 
+                } else if (!velden[i][j].isDoel() && !velden[i][j]  && !velden[i][j].bevatMan()) 
                 {
                     output[i][j] = " ";
                 } else if (velden[i][j].bevatMan() && !velden[i][j].isDoel()) 
