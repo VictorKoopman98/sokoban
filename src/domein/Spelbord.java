@@ -7,7 +7,7 @@ public class Spelbord {
 	
 	private boolean isVoltooid;
 	private int aantalVerplaatsingen;
-	private int locatieMan=-1;
+	private int locatieMan=50;
 	ArrayList<Vak> vakken = new ArrayList<Vak>();
 	
 
@@ -17,8 +17,10 @@ public class Spelbord {
 	}
 	
 	private int geefLocatieMan() {
-		for (int i = 0; i < 100; i++) {
-			if (vakken[i])
+		for (int i = 0; i < vakken.size(); i++) {
+			//controleer voor ieder vak of er een associatie is tussen man en vak
+			//if (associatie tussen man en vak)
+			//locatieMan = vakken[i].getlocatie
 		}
 	}
 	

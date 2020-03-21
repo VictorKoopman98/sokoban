@@ -15,6 +15,7 @@ public class Spel {
 	Spelbord spelbord = new Spelbord();
 	
 	public boolean isSpelbordVoltooid() {
+		if (Spelbord.isVoltooid)
 		
 	}
 	
