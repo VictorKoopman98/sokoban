@@ -2,16 +2,17 @@ package domein;
 
 public class Veld 
 {
-	
 	private boolean isMuur;
 	private boolean isDoel;
 
 	
-	public boolean getIsMuur() {
+	public boolean getIsMuur() 
+	{
 		return isMuur;
 	}
 	
-	public boolean getIsDoel() {
+	public boolean getIsDoel() 
+	{
 		return isDoel;
 	}
 }

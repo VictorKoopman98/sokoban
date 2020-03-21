@@ -114,18 +114,21 @@ public class DomeinController
     public char[][] toonSpelbord() 
     {
         char[][] output = new char[10][10];
-        Veld[][] velden = this.spel.getSpelbord().getVakken();
-        Kist[] kisten = this.spel.getSpelbord().getKisten();
+        Veld[][] velden = this.spel.geefSpelbord().getVakken();
+        Kist[] kisten = this.spel.geefSpelbord().getKisten();
         Veld[] veldenVanKisten;
         
         
-        for (int i = 0; i<kisten.length;i++) {
+        for (int i = 0; i<kisten.length;i++) 
+        {
         	veldenVanKisten[i] = kisten[i].getVeld();
         }
         List<Veld> veldenVanKistenLijst = Arrays.asList(veldenVanKisten);
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 10; i++) 
+        {
+            for (int j = 0; j < 10; j++) 
+            {
                 if (velden[i][j].getIsMuur()) 
                 {
                     output[i][j] = 'W'; //veld met een muur op is W (wall)
@@ -134,15 +137,15 @@ public class DomeinController
                 {
                     output[i][j] = 'F'; //veld met een doel en een kist op is F (finish)
                 } 
-                else if (velden[i][j].getIsDoel() && !(velden[i][j] == this.spel.getSpelbord().getMan().getVeld())) 
+                else if (velden[i][j].getIsDoel() && !(velden[i][j] == this.spel.geefSpelbord().getMan().getVeld())) 
                 {
                     output[i][j] = 'G';//veld met doel zonder man en zonder kist (Goal)
                 } 
-                else if (!velden[i][j].getIsDoel() && !veldenVanKistenLijst.contains(velden[i][j])  && !(velden[i][j] == this.spel.getSpelbord().getMan().getVeld())) 
+                else if (!velden[i][j].getIsDoel() && !veldenVanKistenLijst.contains(velden[i][j])  && !(velden[i][j] == this.spel.geefSpelbord().getMan().getVeld())) 
                 {
                     output[i][j] = 'N';//veld dat geen doel is, waar geen man of kist op staat (Nothing)
                 } 
-                else if (velden[i][j] == this.spel.getSpelbord().getMan().getVeld()) 
+                else if (velden[i][j] == this.spel.geefSpelbord().getMan().getVeld()) 
                 {
                     output[i][j] = 'M';//veld dat een man bevat (Man)
                 } 
@@ -154,90 +157,119 @@ public class DomeinController
             }
         }
         return output;
-
     }
     
-    public void verplaatsMan(String richting) {
+    
+    public void verplaatsMan(String richting)   //methode om de man te verplaatsen in het spelbord
+    {
     	int locatieManX=-1; //locatie van de rij
     	int locatieManY=-1; //locatie van de kolom
-    	Veld[][] velden = this.spel.getSpelbord().getVakken();
-    	Kist[] kisten = this.spel.getSpelbord().getKisten();
+    	Veld[][] velden = this.spel.geefSpelbord().getVakken();
+    	Kist[] kisten = this.spel.geefSpelbord().getKisten();
     	Veld[] veldenVanKisten;
         
         
-        for (int i = 0; i<kisten.length;i++) {
+        for (int i = 0; i<kisten.length;i++) 
+        {
         	veldenVanKisten[i] = kisten[i].getVeld();
         }
         List<Veld> veldenVanKistenLijst = Arrays.asList(veldenVanKisten);
     	
     	
-    	for (int i = 0; i < 10; i++) {
-    		for (int j = 0; j < 10; j++) {
-    			if (velden[i][j] == this.spel.getSpelbord().getMan().getVeld()) {
+    	for (int i = 0; i < 10; i++) 
+    	{
+    		for (int j = 0; j < 10; j++) 
+    		{
+    			if (velden[i][j] == this.spel.geefSpelbord().getMan().getVeld()) 
+    			{
     				locatieManX = i;
     				locatieManY = j;
     			}
     		}
     	}
     	
-    	if (verplaatsingOK(richting)) {
-    		if (richting == "links") {
-    			this.spel.getSpelbord().getMan().setVeld(velden[locatieManX][locatieManY-1]);
-    			if (veldenVanKistenLijst.contains(velden[locatieManX][locatieManY-1])) 
+    	if (verplaatsingOK(richting)) 
+    	{
+    		if (richting == "links") 
+    		{
+    			this.spel.geefSpelbord().getMan().setVeld(velden[locatieManX][locatieManY-1]);   //man wordt naar links verplaatst
+    			if (veldenVanKistenLijst.contains(velden[locatieManX][locatieManY-1]))   //als er een kist staat op de locatie waar de man naartoe wilt
     			{
-    				for (int i = 0; i < kisten.length; i++) {
-    					if (velden[locatieManX][locatieManY-1] == kisten[i].getVeld()) {
-    						kisten[i].setVeld(velden[locatieManX][locatieManY-2]);
+    				for (int i = 0; i < kisten.length; i++) 
+    				{
+    					if (velden[locatieManX][locatieManY-1] == kisten[i].getVeld()) 
+    					{
+    						kisten[i].setVeld(velden[locatieManX][locatieManY-2]);   //dan wordt de kist verplaatst naar de locatie links van waar de man naartoe wilt
     					}
     				}
     			}
     		} 
-    		else if (richting == "rechts") {
-    			this.spel.getSpelbord().getMan().setVeld(velden[locatieManX][locatieManY+1]);
+    		else if (richting == "rechts") 
+    		{
+    			this.spel.geefSpelbord().getMan().setVeld(velden[locatieManX][locatieManY+1]);
     			if (veldenVanKistenLijst.contains(velden[locatieManX][locatieManY+1])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) {
-    					if (velden[locatieManX][locatieManY+1] == kisten[i].getVeld()) {
+    				for (int i = 0; i < kisten.length; i++) 
+    				{
+    					if (velden[locatieManX][locatieManY+1] == kisten[i].getVeld()) 
+    					{
     						kisten[i].setVeld(velden[locatieManX][locatieManY+2]);
     					}
     				}
     			}
     		}
-    		else if (richting == "omhoog") {
-    			this.spel.getSpelbord().getMan().setVeld(velden[locatieManX-1][locatieManY]);
+    		else if (richting == "omhoog") 
+    		{
+    			this.spel.geefSpelbord().getMan().setVeld(velden[locatieManX-1][locatieManY]);
     			if (veldenVanKistenLijst.contains(velden[locatieManX-1][locatieManY])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) {
-    					if (velden[locatieManX-1][locatieManY] == kisten[i].getVeld()) {
+    				for (int i = 0; i < kisten.length; i++) 
+    				{
+    					if (velden[locatieManX-1][locatieManY] == kisten[i].getVeld()) 
+    					{
     						kisten[i].setVeld(velden[locatieManX-2][locatieManY]);
     					}
     				}
     			}
     		}
-    		else if (richting == "omlaag") {
-    			this.spel.getSpelbord().getMan().setVeld(velden[locatieManX+1][locatieManY]);
+    		else if (richting == "omlaag") 
+    		{
+    			this.spel.geefSpelbord().getMan().setVeld(velden[locatieManX+1][locatieManY]);
     			if (veldenVanKistenLijst.contains(velden[locatieManX+1][locatieManY])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) {
-    					if (velden[locatieManX+1][locatieManY] == kisten[i].getVeld()) {
+    				for (int i = 0; i < kisten.length; i++) 
+    				{
+    					if (velden[locatieManX+1][locatieManY] == kisten[i].getVeld()) 
+    					{
     						kisten[i].setVeld(velden[locatieManX+2][locatieManY]);
     					}
     				}
     			}
     		}
     	}
-    	
     }
     
     
-    // verplaatsingOK
-    public boolean verplaatsingOK(String richting) {
+    public boolean verplaatsingOK(String richting)   //methode om te kijken of de verplaatsing mag gebeuren
+    {
     	return true;
     }
     
-    //geefAantalVerplaatsingen
     
-    //isEindeSpelbordBereikt()
+    public int geefAantalVerplaatsingen()   //methode om het aantal verplaatsingen terug te geven
+    {
+    	return this.spel.geefAantalVerplaatsingen();
+    }
+    
+    
+    public boolean eindeSpelbordBereikt()  //methode om te kijken of het einde van het spelbord bereikt is
+    {
+    	if(spel.isSpelbordVoltooid() == true)
+    	{
+    		return true;
+    	}
+    	return false;
+    }
     
    //--------------------------------------------------------------------------------------------  
 }
