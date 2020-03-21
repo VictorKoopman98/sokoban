@@ -16,10 +16,6 @@ public class Spel {
 	}
 
 	
-<<<<<<< HEAD
-	public boolean isSpelbordVoltooid() {
-		if (Spelbord.isVoltooid)
-=======
 	public boolean isSpelbordVoltooid() 
 	{
 		return false;	
@@ -35,7 +31,6 @@ public class Spel {
 	public int getAantalSpelborden()
 	{
 		return aantalSpelborden;
->>>>>>> branch 'master' of https://github.com/HoGentTIProjecten1/sokoban-g39.git
 		
 	}
 	
