@@ -15,4 +15,8 @@ public class OngeldigGebruikersnaamException extends RuntimeException
 		
 	}
      
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/HoGentTIProjecten1/sokoban-g39.git

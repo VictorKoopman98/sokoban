@@ -105,6 +105,7 @@ public class DomeinController
     	return list.get(index);           // naam omzetten naar een spel 
     }
     
+<<<<<<< HEAD
     
     
     //---------------------------------------------------------------------
@@ -150,3 +151,6 @@ public class DomeinController
 
 
 
+=======
+}
+>>>>>>> branch 'master' of https://github.com/HoGentTIProjecten1/sokoban-g39.git
