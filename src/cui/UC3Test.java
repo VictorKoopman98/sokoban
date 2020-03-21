@@ -18,7 +18,6 @@ public class UC3Test
 	
 	public void kiesSpel()    //methode voor een spel te selecteren uit een lijst van spellen
 	{
-		
 		int gekozenSpel;
 		
 		do {
