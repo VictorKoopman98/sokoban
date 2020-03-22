@@ -18,11 +18,7 @@ public class Spel {
 	
 	public boolean isSpelbordVoltooid() 
 	{
-		if(spelbord.getIsVoltooid() == true)
-		{
-			return true;
-		}
-		return false;
+		return spelbord.getIsVoltooid();
 	}
 	
 	

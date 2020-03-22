@@ -175,7 +175,34 @@ public class Spelbord {
     		}
     	}
     	
+    	checkIsSpelbordVoltooid();
     }
+	
+		
+	private void checkIsSpelbordVoltooid() {
+		
+		int aantalDoelen = 0;
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++ ) {
+				if(spelbord[i][j].getIsDoel()) {
+					aantalDoelen += 1;
+				}
+			}
+		}
+		
+		int aantalKistenOpDoel = 0;
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if(maakVeldenVanKistenLijst().contains(spelbord[i][j]) && spelbord[i][j].getIsDoel()) {
+					aantalKistenOpDoel += 1;
+				}
+			}
+		}
+		
+		if (aantalKistenOpDoel == aantalDoelen) {
+			isVoltooid = true;
+		}
+	}
 	
 	public boolean isVerplaatsingOK(String richting) {
     	
