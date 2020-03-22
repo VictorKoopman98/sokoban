@@ -109,24 +109,30 @@ public class DomeinController
     
     
     //---------------------------------------------------------------------
+
     public char[][] toonSpelbord(){
     	return this.spel.toonSpelbord();
     }
     
-    
-    
-    public void verplaatsMan(String richting) {
-    	this.spel.verplaatsMan(richting);
-    }
-    
+   
     
     
 
     
+    public int geefAantalVerplaatsingen()   //methode om het aantal verplaatsingen terug te geven
+    {
+    	return this.spel.geefAantalVerplaatsingen();
+    }
     
-    //geefAantalVerplaatsingen
     
-    //isEindeSpelbordBereikt()
+    public boolean eindeSpelbordBereikt()  //methode om te kijken of het einde van het spelbord bereikt is
+    {
+    	if(spel.isSpelbordVoltooid() == true)
+    	{
+    		return true;
+    	}
+    	return false;
+    }
     
    //--------------------------------------------------------------------------------------------  
 }

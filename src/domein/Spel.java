@@ -18,7 +18,17 @@ public class Spel {
 	
 	public boolean isSpelbordVoltooid() 
 	{
-		return false;	
+		if(spelbord.getIsVoltooid() == true)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public int geefAantalVerplaatsingen()
+	{
+		return spelbord.getAantalVerplaatsingen();
 	}
 	
 	
@@ -34,6 +44,7 @@ public class Spel {
 		
 	}
 	
+
 	public void verplaatsMan(String richting) {
 		spelbord.verplaatsMan(richting);
 	}
@@ -50,7 +61,8 @@ public class Spel {
 		return spelbord.getKisten();
 	}
 	
-	public Man geefMan() {
+	public Man geefMan() 
+	{
 		return spelbord.getMan();
 	}
 	

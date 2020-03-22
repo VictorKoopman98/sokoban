@@ -23,6 +23,7 @@ public class Spelbord {
 		
 	}
 	
+
 	private List<Veld> maakVeldenVanKistenLijst() {
 	
 		for (int i = 0; i<kisten.length;i++) {
@@ -46,23 +47,40 @@ public class Spelbord {
 	
 	
 	public Kist[] getKisten() {
-		//geef een lijst of array met alle objecten van de klasse kist in
-		//steek voor elk object de returnwaarde van de methode getVeld in de array'kisten'
 		return kisten;
 	}
+
+	public Veld[] getKistenVeld()         //geef een lijst of array met alle objecten van de klasse kist in
+	                                      //steek voor elk object de returnwaarde van de methode getVeld in de array'kisten'
+	{
+		
+		for (int i = 0; i < kisten.length; i++) {
+			this.veldenVanKisten[i] = kisten[i].getVeld();
+		}
+		return veldenVanKisten;
+	}
 	
-	public Man getMan() {
+	public Man getMan() 
+	{
 		return man;
 		
 	}
 	
+
 	public Veld[][] getSpelbord() 
 	{
 		return spelbord;
 	} 
 	
-	public int getAantalVerplaatsingen() {
-		return aantalVerplaatsingen;
+	
+	public int getAantalVerplaatsingen() 
+	{
+		return this.aantalVerplaatsingen;
+	}
+	
+	public boolean getIsVoltooid()
+	{
+		return this.isVoltooid;
 	}
 	
 	public char[][] toonSpelbord() 
