@@ -210,31 +210,35 @@ public class Spelbord {
 		boolean verplaatsingOk = false;
 	
     	if (richting == "links") {
-    		if ( !( spelbord[locatieManX][locatieManY-1].getIsMuur() || locatieManX == 0 
+    		if ( !( spelbord[locatieManX][locatieManY-1].getIsMuur() || locatieManY == 0 
     				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-1]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-2]) ) 
-    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-1]) && spelbord[locatieManX][locatieManY-2].getIsMuur()) ) ){
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-1]) && spelbord[locatieManX][locatieManY-2].getIsMuur()) 
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-1]) && locatieManY == 1) ) ){
     			verplaatsingOk = true;
     		}
     	
     	}
     	if (richting == "rechts") {
-    		if ( !( spelbord[locatieManX][locatieManY+1].getIsMuur() || locatieManX == 9 
+    		if ( !( spelbord[locatieManX][locatieManY+1].getIsMuur() || locatieManY == 9 
     				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+1]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+2]) ) 
-    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+1]) && spelbord[locatieManX][locatieManY+2].getIsMuur()) ) ){
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+1]) && spelbord[locatieManX][locatieManY+2].getIsMuur()) 
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+1]) && locatieManY == 8) ) ){
     			verplaatsingOk = true;
     		}
     	}
     	if (richting == "omhoog") {
-    		if ( !( spelbord[locatieManX-1][locatieManY].getIsMuur() || locatieManY == 0 
+    		if ( !( spelbord[locatieManX-1][locatieManY].getIsMuur() || locatieManX == 0 
     				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX-1][locatieManY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX-2][locatieManY]) ) 
-    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX-1][locatieManY]) && spelbord[locatieManX-2][locatieManY].getIsMuur()) ) ){
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX-1][locatieManY]) && spelbord[locatieManX-2][locatieManY].getIsMuur()) 
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX-1][locatieManY]) && locatieManX == 1)) ){
     			verplaatsingOk = true;
     		}
     	}
     	if (richting == "omlaag") {
-    		if ( !( spelbord[locatieManX+1][locatieManY].getIsMuur() || locatieManY == 9 
+    		if ( !( spelbord[locatieManX+1][locatieManY].getIsMuur() || locatieManX == 9 
     				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX+1][locatieManY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX+2][locatieManY]) ) 
-    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX+1][locatieManY]) && spelbord[locatieManX+2][locatieManY].getIsMuur()) ) ){
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX+1][locatieManY]) && spelbord[locatieManX+2][locatieManY].getIsMuur()) 
+    				|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX+1][locatieManY]) && locatieManX == 8)) ){
     			verplaatsingOk = true;
     		}
     	}

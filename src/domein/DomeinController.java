@@ -115,7 +115,9 @@ public class DomeinController
     }
     
    
-    
+    public void verplaatsMan(String richting) {
+    	this.spel.verplaatsMan(richting);
+    }
     
 
     
