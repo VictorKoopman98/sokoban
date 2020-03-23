@@ -30,6 +30,7 @@ public class SokobanApplicatie
 	
 	public void run()    //verschillende use cases in volgorde laten runnen
 	{
+		
 	int keuze;
 		do 
 		{
@@ -45,12 +46,14 @@ public class SokobanApplicatie
 				break;
 			}
 			
-			if(keuze == 1 || keuze == 2) 
+			if(keuze == 1 || keuze == 2)  //indien aangemeld of geregistreerd toon de spellen en opties om spellen en spelborden te voltooien
 			{
 				new UC3Test(domeincontroller).kiesSpel();
+				
+				new UC4Test(domeincontroller).voltooiSpelbord();
 			}
 			
-		}while(keuze != 3);
+		} while(keuze != 3);
 		
 	}	
 	

@@ -11,11 +11,15 @@ public class Man {
 		this.veld = veld;
 	}
 	
-	public void setOorspronkelijkVeld(Veld veld) {
+	
+	public void setOorspronkelijkVeld(Veld veld) 
+	{
 		this.oorspronkelijkVeld = veld;
 	}
 	
-	public Veld getOorspronkelijkVeld() {
+	
+	public Veld getOorspronkelijkVeld() 
+	{
 		return oorspronkelijkVeld;
 	}
 	

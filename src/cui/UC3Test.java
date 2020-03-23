@@ -9,6 +9,8 @@ public class UC3Test
 	DomeinController dc;
 	Scanner input = new Scanner(System.in);
 	String[] spelletjes = dc.geefLijstSpellen();   //array van de namen van de spellen
+	UC4Test uc4test;
+	
 	
 	public UC3Test (DomeinController dc) 
 	{
@@ -38,12 +40,15 @@ public class UC3Test
 		
 		if(actie == 1)    //als je actie 1 kiest van toonActiesSpel worden volgende methodes uitgevoerd
 		{
+			uc4test.voltooiSpelbord();  //methode voltooiSpelbord van UC4 wordt uitgevoerd
+			
 			dc.geefAantalSpelborden(spelletjes[gekozenSpel-1]);
+			
 			dc.geefAantalSpelbordenVoltooid(spelletjes[gekozenSpel-1]);
 		}
 	}
 	
-	public int toonActiesSpel()    //acties die je kan doen in het spel wordne weergegeven
+	public int toonActiesSpel()    //acties die je kan doen in het spel worden weergegeven
 	{
 		
         System.out.printf("Voltooi volgend spelbord (1)");

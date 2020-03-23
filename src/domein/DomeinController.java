@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
-
 public class DomeinController
 {
 	private final SpelerRepository spelerRepository;
@@ -106,25 +104,24 @@ public class DomeinController
     }
     
 
-    
-    
-    //---------------------------------------------------------------------
-
-    public char[][] toonSpelbord(){
+    public char[][] toonSpelbord()
+    {
     	return this.spel.toonSpelbord();
     }
     
    
-    public void verplaatsMan(String richting) {
+    public void verplaatsMan(String richting) 
+    {
     	this.spel.verplaatsMan(richting);
     }
     
-    public void resetSpelbord() {
+
+    public void resetSpelbord() 
+    {
     	this.spel.resetSpelbord();
     }
     
 
-    
     public int geefAantalVerplaatsingen()   //methode om het aantal verplaatsingen terug te geven
     {
     	return this.spel.geefAantalVerplaatsingen();
@@ -139,8 +136,7 @@ public class DomeinController
     	}
     	return false;
     }
-    
-   //--------------------------------------------------------------------------------------------  
+     
 }
 
 
