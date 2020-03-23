@@ -44,7 +44,6 @@ public class UC4Test
 					 richtingMan = "omlaag";
 				}
 				
-				
 				dc.verplaatsMan(richtingMan);
 				
 				dc.geefAantalVerplaatsingen();
@@ -53,7 +52,7 @@ public class UC4Test
 			}
 			while(dc.eindeSpelbordBereikt() == false);   //blijf verplaatsen tot dat einde spelbord bereikt is
 		}
-		else if(actie ==2)   //indien spelbord willen resetten
+		else if(actie == 2)   //indien spelbord willen resetten
 		{
 			dc.resetSpelbord();
 		}
@@ -61,6 +60,7 @@ public class UC4Test
 		{
 			System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
 		}
+		
 	}
 	
 	

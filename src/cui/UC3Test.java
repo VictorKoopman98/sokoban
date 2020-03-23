@@ -48,6 +48,7 @@ public class UC3Test
 		}
 	}
 	
+	
 	public int toonActiesSpel()    //acties die je kan doen in het spel worden weergegeven
 	{
 		

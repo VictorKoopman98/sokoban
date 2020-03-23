@@ -298,7 +298,6 @@ public class Spelbord
 
 	public void resetSpelbord() 
 	{
-		
 		setAantalVerplaatsingen(0);
 		setIsVoltooid(false);
 		getMan().setVeld(getMan().getOorspronkelijkVeld());

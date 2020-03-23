@@ -16,7 +16,9 @@ public class Kist
 	{
 		return veld;
 	}
-	public void setOorspronkelijkVeld(Veld veld) {
+	
+	public void setOorspronkelijkVeld(Veld veld) 
+	{
 		this.oorspronkelijkVeld = veld;
 	}
 	
