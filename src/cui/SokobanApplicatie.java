@@ -49,6 +49,7 @@ public class SokobanApplicatie
 			if(keuze == 1 || keuze == 2)  //indien aangemeld of geregistreerd toon de spellen en opties om spellen en spelborden te voltooien
 			{
 				new UC3Test(domeincontroller).kiesSpel();
+				
 			}
 			
 		} while(keuze != 3);
