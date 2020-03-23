@@ -36,8 +36,7 @@ public class Spel {
 	
 	public int getAantalSpelborden()
 	{
-		return aantalSpelborden;
-		
+		return aantalSpelborden;	
 	}
 	
 
@@ -45,17 +44,21 @@ public class Spel {
 		spelbord.verplaatsMan(richting);
 	}
 	
+	
 	public Veld[][] geefSpelbord() {
 		return spelbord.getSpelbord();
 	}
+	
 	
 	public char[][] toonSpelbord(){
 		return spelbord.toonSpelbord();
 	}
 	
+	
 	public Kist[] geefKisten() {
 		return spelbord.getKisten();
 	}
+	
 	
 	public Man geefMan() 
 	{

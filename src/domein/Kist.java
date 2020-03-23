@@ -2,7 +2,6 @@ package domein;
 
 public class Kist 
 {
-	
 	private Veld veld;
 
 	
