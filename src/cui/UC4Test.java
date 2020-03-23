@@ -55,9 +55,11 @@ public class UC4Test
 		}
 		else if(actie ==2)   //indien spelbord willen resetten
 		{
-			
+			dc.resetSpelbord();
 		}
-		
+		else if (actie == 3) {
+			System.out.printf("%s heeft het spel verlaten.", dc.geefGebruikersnaam());
+		}
 	}
 	
 	
