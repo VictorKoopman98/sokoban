@@ -119,6 +119,10 @@ public class DomeinController
     	this.spel.verplaatsMan(richting);
     }
     
+    public void resetSpelbord() {
+    	this.spel.resetSpelbord();
+    }
+    
 
     
     public int geefAantalVerplaatsingen()   //methode om het aantal verplaatsingen terug te geven

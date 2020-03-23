@@ -246,6 +246,13 @@ public class Spelbord {
     	return verplaatsingOk;
     }
 	
+	public void resetSpelbord() {
+		aantalVerplaatsingen = 0;
+		getMan().setVeld(getMan().getOorspronkelijkVeld());
+		for (int i = 0; i<kisten.length; i++) {
+			kisten[i].setVeld(kisten[i].getOorspronkelijkVeld());
+		}
+	}
 	
 
 }

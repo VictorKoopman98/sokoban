@@ -49,6 +49,10 @@ public class Spel {
 		return spelbord.getSpelbord();
 	}
 	
+	public void resetSpelbord() {
+		spelbord.resetSpelbord();
+	}
+	
 	public char[][] toonSpelbord(){
 		return spelbord.toonSpelbord();
 	}
