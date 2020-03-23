@@ -78,9 +78,17 @@ public class Spelbord {
 		return this.aantalVerplaatsingen;
 	}
 	
+	public void setAantalVerplaatsingen(int aantalVerplaatsingen) {
+		this.aantalVerplaatsingen = aantalVerplaatsingen;
+	}
+	
 	public boolean getIsVoltooid()
 	{
 		return this.isVoltooid;
+	}
+	
+	public void setIsVoltooid(boolean isVoltooid) {
+		this.isVoltooid = isVoltooid;
 	}
 	
 	public char[][] toonSpelbord() 
@@ -247,7 +255,8 @@ public class Spelbord {
     }
 	
 	public void resetSpelbord() {
-		aantalVerplaatsingen = 0;
+		setAantalVerplaatsingen(0);
+		setIsVoltooid(false);
 		getMan().setVeld(getMan().getOorspronkelijkVeld());
 		for (int i = 0; i<kisten.length; i++) {
 			kisten[i].setVeld(kisten[i].getOorspronkelijkVeld());
