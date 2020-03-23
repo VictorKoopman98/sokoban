@@ -40,17 +40,26 @@ public class Spel {
 	}
 	
 
-	public void verplaatsMan(String richting) {
+	public void verplaatsMan(String richting) 
+	{
 		spelbord.verplaatsMan(richting);
 	}
 	
 	
-	public Veld[][] geefSpelbord() {
+	public Veld[][] geefSpelbord() 
+	{
 		return spelbord.getSpelbord();
 	}
 	
+
+	public void resetSpelbord() 
+	{
+		spelbord.resetSpelbord();
+	}
 	
-	public char[][] toonSpelbord(){
+	
+	public char[][] toonSpelbord()
+	{
 		return spelbord.toonSpelbord();
 	}
 	
