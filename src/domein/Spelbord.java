@@ -36,17 +36,8 @@ public class Spelbord
 	
 	private void bepaalLocatieMan() 
 	{
-		for (int i = 0; i < 10; i++) 
-		{
-    		for (int j = 0; j < 10; j++) 
-    		{
-    			if (spelbord[i][j] == getMan().getVeld()) 
-    			{
-    				locatieManX = i;
-    				locatieManY = j;
-    			}
-    		}
-    	}
+		locatieManX = getMan().getVeld().getX();
+		locatieManY = getMan().getVeld().getY();
 	}
 	
 	
@@ -86,7 +77,8 @@ public class Spelbord
 	}
 	
 
-	public void setAantalVerplaatsingen(int aantalVerplaatsingen) {
+	public void setAantalVerplaatsingen(int aantalVerplaatsingen) 
+	{
 		this.aantalVerplaatsingen = aantalVerplaatsingen;
 	}
 
@@ -208,11 +200,11 @@ public class Spelbord
     		}
     	}
     	
-    	checkIsSpelbordVoltooid();
+    	isEindeSpelbordBereikt();
     }
 	
 		
-	private void checkIsSpelbordVoltooid() 
+	private void isEindeSpelbordBereikt() 
 	{
 		int aantalDoelen = 0;
 		for (int i = 0; i < 10; i++) 
@@ -296,15 +288,7 @@ public class Spelbord
     }
 	
 
-	public void resetSpelbord() 
-	{
-		setAantalVerplaatsingen(0);
-		setIsVoltooid(false);
-		getMan().setVeld(getMan().getOorspronkelijkVeld());
-		for (int i = 0; i<kisten.length; i++) {
-			kisten[i].setVeld(kisten[i].getOorspronkelijkVeld());
-		}
-	}
+	
 	
 
 }

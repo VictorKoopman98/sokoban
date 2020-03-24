@@ -83,7 +83,7 @@ public class Speler
 	    throw new OngeldigWachtwoordException("Wachtwoord is verplicht in te vullen.");   //exception gooien als wachtwoord neit ingevuld is
 	} else if (isCorrectWachtwoord(wachtwoord) == false)
 	{
-	    throw new OngeldigWachtwoordException("Wachtwoord is minstens 8 tekens lang en heeft minstens één hoofdletter, één kleine letter en één cijfer");   //exception gooien als wachtwoord niet klopt => zie tekst
+	    throw new OngeldigWachtwoordException("Wachtwoord is minstens 8 tekens lang en heeft minstens 1 hoofdletter, 1 kleine letter en 1 cijfer");   //exception gooien als wachtwoord niet klopt => zie tekst
 	} else 
 	{
 	this.wachtwoord = wachtwoord;

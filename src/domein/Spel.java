@@ -1,18 +1,55 @@
 package domein;
 
 import domein.Spelbord;
+import domein.SpelbordRepository;
+import java.util.List;
+
+import Exceptions.OngeldigGebruikersnaamException;
+import Exceptions.OngeldigeSpelnaamException;
 
 public class Spel {
 	
-	private String naam;
+	private String naamSpel;
 	private int aantalSpelborden = 0;
 	private int aantalSpelbordenVoltooid = 0;
-	Spelbord spelbord = new Spelbord();
+	Spelbord spelbord;
+	SpelbordRepository spelbordRepository;
+	
 
 	
-	public Spel() 
+	public Spel(String naamSpel) 
 	{
 		// TODO Auto-generated constructor stub
+		setNaamSpel(naamSpel);
+		
+	}
+	
+	public int geefAantalSpelborden() {
+		return spelbordRepository.geefSpelbordenLijst().size();
+	}
+	
+	public int geefAantalSpelbordenVoltooid() {
+		int aantalVoltooid = 0;
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
+			if (spelbordRepository.getSpelbord().getIsVoltooid()) {
+				aantalVoltooid += 1;
+			}
+		}
+		return aantalVoltooid;
+	}
+	
+	public boolean isSpelVoltooid() {
+		int aantalVoltooid = 0;
+		boolean voltooid = false;
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
+			if (spelbordRepository.getSpelbord().getIsVoltooid()) {
+				aantalVoltooid += 1;
+			}
+		}
+		if (spelbordRepository.geefSpelbordenLijst().size() == aantalVoltooid) {
+			voltooid = true;
+		}
+		return voltooid;
 	}
 
 	
@@ -28,9 +65,22 @@ public class Spel {
 	}
 	
 	
-	public String getNaam()
+	public String getNaamSpel()
 	{
-		return naam;
+		return naamSpel;
+	}
+	private void setNaamSpel(String naam) {
+		if (naam == null || naam.length() == 0)
+		{ 
+		    throw new OngeldigeSpelnaamException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
+		} else if (naam.contains(" "))
+		{
+		    throw new OngeldigeSpelnaamException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
+		}
+		else 
+		{
+		this.naamSpel = naam;
+		}
 	}
 	
 	
@@ -54,7 +104,7 @@ public class Spel {
 
 	public void resetSpelbord() 
 	{
-		spelbord.resetSpelbord();
+		this.spelbord = SpelbordRepository.getSpelbord();
 	}
 	
 	

@@ -10,7 +10,6 @@ public class DomeinController
 	private final SpelRepository spelRepository;
 	private Speler speler;
 	private Spel spel;
-	List<Spel> spellenLijst = SpelRepository.geefSpellenList();     // hier geplaatst want zetNaamOmInSpel en geefLijstSpellen gebruiken het
 	
 	
 	public DomeinController()   //Constructor om een DomeinController aan te maken
@@ -65,11 +64,11 @@ public class DomeinController
     public String[] geefLijstSpellen()    //array maken van namen van spellen
     {
     	
-          String[] namen = new String[spellenLijst.size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          String[] namen = new String[SpelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
           
-          for(int i = 0; i < spellenLijst.size(); i++) 
+          for(int i = 0; i < SpelRepository.geefSpellenList().size(); i++) 
           {
-        	  namen [i] = spellenLijst.get(i).getNaam();     //elke naam wordt opgevraagd
+        	  namen [i] = SpelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
           }
           
           return namen;
@@ -78,21 +77,19 @@ public class DomeinController
     
     public void selecteerSpel(String naam)
     {
-        SpelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
+        this.spel = SpelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
     }
      
     
-    public int geefAantalSpelborden(String naam)
+    public int geefAantalSpelborden()
     {
-    	Spel spel = zetNaamOmInSpel(naam);
-        return spel.getAantalSpelborden();      //geeft terug hoeveel spelborden het spel heeft
+    	return this.spel.geefAantalSpelborden();      //geeft terug hoeveel spelborden het spel heeft
     }
     
     
-    public int geefAantalSpelbordenVoltooid(String naam)
+    public int geefAantalSpelbordenVoltooid()
     {
-    	Spel spel = zetNaamOmInSpel(naam);
-        return spel.getAantalSpelbordenVoltooid();       //geeft terug hoeveel voltooide spelborden het spel heeft
+    	return this.spel.geefAantalSpelbordenVoltooid();       //geeft terug hoeveel voltooide spelborden het spel heeft
     }
     
     
@@ -100,7 +97,7 @@ public class DomeinController
     {
     	List<String> lijstje = Arrays.asList(geefLijstSpellen());        //zet array van geefLijstSpellen om naar list
     	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
-    	return spellenLijst.get(index);           // naam omzetten naar een spel 
+    	return SpelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
     }
     
 
@@ -135,6 +132,23 @@ public class DomeinController
     		return true;
     	}
     	return false;
+    }
+    
+    public void maakNieuwSpel(String naamSpel) {
+    	Spel nieuwSpel = new Spel(naamSpel);
+    	//spelRepository.voegSpelToe(nieuwSpel);
+    }
+    
+    public String geefNaamSpel() {
+    	return this.spel.getNaamSpel();
+    }
+    
+    public void setSpel(Spel spel) {
+    	this.spel = spel;
+    }
+    
+    public boolean isSpelVoltooid() {
+    	return this.spel.isSpelVoltooid();
     }
      
 }

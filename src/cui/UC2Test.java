@@ -6,7 +6,7 @@ import domein.DomeinController;
 
 public class UC2Test 
 {
-	DomeinController dc;
+	private DomeinController dc;
 	
 	public UC2Test (DomeinController dc) 
 	{
@@ -51,7 +51,8 @@ public class UC2Test
                     System.err.println(e);
                 } 
                 
-            } while (blijvenHerhalenFlag);	
+            } while (blijvenHerhalenFlag);
+            
 	}
 	
 }

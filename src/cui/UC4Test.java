@@ -6,8 +6,7 @@ import domein.DomeinController;
 
 public class UC4Test 
 {
-	DomeinController dc;
-	Scanner input = new Scanner(System.in);
+	private DomeinController dc;
 	
 	
 	public UC4Test (DomeinController dc) 
@@ -66,28 +65,64 @@ public class UC4Test
 	
 	public int toonActiesSpelbord()  //methode voor de acties van het spelbord weer te geven
 	{
-		System.out.println("Nieuwe verplaatsing (1)");
+		Scanner input = new Scanner(System.in);
+
+		boolean blijvenHerhalen = true;
+		int keuze = -1;
+		do {
+			try {
+				System.out.println("Nieuwe verplaatsing (1)");
+				
+				System.out.println("Spel terugzetten naar begintoestand (2)");
+				
+				System.out.println("Spelbord verlaten (3)");
+				
+				System.out.print("Geef uw nummer in: ");
 		
-		System.out.println("Spel terugzetten naar begintoestand (2)");
+				keuze = input.nextInt();
+				if (keuze > 0 && keuze < 4) {
+					blijvenHerhalen = false;
+				}
+				
+			}
+			catch(IllegalArgumentException e){
+				System.err.println(e);
+			}
+		} while (blijvenHerhalen);
 		
-		System.out.println("Spelbord verlaten (3)");
+		return keuze;
 		
-		System.out.print("Geef uw nummer in: ");
-		return input.nextInt();
 	}
 	
 	
 	public int kiesRichting()  //methode voor de opties van de verplaatsing van de man
 	{
-		System.out.println("links (1)");
+		boolean blijvenHerhalen = true;
+		int keuze = -1;
+		Scanner input = new Scanner(System.in);
+
+		do {
+			try {
+				System.out.println("links (1)");
+				
+				System.out.println("rechts (2)");
+				
+				System.out.println("omhoog (3)");
+				
+				System.out.println("omlaag (4)");
+				
+				System.out.print("Geef uw nummer in: ");
+				keuze = input.nextInt();
+				if (keuze > 0 && keuze < 5) {
+					blijvenHerhalen = false;
+				}
+				
+			}
+			catch(IllegalArgumentException e){
+				System.err.println(e);
+			}
+		} while (blijvenHerhalen);
 		
-		System.out.println("rechts (2)");
-		
-		System.out.println("omhoog (3)");
-		
-		System.out.println("omlaag (4)");
-		
-		System.out.print("Geef uw nummer in: ");
-		return input.nextInt();
+		return keuze;
 	}
 }
