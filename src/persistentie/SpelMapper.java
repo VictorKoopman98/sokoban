@@ -101,23 +101,21 @@ public class SpelMapper
 //     * Methode om het spel op te slaan in de databank
 //     * @param spel object van de klasse Spel dat zal bewaard worden in de databank
 //     */
-//    public void bewaarSpel(Spel spel) {
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
-//        {
-//            PreparedStatement query = conn.prepareStatement("INSERT INTO spel(spelId, naam)"
-//                    + "VALUES (?, ?)");
-//            query.setInt(1, spel.getSpelId());
-//            query.setString(2, spel.getNaam());
-//            query.executeUpdate();
-//        } catch (SQLException ex)
-//        {
-//            throw new RuntimeException(ex);
-//        }
-//        List<Spelbord> spelborden = spel.getSpelborden();
+    public void voegSpelToe(Spel spel) {
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement(INSERT_SPEL))
+        {            
+            query.setString(1, spel.getNaamSpel());
+            query.executeUpdate();
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+        //List<Spelbord> spelborden = spel.getSpelborden();
 //        for (Spelbord spelborden1 : spelborden) {
 //            sbm.bewaarSpelbord(spelborden1,spel.getSpelId());
 //        }
-//    }
+    }
 //
 //    /**
 //     * Methode om het spelbord up te daten wanneer er een wijziging aan toegebracht is

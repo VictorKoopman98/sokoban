@@ -30,12 +30,12 @@ public class UC3Test
 			for(int i = 0; i < spelletjes.length; i++)
 			{
 				
-				System.out.printf("Spelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				System.out.printf("%nSpelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 			}
 
 			
-			System.out.printf("Geef uw keuze in: %n");
-			gekozenSpel =input.nextInt()-1;    //gekozen spel wordt ingegeven aan de hand van een getal
+			System.out.printf("%nGeef uw keuze in: ");
+			gekozenSpel =input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
 			
 		}
 		while(gekozenSpel <= 0 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
@@ -55,7 +55,7 @@ public class UC3Test
 			dc.geefAantalSpelbordenVoltooid();
 		}
 		else if (actie == 2) {
-			System.out.printf("%s heeft het spel gestopt.", dc.geefGebruikersnaam());
+			System.out.printf("%n%s heeft het spel verlaten.%n", dc.geefGebruikersnaam());
 		}
 	}
 	
@@ -68,11 +68,11 @@ public class UC3Test
 
 		do {
 			try {
-				System.out.printf("Voltooi volgend spelbord (1)");
+				System.out.printf("%nVoltooi volgend spelbord (1)");
 				
-				System.out.printf("Spel verlaten (2)");
+				System.out.printf("%nSpel verlaten (2)");
 				
-				System.out.printf("Geef uw keuze in: %n");
+				System.out.printf("%n%nGeef uw keuze in: ");
 				keuze = input.nextInt();
 				if (keuze > 0 && keuze < 3) {
 					blijvenHerhalen = false;

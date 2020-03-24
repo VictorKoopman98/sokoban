@@ -136,7 +136,7 @@ public class DomeinController
     
     public void maakNieuwSpel(String naamSpel) {
     	Spel nieuwSpel = new Spel(naamSpel);
-    	//spelRepository.voegSpelToe(nieuwSpel);
+    	spelRepository.voegSpelToe(nieuwSpel);
     }
     
     public String geefNaamSpel() {
