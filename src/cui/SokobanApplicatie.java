@@ -50,6 +50,7 @@ public class SokobanApplicatie
 			{
 				new UC3Test(domeincontroller).kiesSpel();
 				new UC5Test(domeincontroller).maakNieuwSpel();
+
 			}
 			
 		} while(keuze != 3);
