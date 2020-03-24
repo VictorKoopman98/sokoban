@@ -20,13 +20,15 @@ public class Spel {
 	public Spel(String naamSpel) 
 	{
 		// TODO Auto-generated constructor stub
-		setNaamSpel(naamSpel);
-		
+		this.setNaamSpel(naamSpel);
 	}
+	
+	
 	
 	public int geefAantalSpelborden() {
 		return spelbordRepository.geefSpelbordenLijst().size();
 	}
+	
 	
 	public int geefAantalSpelbordenVoltooid() {
 		int aantalVoltooid = 0;
@@ -67,8 +69,9 @@ public class Spel {
 	
 	public String getNaamSpel()
 	{
-		return naamSpel;
+		return this.naamSpel;
 	}
+	
 	private void setNaamSpel(String naam) {
 		if (naam == null || naam.length() == 0)
 		{ 

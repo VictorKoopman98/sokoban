@@ -19,7 +19,7 @@ public class UC5Test {
 		
 		do {
 			try {
-				System.out.print("Geef de spelnaam van het nieuwe spel: ");
+				System.out.print("%nGeef de spelnaam van het nieuwe spel: ");
 				spelnaam = input.next();
 				
 				dc.maakNieuwSpel(spelnaam);
@@ -31,7 +31,7 @@ public class UC5Test {
 			
 		} while(blijvenHerhalenFlag);
 		
-		System.out.printf("%s is aangemaakt met %d spelborden.", dc.geefNaamSpel(), dc.geefAantalSpelborden());
+		System.out.printf("%s is aangemaakt met 0 spelborden.", dc.geefNaamSpel());
 		
 		
 	}
