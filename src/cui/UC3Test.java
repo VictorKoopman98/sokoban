@@ -27,19 +27,19 @@ public class UC3Test
 		
 		do {
 			
-			for(int i = 0; i < spelletjes.length; i++)
+			for(int i = 1; i < spelletjes.length; i++)
 			{
 				
 				System.out.printf("Spelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 			}
 			
 			System.out.printf("Geef uw keuze in: %n");
-			gekozenSpel =input.nextInt()-1;    //gekozen spel wordt ingegeven aan de hand van een getal
+			gekozenSpel =input.nextInt()+1;    //gekozen spel wordt ingegeven aan de hand van een getal
 			
 		}
-		while(gekozenSpel <= 0 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
+		while(gekozenSpel <= 1 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
 		
-		String spelnaam = zetIndexOmInNaam(gekozenSpel-1);
+		String spelnaam = zetIndexOmInNaam(gekozenSpel+1);
 		
 		dc.selecteerSpel(spelnaam);
 		
