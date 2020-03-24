@@ -32,6 +32,7 @@ public class UC3Test
 				
 				System.out.printf("Spelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 			}
+
 			
 			System.out.printf("Geef uw keuze in: %n");
 			gekozenSpel =input.nextInt()-1;    //gekozen spel wordt ingegeven aan de hand van een getal
