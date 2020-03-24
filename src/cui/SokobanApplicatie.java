@@ -19,17 +19,11 @@ public class SokobanApplicatie
 	}
 	
 	
-	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
+	public int toonHoofdpaneel()    //menu spler kan inloggen, registreren of stoppen
 	{
-		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu1");
+		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu");
 		int keuze = input.nextInt();
 		
-		return keuze;
-	}
-	
-	public int toonHoofdpaneel2() {
-		System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Spel spelen%n 2. Maak een nieuw spel aan%n-----------------------------%nGeef je keuze in: ", "menu2");
-		int keuze = input.nextInt();
 		return keuze;
 	}
 
@@ -37,13 +31,12 @@ public class SokobanApplicatie
 	public void run()    //verschillende use cases in volgorde laten runnen
 	{
 		
-	int keuze1;
-	int keuze2;
+	int keuze;
 		do 
 		{
-			keuze1 = toonHoofdpaneel1();
+			keuze = toonHoofdpaneel();
 			
-			switch(keuze1) 
+			switch(keuze) 
 			{
 			case 1: 
 				new UC1Test(domeincontroller).meldAan();
@@ -53,20 +46,14 @@ public class SokobanApplicatie
 				break;
 			}
 			
-			if(keuze1 == 1 || keuze1 == 2)  //indien aangemeld of geregistreerd toon de spellen en opties om spellen en spelborden te voltooien
+			if(keuze == 1 || keuze == 2)  //indien aangemeld of geregistreerd toon de spellen en opties om spellen en spelborden te voltooien
 			{
-				keuze2 = toonHoofdpaneel2();
-				switch(keuze2) {
-				case 1:
-					new UC3Test(domeincontroller).kiesSpel();
-					break;
-				case 2:
-					new UC5Test(domeincontroller).maakNieuwSpel();
-					break;
-				}
+				new UC3Test(domeincontroller).kiesSpel();
+				new UC5Test(domeincontroller).maakNieuwSpel();
+
 			}
 			
-		} while(keuze1 != 3);
+		} while(keuze != 3);
 		
 	}	
 	
