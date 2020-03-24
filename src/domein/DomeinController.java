@@ -152,8 +152,3 @@ public class DomeinController
     }
      
 }
-
-
-
-
-
