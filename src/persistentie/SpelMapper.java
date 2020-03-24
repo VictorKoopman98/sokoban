@@ -22,7 +22,7 @@ public class SpelMapper
      * @param spelId unieke identiteit van het spel dat uit de databank wordt gehaald
      * @return geeft een spel terug
      */
-    public static Spel geefSpel(String spelnaam)
+    public Spel geefSpel(String spelnaam)
     {
 		Spel spel = null;
 	
