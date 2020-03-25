@@ -112,9 +112,9 @@ public class DomeinController
     }
     
 
-    public void resetSpelbord() 
+    public void resetSpelbord(String spelnaam) 
     {
-    	this.spel.resetSpelbord();
+    	this.spel.resetSpelbord(spelnaam);
     }
     
 
@@ -150,12 +150,16 @@ public class DomeinController
     	return this.spel.isSpelVoltooid();
     }
     
-    public void maakNieuwSpelbord() {
-    	this.spel.maakNieuwSpelbord();
+    public void maakNieuwSpelbord(int volgnummer) {
+    	this.spel.maakNieuwSpelbord(volgnummer);
     }
     
     public void wijzigSpelbord(int x, int y, int actie) {
     	this.spel.wijzigSpelbord(x, y, actie);
+    }
+    
+    public int geefVolgnummer() {
+    	return this.spel.geefVolgnummer();
     }
      
 }

@@ -13,6 +13,7 @@ import domein.Veld;
 
 public class SpelbordMapper
 {
+	private static final String INSERT_SPELBORD = "INSERT INTO ID222177.g39.Spelbord (volgnummer) VALUES(?)";
 
     /**
      * Methode om een bepaald spelbord uit de databank te halen
@@ -38,10 +39,9 @@ public class SpelbordMapper
             query.setString(1, spelnaam);
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
-
                     int volgnummer = rs.getInt("volgnummer");
-                    velden = vm.geefVelden(volgnummer);
-                    spelbord = new Spelbord();
+                    //velden = vm.geefVelden(volgnummer);
+                    spelbord = new Spelbord(volgnummer);
                 }
             }
         } catch (SQLException ex) {
@@ -101,19 +101,19 @@ public class SpelbordMapper
      * @param spelId unieke identiteit van het spel waartoe het spelbord zal
      * behoren
      */
-    public void bewaarSpelbord(Spelbord spelbord, int spelId) {
+    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
 
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO spelbord(spelBordId, Spel_spelId, volgnummer)"
-                    + "VALUES (?, ?, ?)");
-            query.setInt(1, spelbord.getSpelbordId());
-            query.setInt(2, spelId);
-            query.setInt(3, spelbord.getVolgnummer());
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement(INSERT_SPELBORD)) {
+            
+                    
+            query.setInt(1, spelbord.getVolgnummer());
+            query.setString(2, spelnaam);
             query.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        vm.bewaarVelden(spelbord.getVelden(), spelbord.getSpelbordId(), spelId);
+        //vm.voegVeldenToe(spelbord.getVelden(), spelbord.getVolgnummer(), spelnaam);
 
     }
 
@@ -122,7 +122,7 @@ public class SpelbordMapper
      * @param spelId unieke identiteit van het spel waarbij het spelbord wordt upgedate
      * @param spelbord het spelbord dat zal upgedate worden
      */
-    public void updateSpelbord(int spelId, Spelbord spelbord) {
-        vm.updateVelden(spelbord.getVelden(), spelId, spelbord.getSpelbordId());
-    }
+//    public void updateSpelbord(int spelId, Spelbord spelbord) {
+//        vm.updateVelden(spelbord.getVelden(), spelId, spelbord.getSpelbordId());
+//    }
 }

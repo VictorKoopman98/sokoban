@@ -11,14 +11,16 @@ public class Spelbord
 	private int aantalVerplaatsingen;
 	private int locatieManX=-1; //locatie van de rij
 	private int locatieManY=-1; //locatie van de kolom
+	private int volgnummer;
 	Veld[][] spelbord;
 	Kist[] kisten;
 	Veld[] veldenVanKisten;
 	Man man;
 	
 
-	public Spelbord() 
+	public Spelbord(int volgnummer) 
 	{
+		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
 		this.spelbord = new Veld[10][10];
@@ -28,6 +30,14 @@ public class Spelbord
 				spelbord[i][j].setY(j);
 			}
 		}
+	}
+	
+	public int getVolgnummer() {
+		return this.volgnummer;
+	}
+	
+	public void setVolgnummer(int nummer) {
+		this.volgnummer = nummer;
 	}
 	
 

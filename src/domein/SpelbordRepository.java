@@ -9,15 +9,15 @@ import persistentie.SpelbordMapper;
 public class SpelbordRepository {
 	
 	private static List<Spelbord> spelborden = new ArrayList<>();
-	private static SpelbordMapper spelbordmapper;
+	private static SpelbordMapper spelbordMapper;
 	
 
 	public SpelbordRepository() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static Spelbord geefSpelbord() {
-		Spelbord spelbord = spelbordMapper.geefSpelbord();
+	public static Spelbord geefSpelbord(String spelnaam) {
+		Spelbord spelbord = spelbordMapper.geefSpelbord(spelnaam);
 		if (spelbord != null) {
 			return spelbord;
 		}

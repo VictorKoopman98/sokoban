@@ -19,6 +19,7 @@ public class Spel {
 	{
 		// TODO Auto-generated constructor stub
 		this.setNaamSpel(naamSpel);
+		
 	}	
 	
 	
@@ -30,7 +31,7 @@ public class Spel {
 	public int geefAantalSpelbordenVoltooid() {
 		int aantalVoltooid = 0;
 		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
-			if (spelbordRepository.getSpelbord().getIsVoltooid()) {
+			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
 				aantalVoltooid += 1;
 			}
 		}
@@ -41,7 +42,7 @@ public class Spel {
 		int aantalVoltooid = 0;
 		boolean voltooid = false;
 		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
-			if (spelbordRepository.getSpelbord().getIsVoltooid()) {
+			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
 				aantalVoltooid += 1;
 			}
 		}
@@ -96,9 +97,9 @@ public class Spel {
 	}
 	
 
-	public void resetSpelbord() 
+	public void resetSpelbord(String spelnaam) 
 	{
-		this.spelbord = SpelbordRepository.getSpelbord();
+		this.spelbord = SpelbordRepository.geefSpelbord(spelnaam);
 	}
 	
 	
@@ -112,14 +113,18 @@ public class Spel {
 		return spelbord.getKisten();
 	}
 	
+	public int geefVolgnummer() {
+		return spelbord.getVolgnummer();
+	}
+	
 	
 	public Man geefMan() 
 	{
 		return spelbord.getMan();
 	}
 	
-	public void maakNieuwSpelbord() {
-		this.spelbord = new Spelbord();
+	public void maakNieuwSpelbord(int volgnummer) {
+		this.spelbord = new Spelbord(volgnummer);
 	}
 	
 	public void wijzigSpelbord(int x, int y, int actie) {
