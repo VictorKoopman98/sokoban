@@ -14,7 +14,7 @@ public class UC5Test {
 	}
 	
 	public void maakNieuwSpel() {
-		String spelnaam = "";
+String spelnaam = "";
 		Scanner input = new Scanner(System.in);
 		boolean blijvenHerhalenFlag = true;
 		
@@ -24,14 +24,16 @@ public class UC5Test {
 				spelnaam = input.next();
 				
 				dc.maakNieuwSpel(spelnaam);
-				blijvenHerhalenFlag = false;
 				System.out.print("Nieuw spelbord aanmaken (1) of stoppen(2)?");
 				int actie = input.nextInt();
+				
 				do {
 					uc6test.maakNieuwSpelbord();
-					System.out.print("Nieuw spel aanmaken (1) of stoppen(2)?");
+					System.out.print("Nieuw spelbord aanmaken (1) of stoppen(2)?");
 					actie = input.nextInt();
+					blijvenHerhalenFlag = false;
 				}while(actie != 2);
+				
 			}
 			catch (IllegalArgumentException e) {
 				System.err.println(e);
