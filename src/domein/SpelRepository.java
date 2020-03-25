@@ -18,7 +18,7 @@ public class SpelRepository
     }
     
     
-    public static Spel geefSpel(String naam)
+    public Spel geefSpel(String naam)
     { 
         Spel spel = spelMapper.geefSpel(naam);
         if(spel != null) {
@@ -43,7 +43,7 @@ public class SpelRepository
     }
 
     
-    public static List<Spel> geefSpellenList()      //lijst van spellen uit databank halen
+    public List<Spel> geefSpellenList()      //lijst van spellen uit databank halen
     {
     	spellen = spelMapper.geefSpellen();
     	

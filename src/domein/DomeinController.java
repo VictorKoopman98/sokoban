@@ -34,7 +34,6 @@ public class DomeinController
 	public void meldAan(String gebruikersnaam, String wachtwoord)     //methode om een speler aan te melden
 	{
         Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
-        System.out.print(gevondenSpeler);
 
         if (gevondenSpeler != null) 
         {
@@ -61,14 +60,14 @@ public class DomeinController
     }
     
     
-    public static String[] geefLijstSpellen()    //array maken van namen van spellen
+    public String[] geefLijstSpellen()    //array maken van namen van spellen
     {
     	
-          String[] namen = new String[SpelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          String[] namen = new String[spelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
           
-          for(int i = 0; i < SpelRepository.geefSpellenList().size(); i++) 
+          for(int i = 0; i < spelRepository.geefSpellenList().size(); i++) 
           {
-        	  namen [i] = SpelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
+        	  namen [i] = spelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
           }
           
           return namen;
@@ -77,7 +76,7 @@ public class DomeinController
     
     public void selecteerSpel(String naam)
     {
-        this.spel = SpelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
+        this.spel = spelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
     }
      
     
@@ -97,7 +96,7 @@ public class DomeinController
     {
     	List<String> lijstje = Arrays.asList(geefLijstSpellen());        //zet array van geefLijstSpellen om naar list
     	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
-    	return SpelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
+    	return spelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
     }
     
 

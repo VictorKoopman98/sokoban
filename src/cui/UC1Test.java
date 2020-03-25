@@ -35,6 +35,7 @@ public class UC1Test
                     wachtwoord = input.next();
                     
                    dc.meldAan(gebruikersnaam, wachtwoord);
+                   System.out.printf("%n%s is aangemeld", dc.geefGebruikersnaam());
 
                     blijvenHerhalenFlag = false;
                 } 

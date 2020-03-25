@@ -34,9 +34,9 @@ public class SpelMapper
 		    {
 			if (rs.next())
 			{
-			    String naam = rs.getString("spelnaam");
+			    //String naam = rs.getString("spelnaam");
 	                    //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
-			    spel = new Spel(naam);
+			    spel = new Spel(spelnaam);
 			}
 		    }
 		} catch (SQLException ex)
@@ -51,7 +51,7 @@ public class SpelMapper
      * Methode om een lijst van spellen uit de databank te halen
      * @return geeft een lijst van spellen terug
      */
-    public static List<Spel> geefSpellen()
+    public List<Spel> geefSpellen()
     {
 		List<Spel> spel = new ArrayList<>();
 	

@@ -10,8 +10,6 @@ import Exceptions.OngeldigeSpelnaamException;
 public class Spel {
 	
 	private String naamSpel;
-	private int aantalSpelborden = 0;
-	private int aantalSpelbordenVoltooid = 0;
 	Spelbord spelbord;
 	SpelbordRepository spelbordRepository;
 	
@@ -86,12 +84,6 @@ public class Spel {
 		}
 	}
 	
-	
-	public int getAantalSpelborden()
-	{
-		return aantalSpelborden;	
-	}
-	
 
 	public void verplaatsMan(String richting) 
 	{
@@ -125,11 +117,5 @@ public class Spel {
 	public Man geefMan() 
 	{
 		return spelbord.getMan();
-	}
-	
-	
-	public int getAantalSpelbordenVoltooid()
-	{
-		return aantalSpelbordenVoltooid;
 	}
 }
