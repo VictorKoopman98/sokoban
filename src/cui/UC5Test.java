@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class UC5Test {
 	
+	private UC6Test uc6test;
 	private DomeinController dc;
 
 	public UC5Test(DomeinController dc) {
@@ -24,6 +25,13 @@ public class UC5Test {
 				
 				dc.maakNieuwSpel(spelnaam);
 				blijvenHerhalenFlag = false;
+				System.out.print("Nieuw spelbord aanmaken (1) of stoppen(2)?");
+				int actie = input.nextInt();
+				do {
+					uc6test.maakNieuwSpelbord();
+					System.out.print("Nieuw spel aanmaken (1) of stoppen(2)?");
+					actie = input.nextInt();
+				}while(actie != 2);
 			}
 			catch (IllegalArgumentException e) {
 				System.err.println(e);

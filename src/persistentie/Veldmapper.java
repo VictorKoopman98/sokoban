@@ -9,10 +9,11 @@ import java.sql.SQLException;
 import domein.Kist;
 import domein.Man;
 import domein.Veld;
+import domein.Spelbord;
 
 
 
-public class VeldMapper
+public class Veldmapper
 {
 	 /**
      * Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
@@ -20,47 +21,47 @@ public class VeldMapper
      * behoren
      * @return geeft de velden van het spelbord terug
      */
-    public Veld[][] geefVelden(int volgnummer, String spelnaam) {
-        Veld[][] velden = new Veld[10][10];
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
-        {
-            
-            query.setInt(1, volgnummer);
-            query.setString(2, spelnaam);
-            try (ResultSet rs = query.executeQuery()) {
-                while (rs.next()) {
-                    int i = rs.getInt("x");
-                    int j = rs.getInt("y");
-                    String soortVeld = rs.getString("soortVeld");
-                    switch (soortVeld) {
-                        case "LeegVeld":
-                            velden[i][j] = new Veld(i, j, false);
-                            break;
-                        case "Muur":
-                            velden[i][j] = null;
-                            break;
-                        case "DoelVeld":
-                            velden[i][j] = new Veld(i, j, true);
-                            break;
-                        case "Man":
-                            Man man = new Man();
-                            velden[i][j] = new Veld(i, j, false, man, null);
-                            man.setVeld(velden[i][j]);
-                            break;
-                        case "Kist":
-                            Kist kist = new Kist();
-                            velden[i][j] = new Veld(i, j, false, null, kist);
-                            kist.setVeld(velden[i][j]);
-                            break;
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-        return velden;
-    }
+//    public Veld[][] geefVelden(int volgnummer, String spelnaam) {
+//        Veld[][] velden = new Veld[10][10];
+//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+//        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
+//        {
+//            
+//            query.setInt(1, volgnummer);
+//            query.setString(2, spelnaam);
+//            try (ResultSet rs = query.executeQuery()) {
+//                while (rs.next()) {
+//                    int i = rs.getInt("x");
+//                    int j = rs.getInt("y");
+//                    String soortVeld = rs.getString("soortVeld");
+//                    switch (soortVeld) {
+//                        case "LeegVeld":
+//                            velden[i][j] = new Veld(i, j, false);
+//                            break;
+//                        case "Muur":
+//                            velden[i][j] = null;
+//                            break;
+//                        case "DoelVeld":
+//                            velden[i][j] = new Veld(i, j, true);
+//                            break;
+//                        case "Man":
+//                            Man man = new Man();
+//                            velden[i][j] = new Veld(i, j, false, man, null);
+//                            man.setVeld(velden[i][j]);
+//                            break;
+//                        case "Kist":
+//                            Kist kist = new Kist();
+//                            velden[i][j] = new Veld(i, j, false, null, kist);
+//                            kist.setVeld(velden[i][j]);
+//                            break;
+//                    }
+//                }
+//            }
+//        } catch (SQLException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//        return velden;
+//    }
 
 //    void deleteVelden(int spelbordId) {
 //        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
@@ -127,34 +128,37 @@ public class VeldMapper
      * @param spelbordId unieke identiteit van het spelbord waarbij de velden
      * worden toegevoegd
      */
-    public void voegVeldenToe(Veld[][] velden, int volgnummer, int spelnaam) {
+    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) {
         
 
         
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO veld(Spelbord_Spel_spelId,Spelbord_spelBordId, x, y, soortVeld)"
-                    + "VALUES (?, ?, ?, ? ,?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO Veld(volgnummer,spelnaam, x, y, isDoel, isMuur, isMan, isKist)"
+                    + "VALUES (?, ?, ?, ? ,?, ?, ?, ?)");
             for (int i = 0; i < velden.length; i++) {
                 for (int j = 0; j < velden[i].length; j++) {
-                	boolean isDoel;
-                	boolean isMuur;
+                	boolean isDoel = false;
+                	boolean isMuur = false;
+                	boolean isMan = false;
+                	boolean isKist = false;
                     if (velden[i][j].getIsMuur()) {
                         isMuur = true;
                     } else if (velden[i][j].getIsDoel()) {
                         isDoel = true;
-                    } else if (velden[i][j].getKist() != null) {
-                        str[i][j] = "Kist";
-                    } else if (velden[i][j].getMan() != null) {
+                    } else if (velden[i][j] == spelbord.getMan().getVeld()) {
+                        isMan = true;
+                    } else if (spelbord.maakVeldenVanKistenLijst().contains(velden[i][j])) {
 
-                        str[i][j] = "Man";
-                    } else {
-                        str[i][j] = "LeegVeld";
-                    }
-                    query.setInt(1, spelId);
-                    query.setInt(2, spelbordId);
+                        isKist = true;
+                    } //volgnummer, spelnaam, x, y, isDoel, isMuur, isMan, isKist, 
+                    query.setInt(1, volgnummer);
+                    query.setString(2, spelnaam);
                     query.setInt(3, i);
                     query.setInt(4, j);
-                    query.setString(5, str[i][j]);
+                    query.setBoolean(5, isDoel);
+                    query.setBoolean(6, isMuur);
+                    query.setBoolean(7, isMan);
+                    query.setBoolean(8, isKist);
                     query.executeUpdate();
                 }
             }

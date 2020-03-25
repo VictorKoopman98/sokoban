@@ -13,8 +13,8 @@ import domein.Veld;
 
 public class SpelbordMapper
 {
-	private static final String INSERT_SPELBORD = "INSERT INTO ID222177.g39.Spelbord (volgnummer) VALUES(?)";
-
+	private static final String INSERT_SPELBORD = "INSERT INTO ID222177.g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
+	private Veldmapper vm = new Veldmapper();
     /**
      * Methode om een bepaald spelbord uit de databank te halen
      *
@@ -32,7 +32,7 @@ public class SpelbordMapper
     public Spelbord geefSpelbord(String spelnaam) {
         Spelbord spelbord = null;
         Veld[][] velden;
-        VeldMapper vm = new VeldMapper();
+        
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE Spel_spelnaam = ?")) {
             
@@ -113,7 +113,7 @@ public class SpelbordMapper
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        //vm.voegVeldenToe(spelbord.getVelden(), spelbord.getVolgnummer(), spelnaam);
+        vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam, spelbord);
 
     }
 

@@ -51,10 +51,10 @@ public class UC4Test
 			}
 			while(dc.eindeSpelbordBereikt() == false);   //blijf verplaatsen tot dat einde spelbord bereikt is
 		}
-		else if(actie == 2)   //indien spelbord willen resetten
-		{
-			dc.resetSpelbord();
-		}
+//		else if(actie == 2)   //indien spelbord willen resetten
+//		{
+//			dc.resetSpelbord();
+//		}
 		else if(actie == 3)   //spelbord verlaten
 		{
 			System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());

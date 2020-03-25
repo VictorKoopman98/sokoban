@@ -24,6 +24,10 @@ public class SpelbordRepository {
 		return null;
 	}
 	
+	public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
+		spelbordMapper.voegSpelbordToe(spelbord, spelnaam);
+	}
+	
 	public List<Spelbord> geefSpelbordenLijst(){
 		
 		return spelborden;

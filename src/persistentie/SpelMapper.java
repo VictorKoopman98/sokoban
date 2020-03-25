@@ -13,7 +13,7 @@ import domein.Spelbord;
 
 public class SpelMapper
 {
-	private static final String INSERT_SPEL = "INSERT INTO ID222177_g39.Spel (spelnaam)"
+	private static final String INSERT_SPEL = "INSERT INTO ID222177_g39.Spel (naamSpel)"
             + "VALUES (?)";
 	SpelbordMapper sbm = new SpelbordMapper();
 
@@ -27,7 +27,7 @@ public class SpelMapper
 		Spel spel = null;
 	
 		try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL); 
-				PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spel WHERE spelnaam = ?"))
+				PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spel WHERE naamSpel = ?"))
 		{
 		    query.setString(1, spelnaam);
 		    try (ResultSet rs = query.executeQuery())

@@ -22,6 +22,10 @@ public class Spel {
 		
 	}	
 	
+	public Spelbord getSpelbord() {
+		return this.spelbord;
+	}
+	
 	
 	public int geefAantalSpelborden() {
 		return spelbordRepository.geefSpelbordenLijst().size();

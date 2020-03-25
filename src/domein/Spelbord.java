@@ -41,7 +41,7 @@ public class Spelbord
 	}
 	
 
-	private List<Veld> maakVeldenVanKistenLijst() 
+	public List<Veld> maakVeldenVanKistenLijst() 
 	{
 		for (int i = 0; i<kisten.length;i++) 
 		{
@@ -317,6 +317,9 @@ public class Spelbord
 		}
 		else if (actie == 4) {
 			kisten[kisten.length] = new Kist(spelbord[x][y]);
+		}
+		else if (actie == 5) {
+			spelbord[x][y] = new Veld(x,y);
 		}
 	}
 	

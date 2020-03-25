@@ -10,12 +10,14 @@ public class DomeinController
 	private final SpelRepository spelRepository;
 	private Speler speler;
 	private Spel spel;
+	private final SpelbordRepository spelbordRepository;
 	
 	
 	public DomeinController()   //Constructor om een DomeinController aan te maken
 	{
 		this.spelRepository = new SpelRepository();
 		spelerRepository = new SpelerRepository();
+		spelbordRepository = new SpelbordRepository();
 	}
 	
 	
@@ -152,14 +154,23 @@ public class DomeinController
     
     public void maakNieuwSpelbord(int volgnummer) {
     	this.spel.maakNieuwSpelbord(volgnummer);
+    	
     }
     
     public void wijzigSpelbord(int x, int y, int actie) {
     	this.spel.wijzigSpelbord(x, y, actie);
     }
     
+    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
+    	this.spelbordRepository.voegSpelbordToe(spelbord, spelnaam);
+    }
+    
     public int geefVolgnummer() {
     	return this.spel.geefVolgnummer();
+    }
+    
+    public Spelbord geefSpelbord() {
+    	return this.spel.getSpelbord();
     }
      
 }
