@@ -7,14 +7,15 @@ public class UC6Test {
 	
 	DomeinController dc;
 
-	public UC6Test(DomeinController dc) {
-		// TODO Auto-generated constructor stub
+	public UC6Test(DomeinController dc) 
+	{
 		this.dc = dc;
 	}
 	
-	private int toonMogelijkeActies() {
+	private int toonMogelijkeActies() 
+	{
 		Scanner input = new Scanner(System.in);
-		// setDoel, setMuur, Man, Kist, veld leeg
+
 		System.out.printf("%nDe mogelijke acties zijn:%n"
 				+ "1: Maak een doel%n"
 				+ "2: Maak een muur%n"
@@ -28,7 +29,8 @@ public class UC6Test {
 		return keuze;
 	}
 	
-	public void maakNieuwSpelbord() {
+	public void maakNieuwSpelbord() 
+	{
 		Scanner input = new Scanner(System.in);
 		System.out.printf("%nGeef het volgnummer van het spelbord in: ");
 		int volgnummer = input.nextInt();
