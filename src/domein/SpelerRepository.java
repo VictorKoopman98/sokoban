@@ -9,7 +9,6 @@ import persistentie.SpelerMapper;
 public class SpelerRepository
 {
 	private final SpelerMapper spelerMapper;
-	private final List<Speler> spelers = new ArrayList<>();
 	 
 	
 	public SpelerRepository()

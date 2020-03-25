@@ -149,5 +149,13 @@ public class DomeinController
     public boolean isSpelVoltooid() {
     	return this.spel.isSpelVoltooid();
     }
+    
+    public void maakNieuwSpelbord() {
+    	this.spel.maakNieuwSpelbord();
+    }
+    
+    public void wijzigSpelbord(int x, int y, int actie) {
+    	this.spel.wijzigSpelbord(x, y, actie);
+    }
      
 }

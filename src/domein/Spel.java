@@ -19,8 +19,7 @@ public class Spel {
 	{
 		// TODO Auto-generated constructor stub
 		this.setNaamSpel(naamSpel);
-	}
-	
+	}	
 	
 	
 	public int geefAantalSpelborden() {
@@ -117,5 +116,13 @@ public class Spel {
 	public Man geefMan() 
 	{
 		return spelbord.getMan();
+	}
+	
+	public void maakNieuwSpelbord() {
+		this.spelbord = new Spelbord();
+	}
+	
+	public void wijzigSpelbord(int x, int y, int actie) {
+		this.spelbord.wijzigSpelbord(x, y, actie);
 	}
 }

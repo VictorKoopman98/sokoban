@@ -11,7 +11,7 @@ public class Spelbord
 	private int aantalVerplaatsingen;
 	private int locatieManX=-1; //locatie van de rij
 	private int locatieManY=-1; //locatie van de kolom
-	Veld[][] spelbord = new Veld[10][10];
+	Veld[][] spelbord;
 	Kist[] kisten;
 	Veld[] veldenVanKisten;
 	Man man;
@@ -19,7 +19,15 @@ public class Spelbord
 
 	public Spelbord() 
 	{
-		
+		this.isVoltooid = false;
+		this.aantalVerplaatsingen = 0;
+		this.spelbord = new Veld[10][10];
+		for (int i = 0; i<10; i++) {
+			for (int j = 0; j<10; j++) {
+				spelbord[i][j].setX(i);
+				spelbord[i][j].setY(j);
+			}
+		}
 	}
 	
 
@@ -286,6 +294,21 @@ public class Spelbord
     	
     	return verplaatsingOk;
     }
+	
+	public void wijzigSpelbord(int x, int y, int actie) {
+		if (actie == 1) {
+			spelbord[x][y].setIsDoel(true);
+		}
+		else if (actie == 2) {
+			spelbord[x][y].setIsMuur(true);
+		}
+		else if (actie == 3) {
+			this.man = new Man(spelbord[x][y]);
+		}
+		else if (actie == 4) {
+			kisten[kisten.length] = new Kist(spelbord[x][y]);
+		}
+	}
 	
 
 	

@@ -4,6 +4,10 @@ public class Man {
 
 	private Veld veld;
 	
+	public Man(Veld veld){
+		setVeld(veld);
+	}
+	
 
 	public void setVeld(Veld veld)  //Methode om het veld voor een man in te stellen, @param veld object van de klasse veld waarop de man moet staan
 	{
