@@ -63,15 +63,15 @@ public class Veldmapper
 //        return velden;
 //    }
 
-//    void deleteVelden(int spelbordId) {
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
-//            query.setInt(1, spelbordId);
-//            query.executeUpdate();
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
+    void deleteVelden(int volgnummer) {
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+            PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
+            query.setInt(1, volgnummer);
+            query.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     /**
      * Methode om de velden van een bepaald spelbord dat bij een bepaald spel hoort up te daten nadat

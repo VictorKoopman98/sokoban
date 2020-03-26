@@ -83,16 +83,16 @@ public class SpelbordMapper
      * Methode om een bepaald spelbord uit de databank te verwijderen 
      * @param spelbordId unieke identiteit van het spelbord dat moet verwijderd worden
      */
-//    public void verwijderSpelbord(int spelbordId) {
-//        vm.deleteVelden(spelbordId);
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("DELETE FROM spelbord WHERE spelbordId = ?");
-//            query.setInt(1, spelbordId);
-//            query.executeUpdate();
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
+    public void verwijderSpelbord(int volgnummer) {
+        vm.deleteVelden(volgnummer);
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+            PreparedStatement query = conn.prepareStatement("DELETE FROM spelbord WHERE spelbordId = ?");
+            query.setInt(1, volgnummer);
+            query.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     /**
      * Methode om een spelbord toe te voegen aan een bepaald spel in een databank

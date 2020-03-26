@@ -172,5 +172,9 @@ public class DomeinController
     public Spelbord geefSpelbord() {
     	return this.spel.getSpelbord();
     }
-     
+    
+    public void verwijderSpelbord(int volgnummer) 
+    {
+		this.spelbordRepository.verwijderSpelbord(volgnummer);
+	}
 }
