@@ -23,7 +23,7 @@ public class SpelMapper
      * @return geeft een spel terug
      */
     public Spel geefSpel(String spelnaam)
-    {
+    { 
 		Spel spel = null;
 	
 		try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL); 
@@ -63,7 +63,7 @@ public class SpelMapper
 		    {
 				while (rs.next())
 				{
-		               
+		                    
 				    String naam = rs.getString("naamSpel");
 		            //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
 				    spel.add(new Spel(naam));

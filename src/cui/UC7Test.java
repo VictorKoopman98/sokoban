@@ -20,7 +20,7 @@ public class UC7Test {
 		int gekozenSpel;
 		String spelnaam;
 		int volgnummer = 0;
-		int gekozenSpelbord;
+		int gekozenVolgnummerSpelbord;
 		Scanner input = new Scanner(System.in);
 		
 		String [] spelletjes =  dc.geefLijstSpellen();
@@ -37,32 +37,33 @@ public class UC7Test {
 
 			
 			System.out.printf("%nGeef uw keuze in: ");
-			gekozenSpel =input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
-			 spelnaam = spelletjes[gekozenSpel - 1];
+			gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
+			spelnaam = spelletjes[gekozenSpel - 1];
 		}
 		while(gekozenSpel <= 0 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
 		
 		
-		int [] spelborden = dc.geefLijstSpelborden(spelnaam);
+		int[] volgnummersSpelborden = dc.geefVolgnummerSpelborden(spelnaam);
 		
 
-		do {
-			
-			for(int i = 0; i < spelborden.length; i++)
+	
+		try {
+
+			for(int i = 0; i < volgnummersSpelborden.length; i++)
 			{
 				
-				System.out.printf("%nSpelborden: %d: %d%n", i+1, spelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				System.out.printf("%nSpelborden: %d: %d%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
 				
 			}
 
-			
 			System.out.printf("%nGeef uw keuze in: ");
-			gekozenSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
-			volgnummer = spelborden[gekozenSpelbord - 1];
+			gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+			volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
+			
+		}catch(IllegalArgumentException e) {
+			System.err.println(e);
 		}
-		while(gekozenSpelbord <= 0 && gekozenSpelbord > spelborden.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
-		
-		
+	
 		
 		
 	}

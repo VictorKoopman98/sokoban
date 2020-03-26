@@ -34,7 +34,6 @@ public class SpelbordRepository {
 	
 	public  List<Spelbord> geefSpelbordenLijst(String spelnaam)
 	{
-
 		return spelbordMapper.geefSpelborden(spelnaam);
 	}
 	
