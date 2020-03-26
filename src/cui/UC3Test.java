@@ -3,6 +3,7 @@ package cui;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.List;
+import cui.UC4Test;
 
 import domein.DomeinController;
 
@@ -10,7 +11,8 @@ public class UC3Test
 {
 	private DomeinController dc;
 	private String[] spelletjes = dc.geefLijstSpellen();   //array van de namen van de spellen
-	private UC4Test uc4test;
+	private UC4Test uc4Test;
+
 	
 	
 	public UC3Test (DomeinController dc) 
@@ -48,7 +50,7 @@ public class UC3Test
 		
 		if(actie == 1)    //als je actie 1 kiest van toonActiesSpel worden volgende methodes uitgevoerd
 		{
-			uc4test.voltooiSpelbord();  //methode voltooiSpelbord van UC4 wordt uitgevoerd
+			uc4Test.voltooiSpelbord();  //methode voltooiSpelbord van UC4 wordt uitgevoerd
 			
 			dc.geefAantalSpelborden();
 			

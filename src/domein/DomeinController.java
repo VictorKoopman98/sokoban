@@ -62,14 +62,14 @@ public class DomeinController
     }
     
     
-    public String[] geefLijstSpellen()    //array maken van namen van spellen
+    public static String[] geefLijstSpellen()    //array maken van namen van spellen
     {
     	
-          String[] namen = new String[spelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          String[] namen = new String[SpelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
           
-          for(int i = 0; i < spelRepository.geefSpellenList().size(); i++) 
+          for(int i = 0; i < SpelRepository.geefSpellenList().size(); i++) 
           {
-        	  namen [i] = spelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
+        	  namen [i] = SpelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
           }
           
           return namen;

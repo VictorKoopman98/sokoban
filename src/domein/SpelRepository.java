@@ -43,7 +43,7 @@ public class SpelRepository
     }
 
     
-    public List<Spel> geefSpellenList()      //lijst van spellen uit databank halen
+    public static List<Spel> geefSpellenList()      //lijst van spellen uit databank halen
     {
     	spellen = spelMapper.geefSpellen();
     	
