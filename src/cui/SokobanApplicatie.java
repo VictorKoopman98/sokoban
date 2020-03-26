@@ -28,7 +28,7 @@ public class SokobanApplicatie
 	}
 	
 	public int toonHoofdpaneel2() {
-		System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Spel spelen%n 2. Maak een nieuw spel aan%n 3. Stoppen%n-----------------------------%nGeef je keuze in: ", "menu2");
+		System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Spel spelen%n 2. Maak een nieuw spel aan%n 3. Wijzig spel%n 4.Stoppen%n-----------------------------%nGeef je keuze in: ", "menu2");
 		int keuze = input.nextInt();
 		return keuze;
 	}
@@ -60,13 +60,15 @@ public class SokobanApplicatie
 					switch(keuze2) {
 					case 1:
 						
-						new UC6Test(domeincontroller).maakNieuwSpelbord();
+						new UC3Test(domeincontroller).kiesSpel();
 						break;
 					case 2:
 						new UC5Test(domeincontroller).maakNieuwSpel();
 						break;
+					case 3:
+						new UC7Test(domeincontroller).wijzigSpel();
 					}
-				}while(keuze2 != 3);
+				}while(keuze2 != 4);
 				
 			}
 			

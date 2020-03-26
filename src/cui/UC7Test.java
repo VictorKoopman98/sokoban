@@ -42,30 +42,44 @@ public class UC7Test {
 		}
 		while(gekozenSpel <= 0 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
 		
+		dc.selecteerSpel(spelnaam);
 		
 		int[] volgnummersSpelborden = dc.geefVolgnummerSpelborden(spelnaam);
 		
 
-	
-		try {
+		do {
+			try {
 
-			for(int i = 0; i < volgnummersSpelborden.length; i++)
-			{
+				for(int i = 0; i < volgnummersSpelborden.length; i++)
+				{
+					
+					System.out.printf("%nSpelborden: %d: %d%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+					
+				}
+
+				System.out.printf("%nGeef uw keuze in: ");
+				gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+				volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
 				
-				System.out.printf("%nSpelborden: %d: %d%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
-				
+			}catch(IllegalArgumentException e) {
+				System.err.println(e);
 			}
-
-			System.out.printf("%nGeef uw keuze in: ");
-			gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
-			volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
-			
-		}catch(IllegalArgumentException e) {
-			System.err.println(e);
-		}
+		}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
+		
+		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d aantal spelborden", spelnaam, dc.geefAantalSpelborden());
+		
+	}
 	
+	private boolean checkVolgnummerOk(int volgnummer, int[] volgnummersSpelborden) {
 		
-		
+        boolean volgnummerOk = false; 
+        for (int element : volgnummersSpelborden) { 
+            if (element == volgnummer) { 
+                volgnummerOk = true; 
+                break; 
+            } 
+        } 
+        return volgnummerOk;
 	}
 	
 	public void verwijderSpel()
