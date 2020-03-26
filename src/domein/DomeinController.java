@@ -146,7 +146,7 @@ public class DomeinController
     	return this.spel.getNaamSpel();
     }
     
-    public void setSpel(Spel spel) {
+    public void setSpel(Spel spel) { 
     	this.spel = spel;
     }
     
@@ -195,7 +195,7 @@ public class DomeinController
 		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
 	}
     
-    public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
+    public int[] geefLijstSpelborden(String spelnaam)    //array maken van namen van spellen
     {
     	
           int [] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen

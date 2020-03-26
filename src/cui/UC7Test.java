@@ -15,7 +15,7 @@ public class UC7Test {
 	}
 	
 	public void wijzigSpel() 
-	{
+	{ 
 		
 		int gekozenSpel;
 		String spelnaam;
