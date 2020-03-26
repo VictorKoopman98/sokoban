@@ -18,15 +18,30 @@ public class Spelbord
 	Man man;
 	
 
-	public Spelbord(int volgnummer) 
+	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
+		
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
-		//this.spelbord = new Veld[10][10];
+
+		this.spelbord = new Veld[10][10];
+		int aantalKisten = 0;
+
 		for (int i = 0; i<10; i++) {
 			for (int j = 0; j<10; j++) {
-				this.spelbord[i][j] = new Veld(i, j);
+				spelbord[i][j] = velden[i][j];
+				
+				if (velden[i][j].getMan()) {
+					man = new Man(velden[i][j]);
+				}
+				else if (velden[i][j].getKist()) {
+					
+					Kist kist = new Kist(velden[i][j]);
+					kisten[aantalKisten] = kist;
+					aantalKisten++;
+				}
+
 			}
 		}
 	}

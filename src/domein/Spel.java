@@ -28,13 +28,13 @@ public class Spel {
 	
 	
 	public int geefAantalSpelborden() {
-		return spelbordRepository.geefSpelbordenLijst().size();
+		return spelbordRepository.geefSpelbordenLijst(naamSpel).size();
 	}
 	
 	
 	public int geefAantalSpelbordenVoltooid() {
 		int aantalVoltooid = 0;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) {
 			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
 				aantalVoltooid += 1;
 			}
@@ -45,12 +45,12 @@ public class Spel {
 	public boolean isSpelVoltooid() {
 		int aantalVoltooid = 0;
 		boolean voltooid = false;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst().size(); i++) {
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) {
 			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
 				aantalVoltooid += 1;
 			}
 		}
-		if (spelbordRepository.geefSpelbordenLijst().size() == aantalVoltooid) {
+		if (spelbordRepository.geefSpelbordenLijst(naamSpel).size() == aantalVoltooid) {
 			voltooid = true;
 		}
 		return voltooid;
@@ -128,7 +128,14 @@ public class Spel {
 	}
 	
 	public void maakNieuwSpelbord(int volgnummer) {
-		this.spelbord = new Spelbord(volgnummer);
+		Veld[][] velden = new Veld[10][10];
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j<10; j++) {
+				velden[i][j].setX(i);
+				velden[i][j].setY(j);
+			}
+		}
+		this.spelbord = new Spelbord(volgnummer, velden);
 	}
 	
 	public void wijzigSpelbord(int x, int y, int actie) {
