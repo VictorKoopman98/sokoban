@@ -3,7 +3,8 @@ package cui;
 import domein.DomeinController;
 import java.util.Scanner;
 
-public class UC6Test {
+public class UC6Test 
+{
 	
 	DomeinController dc;
 
@@ -11,6 +12,7 @@ public class UC6Test {
 	{
 		this.dc = dc;
 	}
+	
 	
 	private int toonMogelijkeActies() 
 	{
@@ -28,6 +30,7 @@ public class UC6Test {
 		keuze = input.nextInt();
 		return keuze;
 	}
+	
 	
 	public void maakNieuwSpelbord() 
 	{

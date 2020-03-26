@@ -28,7 +28,7 @@ public class SokobanApplicatie
 	}
 	
 	public int toonHoofdpaneel2() {
-		System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Spel spelen%n 2. Maak een nieuw spel aan%n 3. Wijzig spel%n 4.Stoppen%n-----------------------------%nGeef je keuze in: ", "menu2");
+		System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Spel spelen%n 2. Maak een nieuw spel aan%n 3. Wijzig spel%n 4. Stoppen%n-----------------------------%nGeef je keuze in: ", "menu2");
 		int keuze = input.nextInt();
 		return keuze;
 	}

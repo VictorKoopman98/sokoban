@@ -4,9 +4,11 @@ public class Kist
 {
 	private Veld veld;
 	
-	public Kist(Veld veld) {
+	public Kist(Veld veld) 
+	{
 		setVeld(veld);
 	}
+	
 	
 	public void setVeld(Veld veld)   //Methode om het veld voor een kist in te stellen, @param veld object van de klasse veld waarop de kist moet staan
 	{

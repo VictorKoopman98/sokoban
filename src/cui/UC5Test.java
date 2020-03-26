@@ -3,7 +3,8 @@ package cui;
 import domein.DomeinController;
 import java.util.Scanner;
 
-public class UC5Test {
+public class UC5Test 
+{
 	
 	private UC6Test uc6test;
 	private DomeinController dc;
@@ -12,6 +13,7 @@ public class UC5Test {
 	{
 		this.dc = dc;
 	}
+	
 	
 	public void maakNieuwSpel() 
 	{
@@ -54,11 +56,12 @@ public class UC5Test {
 		dc.selecteerSpel(spelnaam);
 		
 		System.out.printf("%s is aangemaakt met %d spelborden.", dc.geefNaamSpel(), aantalSpelborden);
-		
-		
+			
 	}
 	
-	private int toonActies() {
+	
+	private int toonActies() 
+	{
 		Scanner input = new Scanner(System.in);
 
 		System.out.printf("%nNieuw spelbord aanmaken (1) %n%nstoppen(2)%n%nGeef uw keuze in: ");

@@ -9,24 +9,33 @@ public class Veld
 	private boolean kist;
 	private boolean man;
 	
-	public Veld(int x, int y) {
+	public Veld(int x, int y) 
+	{
 		setIsDoel(false);
 		setIsMuur(false);
 	}
 	
-	public boolean getMan() {
+	
+	public boolean getMan() 
+	{
 		return this.man;
 	}
 	
-	public void setMan(boolean man) {
+	
+	public void setMan(boolean man) 
+	{
 		this.man = man;
 	}
 	
-	public boolean getKist() {
+	
+	public boolean getKist() 
+	{
 		return this.kist;
 	}
 	
-	public void setKist(boolean kist) {
+	
+	public void setKist(boolean kist) 
+	{
 		this.kist = kist;
 	}
 
@@ -36,32 +45,45 @@ public class Veld
 		return isMuur;
 	}
 	
+	
 	public boolean getIsDoel() 
 	{
 		return isDoel;
 	}
 	
-	public void setIsMuur(boolean isMuur) {
+	
+	public void setIsMuur(boolean isMuur) 
+	{
 		this.isMuur = isMuur;
 	}
 	
-	public void setIsDoel(boolean isDoel) {
+	
+	public void setIsDoel(boolean isDoel) 
+	{
 		this.isDoel = isDoel;
 	}
 	
-	public int getX() {
+	
+	public int getX() 
+	{
 		return x;
 	}
 	
-	public void setX(int x) {
+	
+	public void setX(int x) 
+	{
 		this.x = x;
 	}
 	
-	public int getY() {
+	
+	public int getY() 
+	{
 		return y;
 	}
 	
-	public void setY(int y) {
+	
+	public void setY(int y) 
+	{
 		this.y = y;
 	}
 }

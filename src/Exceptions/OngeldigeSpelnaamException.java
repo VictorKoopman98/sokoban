@@ -1,9 +1,10 @@
 package Exceptions;
 
-public class OngeldigeSpelnaamException extends RuntimeException{
-
-	public OngeldigeSpelnaamException(String bericht) {
-		// TODO Auto-generated constructor stub
+public class OngeldigeSpelnaamException extends RuntimeException
+{
+	
+	public OngeldigeSpelnaamException(String bericht) 
+	{
 		super(bericht);
 	}
 	

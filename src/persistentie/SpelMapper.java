@@ -17,11 +17,10 @@ public class SpelMapper
             + "VALUES (?)";
 	SpelbordMapper sbm = new SpelbordMapper();
 
-    /**
-     * Methode om een spel met een bepaald spelId uit de databank te halen
-     * @param spelId unieke identiteit van het spel dat uit de databank wordt gehaald
-     * @return geeft een spel terug
-     */
+	
+    //Methode om een spel met een bepaald spelnaam uit de databank te halen
+    //spelnaam unieke identiteit van het spel dat uit de databank wordt gehaald
+     
     public Spel geefSpel(String spelnaam)
     { 
 		Spel spel = null;
@@ -47,11 +46,8 @@ public class SpelMapper
 		return spel;
     }
 
-    /**
-     * Methode om een lijst van spellen uit de databank te halen
-     * @return geeft een lijst van spellen terug
-     */
-    public static List<Spel> geefSpellen()
+   
+    public static List<Spel> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
     {
 		List<Spel> spel = new ArrayList<>();
 	
@@ -79,10 +75,10 @@ public class SpelMapper
 
     }
 
-    /**
-     * Methode om een bepaald spelbord te verwijderen uit de databank
-     * @param spelbordId unieke identiteit van het spelbord dat aantoont welk spelbord verwijderd zal worden
-     */
+//    /**
+//     * Methode om een bepaald spelbord te verwijderen uit de databank
+//     * @param spelbordId unieke identiteit van het spelbord dat aantoont welk spelbord verwijderd zal worden
+//     */
 //    public void verwijderSpelbord(int spelbordId) {
 //        sbm.verwijderSpelbord(spelbordId);
 //    }
@@ -96,12 +92,10 @@ public class SpelMapper
 //    public Spelbord geefSpelbord(int spelId, int spelbordId) {
 //        return sbm.geefSpelbord(spelId, spelbordId);
 //    }
-//
-//    /**
-//     * Methode om het spel op te slaan in de databank
-//     * @param spel object van de klasse Spel dat zal bewaard worden in de databank
-//     */
-    public void voegSpelToe(Spel spel) {
+
+
+    public void voegSpelToe(Spel spel)   //Methode om het spel op te slaan in de databank
+    {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement(INSERT_SPEL))
         {            
@@ -111,7 +105,7 @@ public class SpelMapper
         {
             throw new RuntimeException(ex);
         }
-        //List<Spelbord> spelborden = spel.getSpelborden();
+//        List<Spelbord> spelborden = spel.getSpelborden();
 //        for (Spelbord spelborden1 : spelborden) {
 //            sbm.bewaarSpelbord(spelborden1,spel.getSpelId());
 //        }

@@ -100,9 +100,7 @@ public class DomeinController
     	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
     	return spelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
     }
-    
-   
-    
+      
     
     public char[][] toonSpelbord()
     {
@@ -137,26 +135,35 @@ public class DomeinController
     	return false;
     }
     
-    public void maakNieuwSpel(String naamSpel) {
+    
+    public void maakNieuwSpel(String naamSpel) 
+    {
     	Spel nieuwSpel = new Spel(naamSpel);
     	spelRepository.voegSpelToe(nieuwSpel);
     }    
     
-    public String geefNaamSpel() {
+    
+    public String geefNaamSpel() 
+    {
     	return this.spel.getNaamSpel();
     }
     
-    public void setSpel(Spel spel) { 
+    
+    public void setSpel(Spel spel) 
+    { 
     	this.spel = spel;
     }
     
-    public boolean isSpelVoltooid() {
+    
+    public boolean isSpelVoltooid() 
+    {
     	return this.spel.isSpelVoltooid();
     }
     
-    public void maakNieuwSpelbord(int volgnummer) {
-    	this.spel.maakNieuwSpelbord(volgnummer);
-    	
+    
+    public void maakNieuwSpelbord(int volgnummer) 
+    {
+    	this.spel.maakNieuwSpelbord(volgnummer);	
     }
     
  /*   public String[] geefLijstSpelborden()    //array maken van namen van spellen
@@ -174,26 +181,35 @@ public class DomeinController
     
  */   
     
-    public void wijzigSpelbord(int x, int y, int actie) {
+    public void wijzigSpelbord(int x, int y, int actie) 
+    {
     	this.spel.wijzigSpelbord(x, y, actie);
     }
     
-    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
+    
+    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+    {
     	this.spelbordRepository.voegSpelbordToe(spelbord, spelnaam);
     }
     
-    public int geefVolgnummer() {
+    
+    public int geefVolgnummer() 
+    {
     	return this.spel.geefVolgnummer();
     }
     
-    public Spelbord geefSpelbord() {
+    
+    public Spelbord geefSpelbord() 
+    {
     	return this.spel.getSpelbord();
     }
+    
     
     public void verwijderSpelbord(int volgnummer, String naamSpel) 
     {
 		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
 	}
+    
     
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
     {
@@ -208,7 +224,5 @@ public class DomeinController
           return namen;
     }
     
-    public void selecteerSpelbord() {
-    	this.spel
-    }
+
 }

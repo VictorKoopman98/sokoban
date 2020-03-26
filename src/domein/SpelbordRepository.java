@@ -8,19 +8,21 @@ import domein.Spelbord;
 import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
-public class SpelbordRepository {
-	
+public class SpelbordRepository 
+{
 	private static List<Spelbord> spelborden = new ArrayList<>();
 	private static SpelbordMapper spelbordMapper;
 	private Spelbord spelbord;
 	
 	
-
-	public SpelbordRepository() {
+	public SpelbordRepository() 
+	{
 		spelbordMapper = new SpelbordMapper();
 	}
 	
-	public static Spelbord geefSpelbord(String spelnaam) {
+	
+	public static Spelbord geefSpelbord(String spelnaam) 
+	{
 		Spelbord spelbord = spelbordMapper.geefSpelbord(spelnaam);
 		if (spelbord != null) {
 			return spelbord;
@@ -28,14 +30,18 @@ public class SpelbordRepository {
 		return null;
 	}
 	
-	public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
+	
+	public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+	{
 		spelbordMapper.voegSpelbordToe(spelbord, spelnaam);
 	}
+	
 	
 	public  List<Spelbord> geefSpelbordenLijst(String spelnaam)
 	{
 		return spelbordMapper.geefSpelborden(spelnaam);
 	}
+	
 	
 	public void verwijderSpelbord(int volgnummer, String naamSpel) 
 	{

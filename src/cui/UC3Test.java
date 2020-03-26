@@ -89,7 +89,9 @@ public class UC3Test
 		return keuze;
 	}
 	
-	private String zetIndexOmInNaam(int index) {
+	
+	private String zetIndexOmInNaam(int index) 
+	{
 		List<String> lijst = Arrays.asList(dc.geefLijstSpellen());
 		String naam = lijst.get(index);
 		return naam;

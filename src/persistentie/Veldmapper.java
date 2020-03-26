@@ -15,56 +15,11 @@ import domein.Spelbord;
 
 public class Veldmapper
 {
-	 /**
-     * Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
-     * @param spelbordId unieke identiteit van het spelbord waartoe de velden
-     * behoren
-     * @return geeft de velden van het spelbord terug
-     */
-//    public Veld[][] geefVelden(int volgnummer, String spelnaam) {
-//        Veld[][] velden = new Veld[10][10];
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-//        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
-//        {
-//            
-//            query.setInt(1, volgnummer);
-//            query.setString(2, spelnaam);
-//            try (ResultSet rs = query.executeQuery()) {
-//                while (rs.next()) {
-//                    int i = rs.getInt("x");
-//                    int j = rs.getInt("y");
-//                    String soortVeld = rs.getString("soortVeld");
-//                    switch (soortVeld) {
-//                        case "LeegVeld":
-//                            velden[i][j] = new Veld(i, j, false);
-//                            break;
-//                        case "Muur":
-//                            velden[i][j] = null;
-//                            break;
-//                        case "DoelVeld":
-//                            velden[i][j] = new Veld(i, j, true);
-//                            break;
-//                        case "Man":
-//                            Man man = new Man();
-//                            velden[i][j] = new Veld(i, j, false, man, null);
-//                            man.setVeld(velden[i][j]);
-//                            break;
-//                        case "Kist":
-//                            Kist kist = new Kist();
-//                            velden[i][j] = new Veld(i, j, false, null, kist);
-//                            kist.setVeld(velden[i][j]);
-//                            break;
-//                    }
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        return velden;
-//    }
-
-	
-	public Veld[][] geefVelden(int volgnummer, String spelnaam) {
+	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
+     //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
+     
+	public Veld[][] geefVelden(int volgnummer, String spelnaam) 
+	{
         Veld[][] velden = new Veld[10][10];
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
@@ -109,21 +64,16 @@ public class Veldmapper
     }
 	
 	
-	
-	
-	
-	
-	
-	
-    void deleteVelden(int volgnummer) {
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
-            query.setInt(1, volgnummer);
-            query.executeUpdate();
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+
+//    void deleteVelden(int volgnummer) {
+//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+//            PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
+//            query.setInt(1, volgnummer);
+//            query.executeUpdate();
+//        } catch (SQLException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
 
     
     
@@ -175,20 +125,14 @@ public class Veldmapper
 //        }
 //    }
 
-    /**
-     * Methode om velden in de databank toe te voegen die horen bij een spelbord
-     *
-     * @param velden object van de klasse Veld
-     * @param spelId unieke identiteit van het spel waarbij de velden worden
-     * toegevoegd
-     * @param spelbordId unieke identiteit van het spelbord waarbij de velden
-     * worden toegevoegd
-     */
-    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) {
-        
-
-        
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+    //Methode om velden in de databank toe te voegen die horen bij een spelbord
+    //velden object van de klasse Veld
+    //spelnaam unieke identiteit van het spel waarbij de velden wordentoegevoegd
+    //volgnummer unieke identiteit van het spelbord waarbij de veldenworden toegevoegd
+    
+    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) 
+    {
+            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
             PreparedStatement query = conn.prepareStatement("INSERT INTO Veld(volgnummer,spelnaam, x, y, isDoel, isMuur, isMan, isKist)"
                     + "VALUES (?, ?, ?, ? ,?, ?, ?, ?)");
             for (int i = 0; i < velden.length; i++) {
@@ -223,4 +167,4 @@ public class Veldmapper
             throw new RuntimeException(ex);
         }
     }
-	}
+}

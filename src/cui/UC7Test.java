@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 import domein.DomeinController;
 
-public class UC7Test {
-	
+public class UC7Test 
+{
 	private UC8Test uc8test;
 	DomeinController dc;
 	
@@ -14,9 +14,9 @@ public class UC7Test {
 		this.dc = dc;
 	}
 	
+	
 	public void wijzigSpel() 
-	{ 
-		
+	{ 	
 		int gekozenSpel;
 		String spelnaam;
 		int volgnummer = 0;
@@ -25,17 +25,12 @@ public class UC7Test {
 		
 		String [] spelletjes =  dc.geefLijstSpellen();
 		
-		
 		do {
-			
 			for(int i = 0; i < spelletjes.length; i++)
 			{
-				
 				System.out.printf("%nSpelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
-				
 			}
 
-			
 			System.out.printf("%nGeef uw keuze in: ");
 			gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
 			spelnaam = spelletjes[gekozenSpel - 1];
@@ -45,8 +40,7 @@ public class UC7Test {
 		dc.selecteerSpel(spelnaam);
 		
 		int[] volgnummersSpelborden = dc.geefVolgnummerSpelborden(spelnaam);
-		
-
+	
 		do {
 			try {
 
@@ -67,11 +61,11 @@ public class UC7Test {
 		}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
 		
 		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d aantal spelborden", spelnaam, dc.geefAantalSpelborden());
-		
 	}
 	
-	private boolean checkVolgnummerOk(int volgnummer, int[] volgnummersSpelborden) {
-		
+	
+	private boolean checkVolgnummerOk(int volgnummer, int[] volgnummersSpelborden) 
+	{
         boolean volgnummerOk = false; 
         for (int element : volgnummersSpelborden) { 
             if (element == volgnummer) { 
@@ -81,6 +75,7 @@ public class UC7Test {
         } 
         return volgnummerOk;
 	}
+	
 	
 	public void verwijderSpel()
 	{

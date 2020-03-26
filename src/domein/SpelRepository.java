@@ -27,19 +27,20 @@ public class SpelRepository
         return null;
     }
     
-
-    
-    private boolean bestaatSpel(String spelnaam) {
+ 
+    private boolean bestaatSpel(String spelnaam) 
+    {
     	return spelMapper.geefSpel(spelnaam) != null;
     }
     
+    
     public void voegSpelToe(Spel spel)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
     {
-	if (bestaatSpel(spel.getNaamSpel()))
-	{
-	    throw new IllegalArgumentException("Spel bestaat al!");
-	}
-	spelMapper.voegSpelToe(spel);
+		if (bestaatSpel(spel.getNaamSpel()))
+		{
+		    throw new IllegalArgumentException("Spel bestaat al!");
+		}
+		spelMapper.voegSpelToe(spel);
     }
 
     

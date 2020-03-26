@@ -38,14 +38,13 @@ public class SpelerRepository
     }
 
     
-    
     public void voegToe(Speler speler)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
     {
-	if (bestaatSpeler(speler.getGebruikersnaam()))
-	{
-	    throw new IllegalArgumentException("Speler bestaat al!");
-	}
-	spelerMapper.voegToe(speler);
+		if (bestaatSpeler(speler.getGebruikersnaam()))
+		{
+		    throw new IllegalArgumentException("Speler bestaat al!");
+		}
+		spelerMapper.voegToe(speler);
     }
     
     

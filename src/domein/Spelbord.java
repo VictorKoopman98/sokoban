@@ -32,11 +32,12 @@ public class Spelbord
 			for (int j = 0; j<10; j++) {
 				spelbord[i][j] = velden[i][j];
 				
-				if (velden[i][j].getMan()) {
+				if (velden[i][j].getMan()) 
+				{
 					man = new Man(velden[i][j]);
 				}
-				else if (velden[i][j].getKist()) {
-					
+				else if (velden[i][j].getKist()) 
+				{		
 					Kist kist = new Kist(velden[i][j]);
 					kisten[aantalKisten] = kist;
 					aantalKisten++;
@@ -46,11 +47,15 @@ public class Spelbord
 		}
 	}
 	
-	public int getVolgnummer() {
+	
+	public int getVolgnummer() 
+	{
 		return this.volgnummer;
 	}
 	
-	public void setVolgnummer(int nummer) {
+	
+	public void setVolgnummer(int nummer) 
+	{
 		this.volgnummer = nummer;
 	}
 	
@@ -121,7 +126,8 @@ public class Spelbord
 	}
 	
 
-	public void setIsVoltooid(boolean isVoltooid) {
+	public void setIsVoltooid(boolean isVoltooid) 
+	{
 		this.isVoltooid = isVoltooid;
 	}
 
@@ -130,7 +136,6 @@ public class Spelbord
     {
         char[][] output = new char[10][10];
         
-
         for (int i = 0; i < 10; i++) 
         {
             for (int j = 0; j < 10; j++) 
@@ -239,10 +244,8 @@ public class Spelbord
 	private void isEindeSpelbordBereikt() 
 	{
 		int aantalDoelen = 0;
-		for (int i = 0; i < 10; i++) 
-		{
-			for (int j = 0; j < 10; j++ ) 
-			{
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++ ) {
 				if(spelbord[i][j].getIsDoel()) 
 				{
 					aantalDoelen += 1;
@@ -251,10 +254,8 @@ public class Spelbord
 		}
 		
 		int aantalKistenOpDoel = 0;
-		for (int i = 0; i < 10; i++) 
-		{
-			for (int j = 0; j < 10; j++) 
-			{
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
 				if(maakVeldenVanKistenLijst().contains(spelbord[i][j]) && spelbord[i][j].getIsDoel()) 
 				{
 					aantalKistenOpDoel += 1;
@@ -319,7 +320,9 @@ public class Spelbord
     	return verplaatsingOk;
     }
 	
-	public void wijzigSpelbord(int x, int y, int actie) {
+	
+	public void wijzigSpelbord(int x, int y, int actie) 
+	{
 		if (actie == 1) {
 			spelbord[x][y].setIsDoel(true);
 		}

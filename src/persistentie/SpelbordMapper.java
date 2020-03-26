@@ -16,21 +16,14 @@ public class SpelbordMapper
 {
 	private static final String INSERT_SPELBORD = "INSERT INTO ID222177.g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
 	private Veldmapper vm = new Veldmapper();
-    /**
-     * Methode om een bepaald spelbord uit de databank te halen
-     *
-     * @param spelId unieke identeit van het spel waartoe het spelbord behoort
-     * @param spelbordId unieke identiteit van het spelbord dat uit de databank
-     * gehaald zal worden
-     * @return geeft een spelbord terug
-     */
+
 	
+	//Methode om een bepaald spelbord uit de databank te halen
+	//spelnaam unieke identeit van het spel waartoe het spelbord behoort
+	//volgnummer unieke identiteit van het spelbord dat uit de databank
 	
-	
-	
-	
-	
-    public Spelbord geefSpelbord(String spelnaam) {
+    public Spelbord geefSpelbord(String spelnaam)   
+    {
         Spelbord spelbord = null;
         Veld[][] velden;
         
@@ -38,7 +31,8 @@ public class SpelbordMapper
         		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE Spel_spelnaam = ?")) {
             
             query.setString(1, spelnaam);
-            try (ResultSet rs = query.executeQuery()) {
+            try (ResultSet rs = query.executeQuery()) 
+            {
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
                     velden = vm.geefVelden(volgnummer, spelnaam);
@@ -51,15 +45,12 @@ public class SpelbordMapper
         return spelbord;
     }
 
-    /**
-     * Methode om een lijst van spelborden uit de databank te halen die horen
-     * bij een bepaald spel
-     *
-     * @param spelId unieke identiteit van het spel waartoe de spelborden
-     * behoren
-     * @return geeft een lijst van spelborden terug
-     */
-    public List<Spelbord> geefSpelborden(String spelnaam) {
+    
+    //Methode om een lijst van spelborden uit de databank te halen die horen bij een bepaald spel
+    //spelnaam unieke identiteit van het spel waartoe de spelborden behoren
+     
+    public List<Spelbord> geefSpelborden(String spelnaam) 
+    {
         List<Spelbord> spelborden = new ArrayList<>();
         Veld[][] velden;
 
@@ -80,12 +71,13 @@ public class SpelbordMapper
         return spelborden;
     }
 
-    /**
-     * Methode om een bepaald spelbord uit de databank te verwijderen 
-     * @param spelbordId unieke identiteit van het spelbord dat moet verwijderd worden
-     */
-    public void verwijderSpelbord(int volgnummer,String naamSpel) {
-        vm.deleteVelden(volgnummer);
+   
+    //Methode om een bepaald spelbord uit de databank te verwijderen 
+    //spelnaam unieke identiteit van het spelbord dat moet verwijderd worden
+    
+    public void verwijderSpelbord(int volgnummer,String naamSpel) 
+    {
+        //vm.deleteVelden(volgnummer);
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
             PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
             query.setInt(1, volgnummer);
@@ -96,18 +88,15 @@ public class SpelbordMapper
         }
     }
 
-    /**
-     * Methode om een spelbord toe te voegen aan een bepaald spel in een databank
-     * @param spelbord unieke identiteit van het spelbord dat wordt toegevoegd
-     * in de databank
-     * @param spelId unieke identiteit van het spel waartoe het spelbord zal
-     * behoren
-     */
-    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) {
-
+    
+    //Methode om een spelbord toe te voegen aan een bepaald spel in een databank
+    //spenlnaam unieke identiteit van het spelbord dat wordt toegevoegd in de databank
+    //spelnaam unieke identiteit van het spel waartoe het spelbord zal behoren
+   
+    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+    {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement(INSERT_SPELBORD)) {
-            
                     
             query.setInt(1, spelbord.getVolgnummer());
             query.setString(2, spelnaam);
@@ -119,14 +108,4 @@ public class SpelbordMapper
 
     }
     
-  
-
-    /**
-     * Methode om een bepaald spelbord up te daten dat bij een bepaald spel hoort
-     * @param spelId unieke identiteit van het spel waarbij het spelbord wordt upgedate
-     * @param spelbord het spelbord dat zal upgedate worden
-     */
-//    public void updateSpelbord(int spelId, Spelbord spelbord) {
-//        vm.updateVelden(spelbord.getVelden(), spelId, spelbord.getSpelbordId());
-//    }
 }

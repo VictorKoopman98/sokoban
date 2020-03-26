@@ -1,10 +1,12 @@
 package domein;
 
-public class Man {
+public class Man 
+{
 
 	private Veld veld;
 	
-	public Man(Veld veld){
+	public Man(Veld veld)
+	{
 		setVeld(veld);
 	}
 	
@@ -13,7 +15,8 @@ public class Man {
 	{
 		this.veld = veld;
 	}
-		
+	
+	
 	public Veld getVeld()   //Methode om het veld waarop een man staat terug te geven, @return geeft het veld terug waarop een man staat
 	{
 		return veld;

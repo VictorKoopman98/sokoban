@@ -7,50 +7,58 @@ import java.util.List;
 import Exceptions.OngeldigGebruikersnaamException;
 import Exceptions.OngeldigeSpelnaamException;
 
-public class Spel {
-	
+public class Spel 
+{
 	private String naamSpel;
 	Spelbord spelbord;
 	SpelbordRepository spelbordRepository;
 	
 
-	
 	public Spel(String naamSpel) 
 	{
-		// TODO Auto-generated constructor stub
 		this.setNaamSpel(naamSpel);
-		
 	}	
 	
-	public Spelbord getSpelbord() {
+	
+	public Spelbord getSpelbord() 
+	{
 		return this.spelbord;
 	}
 	
 	
-	public int geefAantalSpelborden() {
+	public int geefAantalSpelborden() 
+	{
 		return spelbordRepository.geefSpelbordenLijst(naamSpel).size();
 	}
 	
 	
-	public int geefAantalSpelbordenVoltooid() {
+	public int geefAantalSpelbordenVoltooid() 
+	{
 		int aantalVoltooid = 0;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) {
-			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) 
+		{
+			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) 
+			{
 				aantalVoltooid += 1;
 			}
 		}
 		return aantalVoltooid;
 	}
 	
-	public boolean isSpelVoltooid() {
+	
+	public boolean isSpelVoltooid() 
+	{
 		int aantalVoltooid = 0;
 		boolean voltooid = false;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) {
-			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) {
+		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) 
+		{
+			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) 
+			{
 				aantalVoltooid += 1;
 			}
 		}
-		if (spelbordRepository.geefSpelbordenLijst(naamSpel).size() == aantalVoltooid) {
+		if (spelbordRepository.geefSpelbordenLijst(naamSpel).size() == aantalVoltooid) 
+		{
 			voltooid = true;
 		}
 		return voltooid;
@@ -74,7 +82,9 @@ public class Spel {
 		return this.naamSpel;
 	}
 	
-	private void setNaamSpel(String naam) {
+	
+	private void setNaamSpel(String naam) 
+	{
 		if (naam == null || naam.length() == 0)
 		{ 
 		    throw new OngeldigeSpelnaamException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
@@ -113,11 +123,14 @@ public class Spel {
 	}
 	
 	
-	public Kist[] geefKisten() {
+	public Kist[] geefKisten() 
+	{
 		return spelbord.getKisten();
 	}
 	
-	public int geefVolgnummer() {
+	
+	public int geefVolgnummer() 
+	{
 		return spelbord.getVolgnummer();
 	}
 	
@@ -127,7 +140,9 @@ public class Spel {
 		return spelbord.getMan();
 	}
 	
-	public void maakNieuwSpelbord(int volgnummer) {
+	
+	public void maakNieuwSpelbord(int volgnummer) 
+	{
 		Veld[][] velden = new Veld[10][10];
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j<10; j++) {
@@ -138,7 +153,9 @@ public class Spel {
 		this.spelbord = new Spelbord(volgnummer, velden);
 	}
 	
-	public void wijzigSpelbord(int x, int y, int actie) {
+	
+	public void wijzigSpelbord(int x, int y, int actie) 
+	{
 		this.spelbord.wijzigSpelbord(x, y, actie);
 	}
 }

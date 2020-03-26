@@ -60,32 +60,6 @@ public class SpelerMapper
 	            throw new RuntimeException(ex);
 	        }
 	}
-	
-	
-//	public List<Speler> geefSpelers()    //methode om een lijst van spelers op te halen uit de databank => nodig?
-//	{
-//        List<Speler> spelers = new ArrayList<>();
-//
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-//                PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Speler");
-//                ResultSet rs = query.executeQuery()) {
-//
-//            while (rs.next()) 
-//            {
-//                String naam = rs.getString("naam");
-//                String voornaam = rs.getString("voornaam");
-//                String wachtwoord = rs.getString("wachtwoord");
-//                String gebruikersnaam = rs.getNString("gebruikersnaam");
-//                boolean beheerder = rs.getBoolean("beheerder");
-//                
-//                spelers.add(new Speler(naam, voornaam, wachtwoord, gebruikersnaam, beheerder));
-//            }
-//        } catch (SQLException ex) 
-//        {
-//            throw new RuntimeException(ex);
-//        }
-//        return spelers;
-//    }
 		
 
 }
