@@ -6,10 +6,28 @@ public class Veld
 	private boolean isDoel;
 	private int x;
 	private int y;
+	private boolean kist;
+	private boolean man;
 	
 	public Veld(int x, int y) {
 		setIsDoel(false);
 		setIsMuur(false);
+	}
+	
+	public boolean getMan() {
+		return this.man;
+	}
+	
+	public void setMan(boolean man) {
+		this.man = man;
+	}
+	
+	public boolean getKist() {
+		return this.kist;
+	}
+	
+	public void setKist(boolean kist) {
+		this.kist = kist;
 	}
 
 	

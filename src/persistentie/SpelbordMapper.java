@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import domein.Spel;
 import domein.Spelbord;
 import domein.Veld;
 
@@ -40,8 +41,8 @@ public class SpelbordMapper
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
-                    //velden = vm.geefVelden(volgnummer);
-                    spelbord = new Spelbord(volgnummer);
+                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    spelbord = new Spelbord(volgnummer, velden);
                 }
             }
         } catch (SQLException ex) {
@@ -58,36 +59,37 @@ public class SpelbordMapper
      * behoren
      * @return geeft een lijst van spelborden terug
      */
-//    public List<Spelbord> geefSpelborden(int spelId) {
-//        List<Spelbord> spelborden = new ArrayList<>();
-//        Veld[][] velden;
-//
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("SELECT * FROM spelbord WHERE Spel_spelId = ?");
-//            query.setInt(1, spelId);
-//            try (ResultSet rs = query.executeQuery()) {
-//                while (rs.next()) {
-//                    int spelbordId = rs.getInt("SpelbordId");
-//                    int volgnummer = rs.getInt("volgnummer");
-//                    velden = vm.geefVelden(spelbordId);
-//                    spelborden.add(new Spelbord(spelbordId, volgnummer, velden));
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        return spelborden;
-//    }
+    public List<Spelbord> geefSpelborden(String spelnaam) {
+        List<Spelbord> spelborden = new ArrayList<>();
+        Veld[][] velden;
+
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM spelbord WHERE naamSpel = ?")) {
+            query.setString(1, spelnaam);
+            try (ResultSet rs = query.executeQuery()) {
+                while (rs.next()) {
+                    int volgnummer = rs.getInt("volgnummer");
+
+                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    spelborden.add(new Spelbord(volgnummer, velden));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return spelborden;
+    }
 
     /**
      * Methode om een bepaald spelbord uit de databank te verwijderen 
      * @param spelbordId unieke identiteit van het spelbord dat moet verwijderd worden
      */
-    public void verwijderSpelbord(int volgnummer) {
+    public void verwijderSpelbord(int volgnummer,String naamSpel) {
         vm.deleteVelden(volgnummer);
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("DELETE FROM spelbord WHERE spelbordId = ?");
+            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
             query.setInt(1, volgnummer);
+            query.setString(2, naamSpel);
             query.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -116,6 +118,8 @@ public class SpelbordMapper
         vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam, spelbord);
 
     }
+    
+  
 
     /**
      * Methode om een bepaald spelbord up te daten dat bij een bepaald spel hoort

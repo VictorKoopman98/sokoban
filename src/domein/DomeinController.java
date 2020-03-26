@@ -101,7 +101,9 @@ public class DomeinController
     	return spelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
     }
     
-
+   
+    
+    
     public char[][] toonSpelbord()
     {
     	return this.spel.toonSpelbord();
@@ -138,7 +140,7 @@ public class DomeinController
     public void maakNieuwSpel(String naamSpel) {
     	Spel nieuwSpel = new Spel(naamSpel);
     	spelRepository.voegSpelToe(nieuwSpel);
-    }
+    }    
     
     public String geefNaamSpel() {
     	return this.spel.getNaamSpel();
@@ -157,6 +159,21 @@ public class DomeinController
     	
     }
     
+ /*   public String[] geefLijstSpelborden()    //array maken van namen van spellen
+ //   {
+ //   	
+ //         String[] overzichtSpelborden = new String[spelbordRepository.geefSpelbordenLijst().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+ //         
+ //         for(int i = 0; i < spelbordRepository.geefSpelbordenLijst().size(); i++) 
+ //         {
+ //       	  overzichtSpelborden [i] = spelbordRepository.geefSpelbordenLijst()    //elke naam wordt opgevraagd
+          }
+          
+          return overzichtSpelborden;
+    }
+    
+ */   
+    
     public void wijzigSpelbord(int x, int y, int actie) {
     	this.spel.wijzigSpelbord(x, y, actie);
     }
@@ -173,8 +190,36 @@ public class DomeinController
     	return this.spel.getSpelbord();
     }
     
-    public void verwijderSpelbord(int volgnummer) 
+    public void verwijderSpelbord(int volgnummer, String naamSpel) 
     {
-		this.spelbordRepository.verwijderSpelbord(volgnummer);
+		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
 	}
+    
+    public int[] geefLijstSpelborden(String spelnaam)    //array maken van namen van spellen
+    {
+    	
+          int [] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          
+          for(int i = 0; i < spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) 
+          {
+        	  namen [i] = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getVolgnummer();     //elke naam wordt opgevraagd
+          }
+          
+          return namen;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

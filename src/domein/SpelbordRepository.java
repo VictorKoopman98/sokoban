@@ -13,11 +13,11 @@ public class SpelbordRepository {
 	private static List<Spelbord> spelborden = new ArrayList<>();
 	private static SpelbordMapper spelbordMapper;
 	private Spelbord spelbord;
-	private final SpelbordMapper spelbordmapper;
+	
 	
 
 	public SpelbordRepository() {
-		spelbordmapper = new SpelbordMapper();
+		spelbordMapper = new SpelbordMapper();
 	}
 	
 	public static Spelbord geefSpelbord(String spelnaam) {
@@ -32,15 +32,16 @@ public class SpelbordRepository {
 		spelbordMapper.voegSpelbordToe(spelbord, spelnaam);
 	}
 	
-	public List<Spelbord> geefSpelbordenLijst(){
-		
-		return spelborden;
+	public  List<Spelbord> geefSpelbordenLijst(String spelnaam)
+	{
+
+		return spelbordMapper.geefSpelborden(spelnaam);
 	}
 	
-	public void verwijderSpelbord(int volgnummer) 
+	public void verwijderSpelbord(int volgnummer, String naamSpel) 
 	{
 		this.spelborden.remove(this.spelbord);
-		spelbordmapper.verwijderSpelbord(volgnummer);
+		spelbordMapper.verwijderSpelbord(volgnummer, naamSpel);
 	}
 	
 }

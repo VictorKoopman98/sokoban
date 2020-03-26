@@ -65,7 +65,7 @@ public class SpelMapper
 				{
 		                    
 				    String naam = rs.getString("spelnaam");
-		            //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
+		            List<Spelbord> spelborden = sbm.geefSpelborden(naam);
 				    spel.add(new Spel(naam));
 				}
 		    }

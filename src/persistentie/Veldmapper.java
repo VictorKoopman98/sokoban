@@ -63,6 +63,58 @@ public class Veldmapper
 //        return velden;
 //    }
 
+	
+	public Veld[][] geefVelden(int volgnummer, String spelnaam) {
+        Veld[][] velden = new Veld[10][10];
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
+        {
+            
+            query.setInt(1, volgnummer);
+            query.setString(2, spelnaam);
+            try (ResultSet rs = query.executeQuery()) {
+                while (rs.next()) {
+                    
+
+                    for(int i = 0; i< 10; i++) {
+                    	for(int j = 0;j<10; j++) {
+                    		int x = rs.getInt("x");
+                            int y = rs.getInt("y");
+                            boolean isMuur = rs.getBoolean("isMuur");
+                            boolean isDoel = rs.getBoolean("isDoel");
+                            boolean isMan = rs.getBoolean("isMan");
+                            boolean isKist = rs.getBoolean("isKist");
+                            velden[i][j] = new Veld(x, y);
+                            
+                            if(isMuur) {
+                            	velden[i][j].setIsMuur(true);
+                            }
+                            else if(isDoel) {
+                            	velden[i][j].setIsDoel(true);
+                            }
+                            if(isMan) {
+                            	velden[i][j].setMan(true);
+                            }
+                            if (isKist) {
+                            	velden[i][j].setKist(true);
+                            }
+                    	}
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return velden;
+    }
+	
+	
+	
+	
+	
+	
+	
+	
     void deleteVelden(int volgnummer) {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
             PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
@@ -73,6 +125,10 @@ public class Veldmapper
         }
     }
 
+    
+    
+    
+    
     /**
      * Methode om de velden van een bepaald spelbord dat bij een bepaald spel hoort up te daten nadat
      * er een wijziging is aangebracht
