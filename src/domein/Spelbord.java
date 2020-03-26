@@ -12,7 +12,7 @@ public class Spelbord
 	private int locatieManX=-1; //locatie van de rij
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
-	Veld[][] spelbord;
+	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
 	Kist[] kisten;
 	Veld[] veldenVanKisten;
 	Man man;
@@ -23,11 +23,10 @@ public class Spelbord
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
-		this.spelbord = new Veld[10][10];
+		//this.spelbord = new Veld[10][10];
 		for (int i = 0; i<10; i++) {
 			for (int j = 0; j<10; j++) {
-				spelbord[i][j].setX(i);
-				spelbord[i][j].setY(j);
+				this.spelbord[i][j] = new Veld(i, j);
 			}
 		}
 	}
