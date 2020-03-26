@@ -1,19 +1,23 @@
 package domein;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import domein.Spelbord;
+import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
 public class SpelbordRepository {
 	
 	private static List<Spelbord> spelborden = new ArrayList<>();
 	private static SpelbordMapper spelbordMapper;
+	private Spelbord spelbord;
+	private final SpelbordMapper spelbordmapper;
 	
 
 	public SpelbordRepository() {
-		// TODO Auto-generated constructor stub
+		spelbordmapper = new SpelbordMapper();
 	}
 	
 	public static Spelbord geefSpelbord(String spelnaam) {
@@ -32,5 +36,11 @@ public class SpelbordRepository {
 		
 		return spelborden;
 	}
-
+	
+	public void verwijderSpelbord(int volgnummer) 
+	{
+		this.spelborden.remove(this.spelbord);
+		spelbordmapper.verwijderSpelbord(volgnummer);
+	}
+	
 }
