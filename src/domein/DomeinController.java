@@ -10,7 +10,7 @@ public class DomeinController
 	private final SpelRepository spelRepository;
 	private Speler speler;
 	private Spel spel;
-	private final SpelbordRepository spelbordRepository;
+	private final SpelbordRepository spelbordRepository; 
 	
 	
 	public DomeinController()   //Constructor om een DomeinController aan te maken
