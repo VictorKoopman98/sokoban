@@ -59,7 +59,8 @@ public class SokobanApplicatie
 					keuze2 = toonHoofdpaneel2();
 					switch(keuze2) {
 					case 1:
-						new UC3Test(domeincontroller).kiesSpel();
+						
+						new UC6Test(domeincontroller).maakNieuwSpelbord();
 						break;
 					case 2:
 						new UC5Test(domeincontroller).maakNieuwSpel();

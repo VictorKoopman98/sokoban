@@ -18,6 +18,7 @@ public class UC5Test {
         String spelnaam = "";
 		Scanner input = new Scanner(System.in);
 		boolean blijvenHerhalenFlag = true;
+		int aantalSpelborden = 0;
 		
 		do {
 			try {
@@ -25,18 +26,24 @@ public class UC5Test {
 				spelnaam = input.next();
 				
 				dc.maakNieuwSpel(spelnaam);
-				System.out.printf("%nNieuw spelbord aanmaken (1) %n%nstoppen(2)%n%nGeef uw keuze in: ");
-				int actie = input.nextInt();
-				
-				if(actie == 1)
-				{
-					uc6test.maakNieuwSpelbord();
-				}
-				else if(actie == 2)
-				{
-					System.out.printf("%s is gestopt", dc.geefGebruikersnaam());
-				}
 				blijvenHerhalenFlag = false;
+				
+				int actie = toonActies();
+				
+				do {
+					if (actie == 1) {
+						uc6test.maakNieuwSpelbord();
+						actie = toonActies();
+						aantalSpelborden++;
+					}
+					else if (actie == 2) {
+						System.out.printf("%s is gestopt met spelborden aanmaken%n%n", dc.geefGebruikersnaam());
+						
+					}
+					
+				}while ( actie != 2);
+				
+				
 			}
 			catch (IllegalArgumentException e) {
 				System.err.println(e);
@@ -46,9 +53,17 @@ public class UC5Test {
 		
 		dc.selecteerSpel(spelnaam);
 		
-		System.out.printf("%s is aangemaakt met 0 spelborden.", dc.geefNaamSpel());
+		System.out.printf("%s is aangemaakt met %d spelborden.", dc.geefNaamSpel(), aantalSpelborden);
 		
 		
+	}
+	
+	private int toonActies() {
+		Scanner input = new Scanner(System.in);
+
+		System.out.printf("%nNieuw spelbord aanmaken (1) %n%nstoppen(2)%n%nGeef uw keuze in: ");
+		int actie = input.nextInt();
+		return actie;
 	}
 
 }
