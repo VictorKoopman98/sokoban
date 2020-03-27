@@ -42,7 +42,7 @@ public class Spelbord
 					kisten[aantalKisten] = kist;
 					aantalKisten++;
 				}
-
+				
 			}
 		}
 	}
