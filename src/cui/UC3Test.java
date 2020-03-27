@@ -11,7 +11,7 @@ public class UC3Test
 {
 	private DomeinController dc;
 	private String[] spelletjes = dc.geefLijstSpellen();   //array van de namen van de spellen
-	private UC4Test uc4Test;
+	private UC4Test uc4Test = new UC4Test(dc);
 
 	
 	

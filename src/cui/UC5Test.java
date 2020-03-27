@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class UC5Test 
 {
 	
-	private UC6Test uc6test;
 	private DomeinController dc;
+	private UC6Test uc6test = new UC6Test(dc);
 
 	public UC5Test(DomeinController dc) 
 	{
