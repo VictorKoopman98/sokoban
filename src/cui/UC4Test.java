@@ -19,6 +19,8 @@ public class UC4Test
 	{
 		String richtingMan = "";
 		
+		
+		
 		dc.toonSpelbord();  //spelbord tonen
 		
 		int actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
@@ -115,6 +117,7 @@ public class UC4Test
 				keuze = input.nextInt();
 				if (keuze > 0 && keuze < 5) {
 					blijvenHerhalen = false;
+					
 				}
 				
 			}

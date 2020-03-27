@@ -146,8 +146,7 @@ public class Spel
 		Veld[][] velden = new Veld[10][10];
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j<10; j++) {
-				velden[i][j].setX(i);
-				velden[i][j].setY(j);
+				velden[i][j] = new Veld(i, j);
 			}
 		}
 		this.spelbord = new Spelbord(volgnummer, velden);
