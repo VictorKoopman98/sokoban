@@ -15,7 +15,7 @@ import domein.Spelbord;
 
 public class Veldmapper
 {
-	private static final String INSERT_VELDEN = "INSERT INTO ID222177.g39.Veld (Spelbord_volgnummer, Spel_naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?)";
+	private static final String INSERT_VELDEN = "INSERT INTO ID222177.g39.Veld (volgnummer, naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
      
@@ -23,7 +23,7 @@ public class Veldmapper
 	{
         Veld[][] velden = new Veld[10][10];
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (Spelbord_volgnummer = ? AND Spel_naamSpel = ?)"))
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (volgnummer = ? AND naamSpel = ?)"))
         {
             
             query.setInt(1, volgnummer);
@@ -131,7 +131,7 @@ public class Veldmapper
     //spelnaam unieke identiteit van het spel waarbij de velden wordentoegevoegd
     //volgnummer unieke identiteit van het spelbord waarbij de veldenworden toegevoegd
     
-    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) 
+    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam) 
     {
             try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
             		PreparedStatement query = conn.prepareStatement(INSERT_VELDEN)) {
@@ -147,9 +147,9 @@ public class Veldmapper
                         isMuur = true;
                     } else if (velden[i][j].isDoel()) {
                         isDoel = true;
-                    } else if (velden[i][j] == spelbord.getMan().getVeld()) {
+                    } else if (velden[i][j].isMan()) {
                         isMan = true;
-                    } else if (spelbord.maakVeldenVanKistenLijst().contains(velden[i][j])) {
+                    } else if (velden[i][j].isKist()) {
 
                         isKist = true;
                     } //volgnummer, spelnaam, x, y, isDoel, isMuur, isMan, isKist, 
@@ -161,7 +161,7 @@ public class Veldmapper
                     query.setBoolean(6, isMuur);
                     query.setBoolean(7, isMan);
                     query.setBoolean(8, isKist);
-                    query.executeUpdate();
+                    query.executeUpdate(); 
                 }
             }
             

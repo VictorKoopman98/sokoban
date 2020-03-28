@@ -14,7 +14,7 @@ import domein.Veld;
 
 public class SpelbordMapper
 {
-	private static final String INSERT_SPELBORD = "INSERT INTO ID222177_g39.Spelbord (volgnummer, Spel_naamSpel) VALUES(?,?)";
+	private static final String INSERT_SPELBORD = "INSERT INTO ID222177_g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
 	private Veldmapper vm = new Veldmapper();
 
 	
@@ -28,7 +28,7 @@ public class SpelbordMapper
         Veld[][] velden;
         
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE Spel_spelnaam = ?")) {
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE naamSpel = ?")) {
             
             query.setString(1, spelnaam);
             try (ResultSet rs = query.executeQuery()) 
@@ -79,7 +79,7 @@ public class SpelbordMapper
     {
         //vm.deleteVelden(volgnummer);
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND Spel_naamSpel = ?)");
+            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
             query.setInt(1, volgnummer);
             query.setString(2, naamSpel);
             query.executeUpdate();
@@ -106,7 +106,7 @@ public class SpelbordMapper
         {
             throw new RuntimeException(ex);
         }
-        vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam, spelbord);
+        vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam);
 
     }
     

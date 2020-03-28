@@ -23,7 +23,7 @@ public class UC6Test
 		
 		System.out.println();
 
-		dc.maakNieuwSpelbord(volgnummer);
+		dc.maakNieuwSpelbord(volgnummer); 
 		
 		dc.toonSpelbord();
 		
