@@ -88,7 +88,7 @@ public class Spel
 		if (naam == null || naam.length() == 0)
 		{ 
 		    throw new OngeldigeSpelnaamException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
-		} else if (bevatSpatie(naam) == false)
+		} else if (bevatSpatie(naam) == true)
 		{
 		    throw new OngeldigeSpelnaamException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
 		}
