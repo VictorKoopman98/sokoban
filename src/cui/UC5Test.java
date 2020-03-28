@@ -7,11 +7,12 @@ public class UC5Test
 {
 	
 	private DomeinController dc;
-	private UC6Test uc6test = new UC6Test(dc);
+	private UC6Test uc6test;
 
 	public UC5Test(DomeinController dc) 
 	{
 		this.dc = dc;
+		this.uc6test = new UC6Test(dc);
 	}
 	
 	
@@ -28,6 +29,7 @@ public class UC5Test
 				spelnaam = input.next();
 				
 				dc.maakNieuwSpel(spelnaam);
+				dc.selecteerSpel(spelnaam);
 				blijvenHerhalenFlag = false;
 				
 				int actie = toonActies();

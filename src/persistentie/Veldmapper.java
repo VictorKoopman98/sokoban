@@ -15,6 +15,7 @@ import domein.Spelbord;
 
 public class Veldmapper
 {
+	private static final String INSERT_VELDEN = "INSERT INTO ID222177.g39.Veld (Spelbord_volgnummer, Spel_naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
      
@@ -132,9 +133,10 @@ public class Veldmapper
     
     public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) 
     {
-            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO Veld(volgnummer,spelnaam, x, y, isDoel, isMuur, isMan, isKist)"
-                    + "VALUES (?, ?, ?, ? ,?, ?, ?, ?)");
+            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+            		PreparedStatement query = conn.prepareStatement(INSERT_VELDEN);) {
+            
+                   
             for (int i = 0; i < velden.length; i++) {
                 for (int j = 0; j < velden[i].length; j++) {
                 	boolean isDoel = false;

@@ -24,7 +24,7 @@ public class UC6Test
 				+ "3: Zet een man%n"
 				+ "4: Zet een kist%n"
 				+ "5: Maak het veld leeg%n"
-				+ "6: Stop wijzigen");
+				+ "6: Stop wijzigen%n");
 		int keuze;
 		System.out.printf("Geef uw keuze: ");
 		keuze = input.nextInt();
@@ -43,17 +43,20 @@ public class UC6Test
 //				+ "Kist die op een doel staat = F%n");
 		
 		dc.maakNieuwSpelbord(volgnummer);
-		System.out.println(dc.toonSpelbord());
+		
+		dc.toonSpelbord();
 		int keuze = toonMogelijkeActies();
 		do {
 			
 			System.out.printf("%nGeef de rij van de gewenste wijziging: ");
 			int x = input.nextInt();
-			System.out.printf("%nGeef de kolom van de gewenste wijziging");
+			System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
 			int y = input.nextInt();
 			dc.wijzigSpelbord(x, y, keuze);	
-			keuze = toonMogelijkeActies();
 			dc.toonSpelbord();
+			keuze = toonMogelijkeActies();
+
+			
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());	

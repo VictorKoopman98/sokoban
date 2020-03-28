@@ -20,7 +20,6 @@ public class Spelbord
 
 	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
-		
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
@@ -132,7 +131,7 @@ public class Spelbord
 	}
 
 	
-	public char[][] toonSpelbord() 
+	public void toonSpelbord() 
     {
         char[][] output = new char[10][10];
         
@@ -168,14 +167,13 @@ public class Spelbord
                 else if (spelbord[i][j].isKist()) 
                 {
                     output[i][j] = 'K';//veld met een kist (Kist)
-                } 
-                
-                
-                System.out.println(output[i][j]);
-                
+                }       
             }
         }
-        return output;
+        for(int i = 0; i<output.length;i++) {
+        	System.out.println(Arrays.toString(output[i]));
+        }
+        
     }
 	
 	

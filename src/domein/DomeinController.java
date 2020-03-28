@@ -102,9 +102,9 @@ public class DomeinController
     }
       
     
-    public char[][] toonSpelbord() 
+    public void toonSpelbord() 
     {
-    	return this.spel.toonSpelbord();
+    	this.spel.toonSpelbord();
     }
     
    

@@ -79,7 +79,7 @@ public class SpelbordMapper
     {
         //vm.deleteVelden(volgnummer);
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
+            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND Spel_naamSpel = ?)");
             query.setInt(1, volgnummer);
             query.setString(2, naamSpel);
             query.executeUpdate();
