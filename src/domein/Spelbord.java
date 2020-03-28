@@ -346,9 +346,11 @@ public class Spelbord
 		}
 		else if (actie == 3) {
 			this.man = new Man(spelbord[x][y]);
+			spelbord[x][y].setIsMan(true);
 		}
 		else if (actie == 4) {
 			kisten[kisten.length] = new Kist(spelbord[x][y]);
+			spelbord[x][y].setIsKist(true);
 		}
 		else if (actie == 5) {
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);

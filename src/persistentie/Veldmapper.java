@@ -134,7 +134,7 @@ public class Veldmapper
     public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam, Spelbord spelbord) 
     {
             try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-            		PreparedStatement query = conn.prepareStatement(INSERT_VELDEN);) {
+            		PreparedStatement query = conn.prepareStatement(INSERT_VELDEN)) {
             
                    
             for (int i = 0; i < velden.length; i++) {

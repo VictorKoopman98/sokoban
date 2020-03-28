@@ -14,7 +14,7 @@ import domein.Veld;
 
 public class SpelbordMapper
 {
-	private static final String INSERT_SPELBORD = "INSERT INTO ID222177.g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
+	private static final String INSERT_SPELBORD = "INSERT INTO ID222177_g39.Spelbord (volgnummer, Spel_naamSpel) VALUES(?,?)";
 	private Veldmapper vm = new Veldmapper();
 
 	
