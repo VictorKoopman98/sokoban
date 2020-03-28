@@ -96,12 +96,14 @@ public class SpelbordMapper
     public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement(INSERT_SPELBORD)) {
-                    
+        		PreparedStatement query = conn.prepareStatement(INSERT_SPELBORD)) 
+        {      
             query.setInt(1, spelbord.getVolgnummer());
             query.setString(2, spelnaam);
             query.executeUpdate();
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             throw new RuntimeException(ex);
         }
         vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam, spelbord);

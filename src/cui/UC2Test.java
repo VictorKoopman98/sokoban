@@ -42,10 +42,10 @@ public class UC2Test
                     voornaam = input.next();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);
-                    
                     blijvenHerhalenFlag = false;
+                    
+                    System.out.printf("%n%s is geregistreerd en aangemeld.", dc.geefGebruikersnaam());
                 } 
-                
                 catch (IllegalArgumentException e)
                 {
                     System.err.println(e);

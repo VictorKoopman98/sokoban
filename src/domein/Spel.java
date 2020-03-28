@@ -83,12 +83,12 @@ public class Spel
 	}
 	
 	
-	private void setNaamSpel(String naam) 
+	public void setNaamSpel(String naam) 
 	{
 		if (naam == null || naam.length() == 0)
 		{ 
 		    throw new OngeldigeSpelnaamException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
-		} else if (naam.contains(" "))
+		} else if (checkSpelnaam(naam) == false)
 		{
 		    throw new OngeldigeSpelnaamException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
 		}
@@ -96,6 +96,25 @@ public class Spel
 		{
 		this.naamSpel = naam;
 		}
+	}
+	
+	
+	private boolean checkSpelnaam(String spelnaam)
+	{
+		boolean heeftSpatie = false;
+		char c;
+		
+		for(int i = 0; i < spelnaam.length(); i++)
+		{
+			c = spelnaam.charAt(i);
+			
+			if(Character.isSpaceChar(c))
+			{
+				heeftSpatie = true;
+			}
+			return true;
+		}
+		return false;
 	}
 	
 

@@ -24,24 +24,34 @@ public class UC3Test
 	
 	public void kiesSpel()    //methode voor een spel te selecteren uit een lijst van spellen
 	{
-		int gekozenSpel;
+		int gekozenSpel = 0;
 		Scanner input = new Scanner(System.in);
-
-		
-		do {
-			
-			for(int i = 0; i < spelletjes.length; i++)
+        boolean blijvenHerhalenFlag = true;
+		 
+		do 
+		{
+			try 
 			{
-				
-				System.out.printf("%nSpelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
-			}
+				for(int i = 0; i < spelletjes.length; i++)
+				{
+					System.out.printf("%nSpelletje %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				}
 
-			
-			System.out.printf("%nGeef uw keuze in: ");
-			gekozenSpel =input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
-			
+				System.out.printf("%nGeef uw keuze in: ");
+				gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
+				
+				if(gekozenSpel > 0 && gekozenSpel <= spelletjes.length)
+				{
+					blijvenHerhalenFlag = false;
+				}
+			}
+			catch(IllegalArgumentException e)
+			{
+				System.err.println(e);
+			}	
 		}
-		while(gekozenSpel <= 0 && gekozenSpel > spelletjes.length);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
+		while(blijvenHerhalenFlag);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
+	
 		
 		String spelnaam = zetIndexOmInNaam(gekozenSpel-1);
 		
@@ -57,8 +67,9 @@ public class UC3Test
 			
 			dc.geefAantalSpelbordenVoltooid();
 		}
-		else if (actie == 2) {
-			System.out.printf("%n%s heeft het spel verlaten.%n", dc.geefGebruikersnaam());
+		else if (actie == 2) 
+		{
+			System.out.printf("%n%s heeft het spel verlaten.", dc.geefGebruikersnaam());
 		}
 	}
 	
@@ -69,20 +80,21 @@ public class UC3Test
 		int keuze = -1;
 		Scanner input = new Scanner(System.in);
 
-		do {
-			try {
-				System.out.printf("%nVoltooi volgend spelbord (1)");
-				
-				System.out.printf("%nSpel verlaten (2)");
-				
-				System.out.printf("%n%nGeef uw keuze in: ");
+		do 
+		{
+			try 
+			{
+				System.out.printf("%n-----------------------------%n 1. Voltooi volgend spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
 				keuze = input.nextInt();
-				if (keuze > 0 && keuze < 3) {
+				
+				if (keuze > 0 && keuze < 3) 
+				{
 					blijvenHerhalen = false;
 				}
 				
 			}
-			catch(IllegalArgumentException e){
+			catch(IllegalArgumentException e)
+			{
 				System.err.println(e);
 			}
 		} while (blijvenHerhalen && !dc.isSpelVoltooid());

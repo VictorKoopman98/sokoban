@@ -338,21 +338,26 @@ public class Spelbord
 //				+ "4: Zet een kist%n"
 //				+ "5: Maak het veld leeg%n"
 //				+ "6: Stop wijzigen"
-		if (actie == 1) {
+		if (actie == 1) 
+		{
 			spelbord[x][y].setIsDoel(true);
 		}
-		else if (actie == 2) {
+		else if (actie == 2) 
+		{
 			spelbord[x][y].setIsMuur(true);
 		}
-		else if (actie == 3) {
+		else if (actie == 3) 
+		{
 			this.man = new Man(spelbord[x][y]);
 			spelbord[x][y].setIsMan(true);
 		}
-		else if (actie == 4) {
+		else if (actie == 4) 
+		{
 			kisten[kisten.length] = new Kist(spelbord[x][y]);
 			spelbord[x][y].setIsKist(true);
 		}
-		else if (actie == 5) {
+		else if (actie == 5) 
+		{
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);
 		}
 	}

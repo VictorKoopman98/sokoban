@@ -111,9 +111,12 @@ public class Speler
     }
     
     
-    public static boolean checkWachtwoord(String wachtwoord)     //methode om te kijken of het wachtwoord een kleine, grote letter heeft en een cijfer
+    private static boolean checkWachtwoord(String wachtwoord)     //methode om te kijken of het wachtwoord een kleine, grote letter heeft en een cijfer
     {
-    	boolean heeftNummer = false; boolean heeftHoofdletter = false; boolean heeftKleineLetter = false; char c;
+    	boolean heeftNummer = false; 
+    	boolean heeftHoofdletter = false; 
+    	boolean heeftKleineLetter = false; 
+    	char c;
     	
     	for(int i = 0; i < wachtwoord.length(); i++)
     	{

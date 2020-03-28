@@ -19,8 +19,6 @@ public class UC4Test
 	{
 		String richtingMan = "";
 		
-		
-		
 		dc.toonSpelbord();  //spelbord tonen
 		
 		int actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
@@ -65,7 +63,7 @@ public class UC4Test
 	}
 	
 	
-	public int toonActiesSpelbord()  //methode voor de acties van het spelbord weer te geven
+	private int toonActiesSpelbord()  //methode voor de acties van het spelbord weer te geven
 	{
 		Scanner input = new Scanner(System.in);
 

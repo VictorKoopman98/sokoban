@@ -21,7 +21,8 @@ public class SpelRepository
     public Spel geefSpel(String naam)
     { 
         Spel spel = spelMapper.geefSpel(naam);
-        if(spel != null) {
+        if(spel != null) 
+        {
             return spel;
         }
         return null;

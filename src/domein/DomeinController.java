@@ -40,7 +40,6 @@ public class DomeinController
         if (gevondenSpeler != null) 
         {
             setSpeler(gevondenSpeler);
-
         } else 
         {
             throw new IllegalArgumentException("Verkeerde login!");

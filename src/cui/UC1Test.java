@@ -35,11 +35,11 @@ public class UC1Test
                     wachtwoord = input.next();
                     
                    dc.meldAan(gebruikersnaam, wachtwoord);
-                   System.out.printf("%n%s is aangemeld", dc.geefGebruikersnaam());
-
-                    blijvenHerhalenFlag = false;
+                   blijvenHerhalenFlag = false;
+                   
+                   System.out.printf("%n%s is aangemeld.", dc.geefGebruikersnaam());
+                    
                 } 
-                
                 catch (IllegalArgumentException e)
                 {
                     System.err.println(e);
