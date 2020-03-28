@@ -39,7 +39,7 @@ public class Veldmapper
                             boolean isDoel = rs.getBoolean("isDoel");
                             boolean isMan = rs.getBoolean("isMan");
                             boolean isKist = rs.getBoolean("isKist");
-                            velden[i][j] = new Veld(x, y);
+                            velden[i][j] = new Veld(x, y, false, false, false, false);
                             
                             if(isMuur) {
                             	velden[i][j].setIsMuur(true);
@@ -48,10 +48,10 @@ public class Veldmapper
                             	velden[i][j].setIsDoel(true);
                             }
                             if(isMan) {
-                            	velden[i][j].setMan(true);
+                            	velden[i][j].setIsMan(true);
                             }
                             if (isKist) {
-                            	velden[i][j].setKist(true);
+                            	velden[i][j].setIsKist(true);
                             }
                     	}
                     }
@@ -141,9 +141,9 @@ public class Veldmapper
                 	boolean isMuur = false;
                 	boolean isMan = false;
                 	boolean isKist = false;
-                    if (velden[i][j].getIsMuur()) {
+                    if (velden[i][j].isMuur()) {
                         isMuur = true;
-                    } else if (velden[i][j].getIsDoel()) {
+                    } else if (velden[i][j].isDoel()) {
                         isDoel = true;
                     } else if (velden[i][j] == spelbord.getMan().getVeld()) {
                         isMan = true;

@@ -43,7 +43,7 @@ public class UC6Test
 //				+ "Kist die op een doel staat = F%n");
 		
 		dc.maakNieuwSpelbord(volgnummer);
-		dc.toonSpelbord();
+		System.out.println(dc.toonSpelbord());
 		int keuze = toonMogelijkeActies();
 		do {
 			

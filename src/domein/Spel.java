@@ -13,6 +13,22 @@ public class Spel
 	Spelbord spelbord;
 	SpelbordRepository spelbordRepository;
 	
+//	public static void main(String[] args) {
+//		Veld[][] velden = new Veld[10][10];
+//		
+//		int volgnummer = 1; 
+//		for (int i = 0; i < 10; i++) {
+//			for (int j = 0; j<10; j++) {
+//				velden[i][j] = new Veld(i,j, false, false, false, false);
+//				System.out.println(velden[i][j]);
+//			}
+//		}
+//		Spelbord spelbord = new Spelbord(volgnummer, velden);
+//		System.out.println(spelbord);
+//		char[][] output = spelbord.toonSpelbord();
+//		System.out.println(output);
+//	}
+//	
 
 	public Spel(String naamSpel) 
 	{
@@ -146,7 +162,7 @@ public class Spel
 		Veld[][] velden = new Veld[10][10];
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j<10; j++) {
-				velden[i][j] = new Veld(i, j);
+				velden[i][j] = new Veld(i,j, false, false, false, false);
 			}
 		}
 		this.spelbord = new Spelbord(volgnummer, velden);
