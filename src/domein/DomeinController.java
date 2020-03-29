@@ -106,8 +106,8 @@ public class DomeinController
     	this.spel.toonSpelbord();
     }
     
-    public void selecteerSpelbord() {
-    	this.spel.selecteerSpelbord();
+    public void selecteerSpelbord(String spelnaam) {
+    	this.spel.selecteerSpelbord(spelnaam);
     }
     
    

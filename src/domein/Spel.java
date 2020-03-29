@@ -12,7 +12,7 @@ public class Spel
 	private String naamSpel;
 	Spelbord huidigSpelbord;
 	SpelbordRepository spelbordRepository;
-	List<Spelbord> spelborden;
+
 	
 
 	public Spel(String naamSpel) 
@@ -20,7 +20,7 @@ public class Spel
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
 		
-		//huidigSpelbord = selecteerSpelbord();
+		selecteerSpelbord(naamSpel);
 	}	
 	
 	
@@ -33,13 +33,12 @@ public class Spel
 		return spelbordRepository.geefSpelbordenLijst(naamSpel);
 	}
 	
-	public Spelbord selecteerSpelbord() {
-		for (int i = 0; i<spelborden.size(); i++) {
-			if (!spelborden.get(i).getIsVoltooid()) {
-				return spelborden.get(i);
+	public void selecteerSpelbord(String spelnaam) {
+		for (int i = 0; i<spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) {
+			if (!spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getIsVoltooid()) {
+				huidigSpelbord = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i);
 			}
 		}
-		return null;
 	}
 	
 	

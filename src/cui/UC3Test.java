@@ -62,7 +62,7 @@ public class UC3Test
 		
 		if(actie == 1)    //als je actie 1 kiest van toonActiesSpel worden volgende methodes uitgevoerd
 		{
-			uc4Test.voltooiSpelbord();  //methode voltooiSpelbord van UC4 wordt uitgevoerd
+			uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
 			
 			dc.geefAantalSpelborden();
 			

@@ -15,10 +15,10 @@ public class UC4Test
 	}
 	
 	
-	public void voltooiSpelbord()  //methode om het spelbord te voltooien
+	public void voltooiSpelbord(String spelnaam)  //methode om het spelbord te voltooien
 	{
 		String richtingMan = "";
-		dc.selecteerSpelbord();
+		dc.selecteerSpelbord(spelnaam);
 		
 		dc.toonSpelbord();  //spelbord tonen
 		
