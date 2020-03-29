@@ -16,8 +16,8 @@ public class DomeinController
 	public DomeinController()   //Constructor om een DomeinController aan te maken
 	{
 		this.spelRepository = new SpelRepository();
-		spelerRepository = new SpelerRepository();
-		spelbordRepository = new SpelbordRepository();
+		spelerRepository = new SpelerRepository(); 
+		spelbordRepository = new SpelbordRepository();		
 	}
 	
 	
