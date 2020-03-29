@@ -39,8 +39,7 @@ public class Spelbord
 				{		
 					Kist kist = new Kist(velden[i][j]);
 					kisten.add(kist);
-				}
-
+				} 
 			}
 		}
 	}
@@ -160,18 +159,20 @@ public class Spelbord
                  
                 else if (!spelbord[i][j].isDoel() && !spelbord[i][j].isKist()  && !spelbord[i][j].isMan()) 
                 {
-                    output[i][j] = ' ';//Leeg veld(Nothing)
+                    output[i][j] = 'N';//Leeg veld(Nothing)
                 } 
                
                 else if (spelbord[i][j].isKist()) 
                 {
                     output[i][j] = 'K';//veld met een kist (Kist)
-                }       
+                }    
+                System.out.printf(" %s ",output[i][j]);
             }
+            
+            System.out.printf("%n");
+            
         }
-        for(int i = 0; i<output.length;i++) {
-        	System.out.println(Arrays.toString(output[i]));
-        }
+        
         
     }
 	

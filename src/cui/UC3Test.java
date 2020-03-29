@@ -10,7 +10,7 @@ import domein.DomeinController;
 public class UC3Test
 {
 	private DomeinController dc;
-	private String[] spelletjes = dc.geefLijstSpellen();   //array van de namen van de spellen
+	private String[] spelletjes;   //array van de namen van de spellen
 	private UC4Test uc4Test;
 
 	
@@ -18,6 +18,7 @@ public class UC3Test
 	public UC3Test (DomeinController dc) 
 	{
 		this.dc =dc;
+		spelletjes = dc.geefLijstSpellen();
 		uc4Test = new UC4Test(dc);
 	}
 	

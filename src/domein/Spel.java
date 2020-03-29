@@ -10,19 +10,32 @@ import Exceptions.OngeldigeSpelnaamException;
 public class Spel 
 {
 	private String naamSpel;
-	Spelbord spelbord;
+	Spelbord huidigSpelbord;
 	SpelbordRepository spelbordRepository;
+	List<Spelbord> spelborden;
 	
 
 	public Spel(String naamSpel) 
 	{
 		this.setNaamSpel(naamSpel);
+		spelbordRepository = new SpelbordRepository();
+		spelborden = spelbordRepository.geefSpelbordenLijst(naamSpel);
+		huidigSpelbord = selecteerSpelbord();
 	}	
 	
 	
 	public Spelbord getSpelbord() 
 	{
-		return this.spelbord;
+		return this.huidigSpelbord;
+	}
+	
+	public Spelbord selecteerSpelbord() {
+		for (int i = 0; i<spelborden.size(); i++) {
+			if (!spelborden.get(i).getIsVoltooid()) {
+				return spelborden.get(i);
+			}
+		}
+		return null;
 	}
 	
 	
@@ -67,13 +80,13 @@ public class Spel
 	
 	public boolean isSpelbordVoltooid() 
 	{
-		return spelbord.getIsVoltooid();
+		return huidigSpelbord.getIsVoltooid();
 	}
 	
 	
 	public int geefAantalVerplaatsingen()
 	{
-		return spelbord.getAantalVerplaatsingen();
+		return huidigSpelbord.getAantalVerplaatsingen();
 	}
 	
 	
@@ -120,19 +133,19 @@ public class Spel
 
 	public void verplaatsMan(String richting) 
 	{
-		spelbord.verplaatsMan(richting);
+		huidigSpelbord.verplaatsMan(richting);
 	}
 	
 	
 	public Veld[][] geefSpelbord() 
 	{
-		return spelbord.getSpelbord();
+		return huidigSpelbord.getSpelbord();
 	}
 	
 
 	public void resetSpelbord(String spelnaam) 
 	{
-		spelbord = SpelbordRepository.geefSpelbord(spelnaam);
+		huidigSpelbord = SpelbordRepository.geefSpelbord(spelnaam);
 	}
 	
 	
@@ -140,25 +153,25 @@ public class Spel
 	
 	public void toonSpelbord()
 	{
-		spelbord.toonSpelbord();
+		huidigSpelbord.toonSpelbord();
 	}
 	
 	
 	public List<Kist> geefKisten() 
 	{
-		return spelbord.getKisten();
+		return huidigSpelbord.getKisten();
 	}
 	
 	
 	public int geefVolgnummer() 
 	{
-		return spelbord.getVolgnummer();
+		return huidigSpelbord.getVolgnummer();
 	}
 	
 	
 	public Man geefMan() 
 	{
-		return spelbord.getMan();
+		return huidigSpelbord.getMan();
 	}
 	
 	
@@ -170,12 +183,12 @@ public class Spel
 				velden[i][j] = new Veld(i,j, false, false, false, false);
 			}
 		}
-		this.spelbord = new Spelbord(volgnummer, velden);
+		this.huidigSpelbord = new Spelbord(volgnummer, velden);
 	}
 	
 	
 	public void wijzigSpelbord(int x, int y, int actie) 
 	{
-		this.spelbord.wijzigSpelbord(x, y, actie);
+		this.huidigSpelbord.wijzigSpelbord(x, y, actie);
 	}
 }

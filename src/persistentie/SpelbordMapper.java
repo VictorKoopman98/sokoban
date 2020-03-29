@@ -55,7 +55,7 @@ public class SpelbordMapper
         Veld[][] velden;
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM spelbord WHERE naamSpel = ?")) {
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE naamSpel = ?")) {
             query.setString(1, spelnaam);
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
