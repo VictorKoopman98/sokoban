@@ -19,14 +19,18 @@ public class Spel
 	{
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
-		spelborden = spelbordRepository.geefSpelbordenLijst(naamSpel);
-		huidigSpelbord = selecteerSpelbord();
+		
+		//huidigSpelbord = selecteerSpelbord();
 	}	
 	
 	
 	public Spelbord getSpelbord() 
 	{
 		return this.huidigSpelbord;
+	}
+	
+	public List<Spelbord> geefSpelbordenLijst(){
+		return spelbordRepository.geefSpelbordenLijst(naamSpel);
 	}
 	
 	public Spelbord selecteerSpelbord() {

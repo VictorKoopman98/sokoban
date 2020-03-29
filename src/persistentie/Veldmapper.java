@@ -33,7 +33,7 @@ public class Veldmapper
                     
 
                     for(int i = 0; i< 10; i++) {
-                    	for(int j = 0;j<10; j++) {
+                    	for(int j = 0;j<10; j++) { 
                     		int x = rs.getInt("x");
                             int y = rs.getInt("y");
                             boolean isMuur = rs.getBoolean("isMuur");
@@ -41,8 +41,6 @@ public class Veldmapper
                             boolean isMan = rs.getBoolean("isMan");
                             boolean isKist = rs.getBoolean("isKist");
                             velden[i][j] = new Veld(x, y, isMuur, isDoel, isMan, isKist);
-                            
-                            
                     	}
                     }
                 }

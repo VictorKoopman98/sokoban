@@ -18,7 +18,7 @@ public class UC4Test
 	public void voltooiSpelbord()  //methode om het spelbord te voltooien
 	{
 		String richtingMan = "";
-		
+		dc.selecteerSpelbord();
 		
 		dc.toonSpelbord();  //spelbord tonen
 		

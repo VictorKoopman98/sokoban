@@ -106,6 +106,10 @@ public class DomeinController
     	this.spel.toonSpelbord();
     }
     
+    public void selecteerSpelbord() {
+    	this.spel.selecteerSpelbord();
+    }
+    
    
     public void verplaatsMan(String richting) 
     {

@@ -31,15 +31,15 @@ public class Spelbord
 			for (int j = 0; j<10; j++) {
 				
 				
-				if (velden[i][j].isMan()) 
+				if (spelbord[i][j].isMan()) 
 				{
 					man = new Man(velden[i][j]);
 				}
-				else if (velden[i][j].isKist()) 
-				{		
-					Kist kist = new Kist(velden[i][j]);
+				else if (spelbord[i][j].isKist()) 
+				{
+					Kist kist = new Kist(spelbord[i][j]);
 					kisten.add(kist);
-				} 
+				}
 			}
 		}
 	}
@@ -362,9 +362,4 @@ public class Spelbord
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);
 		}
 	}
-	
-	
-	
-	
-
 }
