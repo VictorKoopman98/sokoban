@@ -6,12 +6,13 @@ import domein.DomeinController;
 
 public class UC7Test 
 {
-	private UC8Test uc8test;
 	DomeinController dc;
+	private UC8Test uc8test;
 	
 	public UC7Test(DomeinController dc) 
 	{
 		this.dc = dc;
+		uc8test = new UC8Test(dc);
 	}
 	
 	
