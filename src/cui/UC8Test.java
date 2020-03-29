@@ -20,7 +20,8 @@ public class UC8Test
 		
 		int keuze = toonMogelijkeActies();
 		
-		do {
+		do 
+		{
 			dc.toonSpelbord();
 			
 			System.out.printf("%nGeef de rij van de gewenste wijziging: ");
@@ -34,12 +35,14 @@ public class UC8Test
 			dc.toonSpelbord();
 			
 			keuze = toonMogelijkeActies();
+			
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());
 		
 		System.out.printf("Het spelbord is succesvol afgewerkt.");
 	}
+	
 	
 	private int toonMogelijkeActies() 
 	{
