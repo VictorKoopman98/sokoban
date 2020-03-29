@@ -144,7 +144,7 @@ public class Spel
 	}
 	
 	
-	public Kist[] geefKisten() 
+	public List<Kist> geefKisten() 
 	{
 		return spelbord.getKisten();
 	}

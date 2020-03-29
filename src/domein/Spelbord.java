@@ -2,6 +2,7 @@ package domein;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
 import domein.Veld;
 
@@ -13,7 +14,7 @@ public class Spelbord
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
 	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
-	Kist[] kisten;
+	ArrayList<Kist> kisten = new ArrayList<Kist>();
 	Veld[] veldenVanKisten;
 	Man man;
 	
@@ -25,7 +26,6 @@ public class Spelbord
 		this.aantalVerplaatsingen = 0;
 
 		this.spelbord = velden;
-		int aantalKisten = 0;
 
 		for (int i = 0; i<10; i++) {
 			for (int j = 0; j<10; j++) {
@@ -38,8 +38,7 @@ public class Spelbord
 				else if (velden[i][j].isKist()) 
 				{		
 					Kist kist = new Kist(velden[i][j]);
-					kisten[aantalKisten] = kist;
-					aantalKisten++;
+					kisten.add(kist);
 				}
 
 			}
@@ -61,9 +60,9 @@ public class Spelbord
 
 	public List<Veld> maakVeldenVanKistenLijst() 
 	{
-		for (int i = 0; i<kisten.length;i++) 
+		for (int i = 0; i<kisten.size();i++) 
 		{
-	    	veldenVanKisten[i] = kisten[i].getVeld();
+	    	veldenVanKisten[i] = kisten.get(i).getVeld();
 	    }
 	    List<Veld> veldenVanKistenLijst = Arrays.asList(veldenVanKisten);
 	    return veldenVanKistenLijst;
@@ -77,7 +76,7 @@ public class Spelbord
 	}
 	
 	
-	public Kist[] getKisten() 
+	public List<Kist> getKisten() 
 	{
 		return kisten;
 	}
@@ -87,9 +86,9 @@ public class Spelbord
 	                                      //steek voor elk object de returnwaarde van de methode getVeld in de array'kisten'
 	{
 		
-		for (int i = 0; i < kisten.length; i++) 
+		for (int i = 0; i < kisten.size(); i++) 
 		{
-			this.veldenVanKisten[i] = kisten[i].getVeld();
+			this.veldenVanKisten[i] = kisten.get(i).getVeld();
 		}
 		return veldenVanKisten;
 	}
@@ -161,7 +160,7 @@ public class Spelbord
                  
                 else if (!spelbord[i][j].isDoel() && !spelbord[i][j].isKist()  && !spelbord[i][j].isMan()) 
                 {
-                    output[i][j] = 'N';//Leeg veld(Nothing)
+                    output[i][j] = ' ';//Leeg veld(Nothing)
                 } 
                
                 else if (spelbord[i][j].isKist()) 
@@ -190,11 +189,11 @@ public class Spelbord
     			getMan().setVeld(spelbord[locatieManX][locatieManY-1]);
     			if (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY-1])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) 
+    				for (int i = 0; i < kisten.size(); i++) 
     				{
-    					if (spelbord[locatieManX][locatieManY-1] == kisten[i].getVeld()) 
+    					if (spelbord[locatieManX][locatieManY-1] == kisten.get(i).getVeld()) 
     					{
-    						kisten[i].setVeld(spelbord[locatieManX][locatieManY-2]);
+    						kisten.get(i).setVeld(spelbord[locatieManX][locatieManY-2]);
     					}
     				}
     			}
@@ -204,11 +203,11 @@ public class Spelbord
     			getMan().setVeld(spelbord[locatieManX][locatieManY+1]);
     			if (maakVeldenVanKistenLijst().contains(spelbord[locatieManX][locatieManY+1])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) 
+    				for (int i = 0; i < kisten.size(); i++) 
     				{
-    					if (spelbord[locatieManX][locatieManY+1] == kisten[i].getVeld()) 
+    					if (spelbord[locatieManX][locatieManY+1] == kisten.get(i).getVeld()) 
     					{
-    						kisten[i].setVeld(spelbord[locatieManX][locatieManY+2]);
+    						kisten.get(i).setVeld(spelbord[locatieManX][locatieManY+2]);
     					}
     				}
     			}
@@ -218,11 +217,11 @@ public class Spelbord
     			getMan().setVeld(spelbord[locatieManX-1][locatieManY]);
     			if (maakVeldenVanKistenLijst().contains(spelbord[locatieManX-1][locatieManY])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) 
+    				for (int i = 0; i < kisten.size(); i++) 
     				{
-    					if (spelbord[locatieManX-1][locatieManY] == kisten[i].getVeld()) 
+    					if (spelbord[locatieManX-1][locatieManY] == kisten.get(i).getVeld()) 
     					{
-    						kisten[i].setVeld(spelbord[locatieManX-2][locatieManY]);
+    						kisten.get(i).setVeld(spelbord[locatieManX-2][locatieManY]);
     					}
     				}
     			}
@@ -232,11 +231,11 @@ public class Spelbord
     			getMan().setVeld(spelbord[locatieManX+1][locatieManY]);
     			if (maakVeldenVanKistenLijst().contains(spelbord[locatieManX+1][locatieManY])) 
     			{
-    				for (int i = 0; i < kisten.length; i++) 
+    				for (int i = 0; i < kisten.size(); i++) 
     				{
-    					if (spelbord[locatieManX+1][locatieManY] == kisten[i].getVeld()) 
+    					if (spelbord[locatieManX+1][locatieManY] == kisten.get(i).getVeld()) 
     					{
-    						kisten[i].setVeld(spelbord[locatieManX+2][locatieManY]);
+    						kisten.get(i).setVeld(spelbord[locatieManX+2][locatieManY]);
     					}
     				}
     			}
@@ -353,7 +352,8 @@ public class Spelbord
 		}
 		else if (actie == 4) 
 		{
-			kisten[kisten.length] = new Kist(spelbord[x][y]);
+			Kist kist = new Kist(spelbord[x][y]);
+			kisten.add(kist);
 			spelbord[x][y].setIsKist(true);
 		}
 		else if (actie == 5) 
@@ -362,7 +362,7 @@ public class Spelbord
 		}
 	}
 	
-
+	
 	
 	
 

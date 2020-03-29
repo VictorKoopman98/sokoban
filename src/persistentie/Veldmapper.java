@@ -15,7 +15,7 @@ import domein.Spelbord;
 
 public class Veldmapper
 {
-	private static final String INSERT_VELDEN = "INSERT INTO ID222177.g39.Veld (volgnummer, naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
+	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (volgnummer, naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
      
@@ -40,20 +40,9 @@ public class Veldmapper
                             boolean isDoel = rs.getBoolean("isDoel");
                             boolean isMan = rs.getBoolean("isMan");
                             boolean isKist = rs.getBoolean("isKist");
-                            velden[i][j] = new Veld(x, y, false, false, false, false);
+                            velden[i][j] = new Veld(x, y, isMuur, isDoel, isMan, isKist);
                             
-                            if(isMuur) {
-                            	velden[i][j].setIsMuur(true);
-                            }
-                            else if(isDoel) {
-                            	velden[i][j].setIsDoel(true);
-                            }
-                            if(isMan) {
-                            	velden[i][j].setIsMan(true);
-                            }
-                            if (isKist) {
-                            	velden[i][j].setIsKist(true);
-                            }
+                            
                     	}
                     }
                 }
@@ -150,7 +139,6 @@ public class Veldmapper
                     } else if (velden[i][j].isMan()) {
                         isMan = true;
                     } else if (velden[i][j].isKist()) {
-
                         isKist = true;
                     } //volgnummer, spelnaam, x, y, isDoel, isMuur, isMan, isKist, 
                     query.setInt(1, volgnummer);

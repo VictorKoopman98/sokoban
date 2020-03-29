@@ -19,6 +19,7 @@ public class UC4Test
 	{
 		String richtingMan = "";
 		
+		
 		dc.toonSpelbord();  //spelbord tonen
 		
 		int actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
