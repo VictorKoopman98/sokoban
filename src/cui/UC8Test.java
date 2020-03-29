@@ -47,7 +47,7 @@ public class UC8Test
 	private int toonMogelijkeActies() 
 	{
 		Scanner input = new Scanner(System.in);
-
+        
 		System.out.printf("%nDe mogelijke acties zijn:%n"
 				+ "1: Maak een doel%n"
 				+ "2: Maak een muur%n"
@@ -55,7 +55,8 @@ public class UC8Test
 				+ "4: Zet een kist%n"
 				+ "5: Maak het veld leeg%n"
 				+ "6: Stop wijzigen%n");
-
+        
+		
 		System.out.printf("Geef uw keuze: ");
 		int keuze = input.nextInt();
 		return keuze;
