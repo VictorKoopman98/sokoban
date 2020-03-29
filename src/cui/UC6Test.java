@@ -35,7 +35,7 @@ public class UC6Test
 			
 			System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
 			int y = input.nextInt();
-			
+			System.out.println();
 			dc.wijzigSpelbord(x-1, y-1, keuze);	
 			
 			dc.toonSpelbord();

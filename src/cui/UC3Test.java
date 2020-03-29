@@ -87,7 +87,7 @@ public class UC3Test
 			{
 				System.out.printf("%n-----------------------------%n 1. Voltooi volgend spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
 				keuze = input.nextInt();
-				
+				System.out.println();
 				if (keuze > 0 && keuze < 3) 
 				{
 					blijvenHerhalen = false;

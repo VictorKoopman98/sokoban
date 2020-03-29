@@ -63,7 +63,7 @@ public class UC5Test
 		
 		dc.selecteerSpel(spelnaam);
 		
-		System.out.printf("%s is aangemaakt met %d spelborden.", dc.geefNaamSpel(), aantalSpelborden);
+		System.out.printf("%s is aangemaakt met %d %s", dc.geefNaamSpel(), aantalSpelborden, aantalSpelborden <= 1 ? "spelbord" : "spelborden");
 			
 	}
 	

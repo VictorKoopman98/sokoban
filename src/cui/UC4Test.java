@@ -81,6 +81,7 @@ public class UC4Test
 				System.out.print("Geef uw nummer in: ");
 		
 				keuze = input.nextInt();
+				System.out.println();
 				if (keuze > 0 && keuze < 4) {
 					blijvenHerhalen = false;
 				}
@@ -114,6 +115,7 @@ public class UC4Test
 				
 				System.out.print("Geef uw nummer in: ");
 				keuze = input.nextInt();
+				System.out.println();
 				if (keuze > 0 && keuze < 5) {
 					blijvenHerhalen = false;
 					

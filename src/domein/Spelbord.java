@@ -147,19 +147,20 @@ public class Spelbord
                     output[i][j] = 'M';//veld dat een man bevat (Man)
 
                 } 
-                else if (spelbord[i][j].isDoel() && !spelbord[i][j].isMan()) 
-                {
-                    output[i][j] = 'G';//veld met doel(Goal)
-                }
+                
                 
                 else if (spelbord[i][j].isDoel() && spelbord[i][j].isKist()) 
                 {
                     output[i][j] = 'F'; //veld met een doel en een kist op is F (Finished)
                 } 
+                else if (spelbord[i][j].isDoel() && !spelbord[i][j].isMan()) 
+                {
+                    output[i][j] = 'G';//veld met doel(Goal)
+                }
                  
                 else if (!spelbord[i][j].isDoel() && !spelbord[i][j].isKist()  && !spelbord[i][j].isMan()) 
                 {
-                    output[i][j] = 'N';//Leeg veld(Nothing)
+                    output[i][j] = ' ';//Leeg veld(Nothing)
                 } 
                
                 else if (spelbord[i][j].isKist()) 
@@ -188,6 +189,8 @@ public class Spelbord
     		if (richting == "links") 
     		{
     			getMan().setVeld(spelbord[locatieManX][locatieManY-1]);
+    			spelbord[locatieManX][locatieManY].setIsMan(false);
+    			spelbord[locatieManX][locatieManY-1].setIsMan(true);
     			if (spelbord[locatieManX][locatieManY-1].isKist()) 
     			{
     				for (int i = 0; i < kisten.size(); i++) 
@@ -204,6 +207,8 @@ public class Spelbord
     		else if (richting == "rechts") 
     		{
     			getMan().setVeld(spelbord[locatieManX][locatieManY+1]);
+    			spelbord[locatieManX][locatieManY].setIsMan(false);
+    			spelbord[locatieManX][locatieManY+1].setIsMan(true);
     			if (spelbord[locatieManX][locatieManY+1].isKist()) 
     			{
     				for (int i = 0; i < kisten.size(); i++) 
@@ -220,6 +225,8 @@ public class Spelbord
     		else if (richting == "omhoog") 
     		{
     			getMan().setVeld(spelbord[locatieManX-1][locatieManY]);
+    			spelbord[locatieManX][locatieManY].setIsMan(false);
+    			spelbord[locatieManX-1][locatieManY].setIsMan(true);
     			if (spelbord[locatieManX-1][locatieManY].isKist()) 
     			{
     				for (int i = 0; i < kisten.size(); i++) 
@@ -236,6 +243,8 @@ public class Spelbord
     		else if (richting == "omlaag") 
     		{
     			getMan().setVeld(spelbord[locatieManX+1][locatieManY]);
+    			spelbord[locatieManX][locatieManY].setIsMan(false);
+    			spelbord[locatieManX+1][locatieManY].setIsMan(true);
     			if (spelbord[locatieManX+1][locatieManY].isKist()) 
     			{
     				for (int i = 0; i < kisten.size(); i++) 
