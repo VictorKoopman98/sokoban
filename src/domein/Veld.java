@@ -34,7 +34,7 @@ public class Veld
 	
 	public boolean isKist() 
 	{
-		return isKist;
+		return isKist; 
 	}
 	
 	

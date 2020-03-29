@@ -18,8 +18,14 @@ public class Veldmapper
 	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (volgnummer, naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
+//	public static void main(String[] args) {
+//		Veld[][] velden = geefVelden(1, "DEMO");
+//		
+//	}
+	
+	
      
-	public Veld[][] geefVelden(int volgnummer, String spelnaam) 
+	public static Veld[][] geefVelden(int volgnummer, String spelnaam) 
 	{
         Veld[][] velden = new Veld[10][10];
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
@@ -32,17 +38,16 @@ public class Veldmapper
                 while (rs.next()) {
                     
 
-                    for(int i = 0; i< 10; i++) {
-                    	for(int j = 0;j<10; j++) { 
-                    		int x = rs.getInt("x");
-                            int y = rs.getInt("y");
-                            boolean isMuur = rs.getBoolean("isMuur");
-                            boolean isDoel = rs.getBoolean("isDoel");
-                            boolean isMan = rs.getBoolean("isMan");
-                            boolean isKist = rs.getBoolean("isKist");
-                            velden[i][j] = new Veld(x, y, isMuur, isDoel, isMan, isKist);
-                    	}
-                    }
+            
+            		int x = rs.getInt("x");
+                    int y = rs.getInt("y");
+                    boolean isDoel = rs.getBoolean("isMuur");
+                    boolean isMuur = rs.getBoolean("isDoel");
+                    boolean isMan = rs.getBoolean("isMan");
+                    boolean isKist = rs.getBoolean("isKist");
+                    velden[x][y] = new Veld(x, y, isMuur, isDoel, isMan, isKist);
+            	
+            
                 }
             }
         } catch (SQLException ex) {
