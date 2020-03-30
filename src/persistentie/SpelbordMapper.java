@@ -75,18 +75,18 @@ public class SpelbordMapper
     //Methode om een bepaald spelbord uit de databank te verwijderen 
     //spelnaam unieke identiteit van het spelbord dat moet verwijderd worden
     
-    public void verwijderSpelbord(int volgnummer,String naamSpel) 
-    {
-        //vm.deleteVelden(volgnummer);
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
-            query.setInt(1, volgnummer);
-            query.setString(2, naamSpel);
-            query.executeUpdate();
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+//    public void verwijderSpelbord(int volgnummer,String naamSpel) 
+//    {
+//        //vm.deleteVelden(volgnummer);
+//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+//            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
+//            query.setInt(1, volgnummer);
+//            query.setString(2, naamSpel);
+//            query.executeUpdate();
+//        } catch (SQLException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
 
     
     //Methode om een spelbord toe te voegen aan een bepaald spel in een databank

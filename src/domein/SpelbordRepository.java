@@ -47,12 +47,12 @@ public class SpelbordRepository
 	}
 	
 	
-	public void verwijderSpelbord(int volgnummer, String naamSpel) 
-	{
-		this.spelborden.remove(this.spelbord);
-		spelbordMapper.verwijderSpelbord(volgnummer, naamSpel);
-	}
-	
-	
+//	public void verwijderSpelbord(int volgnummer, String naamSpel) 
+//	{
+//		this.spelborden.remove(this.spelbord);
+//		spelbordMapper.verwijderSpelbord(volgnummer, naamSpel);
+//	}
+//	
+//	
 	
 }

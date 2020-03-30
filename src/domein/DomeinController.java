@@ -208,10 +208,10 @@ public class DomeinController
     }
     
     
-    public void verwijderSpelbord(int volgnummer, String naamSpel) 
-    {
-		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
-	}
+//    public void verwijderSpelbord(int volgnummer, String naamSpel) 
+//    {
+//		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
+//	}
     
     
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen

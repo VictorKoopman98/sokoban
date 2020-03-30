@@ -14,12 +14,12 @@ public class UC6Test
 	}
 
 	
-	public void maakNieuwSpelbord() 
+	public void maakNieuwSpelbord(int volgnummer) 
 	{
 		Scanner input = new Scanner(System.in);
 		
-		System.out.printf("%nGeef het volgnummer van het spelbord in: ");
-		int volgnummer = input.nextInt();
+//		System.out.printf("%nGeef het volgnummer van het spelbord in: ");
+//		int volgnummer = input.nextInt();
 		
 		System.out.println();
 

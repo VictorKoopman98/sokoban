@@ -15,7 +15,7 @@ import domein.Spelbord;
 
 public class Veldmapper
 {
-	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (volgnummer, naamSpel, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
+	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (naamSpel, volgnummer, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
 //	public static void main(String[] args) {
@@ -29,11 +29,11 @@ public class Veldmapper
 	{
         Veld[][] velden = new Veld[10][10];
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (volgnummer = ? AND naamSpel = ?)"))
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Veld WHERE (naamSpel = ? AND volgnummer = ?)"))
         {
             
-            query.setInt(1, volgnummer);
-            query.setString(2, spelnaam);
+            query.setString(1, spelnaam);
+            query.setInt(2, volgnummer);
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
                     
@@ -144,8 +144,8 @@ public class Veldmapper
                     } else if (velden[i][j].isKist()) {
                         isKist = true;
                     } //volgnummer, spelnaam, x, y, isDoel, isMuur, isMan, isKist, 
-                    query.setInt(1, volgnummer);
-                    query.setString(2, spelnaam);
+                    query.setString(1, spelnaam);
+                    query.setInt(2, volgnummer);
                     query.setInt(3, i);
                     query.setInt(4, j);
                     query.setBoolean(5, isDoel);

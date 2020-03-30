@@ -35,7 +35,7 @@ public class UC5Test
 				
 				dc.selecteerSpel(spelnaam);
 				
-				uc6test.maakNieuwSpelbord();
+				uc6test.maakNieuwSpelbord(aantalSpelborden+1);
 				aantalSpelborden++;
 				
 				int actie = toonActies();
@@ -43,7 +43,7 @@ public class UC5Test
 				do {
 					if (actie == 1) 
 					{
-						uc6test.maakNieuwSpelbord();
+						uc6test.maakNieuwSpelbord(aantalSpelborden+1);
 						aantalSpelborden++;
 						
 						actie = toonActies();
