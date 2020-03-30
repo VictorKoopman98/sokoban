@@ -26,22 +26,27 @@ public class UC8Test
 		
 		dc.toonSpelbord();
 		
-		keuze = toonMogelijkeActies();
+	
 		
 		do {
 			try 
 			{
-				System.out.printf("%nGeef de rij van de gewenste wijziging: ");
-				int x = input.nextInt();
+				keuze = toonMogelijkeActies();	
 				
-				System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
-				int y = input.nextInt();
+				if (keuze != 6) {
+					System.out.printf("%nGeef de rij van de gewenste wijziging: ");
+					int x = input.nextInt();
+					
+					System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
+					int y = input.nextInt();
+					
+					dc.wijzigSpelbord(x-1, y-1, keuze);
+					
+					dc.toonSpelbord();
+				}
 				
-				dc.wijzigSpelbord(x-1, y-1, keuze);
 				
-				dc.toonSpelbord();
 				
-				keuze = toonMogelijkeActies();		
 			}
 			catch(IllegalArgumentException e)
 			{

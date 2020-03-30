@@ -57,6 +57,7 @@ public class UC7Test
 
 					System.out.printf("%nGeef uw keuze in: ");
 					gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+					System.out.println();
 					volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
 					
 				}catch(IllegalArgumentException e) 

@@ -124,7 +124,7 @@ public class Veldmapper
 	 public void updateVelden(Veld[][] velden, int volgnummer, String spelnaam) 
 	    {
 	            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-	            		PreparedStatement query = conn.prepareStatement("UPDATE veld SET (isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?) is WHERE naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?")) {
+	            		PreparedStatement query = conn.prepareStatement("UPDATE ID222177_g39.Veld SET (isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?) WHERE (naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?)")) {
 	            
 	                   
 	            for (int i = 0; i < velden.length; i++) {
@@ -142,14 +142,15 @@ public class Veldmapper
 	                    } else if (velden[i][j].isKist()) {
 	                        isKist = true;
 	                    }  
-	                    query.setString(1, spelnaam);
-	                    query.setInt(2, volgnummer);
-	                    query.setInt(3, i);
-	                    query.setInt(4, j);
-	                    query.setBoolean(5, isDoel);
-	                    query.setBoolean(6, isMuur);
-	                    query.setBoolean(7, isMan);
-	                    query.setBoolean(8, isKist);
+	                    
+	                    query.setBoolean(1, isDoel);
+	                    query.setBoolean(2, isMuur);
+	                    query.setBoolean(3, isMan);
+	                    query.setBoolean(4, isKist);
+	                    query.setString(5, spelnaam);
+	                    query.setInt(6, volgnummer);
+	                    query.setInt(7, i);
+	                    query.setInt(8, j);
 	                    query.executeUpdate(); 
 	                }
 	            }
