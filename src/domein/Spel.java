@@ -37,6 +37,7 @@ public class Spel
 		for (int i = 0; i<spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) {
 			if (!spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getIsVoltooid()) {
 				huidigSpelbord = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i);
+				break;
 			}
 		}
 	}

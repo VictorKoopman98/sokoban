@@ -14,7 +14,7 @@ public class UC8Test
 	}
 	
 	
-	public void wijzigSpelbord()
+	public void wijzigSpelbord(String spelnaam)
 	{
 		Scanner input = new Scanner(System.in);
 		
@@ -22,6 +22,7 @@ public class UC8Test
 		
 		do 
 		{
+			
 			dc.toonSpelbord();
 			
 			System.out.printf("%nGeef de rij van de gewenste wijziging: ");
