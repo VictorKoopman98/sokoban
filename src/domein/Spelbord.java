@@ -45,7 +45,7 @@ public class Spelbord
 	}
 	
 	
-	public int getVolgnummer() 
+	public int getVolgnummer()  
 	{
 		return this.volgnummer;
 	}
@@ -61,7 +61,7 @@ public class Spelbord
 	{
 		for (int i = 0; i<kisten.size();i++) 
 		{
-	    	veldenVanKisten[i] = kisten.get(i).getVeld();
+	    	veldenVanKisten[i] = kisten.get(i).getVeld(); 
 	    }
 	    List<Veld> veldenVanKistenLijst = Arrays.asList(veldenVanKisten);
 	    return veldenVanKistenLijst;
@@ -155,7 +155,7 @@ public class Spelbord
                 }
                 else if (!spelbord[i][j].isDoel() && !spelbord[i][j].isKist()  && !spelbord[i][j].isMan()) 
                 {
-                    output[i][j] = ' ';//Leeg veld(Nothing)
+                    output[i][j] = '.';//Leeg veld(Nothing)
                 } 
                 else if (spelbord[i][j].isKist()) 
                 {

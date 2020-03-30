@@ -28,7 +28,7 @@ public class UC5Test
 			try 
 			{
 				System.out.printf("%nGeef de spelnaam van het nieuwe spel: ");
-				spelnaam = input.next();
+				spelnaam = input.nextLine();
 				
 				dc.maakNieuwSpel(spelnaam);
 				blijvenHerhalenFlag = false;

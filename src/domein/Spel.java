@@ -20,7 +20,7 @@ public class Spel
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
 		
-		selecteerSpelbord(naamSpel);
+		selecteerSpelbord(naamSpel); 
 	}	
 	
 	
@@ -34,7 +34,7 @@ public class Spel
 	}
 	
 	public void selecteerSpelbord(String spelnaam) {
-		for (int i = 0; i<spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) {
+		for (int i = 0; i<spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) { 
 			if (!spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getIsVoltooid()) {
 				huidigSpelbord = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i);
 				break;
@@ -104,10 +104,10 @@ public class Spel
 	{
 		if (naam == null || naam.length() == 0)
 		{ 
-		    throw new OngeldigeSpelnaamException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
+		    throw new IllegalArgumentException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
 		} else if (bevatSpatie(naam) == true)
 		{
-		    throw new OngeldigeSpelnaamException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
+		    throw new IllegalArgumentException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
 		}
 		else 
 		{
