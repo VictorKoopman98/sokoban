@@ -65,7 +65,7 @@ public class Speler
     {
 		if (gebruikersnaam == null || gebruikersnaam.length() == 0)
 		{
-		    throw new OngeldigGebruikersnaamException("Gebruikersnaam is verplicht in te vullen.");   //exception gooien als beruikersnaam niet is ingevuld
+		    throw new IllegalArgumentException("Gebruikersnaam is verplicht in te vullen.");   //exception gooien als beruikersnaam niet is ingevuld
 		} else if (gebruikersnaam.length() < 8)
 		{
 		    throw new OngeldigGebruikersnaamException("Gebruikersnaam is minstens 8 tekens lang");    //exception gooien als gebruikersnaam te kort is

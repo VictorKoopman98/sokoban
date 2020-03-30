@@ -10,4 +10,9 @@ public class OngeldigWachtwoordException extends RuntimeException
 		
 	}
 	
+	public OngeldigWachtwoordException()
+	{
+		
+	}
+	
 }
