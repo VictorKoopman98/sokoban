@@ -370,9 +370,10 @@ public class Spelbord
 			spelbord[x][y].setIsMuur(true);
 		}
 		else if (actie == 3) 
-		{
-			this.man = new Man(spelbord[x][y]);
-			spelbord[x][y].setIsMan(true);
+		{	
+			if (this.man != null) {
+				throw new IllegalArgumentException("Een spelbord kan slechts 1 man bevatten!");
+			}
 		}
 		else if (actie == 4) 
 		{
@@ -383,6 +384,19 @@ public class Spelbord
 		else if (actie == 5) 
 		{
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);
+		}
+		else if ( actie == 6) {
+			int aantalDoelen = 0;
+			for (int i = 0; i<10;i++) {
+				for (int j = 0; j<10;j++) {
+					if(spelbord[i][j].isDoel()) {
+						aantalDoelen++;
+					}
+				}
+			}
+			if(kisten.size() != aantalDoelen) {
+				throw new IllegalArgumentException("Het aantal kisten moet gelijk zijn aan het aantal doelen!");
+			}
 		}
 	}
 }
