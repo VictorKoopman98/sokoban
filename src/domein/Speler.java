@@ -68,7 +68,7 @@ public class Speler
 		    throw new IllegalArgumentException("Gebruikersnaam is verplicht in te vullen.");   //exception gooien als beruikersnaam niet is ingevuld
 		} else if (gebruikersnaam.length() < 8)
 		{
-		    throw new OngeldigGebruikersnaamException("Gebruikersnaam is minstens 8 tekens lang");    //exception gooien als gebruikersnaam te kort is
+		    throw new IllegalArgumentException("Gebruikersnaam is minstens 8 tekens lang");    //exception gooien als gebruikersnaam te kort is
 		}else 
 		{
 		this.gebruikersnaam = gebruikersnaam;
@@ -80,10 +80,10 @@ public class Speler
     {
 		if (wachtwoord == null || wachtwoord.length() == 0)
 		{
-		    throw new OngeldigWachtwoordException("Wachtwoord is verplicht in te vullen.");   //exception gooien als wachtwoord neit ingevuld is
+		    throw new IllegalArgumentException("Wachtwoord is verplicht in te vullen.");   //exception gooien als wachtwoord neit ingevuld is
 		} else if (isCorrectWachtwoord(wachtwoord) == false)
 		{
-		    throw new OngeldigWachtwoordException("Wachtwoord is minstens 8 tekens lang en heeft minstens 1 hoofdletter, 1 kleine letter en 1 cijfer");   //exception gooien als wachtwoord niet klopt => zie tekst
+		    throw new IllegalArgumentException("Wachtwoord is minstens 8 tekens lang en heeft minstens 1 hoofdletter, 1 kleine letter en 1 cijfer");   //exception gooien als wachtwoord niet klopt => zie tekst
 		} else 
 		{
 		this.wachtwoord = wachtwoord;

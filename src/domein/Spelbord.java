@@ -349,7 +349,11 @@ public class Spelbord
 //				+ "4: Zet een kist%n"
 //				+ "5: Maak het veld leeg%n"
 //				+ "6: Stop wijzigen"
-		if (actie == 1) 
+		if(actie < 1 || actie > 6 || actie == (int)actie)
+		{
+			throw new IllegalArgumentException("ongeldige actie!");
+		}
+		else if(actie == 1) 
 		{
 			spelbord[x][y].setIsDoel(true);
 		}

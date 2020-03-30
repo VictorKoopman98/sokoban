@@ -30,18 +30,23 @@ public class UC6Test
 		int keuze = toonMogelijkeActies();
 		
 		do {
-			System.out.printf("%nGeef de rij van de gewenste wijziging: ");
-			int x = input.nextInt();
-			
-			System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
-			int y = input.nextInt();
-			System.out.println();
-			dc.wijzigSpelbord(x-1, y-1, keuze);	
-			
-			dc.toonSpelbord();
-			
-			keuze = toonMogelijkeActies();
-	
+			try{
+				System.out.printf("%nGeef de rij van de gewenste wijziging: ");
+				int x = input.nextInt();
+				
+				System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
+				int y = input.nextInt();
+				System.out.println();
+				dc.wijzigSpelbord(x-1, y-1, keuze);	
+				
+				dc.toonSpelbord();
+				
+				keuze = toonMogelijkeActies();
+			}
+			catch(IllegalArgumentException e)
+			{
+				System.err.println(e);
+			}
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());	
