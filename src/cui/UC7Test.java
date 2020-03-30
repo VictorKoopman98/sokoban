@@ -29,7 +29,7 @@ public class UC7Test
 		do {
 			for(int i = 0; i < spelletjes.length; i++)
 			{
-				System.out.printf("%nSpelletjes: %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				System.out.printf("%nSpelletje %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 			}
 
 			System.out.printf("%nGeef uw keuze in: ");
@@ -41,35 +41,60 @@ public class UC7Test
 		dc.selecteerSpel(spelnaam);
 		
 		int[] volgnummersSpelborden = dc.geefVolgnummerSpelborden(spelnaam);
-	
+		
+		int keuze;
+		
 		do {
-			try {
+			do {
+				try {
 
-				for(int i = 0; i < volgnummersSpelborden.length; i++)
+					for(int i = 0; i < volgnummersSpelborden.length; i++)
+					{
+						
+						System.out.printf("%nSpelbord %d:%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+						
+					}
+
+					System.out.printf("%nGeef uw keuze in: ");
+					gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+					volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
+					
+				}catch(IllegalArgumentException e) 
 				{
-					
-					System.out.printf("%nSpelborden: %d: %d%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
-					
+					System.err.println(e);
 				}
-
-				System.out.printf("%nGeef uw keuze in: ");
-				gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
-				volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
-				
-			}catch(IllegalArgumentException e) {
-				System.err.println(e);
-			}
-		}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
+			}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
+			
+			uc8test.wijzigSpelbord(spelnaam, volgnummer);
+			
+			keuze = toonActies();
+			
+		}while(keuze != 2);
+		
 		
 		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d aantal spelborden", spelnaam, dc.geefAantalSpelborden());
+	}
+	
+	private int toonActies() 
+	{
+		Scanner input = new Scanner(System.in);
+		
+		System.out.printf("%n-----------------------------%n 1. Wijzig een spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
+		int keuze = input.nextInt();
+		
+		System.out.println();
+		
+		return keuze;
 	}
 	
 	
 	private boolean checkVolgnummerOk(int volgnummer, int[] volgnummersSpelborden) 
 	{
         boolean volgnummerOk = false; 
-        for (int element : volgnummersSpelborden) { 
-            if (element == volgnummer) { 
+        for (int element : volgnummersSpelborden) 
+        { 
+            if (element == volgnummer) 
+            { 
                 volgnummerOk = true; 
                 break; 
             } 
@@ -78,8 +103,5 @@ public class UC7Test
 	}
 	
 	
-	public void verwijderSpel()
-	{
-		
-	}
+	
 }

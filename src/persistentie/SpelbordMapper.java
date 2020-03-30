@@ -44,6 +44,31 @@ public class SpelbordMapper
         }
         return spelbord;
     }
+    
+    
+    public Spelbord geefSpelbordMetVolgnummer(int volgnummer, String spelnaam)   
+    {
+        Spelbord spelbord = null;
+        Veld[][] velden;
+        
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE naamSpel = ?")) {
+            
+            query.setString(1, spelnaam);
+            try (ResultSet rs = query.executeQuery()) 
+            {
+                while (rs.next()) 
+                {
+                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    spelbord = new Spelbord(volgnummer, velden);
+                }
+            }
+        } catch (SQLException ex) 
+        {
+            throw new RuntimeException(ex);
+        }
+        return spelbord;
+    }
 
     
     //Methode om een lijst van spelborden uit de databank te halen die horen bij een bepaald spel
@@ -109,5 +134,12 @@ public class SpelbordMapper
         vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam);
 
     }
+    
+    
+    public void updateSpelbord(Spelbord spelbord, String spelnaam)
+    {
+    	vm.updateVelden(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam);
+    }
+    
     
 }

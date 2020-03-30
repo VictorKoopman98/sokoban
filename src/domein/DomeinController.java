@@ -217,7 +217,7 @@ public class DomeinController
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
     {
     	
-          int [] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
+          int[] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
           
           for(int i = 0; i < spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) 
           {
@@ -225,6 +225,20 @@ public class DomeinController
           }
           
           return namen;
+    }
+    
+    
+    public void selecteerSpelbordMetVolgnummer(int volgnummer, String spelnaam)
+    {
+    	
+    	Spelbord spelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
+    	spel.setHuidigSpelbord(spelbord);
+    	
+    }
+    
+    public void updateSpelbord(Spelbord spelbord, String spelnaam)
+    {
+    	spelbordRepository.updateSpelbord(spelbord, spelnaam);
     }
     
 

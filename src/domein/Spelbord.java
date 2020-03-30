@@ -349,9 +349,9 @@ public class Spelbord
 //				+ "4: Zet een kist%n"
 //				+ "5: Maak het veld leeg%n"
 //				+ "6: Stop wijzigen"
-		if(actie < 1 || actie > 6 || actie == (int)actie)
+		if(actie < 1 || actie > 6 || actie != (int)actie)
 		{
-			throw new IllegalArgumentException("ongeldige actie!");
+			throw new IllegalArgumentException("Ongeldige actie!");
 		}
 		if(x < 0 || x > 9)
 		{
@@ -371,9 +371,12 @@ public class Spelbord
 		}
 		else if (actie == 3) 
 		{	
-			if (this.man != null) {
+			if (this.man != null) 
+			{
 				throw new IllegalArgumentException("Een spelbord kan slechts 1 man bevatten!");
 			}
+			this.man = new Man(spelbord[x][y]);
+            spelbord[x][y].setIsMan(true);
 		}
 		else if (actie == 4) 
 		{
@@ -385,16 +388,19 @@ public class Spelbord
 		{
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);
 		}
-		else if ( actie == 6) {
+		else if ( actie == 6) 
+		{
 			int aantalDoelen = 0;
 			for (int i = 0; i<10;i++) {
 				for (int j = 0; j<10;j++) {
-					if(spelbord[i][j].isDoel()) {
+					if(spelbord[i][j].isDoel()) 
+					{
 						aantalDoelen++;
 					}
 				}
 			}
-			if(kisten.size() != aantalDoelen) {
+			if(kisten.size() != aantalDoelen) 
+			{
 				throw new IllegalArgumentException("Het aantal kisten moet gelijk zijn aan het aantal doelen!");
 			}
 		}

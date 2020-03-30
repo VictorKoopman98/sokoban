@@ -84,7 +84,7 @@ public class Veldmapper
 //
 //        for (int i = 0; i < velden.length; i++) {
 //            for (int j = 0; j < velden[i].length; j++) {
-//                if (velden[i][j] == null) {
+//                if (velden[i][j].isMuur) {
 //                    str[i][j] = "Muur";
 //                } else if (velden[i][j].isDoel() == true) {
 //                    str[i][j] = "DoelVeld";
@@ -113,10 +113,51 @@ public class Veldmapper
 //                    query.executeUpdate();
 //                }
 //            }
-//        } catch (SQLException ex) {
+//        } catch (SQLException ex) 
+//        {
 //            throw new RuntimeException(ex);
 //        }
 //    }
+	
+	
+	
+	 public void updateVelden(Veld[][] velden, int volgnummer, String spelnaam) 
+	    {
+	            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+	            		PreparedStatement query = conn.prepareStatement("UPDATE veld SET (isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?) is WHERE naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?")) {
+	            
+	                   
+	            for (int i = 0; i < velden.length; i++) {
+	                for (int j = 0; j < velden[i].length; j++) {
+	                	boolean isDoel = false;
+	                	boolean isMuur = false;
+	                	boolean isMan = false;
+	                	boolean isKist = false;
+	                    if (velden[i][j].isMuur()) {
+	                        isMuur = true;
+	                    } else if (velden[i][j].isDoel()) {
+	                        isDoel = true;
+	                    } else if (velden[i][j].isMan()) {
+	                        isMan = true;
+	                    } else if (velden[i][j].isKist()) {
+	                        isKist = true;
+	                    }  
+	                    query.setString(1, spelnaam);
+	                    query.setInt(2, volgnummer);
+	                    query.setInt(3, i);
+	                    query.setInt(4, j);
+	                    query.setBoolean(5, isDoel);
+	                    query.setBoolean(6, isMuur);
+	                    query.setBoolean(7, isMan);
+	                    query.setBoolean(8, isKist);
+	                    query.executeUpdate(); 
+	                }
+	            }
+	            
+	        } catch (SQLException ex) {
+	            throw new RuntimeException(ex);
+	        }
+	    }
 
     //Methode om velden in de databank toe te voegen die horen bij een spelbord
     //velden object van de klasse Veld
@@ -143,7 +184,7 @@ public class Veldmapper
                         isMan = true;
                     } else if (velden[i][j].isKist()) {
                         isKist = true;
-                    } //volgnummer, spelnaam, x, y, isDoel, isMuur, isMan, isKist, 
+                    }  
                     query.setString(1, spelnaam);
                     query.setInt(2, volgnummer);
                     query.setInt(3, i);

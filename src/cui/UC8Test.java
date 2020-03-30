@@ -14,34 +14,45 @@ public class UC8Test
 	}
 	
 	
-	public void wijzigSpelbord(String spelnaam)
+	public void wijzigSpelbord(String spelnaam, int volgnummer)
 	{
 		Scanner input = new Scanner(System.in);
 		
-		int keuze = toonMogelijkeActies();
+		int keuze = 0;
 		
-		do 
-		{
-			
-			dc.toonSpelbord();
-			
-			System.out.printf("%nGeef de rij van de gewenste wijziging: ");
-			int x = input.nextInt();
-			
-			System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
-			int y = input.nextInt();
-			
-			dc.wijzigSpelbord(x-1, y-1, keuze);
-			
-			dc.toonSpelbord();
-			
-			keuze = toonMogelijkeActies();
+		dc.selecteerSpel(spelnaam);
+		
+		dc.selecteerSpelbordMetVolgnummer(volgnummer, spelnaam);
+		
+		dc.toonSpelbord();
+		
+		keuze = toonMogelijkeActies();
+		
+		do {
+			try 
+			{
+				System.out.printf("%nGeef de rij van de gewenste wijziging: ");
+				int x = input.nextInt();
+				
+				System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
+				int y = input.nextInt();
+				
+				dc.wijzigSpelbord(x-1, y-1, keuze);
+				
+				dc.toonSpelbord();
+				
+				keuze = toonMogelijkeActies();		
+			}
+			catch(IllegalArgumentException e)
+			{
+				System.err.println(e);
+			}
 			
 		}while (keuze != 6);
 		
-		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());
+		dc.updateSpelbord(dc.geefSpelbord(), dc.geefNaamSpel());
 		
-		System.out.printf("Het spelbord is succesvol afgewerkt.");
+		System.out.printf("Het spelbord is succesvol bijgewerkt.");
 	}
 	
 	
@@ -60,6 +71,7 @@ public class UC8Test
 		
 		System.out.printf("Geef uw keuze: ");
 		int keuze = input.nextInt();
+		
 		return keuze;
 	}
 }

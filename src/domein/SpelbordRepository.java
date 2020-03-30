@@ -46,6 +46,16 @@ public class SpelbordRepository
 		return spelbordMapper.geefSpelborden(spelnaam); 
 	}
 	
+	public Spelbord geefSpelbordMetVolgnummer(int volgnummer, String spelnaam)
+	{
+		return spelbordMapper.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
+	}
+	
+	
+	public void updateSpelbord(Spelbord spelbord, String spelnaam)
+	{
+		spelbordMapper.updateSpelbord(spelbord, spelnaam);
+	}
 	
 //	public void verwijderSpelbord(int volgnummer, String naamSpel) 
 //	{

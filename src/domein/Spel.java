@@ -195,4 +195,9 @@ public class Spel
 	{
 		this.huidigSpelbord.wijzigSpelbord(x, y, actie);
 	}
+	
+	public void setHuidigSpelbord(Spelbord spelbord)
+	{
+		huidigSpelbord = spelbord;
+	}
 }
