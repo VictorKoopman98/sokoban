@@ -124,7 +124,7 @@ public class Veldmapper
 	 public void updateVelden(Veld[][] velden, int volgnummer, String spelnaam) 
 	    {
 	            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-	            		PreparedStatement query = conn.prepareStatement("UPDATE ID222177_g39.Veld SET (isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?) WHERE (naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?)")) {
+	            		PreparedStatement query = conn.prepareStatement("UPDATE ID222177_g39.Veld SET isDoel = ?, isMuur = ?, isMan = ?, isKist = ? WHERE (naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?)")) {
 	            
 	                   
 	            for (int i = 0; i < velden.length; i++) {
