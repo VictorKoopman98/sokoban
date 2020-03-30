@@ -141,14 +141,10 @@ public class Spelbord
                 {
                     output[i][j] = 'W'; //veld met een muur op is W (wall)
                 } 
-                
                 else if (spelbord[i][j].isMan()) 
                 {
                     output[i][j] = 'M';//veld dat een man bevat (Man)
-
                 } 
-                
-                
                 else if (spelbord[i][j].isDoel() && spelbord[i][j].isKist()) 
                 {
                     output[i][j] = 'F'; //veld met een doel en een kist op is F (Finished)
@@ -157,12 +153,10 @@ public class Spelbord
                 {
                     output[i][j] = 'G';//veld met doel(Goal)
                 }
-                 
                 else if (!spelbord[i][j].isDoel() && !spelbord[i][j].isKist()  && !spelbord[i][j].isMan()) 
                 {
                     output[i][j] = ' ';//Leeg veld(Nothing)
                 } 
-               
                 else if (spelbord[i][j].isKist()) 
                 {
                     output[i][j] = 'K';//veld met een kist (Kist)

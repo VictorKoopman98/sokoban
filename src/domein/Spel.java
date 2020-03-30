@@ -182,7 +182,7 @@ public class Spel
 	{
 		Veld[][] velden = new Veld[10][10];
 		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j<10; j++) {
+			for (int j = 0; j < 10; j++) {
 				velden[i][j] = new Veld(i,j, false, false, false, false);
 			}
 		}
