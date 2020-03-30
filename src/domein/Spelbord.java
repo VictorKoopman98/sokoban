@@ -353,6 +353,14 @@ public class Spelbord
 		{
 			throw new IllegalArgumentException("ongeldige actie!");
 		}
+		if(x < 0 || x > 9)
+		{
+			throw new IllegalArgumentException("Opgegeven rij is buiten de grenzen!");
+		}
+		if(y < 0 || y > 9)
+		{
+			throw new IllegalArgumentException("Opgegeven kolom is buiten de grenzen!");
+		}
 		else if(actie == 1) 
 		{
 			spelbord[x][y].setIsDoel(true);
