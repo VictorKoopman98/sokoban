@@ -33,6 +33,7 @@ public class UC4Test
 			if(actie == 2)   //indien spelbord willen resetten
 			{
 				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
+				actie = toonActiesSpelbord();
 			}
 			else if(actie == 1)  //indien verplaatsing willen uitvoeren
 			{
@@ -65,9 +66,6 @@ public class UC4Test
 					if(!dc.eindeSpelbordBereikt())
 					{
 						actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
-					}
-					else {
-						break;
 					}
 					
 				}
