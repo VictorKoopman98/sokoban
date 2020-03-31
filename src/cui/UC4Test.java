@@ -1,5 +1,7 @@
 package cui;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import domein.DomeinController;
@@ -30,16 +32,16 @@ public class UC4Test
 			{
 				int richting = kiesRichting();
 				
-				if(richting == 1)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
+				if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
 				{
 					 richtingMan = "links";
-				}else if(richting == 2)
+				}else if(richting == 6)
 				{
 					 richtingMan = "rechts";
-				}else if(richting == 3)
+				}else if(richting == 8)
 				{
 					 richtingMan = "omhoog";
-				}else if(richting == 4)
+				}else if(richting == 2)
 				{
 					 richtingMan = "omlaag";
 				}
@@ -99,33 +101,37 @@ public class UC4Test
 	
 	public int kiesRichting()  //methode voor de opties van de verplaatsing van de man
 	{
-		boolean blijvenHerhalen = true;
+		boolean blijvenHerhalenFlag = true;
 		int keuze = -1;
 		Scanner input = new Scanner(System.in);
 
 		do {
 			try {
-				System.out.println("links (1)");
+				System.out.println("links (4)");
 				
-				System.out.println("rechts (2)");
+				System.out.println("rechts (6)");
 				
-				System.out.println("omhoog (3)");
+				System.out.println("omhoog (8)");
 				
-				System.out.println("omlaag (4)");
+				System.out.println("omlaag (2)");
 				
 				System.out.print("Geef uw nummer in: ");
 				keuze = input.nextInt();
 				System.out.println();
-				if (keuze > 0 && keuze < 5) {
-					blijvenHerhalen = false;
-					
+				List<Integer> richtingen = new ArrayList<Integer>();
+				richtingen.add(4);
+				richtingen.add(8);
+				richtingen.add(6);
+				richtingen.add(2);
+				if (richtingen.contains(keuze)) {
+					blijvenHerhalenFlag = false;
 				}
 				
 			}
 			catch(IllegalArgumentException e){
 				System.err.println(e);
 			}
-		} while (blijvenHerhalen);
+		} while (blijvenHerhalenFlag);
 		
 		return keuze;
 	}

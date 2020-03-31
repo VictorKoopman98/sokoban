@@ -17,7 +17,7 @@ public class UC8Test
 	public void wijzigSpelbord(String spelnaam, int volgnummer)
 	{
 		Scanner input = new Scanner(System.in);
-		
+		boolean blijvenHerhalenFlag = true;
 		int keuze = 0;
 		
 		dc.selecteerSpel(spelnaam);
@@ -32,16 +32,21 @@ public class UC8Test
 			try 
 			{
 				keuze = toonMogelijkeActies();	
-				
+				int x = 1;
+				int y = 1;
 				if (keuze != 6) {
 					System.out.printf("%nGeef de rij van de gewenste wijziging: ");
-					int x = input.nextInt();
+					x = input.nextInt();
 					
 					System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
-					int y = input.nextInt();
-					
-					dc.wijzigSpelbord(x-1, y-1, keuze);
-					
+					y = input.nextInt();
+				}
+				
+				dc.wijzigSpelbord(x-1, y-1, keuze);
+				if (keuze == 6) {
+					blijvenHerhalenFlag = false;
+				}
+				else {
 					dc.toonSpelbord();
 				}
 				
@@ -53,7 +58,7 @@ public class UC8Test
 				System.err.println(e);
 			}
 			
-		}while (keuze != 6);
+		}while (blijvenHerhalenFlag);
 		
 		dc.updateSpelbord(dc.geefSpelbord(), dc.geefNaamSpel());
 		
