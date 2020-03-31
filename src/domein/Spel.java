@@ -19,8 +19,6 @@ public class Spel
 	{
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
-		
-		selecteerSpelbord(naamSpel); 
 	}	
 	
 	
