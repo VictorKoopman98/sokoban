@@ -64,13 +64,13 @@ public class UC4Test
 					actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
 
 				}
-				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
+				while(!dc.eindeSpelbordBereikt() || actie != 3 || actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
 			}
 			else if(actie == 3)   //spelbord verlaten
 			{
 				System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
 			}
-		}while(actie != 3);
+		}while(!dc.eindeSpelbordBereikt() || actie != 3 || actie != 2);
 		
 		
 	}

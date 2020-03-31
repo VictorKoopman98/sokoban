@@ -79,7 +79,7 @@ public class UC7Test
 		}while(keuze != 2);
 		
 		
-		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d aantal spelborden", spelnaam, dc.geefAantalSpelborden());
+		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d %s", spelnaam, dc.geefAantalSpelborden(), dc.geefAantalSpelborden() ==1 ? "spelbord" : "spelborden");
 	}
 	
 	private int toonActies() 
