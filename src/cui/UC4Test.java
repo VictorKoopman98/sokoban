@@ -20,7 +20,7 @@ public class UC4Test
 	public void voltooiSpelbord(String spelnaam)  //methode om het spelbord te voltooien
 	{
 		String richtingMan = "";
-		
+			
 		dc.selecteerSpelbord(spelnaam);
 		
 		dc.toonSpelbord();  //spelbord tonen
@@ -33,7 +33,6 @@ public class UC4Test
 			if(actie == 2)   //indien spelbord willen resetten
 			{
 				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
-				actie = toonActiesSpelbord();
 			}
 			else if(actie == 1)  //indien verplaatsing willen uitvoeren
 			{
@@ -67,15 +66,15 @@ public class UC4Test
 					{
 						actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
 					}
-					
+						
 				}
-				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
+				while(dc.eindeSpelbordBereikt() == false || actie != 3 || actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
 			}
 			else if(actie == 3)   //spelbord verlaten
 			{
 				System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
 			}
-		}while(!dc.eindeSpelbordBereikt() || actie != 3);
+		}while(dc.eindeSpelbordBereikt() == false || actie != 3);
 	}
 	
 	

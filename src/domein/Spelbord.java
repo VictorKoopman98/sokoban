@@ -118,7 +118,7 @@ public class Spelbord
 	public void setIsVoltooid(boolean isVoltooid) 
 	{
 		this.isVoltooid = isVoltooid;
-	}
+	} 
 
 	
 	public void toonSpelbord() 
@@ -234,7 +234,6 @@ public class Spelbord
 		{
 			isVoltooid = true;
 		}
-		
 	}
 	
 	
