@@ -21,7 +21,7 @@ public class SokobanApplicatie
 	
 	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
 	{
-		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Stop%n-----------------------------%nGeef je keuze in: ", "menu1");
+		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu1");
 		int keuze = input.nextInt();
 		
 		if(keuze > 3 || keuze < 1 || keuze != (int)keuze)
