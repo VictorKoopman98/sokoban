@@ -26,48 +26,52 @@ public class UC4Test
 		dc.toonSpelbord();  //spelbord tonen
 		
 		int actie = toonActiesSpelbord();
-		
-		if(actie == 2)   //indien spelbord willen resetten
-		{
-			dc.resetSpelbord(spelnaam);
-		}
-		else if(actie == 1)  //indien verplaatsing willen uitvoeren
-		{
-			do
+		do {
+			
+			
+			if(actie == 2)   //indien spelbord willen resetten
 			{
-				int richting = kiesRichting();
-				
-				if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
-				{
-					 richtingMan = "links";
-				}else if(richting == 6)
-				{
-					 richtingMan = "rechts";
-				}else if(richting == 8)
-				{
-					 richtingMan = "omhoog";
-				}else if(richting == 2)
-				{
-					 richtingMan = "omlaag";
-				}
-				
-				dc.verplaatsMan(richtingMan);
-								
-				System.out.printf("Momenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
-				
-				System.out.println();
-				
-				dc.toonSpelbord();
-				
-				actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
-
+				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
 			}
-			while(dc.eindeSpelbordBereikt() == false && actie != 3);   //blijf verplaatsen tot dat einde spelbord bereikt is
-		}
-		else if(actie == 3)   //spelbord verlaten
-		{
-			System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
-		}
+			else if(actie == 1)  //indien verplaatsing willen uitvoeren
+			{
+				do
+				{
+					int richting = kiesRichting();
+					
+					if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
+					{
+						 richtingMan = "links";
+					}else if(richting == 6)
+					{
+						 richtingMan = "rechts";
+					}else if(richting == 8)
+					{
+						 richtingMan = "omhoog";
+					}else if(richting == 2)
+					{
+						 richtingMan = "omlaag";
+					}
+					
+					dc.verplaatsMan(richtingMan);
+									
+					System.out.printf("Momenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
+					
+					System.out.println();
+					
+					dc.toonSpelbord();
+					
+					actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
+
+				}
+				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
+			}
+			else if(actie == 3)   //spelbord verlaten
+			{
+				System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
+			}
+		}while(actie != 3);
+		
 		
 	}
 	
@@ -76,7 +80,7 @@ public class UC4Test
 	{
 		Scanner input = new Scanner(System.in);
 
-		boolean blijvenHerhalen = true;
+		boolean blijvenHerhalen = true; 
 		int keuze = -1;
 		do {
 			try {

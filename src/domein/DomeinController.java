@@ -117,9 +117,9 @@ public class DomeinController
     }
     
 
-    public void resetSpelbord(String spelnaam) 
+    public void resetSpelbord(String spelnaam, int volgnummer) 
     {
-    	this.spel.resetSpelbord(spelnaam);
+    	this.spel.resetSpelbord(spelnaam, volgnummer);
     }
     
 
