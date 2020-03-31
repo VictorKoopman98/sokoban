@@ -72,6 +72,12 @@ public class UC6Test
 
 		System.out.printf("Geef uw keuze: ");
 		int keuze = input.nextInt();
+		
+		if(keuze < 1 || keuze > 6 || keuze != (int)keuze)
+		{
+			throw new IllegalArgumentException("Ongeldige actie!");
+		}	
+		
 		return keuze;
 	}
 	

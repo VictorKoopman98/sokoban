@@ -24,7 +24,8 @@ public class SpelbordRepository
 	public static Spelbord geefSpelbord(String spelnaam) 
 	{
 		Spelbord spelbord = spelbordMapper.geefSpelbord(spelnaam);
-		if (spelbord != null) { 
+		if (spelbord != null) 
+		{ 
 			return spelbord;
 		}
 		return null;

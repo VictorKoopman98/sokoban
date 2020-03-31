@@ -42,33 +42,39 @@ public class UC7Test
 		
 		int[] volgnummersSpelborden = dc.geefVolgnummerSpelborden(spelnaam);
 		
-		int keuze;
+		int keuze = 0;
 		
 		do {
-			do {
-				try {
+			try {
+				do {
+					try {
 
-					for(int i = 0; i < volgnummersSpelborden.length; i++)
+						for(int i = 0; i < volgnummersSpelborden.length; i++)
+						{
+							
+							System.out.printf("%nSpelbord %d:%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+							
+						}
+
+						System.out.printf("%nGeef uw keuze in: ");
+						gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+						System.out.println();
+						volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
+						
+					}catch(IllegalArgumentException e) 
 					{
-						
-						System.out.printf("%nSpelbord %d:%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
-						
+						System.err.println(e);
 					}
-
-					System.out.printf("%nGeef uw keuze in: ");
-					gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
-					System.out.println();
-					volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
-					
-				}catch(IllegalArgumentException e) 
-				{
-					System.err.println(e);
-				}
-			}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
-			
-			uc8test.wijzigSpelbord(spelnaam, volgnummer);
-			
-			keuze = toonActies();
+				}while(!checkVolgnummerOk(volgnummer, volgnummersSpelborden));
+				
+				uc8test.wijzigSpelbord(spelnaam, volgnummer);
+				
+				keuze = toonActies();
+			}
+			catch(IllegalArgumentException e)
+			{
+				System.err.println(e);
+			}
 			
 		}while(keuze != 2);
 		
@@ -82,6 +88,11 @@ public class UC7Test
 		
 		System.out.printf("%n-----------------------------%n 1. Wijzig een spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
 		int keuze = input.nextInt();
+		
+		if(keuze < 1 || keuze > 2 || keuze != (int)keuze)
+		{
+			throw new IllegalArgumentException("Ongeldige actie!");
+		}	
 		
 		System.out.println();
 		

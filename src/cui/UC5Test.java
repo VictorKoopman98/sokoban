@@ -74,6 +74,12 @@ public class UC5Test
 
 		System.out.printf("%n%n-----------------------------%n 1. Nieuw spelbord aanmaken%n 2. Stoppen%n-----------------------------%nGeef je keuze in: ");
 		int actie = input.nextInt();
+		
+		if(actie < 1 || actie > 2 || actie != (int)actie)
+		{
+			throw new IllegalArgumentException("Ongeldige actie!");
+		}	
+		
 		return actie;
 	}
 

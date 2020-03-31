@@ -20,13 +20,18 @@ public class UC4Test
 	public void voltooiSpelbord(String spelnaam)  //methode om het spelbord te voltooien
 	{
 		String richtingMan = "";
+		
 		dc.selecteerSpelbord(spelnaam);
 		
 		dc.toonSpelbord();  //spelbord tonen
 		
-		int actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
+		int actie = toonActiesSpelbord();
 		
-		if(actie == 1)  //indien verplaatsing willen uitvoeren
+		if(actie == 2)   //indien spelbord willen resetten
+		{
+			dc.resetSpelbord(spelnaam);
+		}
+		else if(actie == 1)  //indien verplaatsing willen uitvoeren
 		{
 			do
 			{
@@ -47,17 +52,18 @@ public class UC4Test
 				}
 				
 				dc.verplaatsMan(richtingMan);
+								
+				System.out.printf("Momenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
 				
-				dc.geefAantalVerplaatsingen();
+				System.out.println();
 				
 				dc.toonSpelbord();
+				
+				actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
+
 			}
-			while(dc.eindeSpelbordBereikt() == false);   //blijf verplaatsen tot dat einde spelbord bereikt is
+			while(dc.eindeSpelbordBereikt() == false && actie != 3);   //blijf verplaatsen tot dat einde spelbord bereikt is
 		}
-//		else if(actie == 2)   //indien spelbord willen resetten
-//		{
-//			dc.resetSpelbord();
-//		}
 		else if(actie == 3)   //spelbord verlaten
 		{
 			System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
@@ -83,13 +89,20 @@ public class UC4Test
 				System.out.print("Geef uw nummer in: ");
 		
 				keuze = input.nextInt();
+				
 				System.out.println();
-				if (keuze > 0 && keuze < 4) {
+				
+				if (keuze > 0 && keuze < 4) 
+				{
 					blijvenHerhalen = false;
 				}
-				
+				else if(keuze < 1 || keuze > 3 || keuze != (int)keuze)
+				{
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}	
 			}
-			catch(IllegalArgumentException e){
+			catch(IllegalArgumentException e)
+			{
 				System.err.println(e);
 			}
 		} while (blijvenHerhalen);
@@ -117,18 +130,25 @@ public class UC4Test
 				
 				System.out.print("Geef uw nummer in: ");
 				keuze = input.nextInt();
+				
 				System.out.println();
+				
 				List<Integer> richtingen = new ArrayList<Integer>();
 				richtingen.add(4);
 				richtingen.add(8);
 				richtingen.add(6);
 				richtingen.add(2);
-				if (richtingen.contains(keuze)) {
+				if (richtingen.contains(keuze)) 
+				{
 					blijvenHerhalenFlag = false;
 				}
-				
+				else if(!richtingen.contains(keuze) || keuze != (int)keuze)
+				{
+					throw new IllegalArgumentException("Ongeldige richting!");
+				}
 			}
-			catch(IllegalArgumentException e){
+			catch(IllegalArgumentException e)
+			{
 				System.err.println(e);
 			}
 		} while (blijvenHerhalenFlag);
