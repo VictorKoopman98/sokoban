@@ -66,7 +66,10 @@ public class UC4Test
 					{
 						actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
 					}
-
+					else {
+						break;
+					}
+					
 				}
 				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
 			}
