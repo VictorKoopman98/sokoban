@@ -21,6 +21,7 @@ public class SokobanApplicatie
 	
 	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
 	{
+		
 		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Spel afsluiten%n-----------------------------%nGeef je keuze in: ", "menu1");
 		int keuze = input.nextInt();
 		
@@ -35,6 +36,7 @@ public class SokobanApplicatie
 	
 	public int toonHoofdpaneel2() 
 	{
+		
 		int keuze = 0;
 		if (domeincontroller.getSpeler().isAdminrechten()) 
 		{
