@@ -33,6 +33,7 @@ public class UC4Test
 			if(actie == 2)   //indien spelbord willen resetten
 			{
 				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
+				dc.toonSpelbord();
 			}
 			else if(actie == 1)  //indien verplaatsing willen uitvoeren
 			{
@@ -56,11 +57,11 @@ public class UC4Test
 					
 					dc.verplaatsMan(richtingMan);
 									
-					System.out.printf("Momenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
+					dc.toonSpelbord();
+					
+					System.out.printf("%nMomenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
 					
 					System.out.println();
-					
-					dc.toonSpelbord();
 					
 					if(!dc.eindeSpelbordBereikt())
 					{
@@ -68,13 +69,13 @@ public class UC4Test
 					}
 						
 				}
-				while(dc.eindeSpelbordBereikt() == false || actie != 3 || actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
+				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is
 			}
 			else if(actie == 3)   //spelbord verlaten
 			{
 				System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
 			}
-		}while(dc.eindeSpelbordBereikt() == false || actie != 3);
+		}while(!dc.eindeSpelbordBereikt() && actie != 3);
 	}
 	
 	

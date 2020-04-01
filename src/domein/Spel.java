@@ -3,6 +3,7 @@ package domein;
 import domein.Spelbord;
 import domein.SpelbordRepository;
 import java.util.List;
+import java.util.ArrayList;
 
 import Exceptions.OngeldigGebruikersnaamException;
 import Exceptions.OngeldigeSpelnaamException;
@@ -12,13 +13,14 @@ public class Spel
 	private String naamSpel;
 	Spelbord huidigSpelbord;
 	SpelbordRepository spelbordRepository;
-
+	List<Spelbord> spelbordenLijst = new ArrayList<Spelbord>();
 	
 
 	public Spel(String naamSpel) 
 	{
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
+		spelbordenLijst = geefSpelbordenLijst();
 	}	
 	
 	
@@ -32,9 +34,9 @@ public class Spel
 	}
 	
 	public void selecteerSpelbord(String spelnaam) {
-		for (int i = 0; i<spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) { 
-			if (!spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getIsVoltooid()) {
-				huidigSpelbord = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i);
+		for (int i = 0; i<spelbordenLijst.size(); i++) { 
+			if (!spelbordenLijst.get(i).isVoltooid()) {
+				huidigSpelbord = spelbordenLijst.get(i);
 				break;
 			}
 		}
@@ -50,9 +52,10 @@ public class Spel
 	public int geefAantalSpelbordenVoltooid() 
 	{
 		int aantalVoltooid = 0;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) 
+		boolean voltooid = false;
+		for (int i = 0; i< spelbordenLijst.size(); i++) 
 		{
-			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) 
+			if (spelbordenLijst.get(i).isVoltooid()) 
 			{
 				aantalVoltooid += 1;
 			}
@@ -65,14 +68,14 @@ public class Spel
 	{
 		int aantalVoltooid = 0;
 		boolean voltooid = false;
-		for (int i = 0; i< spelbordRepository.geefSpelbordenLijst(naamSpel).size(); i++) 
+		for (int i = 0; i< spelbordenLijst.size(); i++) 
 		{
-			if (spelbordRepository.geefSpelbord(naamSpel).getIsVoltooid()) 
+			if (spelbordenLijst.get(i).isVoltooid()) 
 			{
 				aantalVoltooid += 1;
 			}
 		}
-		if (spelbordRepository.geefSpelbordenLijst(naamSpel).size() == aantalVoltooid) 
+		if (spelbordenLijst.size() == aantalVoltooid) 
 		{
 			voltooid = true;
 		}
@@ -82,7 +85,7 @@ public class Spel
 	
 	public boolean isSpelbordVoltooid() 
 	{
-		return huidigSpelbord.getIsVoltooid();
+		return huidigSpelbord.isVoltooid();
 	}
 	
 	

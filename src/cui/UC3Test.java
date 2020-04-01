@@ -60,15 +60,24 @@ public class UC3Test
 		
 		int actie = toonActiesSpel();
 		
-		if(actie == 1)    //als je actie 1 kiest van toonActiesSpel worden volgende methodes uitgevoerd
+		do 
 		{
-			uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
+			if(actie == 1)    //als je actie 1 kiest van toonActiesSpel worden volgende methodes uitgevoerd
+			{
+				uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
+				
+				System.out.printf("%n%s heeft %d van de %d spelborden voltooid.%n%n", dc.geefGebruikersnaam(), dc.geefAantalSpelbordenVoltooid(), dc.geefAantalSpelborden());
+				
+			}
+			if (!dc.isSpelVoltooid()) {
+				actie = toonActiesSpel();
+			}
+			else {
+				System.out.printf("%s heeft het huidige spel voltooid!", dc.geefGebruikersnaam());
+			}
 			
-			dc.geefAantalSpelborden();
-			
-			dc.geefAantalSpelbordenVoltooid();
-		}
-		else if (actie == 2) 
+		}while(actie!=2 && !dc.isSpelVoltooid());
+		if (actie == 2) 
 		{
 			System.out.printf("%n%s heeft het spel verlaten.", dc.geefGebruikersnaam());
 		}
@@ -88,6 +97,9 @@ public class UC3Test
 				System.out.printf("%n-----------------------------%n 1. Voltooi volgend spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
 				keuze = input.nextInt();
 				System.out.println();
+				if (keuze < 0 || keuze > 3 || keuze != (int)keuze) {
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}
 				if (keuze > 0 && keuze < 3) 
 				{
 					blijvenHerhalen = false;

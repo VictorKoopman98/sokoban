@@ -32,6 +32,11 @@ public class DomeinController
 		this.speler = speler;
 	}
 	
+	public Speler getSpeler()
+	{
+		return speler;
+	}
+	
 	
 	public void meldAan(String gebruikersnaam, String wachtwoord)     //methode om een speler aan te melden
 	{
