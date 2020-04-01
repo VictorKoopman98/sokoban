@@ -11,25 +11,25 @@ public class Taal
 	
 	public Taal(String taal)
 	{
-		if("nl".equals(taal))
+		if("NL".equals(taal))
 		{
-			this.locale = new Locale("nl");	
+			this.locale = new Locale("NL");	
 		}
 		else
 		{
-			if("en".equals(taal))
+			if("EN".equals(taal))
 			{
-				this.locale = new Locale("en");
+				this.locale = new Locale("EN");
 			}
 			else
 			{
-				if ("fr".equals(taal))
+				if ("FR".equals(taal))
 				{
-					this.locale = new Locale("fr");
+					this.locale = new Locale("FR");
 				}
 			}
 		}
-		resourceBundle = ResourceBundle.getBundle("sokoban_resource",locale);
+		resourceBundle = ResourceBundle.getBundle("sokoban",locale);
 		
 		this.setTaal(taal);
 	}

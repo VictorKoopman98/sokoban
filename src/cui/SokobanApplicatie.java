@@ -58,7 +58,8 @@ public class SokobanApplicatie
 			{
 				throw new IllegalArgumentException("Keuze niet beschikbaar!");
 			}
-			if (keuze == 2) {
+			if (keuze == 2) 
+			{
 				keuze = 4;
 			}
 		}
@@ -133,11 +134,11 @@ public class SokobanApplicatie
 	String taal = "";
 	do
 	{
-	    System.out.print("Kies een taal (nl)/ choose a language (en)/ Choisissez une langue(fr): ");
+	    System.out.print("Kies een taal (NL)/ choose a language (EN)/ Choisissez une langue(FR): ");
 	    try
 	    {
 		taal = input.nextLine();
-		if (!(("nl".equals(taal)) || ("en".equals(taal)) || ("fr".equals(taal))))
+		if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
 		{
 		    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
 		}
@@ -145,7 +146,7 @@ public class SokobanApplicatie
 	    {
 		System.out.println(ie.getMessage());
 	    }
-	} while (!(taal.equals("nl") || taal.equals("fr") || taal.equals("en")));
+	} while (!(taal.equals("NL") || taal.equals("FR") || taal.equals("EN")));
 	taalObj = new Taal(taal);
     }
     
