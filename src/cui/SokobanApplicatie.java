@@ -3,12 +3,12 @@ package cui;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import domein.DomeinController;
-//import gui.Taal;
+import gui.Taal;
 
 public class SokobanApplicatie
 {
 	private DomeinController domeincontroller;
-//	private Taal taalObj;
+	private Taal taalObj;
 	
 	
 	public SokobanApplicatie(DomeinController domeincontroller)
@@ -22,6 +22,7 @@ public class SokobanApplicatie
 		Scanner input = new Scanner(System.in);
 		do {
 			try {
+				kiesTaal();
 				System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Spel afsluiten%n-----------------------------%nGeef je keuze in: ", "menu1");
 				int keuze = input.nextInt();
 				
@@ -44,39 +45,39 @@ public class SokobanApplicatie
 		Scanner input = new Scanner(System.in);
 		do {
 			try {
-				int keuze = 0;
-				if (domeincontroller.getSpeler().isAdminrechten()) 
-				{
-					System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Speel spel%n 2. Maak nieuw spel%n 3. Wijzig een spel%n 4. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
-					keuze = input.nextInt();
-					
-					if(keuze > 4 || keuze < 1)
+					int keuze = 0;
+					if (domeincontroller.getSpeler().isAdminrechten()) 
 					{
-						throw new IllegalArgumentException("Keuze niet beschikbaar!");
+						System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Speel spel%n 2. Maak nieuw spel%n 3. Wijzig een spel%n 4. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
+						keuze = input.nextInt();
+						
+						if(keuze > 4 || keuze < 1)
+						{
+							throw new IllegalArgumentException("Keuze niet beschikbaar!");
+						}
 					}
-				}
-				else 
-				{
-					System.out.printf("%n\t%8S%n-----------------------------%n1. Speel spel%n2. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
-					keuze = input.nextInt();
-					
-					
-					if(keuze > 2 || keuze < 1)
+					else 
 					{
-						throw new IllegalArgumentException("Keuze niet beschikbaar!");
+						System.out.printf("%n\t%8S%n-----------------------------%n1. Speel spel%n2. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
+						keuze = input.nextInt();
+						
+						
+						if(keuze > 2 || keuze < 1)
+						{
+							throw new IllegalArgumentException("Keuze niet beschikbaar!");
+						}
+						if (keuze == 2) {
+							keuze = 4;
+						}
 					}
-					if (keuze == 2) {
-						keuze = 4;
-					}
+					return keuze;
 				}
-				return keuze;
+				catch(InputMismatchException e) {
+					System.out.print("\nEr moet een getal ingegeven worden!");
+					input.next();
 			}
-			catch(InputMismatchException e) {
-				System.out.print("\nEr moet een getal ingegeven worden!");
-				input.next();
-			}
+
 		}while(true);
-		
 	}
 
 	
@@ -141,24 +142,27 @@ public class SokobanApplicatie
 	
 	
 	
-//	public void kiesTaal()
-//    {
-//	String taal = "";
-//	do
-//	{
-//	    System.out.print("Kies een taal (nl)/ choose a language (en)/ Choisissez une langue(fr): ");
-//	    try
-//	    {
-//		taal = input.nextLine();
-//		if (!(("nl".equals(taal)) || ("en".equals(taal)) || ("fr".equals(taal))))
-//		{
-//		    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
-//		}
-//	    } catch (IllegalArgumentException ie)
-//	    {
-//		System.out.println(ie.getMessage());
-//	    }
-//	} while (!(taal.equals("nl") || taal.equals("fr") || taal.equals("en")));
-//	taalObj = new Taal(taal);
-//    }
+
+	public void kiesTaal()
+    {
+		String taal = "";
+		Scanner input = new Scanner(System.in);
+		do
+		{
+		    System.out.print("Kies een taal (NL)/ choose a language (EN)/ Choisissez une langue(FR): ");
+		    try
+		    {
+		    	taal = input.nextLine();
+				if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
+				{
+				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
+				}
+		    } catch (IllegalArgumentException ie)
+		    {
+			System.out.println(ie.getMessage());
+		    }
+		} while (!(taal.equals("NL") || taal.equals("FR") || taal.equals("EN")));
+		
+		taalObj = new Taal(taal);
+    }
 }
