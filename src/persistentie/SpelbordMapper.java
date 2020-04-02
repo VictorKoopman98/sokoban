@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import domein.Spel;
 import domein.Spelbord;
 import domein.Veld;
 
@@ -35,7 +34,7 @@ public class SpelbordMapper
             {
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
-                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
                     spelbord = new Spelbord(volgnummer, velden);
                 }
             }
@@ -59,7 +58,7 @@ public class SpelbordMapper
             {
                 while (rs.next()) 
                 {
-                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
                     spelbord = new Spelbord(volgnummer, velden);
                 }
             }
@@ -86,7 +85,7 @@ public class SpelbordMapper
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
 
-                    velden = vm.geefVelden(volgnummer, spelnaam);
+                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
                     spelborden.add(new Spelbord(volgnummer, velden));
                 }
             }

@@ -5,13 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import domein.Kist;
-import domein.Man;
 import domein.Veld;
-import domein.Spelbord;
-
-
 
 public class Veldmapper
 {

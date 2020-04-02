@@ -1,9 +1,5 @@
 package domein;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
 import persistentie.SpelerMapper;
 
 public class SpelerRepository

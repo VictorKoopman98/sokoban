@@ -1,7 +1,7 @@
 package cui;
 
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 import domein.DomeinController;
 
 public class UC7Test 
@@ -24,7 +24,7 @@ public class UC7Test
 		int gekozenVolgnummerSpelbord;
 		Scanner input = new Scanner(System.in);
 		
-		String [] spelletjes =  dc.geefLijstSpellen();
+		String [] spelletjes = DomeinController.geefLijstSpellen();
 		
 		do {
 			for(int i = 0; i < spelletjes.length; i++)
@@ -78,25 +78,32 @@ public class UC7Test
 			
 		}while(keuze != 2);
 		
-		
 		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d %s", spelnaam, dc.geefAantalSpelborden(), dc.geefAantalSpelborden() ==1 ? "spelbord" : "spelborden");
 	}
 	
 	private int toonActies() 
 	{
-		Scanner input = new Scanner(System.in);
+		do {
+			Scanner input = new Scanner(System.in);
+			try {
+				
+				System.out.printf("%n-----------------------------%n 1. Wijzig een spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
+				int keuze = input.nextInt();
+				
+				if(keuze < 1 || keuze > 2)
+				{
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}	
+				
+				System.out.println();
+				return keuze;
+			}
+			catch(InputMismatchException e){
+				System.out.println("Er moet een nummer worden ingegeven!");
+				input.next();
+			}
+		}while(true);
 		
-		System.out.printf("%n-----------------------------%n 1. Wijzig een spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
-		int keuze = input.nextInt();
-		
-		if(keuze < 1 || keuze > 2 || keuze != (int)keuze)
-		{
-			throw new IllegalArgumentException("Ongeldige actie!");
-		}	
-		
-		System.out.println();
-		
-		return keuze;
 	}
 	
 	

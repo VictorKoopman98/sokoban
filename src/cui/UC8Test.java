@@ -1,7 +1,7 @@
 package cui;
 
 import domein.DomeinController;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UC8Test
@@ -57,36 +57,46 @@ public class UC8Test
 			{
 				System.err.println(e);
 			}
-			
+			catch(InputMismatchException e) {
+				System.out.println("Er moet een nummer worden ingegeven!");
+				input.next();
+			}
 		}while (blijvenHerhalenFlag);
 		
 		dc.updateSpelbord(dc.geefSpelbord(), dc.geefNaamSpel());
-		
 		System.out.printf("Het spelbord is succesvol bijgewerkt.");
 	}
 	
 	
 	private int toonMogelijkeActies() 
 	{
-		Scanner input = new Scanner(System.in);
-        
-		System.out.printf("%nDe mogelijke acties zijn:%n"
-				+ "1: Maak een doel%n"
-				+ "2: Maak een muur%n"
-				+ "3: Zet een man%n"
-				+ "4: Zet een kist%n"
-				+ "5: Maak het veld leeg%n"
-				+ "6: Stop wijzigen%n");
-        
+		do {
+			Scanner input = new Scanner(System.in);
+
+			try {		        
+				System.out.printf("%nDe mogelijke acties zijn:%n"
+						+ "1: Maak een doel%n"
+						+ "2: Maak een muur%n"
+						+ "3: Zet een man%n"
+						+ "4: Zet een kist%n"
+						+ "5: Maak het veld leeg%n"
+						+ "6: Stop wijzigen%n");
+		        
+				
+				System.out.printf("Geef uw keuze: ");
+				int keuze = input.nextInt();
+				
+				if(keuze < 1 || keuze > 6)
+				{
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}	
+				return keuze;
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Er moet een nummer worden ingegeven!");
+				input.next();
+			}
+		}while(true);
 		
-		System.out.printf("Geef uw keuze: ");
-		int keuze = input.nextInt();
-		
-		if(keuze < 1 || keuze > 6 || keuze != (int)keuze)
-		{
-			throw new IllegalArgumentException("Ongeldige actie!");
-		}	
-		
-		return keuze;
 	}
 }

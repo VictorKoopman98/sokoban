@@ -47,7 +47,7 @@ public class DomeinController
             setSpeler(gevondenSpeler);
         } else 
         {
-            throw new IllegalArgumentException("Verkeerde login!");
+            throw new IllegalArgumentException();
         }
 	}
 	
@@ -102,7 +102,7 @@ public class DomeinController
     {
     	List<String> lijstje = Arrays.asList(geefLijstSpellen());        //zet array van geefLijstSpellen om naar list
     	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
-    	return spelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
+    	return SpelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
     }
       
     

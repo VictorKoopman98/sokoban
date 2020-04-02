@@ -5,9 +5,6 @@ import domein.SpelbordRepository;
 import java.util.List;
 import java.util.ArrayList;
 
-import Exceptions.OngeldigGebruikersnaamException;
-import Exceptions.OngeldigeSpelnaamException;
-
 public class Spel 
 {
 	private String naamSpel;
@@ -52,7 +49,6 @@ public class Spel
 	public int geefAantalSpelbordenVoltooid() 
 	{
 		int aantalVoltooid = 0;
-		boolean voltooid = false;
 		for (int i = 0; i< spelbordenLijst.size(); i++) 
 		{
 			if (spelbordenLijst.get(i).isVoltooid()) 

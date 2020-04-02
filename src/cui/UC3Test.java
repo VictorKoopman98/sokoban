@@ -1,6 +1,7 @@
 package cui;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import java.util.Arrays;
 import java.util.List;
 import cui.UC4Test;
@@ -18,7 +19,7 @@ public class UC3Test
 	public UC3Test (DomeinController dc) 
 	{
 		this.dc =dc;
-		spelletjes = dc.geefLijstSpellen();
+		spelletjes = DomeinController.geefLijstSpellen();
 		uc4Test = new UC4Test(dc);
 	}
 	
@@ -48,8 +49,13 @@ public class UC3Test
 			}
 			catch(IllegalArgumentException e)
 			{
-				System.err.println(e);
+				System.out.println(e);
 			}	
+			catch(InputMismatchException e) {
+				System.out.println("\nEr moet een nummer worden ingegeven!");
+				input.next();
+			}
+			
 		}
 		while(blijvenHerhalenFlag);   //indien nummer ingegeven niet overeenkomend met een nummer uit de lijst => do opnieuw
 	
@@ -111,14 +117,13 @@ public class UC3Test
 				System.err.println(e);
 			}
 		} while (blijvenHerhalen && !dc.isSpelVoltooid());
-		
 		return keuze;
 	}
 	
 	
 	private String zetIndexOmInNaam(int index) 
 	{
-		List<String> lijst = Arrays.asList(dc.geefLijstSpellen());
+		List<String> lijst = Arrays.asList(DomeinController.geefLijstSpellen());
 		String naam = lijst.get(index);
 		return naam;
 	}

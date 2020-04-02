@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domein.Spel;
-import domein.Spelbord;
 
 public class SpelMapper
 {

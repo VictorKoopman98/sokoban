@@ -2,6 +2,7 @@ package cui;
 
 import domein.DomeinController;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class UC5Test 
 {
@@ -19,12 +20,12 @@ public class UC5Test
 	public void maakNieuwSpel() 
 	{
         String spelnaam = "";
-		Scanner input = new Scanner(System.in);
 		boolean blijvenHerhalenFlag = true;
 		int aantalSpelborden = 0;
 		
 		do 
 		{
+			Scanner input = new Scanner(System.in);
 			try 
 			{
 				System.out.printf("%nGeef de spelnaam van het nieuwe spel: ");
@@ -53,34 +54,41 @@ public class UC5Test
 						System.out.printf("%s is gestopt met spelborden aanmaken.%n%n", dc.geefGebruikersnaam());
 					}
 				}while ( actie != 2);
+
 			}
 			catch (IllegalArgumentException e) 
 			{
 				System.err.println(e);
 			}
-			
 		} while(blijvenHerhalenFlag);
 		
 		dc.selecteerSpel(spelnaam);
 		
 		System.out.printf("%s is aangemaakt met %d %s", dc.geefNaamSpel(), aantalSpelborden, aantalSpelborden <= 1 ? "spelbord" : "spelborden");
-			
 	}
 	
 	
 	private int toonActies() 
-	{
-		Scanner input = new Scanner(System.in);
-
-		System.out.printf("%n%n-----------------------------%n 1. Nieuw spelbord aanmaken%n 2. Stoppen%n-----------------------------%nGeef je keuze in: ");
-		int actie = input.nextInt();
-		
-		if(actie < 1 || actie > 2 || actie != (int)actie)
+	{	
+		do
 		{
-			throw new IllegalArgumentException("Ongeldige actie!");
-		}	
-		
-		return actie;
-	}
+			Scanner input = new Scanner(System.in);
+			try {
 
+				System.out.printf("%n%n-----------------------------%n 1. Nieuw spelbord aanmaken%n 2. Stoppen%n-----------------------------%nGeef je keuze in: ");
+				int actie = input.nextInt();
+				
+				if(actie < 1 || actie > 2)
+				{
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}	
+				return actie;
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Er moet een nummer worden ingegeven!");
+				input.next();
+			}
+		}while(true);
+	}
+	
 }

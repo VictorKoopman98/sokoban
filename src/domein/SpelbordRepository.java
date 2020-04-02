@@ -1,16 +1,13 @@
 package domein;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import domein.Spelbord;
-import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
 public class SpelbordRepository 
 {
-	private static List<Spelbord> spelborden = new ArrayList<>();
 	private static SpelbordMapper spelbordMapper;
 	private Spelbord spelbord;
 	

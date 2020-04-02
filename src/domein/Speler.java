@@ -1,11 +1,5 @@
 package domein;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-import Exceptions.OngeldigGebruikersnaamException;
-import Exceptions.OngeldigWachtwoordException;
-
 public class Speler
 {
 	private String gebruikersnaam;

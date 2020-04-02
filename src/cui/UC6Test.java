@@ -2,6 +2,7 @@ package cui;
 
 import domein.DomeinController;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class UC6Test 
 {
@@ -55,6 +56,7 @@ public class UC6Test
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());	
+		input.close();
 	}
 	
 	
@@ -62,23 +64,30 @@ public class UC6Test
 	{
 		Scanner input = new Scanner(System.in);
 
-		System.out.printf("%nDe mogelijke acties zijn:%n"
-				+ "1: Maak een doel%n"
-				+ "2: Maak een muur%n"
-				+ "3: Zet een man%n"
-				+ "4: Zet een kist%n"
-				+ "5: Maak het veld leeg%n"
-				+ "6: Stop wijzigen%n");
+		do {
+			try {
+				System.out.printf("%nDe mogelijke acties zijn:%n"
+						+ "1: Maak een doel%n"
+						+ "2: Maak een muur%n"
+						+ "3: Zet een man%n"
+						+ "4: Zet een kist%n"
+						+ "5: Maak het veld leeg%n"
+						+ "6: Stop wijzigen%n");
 
-		System.out.printf("Geef uw keuze: ");
-		int keuze = input.nextInt();
+				System.out.printf("Geef uw keuze: ");
+				int keuze = input.nextInt();
+				
+				if(keuze < 1 || keuze > 6)
+				{
+					throw new IllegalArgumentException("Ongeldige actie!");
+				}	
+				return keuze;
+			}
+			catch(InputMismatchException e){
+				System.out.println("Er moet een nummer worden ingegeven!");
+			}
+		}while(true);
 		
-		if(keuze < 1 || keuze > 6 || keuze != (int)keuze)
-		{
-			throw new IllegalArgumentException("Ongeldige actie!");
-		}	
-		
-		return keuze;
 	}
 	
 	
