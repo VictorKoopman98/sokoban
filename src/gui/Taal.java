@@ -11,6 +11,8 @@ public class Taal
 	
 	public Taal(String taal)
 	{
+		this.setTaal(taal);
+		
 		if("NL".equals(taal))
 		{
 			this.locale = new Locale("NL");	
@@ -31,7 +33,7 @@ public class Taal
 		}
 		resourceBundle = ResourceBundle.getBundle("sokoban",locale);
 		
-		this.setTaal(taal);
+		
 	}
 	public String getText(String text)
 	{

@@ -21,7 +21,8 @@ public class SokobanApplicatie
 	
 	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
 	{
-		
+	
+		kiesTaal();
 		System.out.printf("%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Spel afsluiten%n-----------------------------%nGeef je keuze in: ", "menu1");
 		int keuze = input.nextInt();
 		
@@ -137,7 +138,7 @@ public class SokobanApplicatie
 	    System.out.print("Kies een taal (NL)/ choose a language (EN)/ Choisissez une langue(FR): ");
 	    try
 	    {
-		taal = input.nextLine();
+	    	taal = input.nextLine();
 		if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
 		{
 		    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
@@ -147,6 +148,7 @@ public class SokobanApplicatie
 		System.out.println(ie.getMessage());
 	    }
 	} while (!(taal.equals("NL") || taal.equals("FR") || taal.equals("EN")));
+	
 	taalObj = new Taal(taal);
     }
     
