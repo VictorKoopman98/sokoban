@@ -47,7 +47,7 @@ public class DomeinController
             setSpeler(gevondenSpeler);
         } else 
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("");
         }
 	}
 	
