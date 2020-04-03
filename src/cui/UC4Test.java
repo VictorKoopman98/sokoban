@@ -160,7 +160,6 @@ public class UC4Test
 				System.err.println(e);
 			}
 		} while (blijvenHerhalenFlag);
-		input.close();
 		return keuze;
 	}
 }
