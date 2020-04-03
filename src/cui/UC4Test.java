@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import domein.DomeinController;
+import gui.Taal;
 
 public class UC4Test 
 {
 	private DomeinController dc;
+	private Taal taalObj;
 	
-	
-	public UC4Test (DomeinController dc) 
+	public UC4Test (DomeinController dc,Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.dc =dc;
 	}
 	
@@ -43,23 +45,23 @@ public class UC4Test
 					
 					if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
 					{
-						 richtingMan = "links";
+						 richtingMan = taalObj.getText("links");
 					}else if(richting == 6)
 					{
-						 richtingMan = "rechts";
+						 richtingMan = taalObj.getText("rechts");
 					}else if(richting == 8)
 					{
-						 richtingMan = "omhoog";
+						 richtingMan = taalObj.getText("omhoog");
 					}else if(richting == 2)
 					{
-						 richtingMan = "omlaag";
+						 richtingMan = taalObj.getText("omlaag");
 					}
 					
 					dc.verplaatsMan(richtingMan);
 									
 					dc.toonSpelbord();
 					
-					System.out.printf("%nMomenteel %s %d %s.%n", dc.geefAantalVerplaatsingen() == 1? "is er" : "zijn er", dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? "verplaatsing" : "verplaatsingen");
+					System.out.printf("%n%s %s %d %s.%n", taalObj.getText("momenteel"),dc.geefAantalVerplaatsingen() == 1? taalObj.getText("isEr") : taalObj.getText("zijnEr"), dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? taalObj.getText("verplaatsing") : taalObj.getText("verplaatsingen"));
 					
 					System.out.println();
 					
@@ -73,7 +75,7 @@ public class UC4Test
 			}
 			else if(actie == 3)   //spelbord verlaten
 			{
-				System.out.printf("%s heeft het spelbord verlaten", dc.geefGebruikersnaam());
+				System.out.printf("%s %s", dc.geefGebruikersnaam(),taalObj.getText("heeftSpelbordVerlaten"));
 			}
 		}while(!dc.eindeSpelbordBereikt() && actie != 3);
 	}
@@ -87,13 +89,13 @@ public class UC4Test
 		int keuze = -1;
 		do {
 			try {
-				System.out.println("Nieuwe verplaatsing (1)");
+				System.out.printf("%s",taalObj.getText("nieuweVerplaatsing"));
 				
-				System.out.println("Spel terugzetten naar begintoestand (2)");
+				System.out.printf("%s",taalObj.getText("spelTerugzetten"));
 				
-				System.out.println("Spelbord verlaten (3)");
+				System.out.printf("%s",taalObj.getText("spelbordVerlaten"));
 				
-				System.out.print("Geef uw nummer in: ");
+				System.out.printf("%s",taalObj.getText("geefNummer"));
 		
 				keuze = input.nextInt();
 				
@@ -105,7 +107,7 @@ public class UC4Test
 				}
 				else if(keuze < 1 || keuze > 3 || keuze != (int)keuze)
 				{
-					throw new IllegalArgumentException("Ongeldige actie!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 				}	
 			}
 			catch(IllegalArgumentException e)
@@ -126,15 +128,15 @@ public class UC4Test
 
 		do {
 			try {
-				System.out.println("links (4)");
+				System.out.printf("%s",taalObj.getText("links4"));
 				
-				System.out.println("rechts (6)");
+				System.out.printf("%s",taalObj.getText("rechts6"));
 				
-				System.out.println("omhoog (8)");
+				System.out.printf("%s",taalObj.getText("omhoog8"));
 				
-				System.out.println("omlaag (2)");
+				System.out.printf("%s",taalObj.getText("omlaag2"));
 				
-				System.out.print("Geef uw nummer in: ");
+				System.out.printf("%s",taalObj.getText("geefNummer"));
 				keuze = input.nextInt();
 				
 				System.out.println();
@@ -150,7 +152,7 @@ public class UC4Test
 				}
 				else if(!richtingen.contains(keuze) || keuze != (int)keuze)
 				{
-					throw new IllegalArgumentException("Ongeldige richting!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigRichting"));
 				}
 			}
 			catch(IllegalArgumentException e)

@@ -1,10 +1,12 @@
 package domein;
 
+import gui.Taal;
 import persistentie.SpelerMapper;
 
 public class SpelerRepository
 {
 	private final SpelerMapper spelerMapper;
+	private Taal taalObj;
 	 
 	
 	public SpelerRepository()
@@ -38,7 +40,7 @@ public class SpelerRepository
     {
 		if (bestaatSpeler(speler.getGebruikersnaam()))
 		{
-		    throw new IllegalArgumentException("Speler bestaat al!");
+		    throw new IllegalArgumentException(taalObj.getText("spelerBestaat"));
 		}
 		spelerMapper.voegToe(speler);
     }

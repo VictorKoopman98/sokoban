@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import domein.Veld;
+import gui.Taal;
 
 public class Spelbord 
 {
@@ -12,6 +13,7 @@ public class Spelbord
 	private int locatieManX=-1; //locatie van de rij
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
+	private Taal taalObj;
 	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
 	ArrayList<Kist> kisten = new ArrayList<Kist>();
 	Man man;
@@ -299,15 +301,15 @@ public class Spelbord
 //				+ "6: Stop wijzigen"
 		if(actie < 1 || actie > 6 || actie != (int)actie)
 		{
-			throw new IllegalArgumentException("Ongeldige actie!");
+			throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 		}
 		if(x < 0 || x > 9)
 		{
-			throw new IllegalArgumentException("Opgegeven rij is buiten de grenzen!");
+			throw new IllegalArgumentException(taalObj.getText("rijBuitenGrens"));
 		}
 		if(y < 0 || y > 9)
 		{
-			throw new IllegalArgumentException("Opgegeven kolom is buiten de grenzen!");
+			throw new IllegalArgumentException(taalObj.getText("kolomBuitenGrens"));
 		}
 		else if(actie == 1) 
 		{
@@ -321,7 +323,7 @@ public class Spelbord
 		{	
 			if (this.man != null) 
 			{
-				throw new IllegalArgumentException("Een spelbord kan slechts 1 man bevatten!");
+				throw new IllegalArgumentException(taalObj.getText("spelbordMetEenMan"));
 			}
 			this.man = new Man(spelbord[x][y]);
             spelbord[x][y].setIsMan(true);
@@ -359,7 +361,7 @@ public class Spelbord
 			}
 			if(kisten.size() != aantalDoelen) 
 			{
-				throw new IllegalArgumentException("Het aantal kisten moet gelijk zijn aan het aantal doelen!");
+				throw new IllegalArgumentException(taalObj.getText("aantalKisten"));
 			}
 		}
 	}

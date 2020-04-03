@@ -1,5 +1,7 @@
 package domein;
 
+import gui.Taal;
+
 public class Speler
 {
 	private String gebruikersnaam;
@@ -7,6 +9,7 @@ public class Speler
     private boolean adminrechten;
     private String naam;
     private String voornaam;
+    private Taal taalObj;
 
     
     public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)   //methode om een speler object aan te maken (constructors)
@@ -59,10 +62,10 @@ public class Speler
     {
 		if (gebruikersnaam == null || gebruikersnaam.length() == 0)
 		{
-		    throw new IllegalArgumentException("Gebruikersnaam is verplicht in te vullen.");   //exception gooien als beruikersnaam niet is ingevuld
+		    throw new IllegalArgumentException(taalObj.getText("gebruikersnaamVerplicht"));   //exception gooien als beruikersnaam niet is ingevuld
 		} else if (gebruikersnaam.length() < 8)
 		{
-		    throw new IllegalArgumentException("Gebruikersnaam is minstens 8 tekens lang");    //exception gooien als gebruikersnaam te kort is
+		    throw new IllegalArgumentException(taalObj.getText("gebruikersnaamMinstens"));    //exception gooien als gebruikersnaam te kort is
 		}else 
 		{
 		this.gebruikersnaam = gebruikersnaam;
@@ -74,10 +77,10 @@ public class Speler
     {
 		if (wachtwoord == null || wachtwoord.length() == 0)
 		{
-		    throw new IllegalArgumentException("Wachtwoord is verplicht in te vullen.");   //exception gooien als wachtwoord neit ingevuld is
+		    throw new IllegalArgumentException(taalObj.getText("wachtwoordVerplicht"));   //exception gooien als wachtwoord neit ingevuld is
 		} else if (isCorrectWachtwoord(wachtwoord) == false)
 		{
-		    throw new IllegalArgumentException("Wachtwoord is minstens 8 tekens lang en heeft minstens 1 hoofdletter, 1 kleine letter en 1 cijfer");   //exception gooien als wachtwoord niet klopt => zie tekst
+		    throw new IllegalArgumentException(taalObj.getText("wachtwoordMinstens"));   //exception gooien als wachtwoord niet klopt => zie tekst
 		} else 
 		{
 		this.wachtwoord = wachtwoord;

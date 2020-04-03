@@ -2,6 +2,8 @@ package domein;
 
 import domein.Spelbord;
 import domein.SpelbordRepository;
+import gui.Taal;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,6 +13,7 @@ public class Spel
 	Spelbord huidigSpelbord;
 	SpelbordRepository spelbordRepository;
 	List<Spelbord> spelbordenLijst = new ArrayList<Spelbord>();
+	private Taal taalObj;
 	
 
 	public Spel(String naamSpel) 
@@ -101,10 +104,10 @@ public class Spel
 	{
 		if (naam == null || naam.length() == 0)
 		{ 
-		    throw new IllegalArgumentException("Spelnaam is verplicht in te vullen.");   //exception gooien als spelnaam niet is ingevuld
+		    throw new IllegalArgumentException(taalObj.getText("spelNaamVerplicht"));   //exception gooien als spelnaam niet is ingevuld
 		} else if (bevatSpatie(naam) == true)
 		{
-		    throw new IllegalArgumentException("Spelnaam mag geen spaties bevatten.");    //exception gooien als spelnaam spaties bevat
+		    throw new IllegalArgumentException(taalObj.getText("spelnaamGeenSpatie"));    //exception gooien als spelnaam spaties bevat
 		}
 		else 
 		{

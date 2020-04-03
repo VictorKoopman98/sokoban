@@ -1,15 +1,19 @@
 package cui;
 
 import domein.DomeinController;
+import gui.Taal;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UC8Test
 {
 	private DomeinController dc;
+	private Taal taalObj;
 	
-	public UC8Test(DomeinController dc)
+	public UC8Test(DomeinController dc, Taal taalObj)
 	{
+		this.taalObj = taalObj;
 		this.dc = dc;
 	}
 	
@@ -35,10 +39,10 @@ public class UC8Test
 				int x = 1;
 				int y = 1;
 				if (keuze != 6) {
-					System.out.printf("%nGeef de rij van de gewenste wijziging: ");
+					System.out.printf("%s",taalObj.getText("geefRij"));
 					x = input.nextInt();
 					
-					System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
+					System.out.printf("%n%s ",taalObj.getText("geefKolom"));
 					y = input.nextInt();
 				}
 				
@@ -58,13 +62,13 @@ public class UC8Test
 				System.err.println(e);
 			}
 			catch(InputMismatchException e) {
-				System.out.println("Er moet een nummer worden ingegeven!");
+				System.out.printf("%s",taalObj.getText("getalIngeven"));
 				input.next();
 			}
 		}while (blijvenHerhalenFlag);
 		
 		dc.updateSpelbord(dc.geefSpelbord(), dc.geefNaamSpel());
-		System.out.printf("Het spelbord is succesvol bijgewerkt.");
+		System.out.printf("%s",taalObj.getText("spelbordBijgewerkt"));
 	}
 	
 	
@@ -74,26 +78,26 @@ public class UC8Test
 			Scanner input = new Scanner(System.in);
 
 			try {		        
-				System.out.printf("%nDe mogelijke acties zijn:%n"
-						+ "1: Maak een doel%n"
-						+ "2: Maak een muur%n"
-						+ "3: Zet een man%n"
-						+ "4: Zet een kist%n"
-						+ "5: Maak het veld leeg%n"
-						+ "6: Stop wijzigen%n");
+				System.out.printf("%n%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoek"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
 		        
 				
-				System.out.printf("Geef uw keuze: ");
+				System.out.printf("%s",taalObj.getText("keuze"));
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 6)
 				{
-					throw new IllegalArgumentException("Ongeldige actie!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 				}	
 				return keuze;
 			}
 			catch(InputMismatchException e) {
-				System.out.println("Er moet een nummer worden ingegeven!");
+				System.out.printf("%s",taalObj.getText("getalIngeven"));
 				input.next();
 			}
 		}while(true);

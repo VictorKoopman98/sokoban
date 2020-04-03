@@ -3,16 +3,19 @@ package cui;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import domein.DomeinController;
+import gui.Taal;
 
 public class UC7Test 
 {
 	DomeinController dc;
 	private UC8Test uc8test;
+	private Taal taalObj;
 	
-	public UC7Test(DomeinController dc) 
+	public UC7Test(DomeinController dc, Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.dc = dc;
-		uc8test = new UC8Test(dc);
+		uc8test = new UC8Test(dc,taalObj);
 	}
 	
 	
@@ -29,10 +32,10 @@ public class UC7Test
 		do {
 			for(int i = 0; i < spelletjes.length; i++)
 			{
-				System.out.printf("%nSpelletje %d: %s%n", i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				System.out.printf("%n%s %d: %s%n", taalObj.getText("spelletje"),i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 			}
 
-			System.out.printf("%nGeef uw keuze in: ");
+			System.out.printf("%n%s",taalObj.getText("keuze"));
 			gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
 			spelnaam = spelletjes[gekozenSpel - 1];
 		}
@@ -52,11 +55,11 @@ public class UC7Test
 						for(int i = 0; i < volgnummersSpelborden.length; i++)
 						{
 							
-							System.out.printf("%nSpelbord %d:%n", volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+							System.out.printf("%n%s %d:%n", taalObj.getText("spelbord1"),volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
 							
 						}
 
-						System.out.printf("%nGeef uw keuze in: ");
+						System.out.printf("%n%s",taalObj.getText("keuze"));
 						gekozenVolgnummerSpelbord =input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
 						System.out.println();
 						volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
@@ -78,7 +81,7 @@ public class UC7Test
 			
 		}while(keuze != 2);
 		
-		System.out.printf("Het spel: '%s' is gewijzigd en bevat nu %d %s", spelnaam, dc.geefAantalSpelborden(), dc.geefAantalSpelborden() ==1 ? "spelbord" : "spelborden");
+		System.out.printf("%s '%s' %s %d %s",taalObj.getText("hetSpel") ,spelnaam, taalObj.getText("spelGewijzigdEnBevat"),dc.geefAantalSpelborden(), dc.geefAantalSpelborden() ==1 ? taalObj.getText("spelbord") : taalObj.getText("spelborden"));
 	}
 	
 	private int toonActies() 
@@ -87,19 +90,19 @@ public class UC7Test
 			Scanner input = new Scanner(System.in);
 			try {
 				
-				System.out.printf("%n-----------------------------%n 1. Wijzig een spelbord%n 2. Spel verlaten%n-----------------------------%nGeef je keuze in: ");
+				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",taalObj.getText("wijzigSpelbord"),taalObj.getText("spelVerlaten"),taalObj.getText("keuze"));
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 2)
 				{
-					throw new IllegalArgumentException("Ongeldige actie!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 				}	
 				
 				System.out.println();
 				return keuze;
 			}
 			catch(InputMismatchException e){
-				System.out.println("Er moet een nummer worden ingegeven!");
+				System.out.println(taalObj.getText("getalIngeven"));
 				input.next();
 			}
 		}while(true);

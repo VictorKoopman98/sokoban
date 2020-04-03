@@ -3,14 +3,16 @@ package cui;
 import java.util.Scanner;
 
 import domein.DomeinController;
+import gui.Taal;
 
 public class UC1Test
 {
 	private final  DomeinController dc;
+	private Taal taalObj;
 	
-	
-	public UC1Test (DomeinController dc) 
+	public UC1Test (DomeinController dc, Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.dc =dc;
 	}
 	
@@ -27,16 +29,16 @@ public class UC1Test
         {
             try
             {
-                System.out.print("\nGebruikersnaam: ");
+                System.out.printf("\n%s ", taalObj.getText("geefGebruikersnaam"));
                 gebruikersnaam = input.next();
 
-                System.out.print("\nWachtwoord: ");
+                System.out.printf("\n%s ",taalObj.getText("geefWachtwoord"));
                 wachtwoord = input.next();
                 
                dc.meldAan(gebruikersnaam, wachtwoord);
                blijvenHerhalenFlag = false;
                
-               System.out.printf("%n%s is aangemeld.", dc.geefGebruikersnaam());
+               System.out.printf("%n%s%s", dc.geefGebruikersnaam(),taalObj.getText("aangemeld"));
             } 
             catch (IllegalArgumentException e)
             {

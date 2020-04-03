@@ -9,7 +9,7 @@ public class SokobanApplicatie
 {
 	private DomeinController domeincontroller;
 	private Taal taalObj;
-	
+
 	
 	public SokobanApplicatie(DomeinController domeincontroller)
 	{
@@ -22,18 +22,18 @@ public class SokobanApplicatie
 		Scanner input = new Scanner(System.in);
 		do {
 			try {
-				kiesTaal();
-				System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Speler aanmelden%n 2. Nieuwe speler registreren%n 3. Spel afsluiten%n-----------------------------%nGeef je keuze in: ", "menu1");
+				
+				System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n-----------------------------%n%s", "menu1",taalObj.getText("meldAan"),taalObj.getText("registreerSpeler"),taalObj.getText("stop"),taalObj.getText("keuze"));
 				int keuze = input.nextInt();
 				
 				if(keuze > 3 || keuze < 1)
 				{
-					throw new IllegalArgumentException("Keuze niet beschikbaar!");
+					throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
 				}
 				return keuze;
 			}
 			catch(InputMismatchException e){
-				System.out.printf("%nEr moet een getal ingegeven worden!");
+				System.out.printf(taalObj.getText("getalIngeven"));
 				input.next();
 			}
 		}while(true);
@@ -48,23 +48,23 @@ public class SokobanApplicatie
 					int keuze = 0;
 					if (domeincontroller.getSpeler().isAdminrechten()) 
 					{
-						System.out.printf("%n%n\t%8S%n-----------------------------%n 1. Speel spel%n 2. Maak nieuw spel%n 3. Wijzig een spel%n 4. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
+						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("nieuwSpel"),taalObj.getText("wijzigSpel"),taalObj.getText("afmeldenSpel"));
 						keuze = input.nextInt();
 						
 						if(keuze > 4 || keuze < 1)
 						{
-							throw new IllegalArgumentException("Keuze niet beschikbaar!");
+							throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
 						}
 					}
 					else 
 					{
-						System.out.printf("%n\t%8S%n-----------------------------%n1. Speel spel%n2. Afmelden%n-----------------------------%nGeef je keuze in: ", "menu2");
+						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("afmeldenSpel"),taalObj.getText("keuze"));
 						keuze = input.nextInt();
 						
 						
 						if(keuze > 2 || keuze < 1)
 						{
-							throw new IllegalArgumentException("Keuze niet beschikbaar!");
+							throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
 						}
 						if (keuze == 2) {
 							keuze = 4;
@@ -73,7 +73,7 @@ public class SokobanApplicatie
 					return keuze;
 				}
 				catch(InputMismatchException e) {
-					System.out.print("\nEr moet een getal ingegeven worden!");
+					System.out.printf(taalObj.getText("getalIngeven"));
 					input.next();
 			}
 
@@ -83,6 +83,7 @@ public class SokobanApplicatie
 	
 	public void run()    //verschillende use cases in volgorde laten runnen
 	{
+		kiesTaal();
 		boolean blijvenHerhalenFlag = true;
 		int keuze1;
 		int keuze2;
@@ -94,10 +95,10 @@ public class SokobanApplicatie
 					switch(keuze1) 
 					{
 					case 1: 
-						new UC1Test(domeincontroller).meldAan();
+						new UC1Test(domeincontroller,taalObj).meldAan();
 						break;
 					case 2:
-						new UC2Test(domeincontroller).registreer();
+						new UC2Test(domeincontroller,taalObj).registreer();
 						break;
 					}
 					
@@ -108,13 +109,13 @@ public class SokobanApplicatie
 							switch(keuze2) 
 							{
 							case 1:
-								new UC3Test(domeincontroller).kiesSpel();
+								new UC3Test(domeincontroller,taalObj).kiesSpel();
 								break;
 							case 2:
-								new UC5Test(domeincontroller).maakNieuwSpel();
+								new UC5Test(domeincontroller,taalObj).maakNieuwSpel();
 								break;
 							case 3:
-								new UC7Test(domeincontroller).wijzigSpel();
+								new UC7Test(domeincontroller,taalObj).wijzigSpel();
 								break;
 							}
 						}while(keuze2 != 4);
@@ -134,14 +135,6 @@ public class SokobanApplicatie
 			} while(blijvenHerhalenFlag);
 			
 	}	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public void kiesTaal()
     {
@@ -149,13 +142,13 @@ public class SokobanApplicatie
 		Scanner input = new Scanner(System.in);
 		do
 		{
-		    System.out.print("Kies een taal (NL)/ choose a language (EN)/ Choisissez une langue(FR): ");
+		    System.out.print("Kies een taal (NL)/ Choose a language (EN)/ Choisissez une langue (FR): ");
 		    try
 		    {
 		    	taal = input.nextLine();
 				if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
 				{
-				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entree incorrecte");
+				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entrée incorrecte");
 				}
 		    } catch (IllegalArgumentException ie)
 		    {

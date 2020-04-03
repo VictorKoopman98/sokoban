@@ -1,16 +1,21 @@
 package cui;
 
 import domein.DomeinController;
+import gui.Taal;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
+
 
 public class UC6Test 
 {
 	
 	DomeinController dc;
+	Taal taalObj;
 
-	public UC6Test(DomeinController dc) 
-	{
+	public UC6Test(DomeinController dc, Taal taalObj) 
+	{	
+		this.taalObj = taalObj;
 		this.dc = dc;
 	}
 
@@ -32,10 +37,10 @@ public class UC6Test
 		
 		do {
 			try{
-				System.out.printf("%nGeef de rij van de gewenste wijziging: ");
+				System.out.printf("%n%s", taalObj.getText("geefRij"));
 				int x = input.nextInt();
 				
-				System.out.printf("%nGeef de kolom van de gewenste wijziging: ");
+				System.out.printf("%n%s",taalObj.getText("geefKolom"));
 				int y = input.nextInt();
 				System.out.println();
 				try {
@@ -66,25 +71,25 @@ public class UC6Test
 
 		do {
 			try {
-				System.out.printf("%nDe mogelijke acties zijn:%n"
-						+ "1: Maak een doel%n"
-						+ "2: Maak een muur%n"
-						+ "3: Zet een man%n"
-						+ "4: Zet een kist%n"
-						+ "5: Maak het veld leeg%n"
-						+ "6: Stop wijzigen%n");
+				System.out.printf("%n%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n"
+						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoek"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
 
-				System.out.printf("Geef uw keuze: ");
+				System.out.printf("%s",taalObj.getText("keuze"));
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 6)
 				{
-					throw new IllegalArgumentException("Ongeldige actie!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 				}	
 				return keuze;
 			}
 			catch(InputMismatchException e){
-				System.out.println("Er moet een nummer worden ingegeven!");
+				System.out.printf("%s",taalObj.getText("getalIngeven"));
 			}
 		}while(true);
 		

@@ -1,6 +1,8 @@
 package cui;
 
 import domein.DomeinController;
+import gui.Taal;
+
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -9,11 +11,13 @@ public class UC5Test
 	
 	private DomeinController dc;
 	private UC6Test uc6test;
+	private Taal taalObj;
 
-	public UC5Test(DomeinController dc) 
+	public UC5Test(DomeinController dc, Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.dc = dc;
-		this.uc6test = new UC6Test(dc);
+		this.uc6test = new UC6Test(dc,taalObj);
 	}
 	
 	
@@ -28,7 +32,7 @@ public class UC5Test
 			Scanner input = new Scanner(System.in);
 			try 
 			{
-				System.out.printf("%nGeef de spelnaam van het nieuwe spel: ");
+				System.out.printf("%n%s",taalObj.getText("geefSpelnaamNieuweSpel"));
 				spelnaam = input.nextLine();
 				
 				dc.maakNieuwSpel(spelnaam);
@@ -51,7 +55,7 @@ public class UC5Test
 					}
 					else if (actie == 2) 
 					{
-						System.out.printf("%s is gestopt met spelborden aanmaken.%n%n", dc.geefGebruikersnaam());
+						System.out.printf("%s %s%n%n", dc.geefGebruikersnaam(),taalObj.getText("stopMetSpelbordenAanmaken"));
 					}
 				}while ( actie != 2);
 
@@ -64,7 +68,7 @@ public class UC5Test
 		
 		dc.selecteerSpel(spelnaam);
 		
-		System.out.printf("%s is aangemaakt met %d %s", dc.geefNaamSpel(), aantalSpelborden, aantalSpelborden <= 1 ? "spelbord" : "spelborden");
+		System.out.printf("%s %s %d %s", dc.geefNaamSpel(), taalObj.getText("isAangemaakt"),aantalSpelborden, aantalSpelborden <= 1 ? taalObj.getText("spelbord"): taalObj.getText("spelborden"));
 	}
 	
 	
@@ -75,17 +79,17 @@ public class UC5Test
 			Scanner input = new Scanner(System.in);
 			try {
 
-				System.out.printf("%n%n-----------------------------%n 1. Nieuw spelbord aanmaken%n 2. Stoppen%n-----------------------------%nGeef je keuze in: ");
+				System.out.printf("%n%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",taalObj.getText("nieuwSpelbord"),taalObj.getText("stoppen"),taalObj.getText("keuze"));
 				int actie = input.nextInt();
 				
 				if(actie < 1 || actie > 2)
 				{
-					throw new IllegalArgumentException("Ongeldige actie!");
+					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
 				}	
 				return actie;
 			}
 			catch(InputMismatchException e) {
-				System.out.println("Er moet een nummer worden ingegeven!");
+				System.out.printf("%s",taalObj.getText("getalIngeven"));
 				input.next();
 			}
 		}while(true);

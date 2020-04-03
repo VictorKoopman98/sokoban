@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import gui.Taal;
 import persistentie.SpelMapper;
 
 public class SpelRepository
 {
 	private static SpelMapper spelMapper;
 	private static List<Spel> spellen = new ArrayList<>();
+	private Taal taalObj;
     
     
     public SpelRepository()
@@ -39,7 +41,7 @@ public class SpelRepository
     {
 		if (bestaatSpel(spel.getNaamSpel()))
 		{
-		    throw new IllegalArgumentException("Spel bestaat al!");
+		    throw new IllegalArgumentException(taalObj.getText("spelBestaat"));
 		}
 		spelMapper.voegSpelToe(spel);
     }
