@@ -3,6 +3,8 @@ package domein;
 import java.util.Arrays;
 import java.util.List;
 
+import gui.Taal;
+
 
 public class DomeinController
 {
@@ -11,13 +13,15 @@ public class DomeinController
 	private Speler speler;
 	private Spel spel;
 	private final SpelbordRepository spelbordRepository; 
+	private Taal taalObj;
 	
 	
-	public DomeinController()   //Constructor om een DomeinController aan te maken
+	public DomeinController(Taal taalObj)   //Constructor om een DomeinController aan te maken
 	{
-		this.spelRepository = new SpelRepository();
+		this.taalObj = taalObj;
+		this.spelRepository = new SpelRepository(taalObj);
 		spelerRepository = new SpelerRepository(); 
-		spelbordRepository = new SpelbordRepository();		
+		spelbordRepository = new SpelbordRepository(taalObj);		
 	}
 	
 	
@@ -146,7 +150,7 @@ public class DomeinController
     
     public void maakNieuwSpel(String naamSpel) 
     {
-    	Spel nieuwSpel = new Spel(naamSpel);
+    	Spel nieuwSpel = new Spel(naamSpel,taalObj);
     	spelRepository.voegSpelToe(nieuwSpel);
     }    
     

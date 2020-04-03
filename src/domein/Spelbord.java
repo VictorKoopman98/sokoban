@@ -1,6 +1,7 @@
 package domein;
 
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.ArrayList;
 
 import domein.Veld;
@@ -14,13 +15,15 @@ public class Spelbord
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
 	private Taal taalObj;
+	
 	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
 	ArrayList<Kist> kisten = new ArrayList<Kist>();
 	Man man;
 	
 
-	public Spelbord(int volgnummer, Veld[][] velden) 
+	public Spelbord(int volgnummer, Veld[][] velden, Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
@@ -168,25 +171,27 @@ public class Spelbord
 	public void verplaatsMan(String richting) 
 	{
 		bepaalLocatieMan();
-    	
+		
+		
     	if (isVerplaatsingOK(richting)) 
     	{
+    	
     		aantalVerplaatsingen += 1;
     		int verplaatsingX = 0;
     		int verplaatsingY = 0;
-    		if (richting.equals("links") ) 
+    		if (richting.equals(taalObj.getText("links"))) 
     		{
     			verplaatsingY = -1;
     		} 
-    		else if (richting.equals("rechts")) 
+    		else if (richting.equals(taalObj.getText("rechts"))) 
     		{
     			verplaatsingY = +1;
     		}
-    		else if (richting.equals("omhoog")) 
+    		else if (richting.equals(taalObj.getText("omhoog"))) 
     		{
     			verplaatsingX = -1;
     		}
-    		else if (richting.equals("omlaag")) 
+    		else if (richting.equals(taalObj.getText("omlaag"))) 
     		{
     			verplaatsingX = +1;
     		}
@@ -238,35 +243,36 @@ public class Spelbord
 	
 	public boolean isVerplaatsingOK(String richting) 
 	{
+		
 		bepaalLocatieMan();
 		boolean verplaatsingOk = false;
 		int verplaatsingX = 0;
 		int verplaatsingY = 0;
 		int grens = 0;
-		
-    	if (richting.equals("links")) 
+	
+    	if (richting.equals(taalObj.getText("links"))) 
     	{
     		verplaatsingY = -1;
     		grens = 0;
     	}
     	
-    	if (richting.equals("rechts")) 
+    	if (richting.equals(taalObj.getText("rechts"))) 
     	{
     		verplaatsingY = 1;
     		grens = 9;
     	}
-    	if (richting.equals("omhoog")) 
+    	if (richting.equals(taalObj.getText("omhoog"))) 
     	{
     		verplaatsingX = -1;
     		grens = 0;
     	}
-    	if (richting.equals("omlaag")) 
+    	if (richting.equals(taalObj.getText("omlaag"))) 
     	{
     		verplaatsingX = 1;
     		grens = 9;
     	}
     	
-    	if (richting.equals("omhoog") || richting.equals("omlaag")) {
+    	if (richting.equals(taalObj.getText("omhoog")) || richting.equals(taalObj.getText("omlaag"))) {
 	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManX == grens 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 
@@ -275,7 +281,7 @@ public class Spelbord
 				verplaatsingOk = true;
 			}
     	}
-    	if (richting.equals("links") || richting.equals("rechts")) {
+    	if (richting.equals(taalObj.getText("links")) || richting.equals(taalObj.getText("rechts"))) {
 	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManY == grens 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 

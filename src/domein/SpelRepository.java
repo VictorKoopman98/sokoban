@@ -14,9 +14,10 @@ public class SpelRepository
 	private Taal taalObj;
     
     
-    public SpelRepository()
+    public SpelRepository(Taal taalObj)
     {
-        spelMapper = new SpelMapper();
+    	this.taalObj = taalObj;
+        spelMapper = new SpelMapper(taalObj);
     }
     
     

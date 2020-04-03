@@ -10,12 +10,26 @@ import java.util.List;
 
 import domein.Spelbord;
 import domein.Veld;
+import gui.Taal;
 
 public class SpelbordMapper
 {
 	private static final String INSERT_SPELBORD = "INSERT INTO ID222177_g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
 	private Veldmapper vm = new Veldmapper();
-
+	private Taal taalObj;
+	
+	
+	public SpelbordMapper(Taal taalObj)
+	{
+		this.taalObj = taalObj;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	//Methode om een bepaald spelbord uit de databank te halen
 	//spelnaam unieke identeit van het spel waartoe het spelbord behoort
@@ -35,7 +49,7 @@ public class SpelbordMapper
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelbord = new Spelbord(volgnummer, velden);
+                    spelbord = new Spelbord(volgnummer, velden, taalObj);
                 }
             }
         } catch (SQLException ex) {
@@ -59,7 +73,7 @@ public class SpelbordMapper
                 while (rs.next()) 
                 {
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelbord = new Spelbord(volgnummer, velden);
+                    spelbord = new Spelbord(volgnummer, velden, taalObj);
                 }
             }
         } catch (SQLException ex) 
@@ -86,7 +100,7 @@ public class SpelbordMapper
                     int volgnummer = rs.getInt("volgnummer");
 
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelborden.add(new Spelbord(volgnummer, velden));
+                    spelborden.add(new Spelbord(volgnummer, velden,taalObj));
                 }
             }
         } catch (SQLException ex) {

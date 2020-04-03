@@ -89,11 +89,11 @@ public class UC4Test
 		int keuze = -1;
 		do {
 			try {
-				System.out.printf("%s",taalObj.getText("nieuweVerplaatsing"));
+				System.out.printf("%s%n",taalObj.getText("nieuweVerplaatsing"));
 				
-				System.out.printf("%s",taalObj.getText("spelTerugzetten"));
+				System.out.printf("%s%n",taalObj.getText("spelTerugzetten"));
 				
-				System.out.printf("%s",taalObj.getText("spelbordVerlaten"));
+				System.out.printf("%s%n",taalObj.getText("spelbordVerlaten"));
 				
 				System.out.printf("%s",taalObj.getText("geefNummer"));
 		
@@ -128,13 +128,13 @@ public class UC4Test
 
 		do {
 			try {
-				System.out.printf("%s",taalObj.getText("links4"));
+				System.out.printf("%s%n",taalObj.getText("links4"));
 				
-				System.out.printf("%s",taalObj.getText("rechts6"));
+				System.out.printf("%s%n",taalObj.getText("rechts6"));
 				
-				System.out.printf("%s",taalObj.getText("omhoog8"));
+				System.out.printf("%s%n",taalObj.getText("omhoog8"));
 				
-				System.out.printf("%s",taalObj.getText("omlaag2"));
+				System.out.printf("%s%n",taalObj.getText("omlaag2"));
 				
 				System.out.printf("%s",taalObj.getText("geefNummer"));
 				keuze = input.nextInt();

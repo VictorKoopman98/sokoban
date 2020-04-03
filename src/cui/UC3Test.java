@@ -75,7 +75,7 @@ public class UC3Test
 			{
 				uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
 				
-				System.out.printf("%n%s%s %d %s %d %s.%n%n", dc.geefGebruikersnaam(), taalObj.getText("heeft"),dc.geefAantalSpelbordenVoltooid(), taalObj.getText("vanDe"),dc.geefAantalSpelborden(),taalObj.getText("spelbordVoltooid"));
+				System.out.printf("%n%s %s %d %s %d %s.%n%n", dc.geefGebruikersnaam(), taalObj.getText("heeft"),dc.geefAantalSpelbordenVoltooid(), taalObj.getText("vanDe"),dc.geefAantalSpelborden(),taalObj.getText("spelbordVoltooid"));
 				
 			}
 			if (!dc.isSpelVoltooid()) {
@@ -103,7 +103,7 @@ public class UC3Test
 		{
 			try 
 			{
-				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",taalObj.getText("spelbordVoltooid"),taalObj.getText("spelVerlatenO"),taalObj.getText("keuze"));
+				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",taalObj.getText("spelbordVoltooidO"),taalObj.getText("spelVerlatenO"),taalObj.getText("keuze"));
 				keuze = input.nextInt();
 				System.out.println();
 				if (keuze < 0 || keuze > 3 || keuze != (int)keuze) {

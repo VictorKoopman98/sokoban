@@ -16,10 +16,11 @@ public class Spel
 	private Taal taalObj;
 	
 
-	public Spel(String naamSpel) 
+	public Spel(String naamSpel,Taal taalObj) 
 	{
+		this.taalObj = taalObj;
 		this.setNaamSpel(naamSpel);
-		spelbordRepository = new SpelbordRepository();
+		spelbordRepository = new SpelbordRepository(taalObj);
 		spelbordenLijst = geefSpelbordenLijst();
 	}	
 	
@@ -187,7 +188,7 @@ public class Spel
 				velden[i][j] = new Veld(i,j, false, false, false, false);
 			}
 		}
-		this.huidigSpelbord = new Spelbord(volgnummer, velden);
+		this.huidigSpelbord = new Spelbord(volgnummer, velden,taalObj);
 	}
 	
 	

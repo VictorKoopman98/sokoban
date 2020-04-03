@@ -9,12 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import domein.Spel;
+import gui.Taal;
 
 public class SpelMapper
 {
+	private static Taal taalObj;
 	private static final String INSERT_SPEL = "INSERT INTO ID222177_g39.Spel (naamSpel)"
             + "VALUES (?)";
-	SpelbordMapper sbm = new SpelbordMapper();
+	
+	
+	public SpelMapper(Taal taalObj)
+	{
+		this.taalObj = taalObj;
+	}
+	
+	
+	
+	SpelbordMapper sbm = new SpelbordMapper(taalObj);
+
+	
 
 	
     //Methode om een spel met een bepaald spelnaam uit de databank te halen
@@ -34,7 +47,7 @@ public class SpelMapper
 			{
 			    //String naam = rs.getString("spelnaam");
 	                    //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
-			    spel = new Spel(spelnaam);
+			    spel = new Spel(spelnaam,taalObj);
 			}
 		    }
 		} catch (SQLException ex)
@@ -61,7 +74,7 @@ public class SpelMapper
 		                    
 				    String naam = rs.getString("naamSpel");
 		            //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
-				    spel.add(new Spel(naam));
+				    spel.add(new Spel(naam,taalObj));
 				}
 		    }
 		} 

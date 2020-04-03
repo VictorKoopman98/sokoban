@@ -38,7 +38,7 @@ public class UC1Test
                dc.meldAan(gebruikersnaam, wachtwoord);
                blijvenHerhalenFlag = false;
                
-               System.out.printf("%n%s%s", dc.geefGebruikersnaam(),taalObj.getText("aangemeld"));
+               System.out.printf("%n%s %s", dc.geefGebruikersnaam(),taalObj.getText("aangemeld"));
             } 
             catch (IllegalArgumentException e)
             {

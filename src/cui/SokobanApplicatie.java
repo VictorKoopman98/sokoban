@@ -11,14 +11,16 @@ public class SokobanApplicatie
 	private Taal taalObj;
 
 	
-	public SokobanApplicatie(DomeinController domeincontroller)
+	public SokobanApplicatie(DomeinController domeincontroller,Taal taalObj)
 	{
+		this.taalObj = taalObj;
 		this.domeincontroller = domeincontroller;
 	}
 	
 	
 	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
 	{
+		
 		Scanner input = new Scanner(System.in);
 		do {
 			try {
@@ -48,7 +50,7 @@ public class SokobanApplicatie
 					int keuze = 0;
 					if (domeincontroller.getSpeler().isAdminrechten()) 
 					{
-						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("nieuwSpel"),taalObj.getText("wijzigSpel"),taalObj.getText("afmeldenSpel"));
+						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("nieuwSpel"),taalObj.getText("wijzigSpel"),taalObj.getText("afmeldenSpel"),taalObj.getText("keuze"));
 						keuze = input.nextInt();
 						
 						if(keuze > 4 || keuze < 1)
@@ -58,7 +60,7 @@ public class SokobanApplicatie
 					}
 					else 
 					{
-						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("afmeldenSpel"),taalObj.getText("keuze"));
+						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("afmeldenSpelO"),taalObj.getText("keuze"));
 						keuze = input.nextInt();
 						
 						
@@ -83,7 +85,7 @@ public class SokobanApplicatie
 	
 	public void run()    //verschillende use cases in volgorde laten runnen
 	{
-		kiesTaal();
+		
 		boolean blijvenHerhalenFlag = true;
 		int keuze1;
 		int keuze2;
@@ -136,26 +138,5 @@ public class SokobanApplicatie
 			
 	}	
 
-	public void kiesTaal()
-    {
-		String taal = "";
-		Scanner input = new Scanner(System.in);
-		do
-		{
-		    System.out.print("Kies een taal (NL)/ Choose a language (EN)/ Choisissez une langue (FR): ");
-		    try
-		    {
-		    	taal = input.nextLine();
-				if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
-				{
-				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entrée incorrecte");
-				}
-		    } catch (IllegalArgumentException ie)
-		    {
-			System.out.println(ie.getMessage());
-		    }
-		} while (!(taal.equals("NL") || taal.equals("FR") || taal.equals("EN")));
-		
-		taalObj = new Taal(taal);
-    }
+	
 }

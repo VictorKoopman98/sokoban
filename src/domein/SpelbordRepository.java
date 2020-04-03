@@ -4,17 +4,20 @@ package domein;
 import java.util.List;
 
 import domein.Spelbord;
+import gui.Taal;
 import persistentie.SpelbordMapper;
 
 public class SpelbordRepository 
 {
 	private static SpelbordMapper spelbordMapper;
 	private Spelbord spelbord;
+	private Taal taalObj;
 	
 	
-	public SpelbordRepository() 
+	public SpelbordRepository(Taal taalObj) 
 	{
-		spelbordMapper = new SpelbordMapper();
+		this.taalObj = taalObj;
+		spelbordMapper = new SpelbordMapper(taalObj);
 	}
 	
 	
