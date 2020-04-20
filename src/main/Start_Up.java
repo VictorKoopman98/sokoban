@@ -1,5 +1,6 @@
 package main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import cui.SokobanApplicatie;
@@ -25,25 +26,44 @@ public class Start_Up
 	
 	public static void kiesTaal()
     {
-		String taal = "";
+		int taal = 0;
 		Scanner input = new Scanner(System.in);
 		do
 		{
-		    System.out.print("Kies een taal (NL) / Choose a language (EN) / Choisissez une langue (FR): ");
+		    System.out.printf("1.Kies een taal (NL)%n2.Choose a language (EN)%n3.Choisissez une langue (FR): ");
 		    try
 		    {
-		    	taal = input.nextLine();
-				if (!(("NL".equals(taal)) || ("EN".equals(taal)) || ("FR".equals(taal))))
+		    	taal = input.nextInt();
+				if (!((taal == 1 || taal == 2 ||  taal == 3 )))
 				{
 				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entrée incorrecte");
 				}
 		    } catch (IllegalArgumentException ie)
+		    
 		    {
 			System.out.println(ie.getMessage());
 		    }
-		} while (!(taal.equals("NL") || taal.equals("FR") || taal.equals("EN")));
+		    catch(InputMismatchException e)
+		    {
+		    	System.out.println("Er moet een nummer gekozen worden !");
+		    }
+		} while (!(taal == 1 || taal == 3 || taal == 2));
+		String taalString ="";
+		switch(taal)
+		{
+		case 1 :
+			taalString = "NL";
+			break;
+			
+		case 2 : 
+			taalString = "EN";
+			break;
+		case 3 :
+			taalString = "FR";
+			break;
+			}
 		
-		taalObj = new Taal(taal);
+		taalObj = new Taal(taalString);
     }
 	
 
