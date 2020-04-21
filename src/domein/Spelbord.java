@@ -45,6 +45,9 @@ public class Spelbord
 				}
 			}
 		}
+		if (man == null) {
+			man = new Man(spelbord[5][5]);
+		}
 	}
 	
 	

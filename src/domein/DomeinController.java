@@ -249,6 +249,4 @@ public class DomeinController
     {
     	spelbordRepository.updateSpelbord(spelbord, spelnaam);
     }
-    
-
 }
