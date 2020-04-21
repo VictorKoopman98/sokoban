@@ -131,12 +131,12 @@ public class SpelbordMapper
     //spenlnaam unieke identiteit van het spelbord dat wordt toegevoegd in de databank
     //spelnaam unieke identiteit van het spel waartoe het spelbord zal behoren
    
-    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+    public void voegSpelbordToe(int volgnummer, char[][] velden, String spelnaam) 
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement(INSERT_SPELBORD)) 
         {      
-            query.setInt(1, spelbord.getVolgnummer());
+            query.setInt(1, volgnummer);
             query.setString(2, spelnaam);
             query.executeUpdate();
         } 
@@ -144,14 +144,14 @@ public class SpelbordMapper
         {
             throw new RuntimeException(ex);
         }
-        vm.voegVeldenToe(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam);
+        vm.voegVeldenToe(velden, volgnummer, spelnaam);
 
     }
     
     
-    public void updateSpelbord(Spelbord spelbord, String spelnaam)
+    public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
-    	vm.updateVelden(spelbord.getSpelbord(), spelbord.getVolgnummer(), spelnaam);
+    	vm.updateVelden(velden, volgnummer, spelnaam);
     }
     
     

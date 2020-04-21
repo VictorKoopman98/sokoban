@@ -8,84 +8,91 @@ import gui.Taal;
 public class SokobanApplicatie
 {
 	private DomeinController domeincontroller;
-	private Taal taalObj;
-
 	
-	public SokobanApplicatie(DomeinController domeincontroller,Taal taalObj)
+	public SokobanApplicatie(DomeinController domeincontroller)
 	{
-		this.taalObj = taalObj;
 		this.domeincontroller = domeincontroller;
 	}
 	
-	
-	public int toonHoofdpaneel1()    //menu spler kan inloggen, registreren of stoppen
-	{
-		
+	public int toonHoofdpaneel1()    //menu speler kan inloggen, registreren of stoppen
+	{	
 		Scanner input = new Scanner(System.in);
+//		Talen initialiseren
+		String aanmelden = Taal.getText("meldAan"),
+		       registreer = Taal.getText("registreerSpeler"),
+		       stop = Taal.getText("stop"),
+		       keuze = Taal.getText("keuze"),
+		       keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
+		       keuzeMismatch = Taal.getText("getalIngeven");      
 		do {
 			try {
+				System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n-----------------------------%n%s", 
+						"menu1",aanmelden,registreer,stop,keuze);
 				
-				System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n-----------------------------%n%s", "menu1",taalObj.getText("meldAan"),taalObj.getText("registreerSpeler"),taalObj.getText("stop"),taalObj.getText("keuze"));
-				int keuze = input.nextInt();
-				
-				if(keuze > 3 || keuze < 1)
+				int keuze1 = input.nextInt();
+				if(keuze1 > 3 || keuze1 < 1)
 				{
-					throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}
-				return keuze;
+				return keuze1;
 			}
 			catch(InputMismatchException e){
-				System.out.printf(taalObj.getText("getalIngeven"));
+				System.out.printf(keuzeMismatch);
 				input.next();
 			}
 		}while(true);
 	}
 	
-	
 	public int toonHoofdpaneel2() 
 	{
 		Scanner input = new Scanner(System.in);
+		
+	    String spelen = Taal.getText("speelSpel"),
+		       nieuwSpel = Taal.getText("nieuwSpel"),
+		       wijzigSpel = Taal.getText("wijzigSpel"),
+		       afmelden = Taal.getText("afmeldenSpel"),
+		       keuze = Taal.getText("keuze"),
+		       keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
+		       spelAfmelden = Taal.getText("afmeldenSpelO"),
+		       keuzeMismatch = Taal.getText("getalIngeven");
 		do {
 			try {
-					int keuze = 0;
+					int keuze1 = 0;
 					if (domeincontroller.getSpeler().isAdminrechten()) 
 					{
-						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("nieuwSpel"),taalObj.getText("wijzigSpel"),taalObj.getText("afmeldenSpel"),taalObj.getText("keuze"));
-						keuze = input.nextInt();
+						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", 
+								"menu2", spelen, nieuwSpel, wijzigSpel, afmelden,keuze);
 						
-						if(keuze > 4 || keuze < 1)
+						keuze1 = input.nextInt();
+						if(keuze1 > 4 || keuze1 < 1)
 						{
-							throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
+							throw new IllegalArgumentException(keuzeOutOfBounds);
 						}
 					}
 					else 
 					{
-						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",taalObj.getText("speelSpel"),taalObj.getText("afmeldenSpelO"),taalObj.getText("keuze"));
-						keuze = input.nextInt();
+						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",spelen,spelAfmelden,keuze);
 						
-						
-						if(keuze > 2 || keuze < 1)
+						keuze1 = input.nextInt();
+						if(keuze1 > 2 || keuze1 < 1)
 						{
-							throw new IllegalArgumentException(taalObj.getText("keuzeNietBeschikbaar"));
-						}
-						if (keuze == 2) {
-							keuze = 4;
+							throw new IllegalArgumentException(keuzeOutOfBounds);
+						}if (keuze1 == 2) 
+						{
+							keuze1 = 4;
 						}
 					}
-					return keuze;
+					return keuze1;
 				}
 				catch(InputMismatchException e) {
-					System.out.printf(taalObj.getText("getalIngeven"));
+					System.out.printf(keuzeMismatch);
 					input.next();
 			}
-
 		}while(true);
 	}
 
-	
 	public void run()    //verschillende use cases in volgorde laten runnen
 	{
-		
 		boolean blijvenHerhalenFlag = true;
 		int keuze1;
 		int keuze2;
@@ -93,17 +100,15 @@ public class SokobanApplicatie
 			{
 				try {
 					keuze1 = toonHoofdpaneel1();
-					
 					switch(keuze1) 
 					{
 					case 1: 
-						new UC1Test(domeincontroller,taalObj).meldAan();
+						new UC1Test(domeincontroller).meldAan();
 						break;
 					case 2:
-						new UC2Test(domeincontroller,taalObj).registreer();
+						new UC2Test(domeincontroller).registreer();
 						break;
 					}
-					
 					if(keuze1 == 1 || keuze1 == 2)  //indien aangemeld of geregistreerd toon de spellen en opties om spellen en spelborden te voltooien
 					{
 						do {
@@ -111,32 +116,23 @@ public class SokobanApplicatie
 							switch(keuze2) 
 							{
 							case 1:
-								new UC3Test(domeincontroller,taalObj).kiesSpel();
+								new UC3Test(domeincontroller).kiesSpel();
 								break;
 							case 2:
-								new UC5Test(domeincontroller,taalObj).maakNieuwSpel();
+								new UC5Test(domeincontroller).maakNieuwSpel();
 								break;
 							case 3:
-								new UC7Test(domeincontroller,taalObj).wijzigSpel();
+								new UC7Test(domeincontroller).wijzigSpel();
 								break;
 							}
 						}while(keuze2 != 4);
-						
 					}
-					if(keuze1 == 3)
-					{
+					if(keuze1 == 3){
 						blijvenHerhalenFlag = false;
 					}
-					}
-					catch(IllegalArgumentException e)
-					{
+					}catch(IllegalArgumentException e){
 						System.out.println(e);
-					}
-				
-				
-			} while(blijvenHerhalenFlag);
-			
+					}	
+			} while(blijvenHerhalenFlag);	
 	}	
-
-	
 }

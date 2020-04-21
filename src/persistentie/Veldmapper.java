@@ -115,7 +115,7 @@ public class Veldmapper
 	
 	
 	
-	 public void updateVelden(Veld[][] velden, int volgnummer, String spelnaam) 
+	 public void updateVelden(char[][] velden, int volgnummer, String spelnaam) 
 	    {
 	            try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
 	            		PreparedStatement query = conn.prepareStatement("UPDATE ID222177_g39.Veld SET isDoel = ?, isMuur = ?, isMan = ?, isKist = ? WHERE (naamSpel = ? AND volgnummer = ? AND x = ? AND y = ?)")) {
@@ -127,13 +127,13 @@ public class Veldmapper
 	                	boolean isMuur = false;
 	                	boolean isMan = false;
 	                	boolean isKist = false;
-	                    if (velden[i][j].isMuur()) {
+	                    if (velden[i][j] == 'M') {
 	                        isMuur = true;
-	                    } else if (velden[i][j].isDoel()) {
+	                    } else if (velden[i][j] == 'D') {
 	                        isDoel = true;
-	                    } else if (velden[i][j].isMan()) {
+	                    } else if (velden[i][j] == 'X') {
 	                        isMan = true;
-	                    } else if (velden[i][j].isKist()) {
+	                    } else if (velden[i][j] == 'K') {
 	                        isKist = true;
 	                    }  
 	                    
@@ -159,7 +159,7 @@ public class Veldmapper
     //spelnaam unieke identiteit van het spel waarbij de velden wordentoegevoegd
     //volgnummer unieke identiteit van het spelbord waarbij de veldenworden toegevoegd
     
-    public void voegVeldenToe(Veld[][] velden, int volgnummer, String spelnaam) 
+    public void voegVeldenToe(char[][] velden, int volgnummer, String spelnaam) 
     {
             try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
             		PreparedStatement query = conn.prepareStatement(INSERT_VELDEN)) {
@@ -171,13 +171,13 @@ public class Veldmapper
                 	boolean isMuur = false;
                 	boolean isMan = false;
                 	boolean isKist = false;
-                    if (velden[i][j].isMuur()) {
+                    if (velden[i][j] == 'M') {
                         isMuur = true;
-                    } else if (velden[i][j].isDoel()) {
+                    } else if (velden[i][j] == 'D') {
                         isDoel = true;
-                    } else if (velden[i][j].isMan()) {
+                    } else if (velden[i][j] == 'X') {
                         isMan = true;
-                    } else if (velden[i][j].isKist()) {
+                    } else if (velden[i][j] == 'K') {
                         isKist = true;
                     }  
                     query.setString(1, spelnaam);

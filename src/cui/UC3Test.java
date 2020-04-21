@@ -14,35 +14,37 @@ public class UC3Test
 	private DomeinController dc;
 	private String[] spelletjes;   //array van de namen van de spellen
 	private UC4Test uc4Test;
-	private Taal taalObj;
-
 	
-	
-	public UC3Test (DomeinController dc, Taal taalObj) 
+	public UC3Test (DomeinController dc) 
 	{
-		this.taalObj = taalObj;
 		this.dc =dc;
 		spelletjes = DomeinController.geefLijstSpellen();
-		uc4Test = new UC4Test(dc,taalObj);
+		uc4Test = new UC4Test(dc);
 	}
 	
 	
 	public void kiesSpel()    //methode voor een spel te selecteren uit een lijst van spellen
 	{
-		int gekozenSpel = 0;
 		Scanner input = new Scanner(System.in);
+		
+		String spelletje = Taal.getText("spelletje"),
+			   keuze = Taal.getText("keuze"),
+			   getalIngeven = Taal.getText("getalIngeven"),
+			   heeft = Taal.getText("heeft"),
+			   vanDe = Taal.getText("vanDe"),
+			   spelbordVoltooid = Taal.getText("spelbordVoltooid"),
+			   huidigSpelbordVoltooid = Taal.getText("huidigSpelVoltooid"),
+			   spelVerlaten = Taal.getText("spelVerlaten");
+		
+		int gekozenSpel = 0;
         boolean blijvenHerhalenFlag = true;
-		 
-		do 
-		{
-			try 
-			{
+		do {
+			try {
 				for(int i = 0; i < spelletjes.length; i++)
 				{
-					System.out.printf("%n%s %d: %s%n", taalObj.getText("spelletje"),i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+					System.out.printf("%n%s %d: %s%n",spelletje,i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
 				}
-
-				System.out.printf("%n%s ",taalObj.getText("keuze"));
+				System.out.printf("%n%s ",keuze);
 				gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
 				
 				if(gekozenSpel > 0 && gekozenSpel <= spelletjes.length)
@@ -55,7 +57,7 @@ public class UC3Test
 				System.out.println(e);
 			}	
 			catch(InputMismatchException e) {
-				System.out.printf("\n%s",taalObj.getText("getalIngeven"));
+				System.out.printf("\n%s",getalIngeven);
 				input.next();
 			}
 			
@@ -75,48 +77,49 @@ public class UC3Test
 			{
 				uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
 				
-				System.out.printf("%n%s %s %d %s %d %s.%n%n", dc.geefGebruikersnaam(), taalObj.getText("heeft"),dc.geefAantalSpelbordenVoltooid(), taalObj.getText("vanDe"),dc.geefAantalSpelborden(),taalObj.getText("spelbordVoltooid"));
-				
+				System.out.printf("%n%s %s %d %s %d %s.%n%n", dc.geefGebruikersnaam(), heeft,dc.geefAantalSpelbordenVoltooid(), vanDe,
+						dc.geefAantalSpelborden(),spelbordVoltooid);
 			}
 			if (!dc.isSpelVoltooid()) {
 				actie = toonActiesSpel();
 			}
 			else {
-				System.out.printf("%s %s", dc.geefGebruikersnaam(),taalObj.getText("huidigSpelVoltooid"));
+				System.out.printf("%s %s", dc.geefGebruikersnaam(),huidigSpelbordVoltooid);
 			}
-			
 		}while(actie!=2 && !dc.isSpelVoltooid());
 		if (actie == 2) 
 		{
-			System.out.printf("%n%s %s", dc.geefGebruikersnaam(),taalObj.getText("spelVerlaten"));
+			System.out.printf("%n%s %s", dc.geefGebruikersnaam(),spelVerlaten);
 		}
 	}
 	
 	
 	private int toonActiesSpel()    //acties die je kan doen in het spel worden weergegeven
 	{
-		boolean blijvenHerhalen = true;
-		int keuze = -1;
 		Scanner input = new Scanner(System.in);
-
+		String spelbordVoltooid = Taal.getText("spelbordVoltooidO"),
+			   spelVerlaten = Taal.getText("spelVerlatenO"),
+			   keuzeMaken = Taal.getText("keuze"),
+			   ongeldigeActie = Taal.getText("ongeldigActie");
+		
+		int keuze = -1;
+		boolean blijvenHerhalen = true;
 		do 
 		{
 			try 
 			{
-				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",taalObj.getText("spelbordVoltooidO"),taalObj.getText("spelVerlatenO"),taalObj.getText("keuze"));
+				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",spelbordVoltooid,spelVerlaten,keuzeMaken);
 				keuze = input.nextInt();
 				System.out.println();
 				if (keuze < 0 || keuze > 3 || keuze != (int)keuze) {
-					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
+					throw new IllegalArgumentException(ongeldigeActie);
 				}
 				if (keuze > 0 && keuze < 3) 
 				{
 					blijvenHerhalen = false;
-				}
-				
+				}	
 			}
-			catch(IllegalArgumentException e)
-			{
+			catch(IllegalArgumentException e){
 				System.err.println(e);
 			}
 		} while (blijvenHerhalen && !dc.isSpelVoltooid());

@@ -12,16 +12,13 @@ public class DomeinController
 	private final SpelRepository spelRepository;
 	private Speler speler;
 	private Spel spel;
-	private final SpelbordRepository spelbordRepository; 
-	private Taal taalObj;
+	private final SpelbordRepository spelbordRepository; 	
 	
-	
-	public DomeinController(Taal taalObj)   //Constructor om een DomeinController aan te maken
+	public DomeinController()   //Constructor om een DomeinController aan te maken
 	{
-		this.taalObj = taalObj;
-		this.spelRepository = new SpelRepository(taalObj);
+		this.spelRepository = new SpelRepository();
 		spelerRepository = new SpelerRepository(); 
-		spelbordRepository = new SpelbordRepository(taalObj);		
+		spelbordRepository = new SpelbordRepository();		
 	}
 	
 	
@@ -150,7 +147,7 @@ public class DomeinController
     
     public void maakNieuwSpel(String naamSpel) 
     {
-    	Spel nieuwSpel = new Spel(naamSpel,taalObj);
+    	Spel nieuwSpel = new Spel(naamSpel);
     	spelRepository.voegSpelToe(nieuwSpel);
     }    
     
@@ -199,9 +196,9 @@ public class DomeinController
     }
     
     
-    public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+    public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
-    	this.spelbordRepository.voegSpelbordToe(spelbord, spelnaam);
+    	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
     }
     
     
@@ -245,10 +242,35 @@ public class DomeinController
     	
     }
     
-    public void updateSpelbord(Spelbord spelbord, String spelnaam)
+    public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
-    	spelbordRepository.updateSpelbord(spelbord, spelnaam);
+    	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
+    public char[][] geefVelden()
+    {
+    	char[][] velden = new char[10][10];
+    	
+    	Spelbord spelbord = geefSpelbord();
+    	
+    	for(int i = 0; i < 10; i++)
+    	{
+    		for(int j = 0; j < 10; j++)
+    		{
+    			char karakter = 'o';
+    			if (spelbord.getSpelbord()[i][j].isMuur()) {
+                    karakter = 'M';
+                } else if (spelbord.getSpelbord()[i][j].isDoel()) {
+                    karakter = 'D';
+                } else if (spelbord.getSpelbord()[i][j].isMan()) {
+                    karakter = 'X';
+                } else if (spelbord.getSpelbord()[i][j].isKist()) {
+                    karakter = 'K';
+                }  
+    			velden[i][j] = karakter;
+    		}
+    	}
+    	return velden;
+    }
 
 }
