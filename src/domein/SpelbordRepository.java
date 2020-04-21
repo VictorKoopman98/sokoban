@@ -36,9 +36,9 @@ public class SpelbordRepository
 	}
 	
 	
-	public void voegSpelbordToe(Spelbord spelbord, String spelnaam) 
+	public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
 	{
-		spelbordMapper.voegSpelbordToe(spelbord, spelnaam);
+		spelbordMapper.voegSpelbordToe(volgnummer, velden, spelnaam);
 	}
 	
 	
@@ -53,9 +53,9 @@ public class SpelbordRepository
 	}
 	
 	
-	public void updateSpelbord(Spelbord spelbord, String spelnaam)
+	public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
 	{
-		spelbordMapper.updateSpelbord(spelbord, spelnaam);
+		spelbordMapper.updateSpelbord(volgnummer, velden, spelnaam);
 	}
 	
 //	public void verwijderSpelbord(int volgnummer, String naamSpel) 

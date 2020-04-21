@@ -8,49 +8,53 @@ import gui.Taal;
 public class UC2Test 
 {
 	private DomeinController dc;
-	private Taal taalObj;
-	public UC2Test (DomeinController dc, Taal taalObj) 
+	
+	public UC2Test (DomeinController dc) 
 	{
-		this.taalObj = taalObj;
 		this.dc =dc;
 	}
-	
 	
 	public  void registreer()
 	{
 		Scanner input = new Scanner(System.in);
+		
+		String geefGebruikersnaam = Taal.getText("geefGebruikersnaam"),
+			   geefWw = Taal.getText("geefWachtwoord"),
+			   geefNaam = Taal.getText("naam"),
+			   geefVoornaam = Taal.getText("voornaam"),
+			   inDatabank = Taal.getText("geregistreerdEnAangemeld");
+		
 		String gebruikersnaam = "";
 		String wachtwoord = "";
 		String naam = "";
 		String voornaam = "";
-		boolean blijvenHerhalenFlag;
-		
-		blijvenHerhalenFlag = true;         //		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
-                                            //		anders skipt het die stap en gaat direct naar exceptions.
+		boolean blijvenHerhalenFlag = true;
+//		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
+//		anders skipt het die stap en gaat direct naar exceptions.
             do
             {
                 try
                 {
-                    System.out.printf("\n%s",taalObj.getText("geefGebruikersnaam"));
+                    System.out.printf("\n%s",geefGebruikersnaam);
                     gebruikersnaam = input.next();
 
-                    System.out.printf("\n%s",taalObj.getText("geefWachtwoord"));
+                    System.out.printf("\n%s",geefWw);
                     wachtwoord = input.next();
                     
-                    System.out.printf("\n%s",taalObj.getText("naam"));
+                    System.out.printf("\n%s",geefNaam);
                     naam = input.next();
                     
-                    System.out.printf("\n%s",taalObj.getText("voornaam"));
+                    System.out.printf("\n%s",geefVoornaam);
                     voornaam = input.next();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);
                     blijvenHerhalenFlag = false;
                     
-                    System.out.printf("%n%s %s", dc.geefGebruikersnaam(),taalObj.getText("geregistreerdEnAangemeld"));
+                    System.out.printf("%n%s %s", dc.geefGebruikersnaam(),inDatabank);
                 } 
                 catch (IllegalArgumentException e)
                 {
-                    System.err.println(e);
+                    System.out.println(e.getMessage());
                 } 
                 
             } while (blijvenHerhalenFlag);

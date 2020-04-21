@@ -9,16 +9,12 @@ import java.util.InputMismatchException;
 
 public class UC6Test 
 {
-	
-	DomeinController dc;
-	Taal taalObj;
+	private DomeinController dc;
 
-	public UC6Test(DomeinController dc, Taal taalObj) 
+	public UC6Test(DomeinController dc) 
 	{	
-		this.taalObj = taalObj;
 		this.dc = dc;
 	}
-
 	
 	public void maakNieuwSpelbord(int volgnummer) 
 	{

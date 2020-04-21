@@ -77,10 +77,10 @@ public class Speler
     {
 		if (wachtwoord == null || wachtwoord.length() == 0)
 		{
-		    throw new IllegalArgumentException(taalObj.getText("wachtwoordVerplicht"));   //exception gooien als wachtwoord neit ingevuld is
+		    throw new IllegalArgumentException(Taal.r.getString("wachtwoordVerplicht"));   //exception gooien als wachtwoord neit ingevuld is
 		} else if (isCorrectWachtwoord(wachtwoord) == false)
 		{
-		    throw new IllegalArgumentException(taalObj.getText("wachtwoordMinstens"));   //exception gooien als wachtwoord niet klopt => zie tekst
+		    throw new IllegalArgumentException(Taal.r.getString("wachtwoordMinstens"));   //exception gooien als wachtwoord niet klopt => zie tekst
 		} else 
 		{
 		this.wachtwoord = wachtwoord;

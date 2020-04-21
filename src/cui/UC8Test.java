@@ -67,7 +67,7 @@ public class UC8Test
 			}
 		}while (blijvenHerhalenFlag);
 		
-		dc.updateSpelbord(dc.geefSpelbord(), dc.geefNaamSpel());
+		dc.updateSpelbord(dc.geefVolgnummer(),dc.geefVelden(), dc.geefNaamSpel());
 		System.out.printf("%s",taalObj.getText("spelbordBijgewerkt"));
 	}
 	
@@ -84,7 +84,7 @@ public class UC8Test
 						+ "%s%n"
 						+ "%s%n"
 						+ "%s%n"
-						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoek"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
+						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoel"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
 		        
 				
 				System.out.printf("%s",taalObj.getText("keuze"));

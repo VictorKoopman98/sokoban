@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public class Taal
 {
 	private Locale locale;
-	public static ResourceBundle resourceBundle;
+	private static ResourceBundle r;
 	private String taal;
 	
 	public Taal(String taal)
@@ -31,14 +31,14 @@ public class Taal
 				}
 			}
 		}
-		resourceBundle = ResourceBundle.getBundle("sokoban",locale);
-		
-		
+		r = ResourceBundle.getBundle("sokoban",locale);	
 	}
-	public String getText(String text)
+	
+	public static String getText(String text)
 	{
-		return resourceBundle.getString(text);
+		return r.getString(text);
 	}
+	
 	public void setTaal(String gekozenTaal)
 	{
 		this.taal = gekozenTaal;
