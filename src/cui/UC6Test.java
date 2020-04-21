@@ -20,8 +20,8 @@ public class UC6Test
 	{
 		Scanner input = new Scanner(System.in);
 		
-//		System.out.printf("%nGeef het volgnummer van het spelbord in: ");
-//		int volgnummer = input.nextInt();
+		String geefRij = Taal.getText("geefRij"),
+				geefKolom = Taal.getText("geefKolom");
 		
 		System.out.println();
 
@@ -33,10 +33,10 @@ public class UC6Test
 		
 		do {
 			try{
-				System.out.printf("%n%s", taalObj.getText("geefRij"));
+				System.out.printf("%n%s",geefRij);
 				int x = input.nextInt();
 				
-				System.out.printf("%n%s",taalObj.getText("geefKolom"));
+				System.out.printf("%n%s",geefKolom);
 				int y = input.nextInt();
 				System.out.println();
 				try {
@@ -56,7 +56,7 @@ public class UC6Test
 			}
 		}while (keuze != 6);
 		
-		dc.voegSpelbordToe(dc.geefSpelbord(), dc.geefNaamSpel());	
+		dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());	
 		input.close();
 	}
 	
@@ -64,6 +64,17 @@ public class UC6Test
 	private int toonMogelijkeActies() 
 	{
 		Scanner input = new Scanner(System.in);
+		
+		String mogelijkeActie = Taal.getText("mogelijkeActie"),
+				maakDoel = Taal.getText("maakDoel"),
+				maakMuur = Taal.getText("maakMuur"),
+				zetMan = Taal.getText("zetMan"),
+				zetKist = Taal.getText("zetKist"),
+				maakVeldLeeg = Taal.getText("maakVeldLeeg"),
+				stopWijzigen = Taal.getText("stopWijziging"),
+				keuzeMaken = Taal.getText("keuze"),
+				ongeldigeActie = Taal.getText("ongeldigActie"),
+				getalINgeven = Taal.getText("getalIngeven");
 
 		do {
 			try {
@@ -73,19 +84,19 @@ public class UC6Test
 						+ "%s%n"
 						+ "%s%n"
 						+ "%s%n"
-						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoek"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
+						+ "%s%n",mogelijkeActie,maakDoel,maakMuur,zetMan,zetKist,maakVeldLeeg,stopWijzigen);
 
-				System.out.printf("%s",taalObj.getText("keuze"));
+				System.out.printf("%s",keuzeMaken);
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 6)
 				{
-					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
+					throw new IllegalArgumentException(ongeldigeActie);
 				}	
 				return keuze;
 			}
 			catch(InputMismatchException e){
-				System.out.printf("%s",taalObj.getText("getalIngeven"));
+				System.out.printf("%s",getalINgeven);
 			}
 		}while(true);
 		

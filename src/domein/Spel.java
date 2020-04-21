@@ -13,14 +13,12 @@ public class Spel
 	Spelbord huidigSpelbord;
 	SpelbordRepository spelbordRepository;
 	List<Spelbord> spelbordenLijst = new ArrayList<Spelbord>();
-	private Taal taalObj;
 	
 
-	public Spel(String naamSpel,Taal taalObj) 
+	public Spel(String naamSpel) 
 	{
-		this.taalObj = taalObj;
 		this.setNaamSpel(naamSpel);
-		spelbordRepository = new SpelbordRepository(taalObj);
+		spelbordRepository = new SpelbordRepository();
 		spelbordenLijst = geefSpelbordenLijst();
 	}	
 	
@@ -105,10 +103,10 @@ public class Spel
 	{
 		if (naam == null || naam.length() == 0)
 		{ 
-		    throw new IllegalArgumentException(taalObj.getText("spelNaamVerplicht"));   //exception gooien als spelnaam niet is ingevuld
+		    throw new IllegalArgumentException(Taal.getText("spelNaamVerplicht"));   //exception gooien als spelnaam niet is ingevuld
 		} else if (bevatSpatie(naam) == true)
 		{
-		    throw new IllegalArgumentException(taalObj.getText("spelnaamGeenSpatie"));    //exception gooien als spelnaam spaties bevat
+		    throw new IllegalArgumentException(Taal.getText("spelnaamGeenSpatie"));    //exception gooien als spelnaam spaties bevat
 		}
 		else 
 		{
@@ -188,7 +186,7 @@ public class Spel
 				velden[i][j] = new Veld(i,j, false, false, false, false);
 			}
 		}
-		this.huidigSpelbord = new Spelbord(volgnummer, velden,taalObj);
+		this.huidigSpelbord = new Spelbord(volgnummer, velden);
 	}
 	
 	

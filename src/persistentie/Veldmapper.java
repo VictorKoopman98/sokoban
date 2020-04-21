@@ -9,16 +9,11 @@ import domein.Veld;
 
 public class Veldmapper
 {
-	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (naamSpel, volgnummer, x, y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
+	private static final String INSERT_VELDEN = "INSERT INTO ID222177_g39.Veld (naamSpel, volgnummer, x, "
+			+ "y, isDoel, isMuur, isMan, isKist) VALUES(?,?,?,?,?,?,?,?)";
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
-     //volgnummer unieke identiteit van het spelbord waartoe de velden behoren
-//	public static void main(String[] args) {
-//		Veld[][] velden = geefVelden(1, "DEMO");
-//		
-//	}
+     //volgnummer unieke identiteit van het spelbord waartoe de velden behore
 	
-	
-     
 	public static Veld[][] geefVelden(int volgnummer, String spelnaam) 
 	{
         Veld[][] velden = new Veld[10][10];
@@ -49,70 +44,6 @@ public class Veldmapper
         }
         return velden;
     }
-	
-	
-
-//    void deleteVelden(int volgnummer) {
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("DELETE FROM veld WHERE Spelbord_spelBordId = ?");
-//            query.setInt(1, volgnummer);
-//            query.executeUpdate();
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
-
-    
-    
-    
-    
-    /**
-     * Methode om de velden van een bepaald spelbord dat bij een bepaald spel hoort up te daten nadat
-     * er een wijziging is aangebracht
-     * @param velden de velden die moeten upgedate worden
-     * @param spelId unieke identiteit van het spel waartoe deze velden behoren
-     * @param spelbordId unieke identiteit van het spelbord waartoe deze velden behoren
-     */
-//    public void updateVelden(Veld[][] velden, int spelId, int spelbordId) {
-//        String[][] str = new String[10][10];
-//
-//        for (int i = 0; i < velden.length; i++) {
-//            for (int j = 0; j < velden[i].length; j++) {
-//                if (velden[i][j].isMuur) {
-//                    str[i][j] = "Muur";
-//                } else if (velden[i][j].isDoel() == true) {
-//                    str[i][j] = "DoelVeld";
-//                } else if (velden[i][j] == null) {
-//                    str[i][j] = "Muur";
-//                } else if (velden[i][j].getKist() != null) {
-//                    str[i][j] = "Kist";
-//                } else if (velden[i][j].getMan() != null) {
-//
-//                    str[i][j] = "Man";
-//                } else {
-//                    str[i][j] = "LeegVeld";
-//                }
-//            }
-//        }
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("UPDATE veld SET soortVeld = ? WHERE Spelbord_Spel_spelId = ? AND Spelbord_spelBordId = ? AND x = ? AND y = ?");
-//
-//            for (int i = 0; i < str.length; i++) {
-//                for (int j = 0; j < str[i].length; j++) {
-//                    query.setInt(2, spelId);
-//                    query.setInt(3, spelbordId);
-//                    query.setInt(4, i);
-//                    query.setInt(5, j);
-//                    query.setString(1, str[i][j]);
-//                    query.executeUpdate();
-//                }
-//            }
-//        } catch (SQLException ex) 
-//        {
-//            throw new RuntimeException(ex);
-//        }
-//    }
-	
 	
 	
 	 public void updateVelden(char[][] velden, int volgnummer, String spelnaam) 

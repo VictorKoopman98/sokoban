@@ -10,14 +10,11 @@ import persistentie.SpelbordMapper;
 public class SpelbordRepository 
 {
 	private static SpelbordMapper spelbordMapper;
-	private Spelbord spelbord;
-	private Taal taalObj;
+	private Spelbord spelbord;	
 	
-	
-	public SpelbordRepository(Taal taalObj) 
+	public SpelbordRepository() 
 	{
-		this.taalObj = taalObj;
-		spelbordMapper = new SpelbordMapper(taalObj);
+		spelbordMapper = new SpelbordMapper();
 	}
 	
 	

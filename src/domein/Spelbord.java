@@ -14,16 +14,14 @@ public class Spelbord
 	private int locatieManX=-1; //locatie van de rij
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
-	private Taal taalObj;
 	
 	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
 	ArrayList<Kist> kisten = new ArrayList<Kist>();
 	Man man;
 	
 
-	public Spelbord(int volgnummer, Veld[][] velden, Taal taalObj) 
+	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
-		this.taalObj = taalObj;
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
@@ -182,19 +180,19 @@ public class Spelbord
     		aantalVerplaatsingen += 1;
     		int verplaatsingX = 0;
     		int verplaatsingY = 0;
-    		if (richting.equals(taalObj.getText("links"))) 
+    		if (richting.equals(Taal.getText("links"))) 
     		{
     			verplaatsingY = -1;
     		} 
-    		else if (richting.equals(taalObj.getText("rechts"))) 
+    		else if (richting.equals(Taal.getText("rechts"))) 
     		{
     			verplaatsingY = +1;
     		}
-    		else if (richting.equals(taalObj.getText("omhoog"))) 
+    		else if (richting.equals(Taal.getText("omhoog"))) 
     		{
     			verplaatsingX = -1;
     		}
-    		else if (richting.equals(taalObj.getText("omlaag"))) 
+    		else if (richting.equals(Taal.getText("omlaag"))) 
     		{
     			verplaatsingX = +1;
     		}
@@ -253,29 +251,29 @@ public class Spelbord
 		int verplaatsingY = 0;
 		int grens = 0;
 	
-    	if (richting.equals(taalObj.getText("links"))) 
+    	if (richting.equals(Taal.getText("links"))) 
     	{
     		verplaatsingY = -1;
     		grens = 0;
     	}
     	
-    	if (richting.equals(taalObj.getText("rechts"))) 
+    	if (richting.equals(Taal.getText("rechts"))) 
     	{
     		verplaatsingY = 1;
     		grens = 9;
     	}
-    	if (richting.equals(taalObj.getText("omhoog"))) 
+    	if (richting.equals(Taal.getText("omhoog"))) 
     	{
     		verplaatsingX = -1;
     		grens = 0;
     	}
-    	if (richting.equals(taalObj.getText("omlaag"))) 
+    	if (richting.equals(Taal.getText("omlaag"))) 
     	{
     		verplaatsingX = 1;
     		grens = 9;
     	}
     	
-    	if (richting.equals(taalObj.getText("omhoog")) || richting.equals(taalObj.getText("omlaag"))) {
+    	if (richting.equals(Taal.getText("omhoog")) || richting.equals(Taal.getText("omlaag"))) {
 	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManX == grens 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 
@@ -284,7 +282,7 @@ public class Spelbord
 				verplaatsingOk = true;
 			}
     	}
-    	if (richting.equals(taalObj.getText("links")) || richting.equals(taalObj.getText("rechts"))) {
+    	if (richting.equals(Taal.getText("links")) || richting.equals(Taal.getText("rechts"))) {
 	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManY == grens 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 
@@ -299,26 +297,17 @@ public class Spelbord
 	
 	public void wijzigSpelbord(int x, int y, int actie) 
 	{
-//	TO DO: controle of er niet meer dan 1 man aanwezig is
-//		controle of er evenveel kisten als doelen zijn
-//		LEGENDE
-//		"1: Maak een doel%n"
-//				+ "2: Maak een muur%n"
-//				+ "3: Zet een man%n"
-//				+ "4: Zet een kist%n"
-//				+ "5: Maak het veld leeg%n"
-//				+ "6: Stop wijzigen"
 		if(actie < 1 || actie > 6 || actie != (int)actie)
 		{
-			throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
+			throw new IllegalArgumentException(Taal.getText("ongeldigActie"));
 		}
 		if(x < 0 || x > 9)
 		{
-			throw new IllegalArgumentException(taalObj.getText("rijBuitenGrens"));
+			throw new IllegalArgumentException(Taal.getText("rijBuitenGrens"));
 		}
 		if(y < 0 || y > 9)
 		{
-			throw new IllegalArgumentException(taalObj.getText("kolomBuitenGrens"));
+			throw new IllegalArgumentException(Taal.getText("kolomBuitenGrens"));
 		}
 		else if(actie == 1) 
 		{
@@ -332,7 +321,7 @@ public class Spelbord
 		{	
 			if (this.man != null) 
 			{
-				throw new IllegalArgumentException(taalObj.getText("spelbordMetEenMan"));
+				throw new IllegalArgumentException(Taal.getText("spelbordMetEenMan"));
 			}
 			this.man = new Man(spelbord[x][y]);
             spelbord[x][y].setIsMan(true);
@@ -370,7 +359,7 @@ public class Spelbord
 			}
 			if(kisten.size() != aantalDoelen) 
 			{
-				throw new IllegalArgumentException(taalObj.getText("aantalKisten"));
+				throw new IllegalArgumentException(Taal.getText("aantalKisten"));
 			}
 		}
 	}

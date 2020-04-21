@@ -10,14 +10,11 @@ import persistentie.SpelMapper;
 public class SpelRepository
 {
 	private static SpelMapper spelMapper;
-	private static List<Spel> spellen = new ArrayList<>();
-	private Taal taalObj;
+	private static List<Spel> spellen = new ArrayList<>();    
     
-    
-    public SpelRepository(Taal taalObj)
+    public SpelRepository()
     {
-    	this.taalObj = taalObj;
-        spelMapper = new SpelMapper(taalObj);
+        spelMapper = new SpelMapper();
     }
     
     
@@ -42,7 +39,7 @@ public class SpelRepository
     {
 		if (bestaatSpel(spel.getNaamSpel()))
 		{
-		    throw new IllegalArgumentException(taalObj.getText("spelBestaat"));
+		    throw new IllegalArgumentException(Taal.getText("spelBestaat"));
 		}
 		spelMapper.voegSpelToe(spel);
     }

@@ -9,11 +9,9 @@ import java.util.Scanner;
 public class UC8Test
 {
 	private DomeinController dc;
-	private Taal taalObj;
 	
-	public UC8Test(DomeinController dc, Taal taalObj)
+	public UC8Test(DomeinController dc)
 	{
-		this.taalObj = taalObj;
 		this.dc = dc;
 	}
 	
@@ -39,10 +37,10 @@ public class UC8Test
 				int x = 1;
 				int y = 1;
 				if (keuze != 6) {
-					System.out.printf("%s",taalObj.getText("geefRij"));
+					System.out.printf("%s",Taal.getText("geefRij"));
 					x = input.nextInt();
 					
-					System.out.printf("%n%s ",taalObj.getText("geefKolom"));
+					System.out.printf("%n%s ",Taal.getText("geefKolom"));
 					y = input.nextInt();
 				}
 				
@@ -62,13 +60,13 @@ public class UC8Test
 				System.err.println(e);
 			}
 			catch(InputMismatchException e) {
-				System.out.printf("%s",taalObj.getText("getalIngeven"));
+				System.out.printf("%s",Taal.getText("getalIngeven"));
 				input.next();
 			}
 		}while (blijvenHerhalenFlag);
 		
 		dc.updateSpelbord(dc.geefVolgnummer(),dc.geefVelden(), dc.geefNaamSpel());
-		System.out.printf("%s",taalObj.getText("spelbordBijgewerkt"));
+		System.out.printf("%s",Taal.getText("spelbordBijgewerkt"));
 	}
 	
 	
@@ -84,20 +82,21 @@ public class UC8Test
 						+ "%s%n"
 						+ "%s%n"
 						+ "%s%n"
-						+ "%s%n",taalObj.getText("mogelijkeActie"),taalObj.getText("maakDoel"),taalObj.getText("maakMuur"),taalObj.getText("zetMan"),taalObj.getText("zetKist"),taalObj.getText("maakVeldLeeg"),taalObj.getText("stopWijziging"));
+						+ "%s%n",Taal.getText("mogelijkeActie"),Taal.getText("maakDoel"),Taal.getText("maakMuur"),Taal.getText("zetMan")
+						,Taal.getText("zetKist"),Taal.getText("maakVeldLeeg"),Taal.getText("stopWijziging"));
 		        
 				
-				System.out.printf("%s",taalObj.getText("keuze"));
+				System.out.printf("%s",Taal.getText("keuze"));
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 6)
 				{
-					throw new IllegalArgumentException(taalObj.getText("ongeldigActie"));
+					throw new IllegalArgumentException(Taal.getText("ongeldigActie"));
 				}	
 				return keuze;
 			}
 			catch(InputMismatchException e) {
-				System.out.printf("%s",taalObj.getText("getalIngeven"));
+				System.out.printf("%s",Taal.getText("getalIngeven"));
 				input.next();
 			}
 		}while(true);

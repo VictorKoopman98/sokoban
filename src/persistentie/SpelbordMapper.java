@@ -15,20 +15,7 @@ import gui.Taal;
 public class SpelbordMapper
 {
 	private static final String INSERT_SPELBORD = "INSERT INTO ID222177_g39.Spelbord (volgnummer, naamSpel) VALUES(?,?)";
-	private Veldmapper vm = new Veldmapper();
-	private Taal taalObj;
-	
-	
-	public SpelbordMapper(Taal taalObj)
-	{
-		this.taalObj = taalObj;
-	}
-	
-	
-	
-	
-	
-	
+	private Veldmapper vm = new Veldmapper();	
 	
 	
 	//Methode om een bepaald spelbord uit de databank te halen
@@ -49,7 +36,7 @@ public class SpelbordMapper
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelbord = new Spelbord(volgnummer, velden, taalObj);
+                    spelbord = new Spelbord(volgnummer, velden);
                 }
             }
         } catch (SQLException ex) {
@@ -73,7 +60,7 @@ public class SpelbordMapper
                 while (rs.next()) 
                 {
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelbord = new Spelbord(volgnummer, velden, taalObj);
+                    spelbord = new Spelbord(volgnummer, velden);
                 }
             }
         } catch (SQLException ex) 
@@ -100,7 +87,7 @@ public class SpelbordMapper
                     int volgnummer = rs.getInt("volgnummer");
 
                     velden = Veldmapper.geefVelden(volgnummer, spelnaam);
-                    spelborden.add(new Spelbord(volgnummer, velden,taalObj));
+                    spelborden.add(new Spelbord(volgnummer, velden));
                 }
             }
         } catch (SQLException ex) {
@@ -108,23 +95,6 @@ public class SpelbordMapper
         }
         return spelborden;
     }
-
-   
-    //Methode om een bepaald spelbord uit de databank te verwijderen 
-    //spelnaam unieke identiteit van het spelbord dat moet verwijderd worden
-    
-//    public void verwijderSpelbord(int volgnummer,String naamSpel) 
-//    {
-//        //vm.deleteVelden(volgnummer);
-//        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-//            PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer  = ? AND naamSpel = ?)");
-//            query.setInt(1, volgnummer);
-//            query.setString(2, naamSpel);
-//            query.executeUpdate();
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//    }
 
     
     //Methode om een spelbord toe te voegen aan een bepaald spel in een databank

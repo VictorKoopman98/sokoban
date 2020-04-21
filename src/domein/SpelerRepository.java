@@ -5,9 +5,7 @@ import persistentie.SpelerMapper;
 
 public class SpelerRepository
 {
-	private final SpelerMapper spelerMapper;
-	private Taal taalObj;
-	 
+	private final SpelerMapper spelerMapper;	 
 	
 	public SpelerRepository()
 	{
@@ -40,7 +38,7 @@ public class SpelerRepository
     {
 		if (bestaatSpeler(speler.getGebruikersnaam()))
 		{
-		    throw new IllegalArgumentException(taalObj.getText("spelerBestaat"));
+		    throw new IllegalArgumentException(Taal.getText("spelerBestaat"));
 		}
 		spelerMapper.voegToe(speler);
     }
