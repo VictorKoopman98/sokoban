@@ -15,14 +15,14 @@ public class AanRegController extends GridPane
 	private Button btnRegistreren;
 	private DomeinController dc;
 	private TaalSchermController ts;
-	private LoginSchermController ls;
+	private LoginRegistreerSchermController ls;
 	private HoofdSchermController hs;
 	
 	public AanRegController(DomeinController dc, HoofdSchermController hs)
 	{
 		this.dc = dc;
 		this.hs = hs;
-		ls = new LoginSchermController();
+		ls = new LoginRegistreerSchermController(dc,hs);
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AanReg.fxml"));
