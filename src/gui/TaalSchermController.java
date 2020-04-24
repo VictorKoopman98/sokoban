@@ -1,5 +1,6 @@
 package gui;
 
+import domein.DomeinController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,9 +8,11 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class TaalSchermController extends GridPane{
+public class TaalSchermController extends GridPane
+{
 	@FXML
 	private Button btnNederlands;
 	@FXML
@@ -18,20 +21,25 @@ public class TaalSchermController extends GridPane{
 	private Button btnEnglish;
 	@FXML
 	private Label lblMessage;
+	private DomeinController dc;
+	private HoofdSchermController hs;
+	private AanRegController ar;
 
 	// Domeincontroller toevoegen
 	
 	// Constructor ==> link tussen controller en FXML-file
-	public TaalSchermController() 
+	public TaalSchermController(DomeinController dc, HoofdSchermController hs) 
 	{
 		super();
+		this.hs = hs;
+		ar = new AanRegController(dc, hs);
+		this.dc = dc;
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("TaalScherm.fxml"));
 			loader.setController(this);
 			loader.setRoot(this);
 			loader.load();
-			System.out.println("Taal kiezen...");
 		} catch (Exception ex) 
 		{
 			System.out.println(ex.getMessage());
@@ -42,11 +50,8 @@ public class TaalSchermController extends GridPane{
 	@FXML
 	public void btnNederlandsAfhandeling() 
 	{
-		/**LoginSchermController ls = new LoginSchermController();
-		Scene scene = new Scene(ls);
-		Stage stage = (Stage)this.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();*/
+		Taal taal = new Taal("NL");
+		hs.update(ar);
 	}
 	
 	
@@ -54,13 +59,16 @@ public class TaalSchermController extends GridPane{
 	@FXML
 	public void btnFrançaisAfhandeling() 
 	{
-		 System.out.println("Le programme se déroule en Français.");
+		Taal taal = new Taal("FR");
+		hs.update(ar);
 	}
 	
 	// Event Listener on Button[#btnEnglish].onAction
 	@FXML
 	public void btnEnglishAfhandeling() 
 	{
-		 System.out.println("Program is running in English.");
+		 Taal taal = new Taal("EN");
+		 hs.update(ar);
 	}
+	
 }

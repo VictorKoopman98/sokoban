@@ -39,7 +39,8 @@ public class LoginSchermController extends GridPane {
 	
 	// Event Listener on Button[#btnMeldAan].onAction
 	@FXML
-	public void btnMeldAanAfhandeling(ActionEvent event) {
+	public void btnMeldAanAfhandeling(ActionEvent event) 
+	{
 		System.out.println("Aangemeld.");
 	}
 	// Event Listener on Button[#btnRegistreren].onAction

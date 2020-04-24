@@ -11,6 +11,31 @@ public class Taal
 	private static ResourceBundle r;
 	private String taal;
 	
+	public Taal(String gekozenTaal)
+	{
+		setTaal(gekozenTaal);
+		
+		if("NL".equals(taal))
+		{
+			this.locale = new Locale("NL");	
+		}
+		else
+		{
+			if("EN".equals(taal))
+			{
+				this.locale = new Locale("EN");
+			}
+			else
+			{
+				if ("FR".equals(taal))
+				{
+					this.locale = new Locale("FR");
+				}
+			}
+		}
+		r = ResourceBundle.getBundle("sokoban",locale);	
+	}
+	
 	public Taal()
 	{
 		setTaal(kiesTaal());
