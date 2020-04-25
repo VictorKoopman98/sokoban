@@ -9,7 +9,8 @@ import javafx.scene.layout.GridPane;
 import domein.DomeinController;
 import javafx.event.ActionEvent;
 
-public class LoginRegistreerSchermController  extends GridPane{
+public class LoginRegistreerSchermController  extends GridPane
+{
 	@FXML
 	private Button btnLoginRegistreer;
 	private DomeinController dc;
@@ -44,6 +45,7 @@ public class LoginRegistreerSchermController  extends GridPane{
 		Label[] arrayLabel = {lblGebruikersnaam,lblWachtwoord,lblNaam,lblVoornaam};
 		String[] waardeLabel = {Taal.getText("geefGebruikersnaam"), Taal.getText("geefWachtwoord"), Taal.getText("naam"), Taal.getText("voornaam")};
 		TextField[] arrayTextField = {txfGebruikersnaam, txfWachtwoord, txfNaam, txfVoornaam};
+		
 		for(int i = 0; i < aantalRijen; i++)
 		{
 			arrayLabel[i] = new Label(waardeLabel[i]);

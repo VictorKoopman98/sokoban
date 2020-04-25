@@ -9,8 +9,6 @@ import domein.DomeinController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-
-
 public class Hoofdpaneel1Controller  extends GridPane
 {
 	@FXML
@@ -31,8 +29,8 @@ public class Hoofdpaneel1Controller  extends GridPane
 		super();
 		this.dc = dc;
 		this.hs = hs;
-//		smc = new SpelMakenController(dc, hs);
-//		swc = new SpelwijzigenController(dc, hs);
+		smc = new SpelMakenController(dc, hs);
+		swc = new SpelwijzigenController(dc, hs);
 		arc = new AanRegController(dc, hs);
 		hp2 = new Hoofdpaneel2Controller(dc, hs);
 		try 
@@ -60,19 +58,17 @@ public class Hoofdpaneel1Controller  extends GridPane
 		}
 		
 		btnWijzigSpel.setOnAction(new EventHandler<ActionEvent>() {
-			
 			@Override
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+			public void handle(ActionEvent event) 
+			{
 				hs.update(swc);
 			}
 		});
 		
 		btnMaakNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
-			
 			@Override
-			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+			public void handle(ActionEvent event) 
+			{
 				hs.update(smc);
 			}
 		});

@@ -41,12 +41,12 @@ public class AanRegController extends GridPane
 		ls = new LoginRegistreerSchermController(dc,hs,2);
 		hs.update(ls);
 	}
+	
 	// Event Listener on Button[#btnRegistreren].onAction
 	@FXML
 	public void btnRegistrerenAfhandeling(ActionEvent event) 
 	{
-		hs.update(ls);
 		ls = new LoginRegistreerSchermController(dc,hs,4);
-
+		hs.update(ls);
 	}
 }

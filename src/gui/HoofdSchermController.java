@@ -26,7 +26,6 @@ public class HoofdSchermController extends BorderPane
 			System.out.println(ex.getMessage());
 		}
 		this.setCenter(ts);
-		
 	}
 	
 	public void update(Pane scherm)
