@@ -22,7 +22,6 @@ public class AanRegController extends GridPane
 	{
 		this.dc = dc;
 		this.hs = hs;
-		ls = new LoginRegistreerSchermController(dc,hs);
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AanReg.fxml"));
@@ -39,6 +38,7 @@ public class AanRegController extends GridPane
 	@FXML
 	public void btnAanmeldenAfhandeling(ActionEvent event) 
 	{
+		ls = new LoginRegistreerSchermController(dc,hs,2);
 		hs.update(ls);
 	}
 	// Event Listener on Button[#btnRegistreren].onAction
@@ -46,5 +46,7 @@ public class AanRegController extends GridPane
 	public void btnRegistrerenAfhandeling(ActionEvent event) 
 	{
 		hs.update(ls);
+		ls = new LoginRegistreerSchermController(dc,hs,4);
+
 	}
 }

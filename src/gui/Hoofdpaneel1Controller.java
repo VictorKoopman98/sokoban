@@ -10,7 +10,8 @@ import javafx.event.ActionEvent;
 
 
 
-public class Hoofdpaneel1Controller  extends GridPane{
+public class Hoofdpaneel1Controller  extends GridPane
+{
 	@FXML
 	private Button btnSpeelSpel;
 	@FXML
@@ -33,15 +34,27 @@ public class Hoofdpaneel1Controller  extends GridPane{
 		{
 			System.out.println(ex.getMessage());
 		}
+		buildGui();
 	}
+	
+	private void buildGui()
+	{
+		if(dc.isAdmin())
+		{
+			Button btnWijzigSpel = new Button("Wijzig spel");
+		}
+	}
+	
 	// Event Listener on Button[#btnSpeelSpel].onAction
 	@FXML
-	public void btnSpeelSpelAfhandeling(ActionEvent event) {
+	public void btnSpeelSpelAfhandeling(ActionEvent event) 
+	{
 		
 	}
 	// Event Listener on Button[#btnAfmelden].onAction
 	@FXML
-	public void btnAfmeldenAfhandeling(ActionEvent event) {
+	public void btnAfmeldenAfhandeling(ActionEvent event) 
+	{
 		
 	}
 }
