@@ -24,14 +24,14 @@
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>
    <children>
-      <Label prefHeight="23.0" prefWidth="330.0" text="Welkom" GridPane.columnSpan="3">
+      <Label prefHeight="23.0" prefWidth="330.0" text="Welcome" GridPane.columnSpan="3">
          <font>
             <Font name="Times New Roman Bold" size="22.0" />
          </font>
       </Label>
-      <Label prefHeight="20.0" prefWidth="213.0" text="Kies een taal" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <Label prefHeight="20.0" prefWidth="343.0" text="Kies een taal / Choisissez une langue / Choose a language" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <font>
-            <Font name="Times New Roman Bold Italic" size="16.0" />
+            <Font name="Times New Roman Bold Italic" size="13.0" />
          </font>
       </Label>
       <Button fx:id="btnNederlands" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnNederlandsAfhandeling" text="Nederlands" GridPane.halignment="CENTER" GridPane.rowIndex="2">
