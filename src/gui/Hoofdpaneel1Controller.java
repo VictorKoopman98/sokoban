@@ -3,6 +3,8 @@ package gui;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import domein.DomeinController;
@@ -42,12 +44,19 @@ public class Hoofdpaneel1Controller  extends GridPane
 	
 	private void buildGui()
 	{
-	
-		if(dc.isAdmin())
+		if(true)
 		{
+			
+			
 			btnWijzigSpel = new Button("Wijzig spel");
+			btnWijzigSpel.setPrefHeight(25);
+			btnWijzigSpel.setPrefWidth(180);
+			btnWijzigSpel.setAlignment(Pos.CENTER);
 			this.add(btnWijzigSpel, 0, 1, 2, 1);
 			btnMaakNieuwSpel = new Button("Maak nieuw spel");
+			btnMaakNieuwSpel.setPrefHeight(25);
+			btnMaakNieuwSpel.setPrefWidth(180);
+			btnMaakNieuwSpel.setAlignment(Pos.CENTER);
 			this.add(btnMaakNieuwSpel, 0, 2, 2, 1);
 		}
 		
