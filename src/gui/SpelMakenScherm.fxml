@@ -22,8 +22,9 @@
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>
    <children>
-      <Button fx:id="btnMaakSpel" mnemonicParsing="false" onAction="#btnMaakSpelAfhandeling" text="Maken" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-      <TextField fx:id="txtSpelnaam" onAction="#txtSpelnaamAfhandeling" GridPane.columnIndex="1" />
-      <Label prefHeight="17.0" prefWidth="106.0" text="Spelnaam" />
+      <Button fx:id="btnMaakSpel" mnemonicParsing="false" onAction="#btnSpelMakenAfhandeling" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+      <Label prefHeight="17.0" prefWidth="0.0" />
+      <TextField fx:id="txfSpelMaken" GridPane.columnIndex="1" />
+      <Label fx:id="lblSpelMaken" prefHeight="17.0" prefWidth="125.0" />
    </children>
 </fx:root>

@@ -19,7 +19,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 	private HoofdSchermController hs;
 	private Button btnWijzigSpel;
 	private Button btnMaakNieuwSpel;
-	private SpelMakenController smc;
+	private SpelMakenSchermController smc;
 	private SpelwijzigenController swc;
 	private AanRegController arc;
 	private Hoofdpaneel2Controller hp2;
@@ -29,7 +29,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 		super();
 		this.dc = dc;
 		this.hs = hs;
-		smc = new SpelMakenController(dc, hs);
+		smc = new SpelMakenSchermController(dc, hs);
 		swc = new SpelwijzigenController(dc, hs);
 		arc = new AanRegController(dc, hs);
 		hp2 = new Hoofdpaneel2Controller(dc, hs);
