@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import domein.DomeinController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 
 
@@ -18,12 +19,22 @@ public class Hoofdpaneel1Controller  extends GridPane
 	private Button btnAfmelden;
 	private DomeinController dc;
 	private HoofdSchermController hs;
+	private Button btnWijzigSpel;
+	private Button btnMaakNieuwSpel;
+	private SpelMakenController smc;
+	private SpelwijzigenController swc;
+	private AanRegController arc;
+	private Hoofdpaneel2Controller hp2;
 
 	public Hoofdpaneel1Controller(DomeinController dc, HoofdSchermController hs)
 	{
 		super();
 		this.dc = dc;
 		this.hs = hs;
+//		smc = new SpelMakenController(dc, hs);
+//		swc = new SpelwijzigenController(dc, hs);
+		arc = new AanRegController(dc, hs);
+		hp2 = new Hoofdpaneel2Controller(dc, hs);
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Hoofdpaneel1.fxml"));
@@ -39,22 +50,44 @@ public class Hoofdpaneel1Controller  extends GridPane
 	
 	private void buildGui()
 	{
+	
 		if(dc.isAdmin())
 		{
-			Button btnWijzigSpel = new Button("Wijzig spel");
+			btnWijzigSpel = new Button("Wijzig spel");
+			this.add(btnWijzigSpel, 0, 1, 2, 1);
+			btnMaakNieuwSpel = new Button("Maak nieuw spel");
+			this.add(btnMaakNieuwSpel, 0, 2, 2, 1);
 		}
+		
+		btnWijzigSpel.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				hs.update(swc);
+			}
+		});
+		
+		btnMaakNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				hs.update(smc);
+			}
+		});
 	}
 	
 	// Event Listener on Button[#btnSpeelSpel].onAction
 	@FXML
 	public void btnSpeelSpelAfhandeling(ActionEvent event) 
 	{
-		
+		hs.update(hp2);
 	}
 	// Event Listener on Button[#btnAfmelden].onAction
 	@FXML
 	public void btnAfmeldenAfhandeling(ActionEvent event) 
 	{
-		
+		hs.update(arc);
 	}
 }

@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<fx:root type="GridPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<fx:root type="GridPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -18,7 +17,7 @@
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
    <children>
-      <Button fx:id="btnSpeelSpel" mnemonicParsing="false" onAction="#btnSpeelSpelAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Speel spel" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Button fx:id="btnAfmelden" mnemonicParsing="false" onAction="#btnAfmeldenAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Afmelden" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button fx:id="btnSpeelSpel" mnemonicParsing="false" onAction="#btnSpeelSpelAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Speel spel" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="btnAfmelden" mnemonicParsing="false" onAction="#btnAfmeldenAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Afmelden" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
    </children>
 </fx:root>
