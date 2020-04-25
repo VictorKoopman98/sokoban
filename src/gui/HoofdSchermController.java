@@ -9,12 +9,11 @@ import javafx.scene.layout.Pane;
 public class HoofdSchermController extends BorderPane
 {
 	private DomeinController dc;
-	private TaalSchermController ts;
 	
 	public HoofdSchermController(DomeinController dc)
 	{
 		this.dc = dc;
-		ts = new TaalSchermController(dc, this);
+		
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("HoofdScherm.fxml"));
@@ -25,7 +24,7 @@ public class HoofdSchermController extends BorderPane
 		{
 			System.out.println(ex.getMessage());
 		}
-		this.setCenter(ts);
+		this.setCenter(new TaalSchermController(dc, this));
 	}
 	
 	public void update(Pane scherm)

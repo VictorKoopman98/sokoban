@@ -14,8 +14,6 @@ public class AanRegController extends GridPane
 	@FXML
 	private Button btnRegistreren;
 	private DomeinController dc;
-	private TaalSchermController ts;
-	private LoginRegistreerSchermController ls;
 	private HoofdSchermController hs;
 	
 	public AanRegController(DomeinController dc, HoofdSchermController hs)
@@ -38,15 +36,13 @@ public class AanRegController extends GridPane
 	@FXML
 	public void btnAanmeldenAfhandeling(ActionEvent event) 
 	{
-		ls = new LoginRegistreerSchermController(dc,hs,2);
-		hs.update(ls);
+		hs.update(new LoginRegistreerSchermController(dc,hs,2));
 	}
 	
 	// Event Listener on Button[#btnRegistreren].onAction
 	@FXML
 	public void btnRegistrerenAfhandeling(ActionEvent event) 
 	{
-		ls = new LoginRegistreerSchermController(dc,hs,4);
-		hs.update(ls);
+		hs.update(new LoginRegistreerSchermController(dc,hs,4));
 	}
 }

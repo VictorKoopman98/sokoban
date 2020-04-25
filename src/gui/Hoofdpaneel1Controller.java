@@ -19,20 +19,14 @@ public class Hoofdpaneel1Controller  extends GridPane
 	private HoofdSchermController hs;
 	private Button btnWijzigSpel;
 	private Button btnMaakNieuwSpel;
-	private SpelMakenSchermController smc;
-	private SpelwijzigenController swc;
-	private AanRegController arc;
-	private Hoofdpaneel2Controller hp2;
+	
 
 	public Hoofdpaneel1Controller(DomeinController dc, HoofdSchermController hs)
 	{
 		super();
 		this.dc = dc;
 		this.hs = hs;
-		smc = new SpelMakenSchermController(dc, hs);
-		swc = new SpelwijzigenController(dc, hs);
-		arc = new AanRegController(dc, hs);
-		hp2 = new Hoofdpaneel2Controller(dc, hs);
+		
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Hoofdpaneel1.fxml"));
@@ -61,7 +55,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				hs.update(swc);
+				hs.update(new SpelwijzigenController(dc, hs));
 			}
 		});
 		
@@ -69,7 +63,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				hs.update(smc);
+				hs.update(new SpelMakenSchermController(dc, hs));
 			}
 		});
 	}
@@ -78,12 +72,12 @@ public class Hoofdpaneel1Controller  extends GridPane
 	@FXML
 	public void btnSpeelSpelAfhandeling(ActionEvent event) 
 	{
-		hs.update(hp2);
+		hs.update(new Hoofdpaneel2Controller(dc, hs));
 	}
 	// Event Listener on Button[#btnAfmelden].onAction
 	@FXML
 	public void btnAfmeldenAfhandeling(ActionEvent event) 
 	{
-		hs.update(arc);
+		hs.update(new AanRegController(dc, hs));
 	}
 }

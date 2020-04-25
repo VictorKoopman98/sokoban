@@ -23,7 +23,6 @@ public class TaalSchermController extends GridPane
 	private Label lblMessage;
 	private DomeinController dc;
 	private HoofdSchermController hs;
-	private AanRegController ar;
 
 	// Domeincontroller toevoegen
 	
@@ -32,7 +31,6 @@ public class TaalSchermController extends GridPane
 	{
 		super();
 		this.hs = hs;
-		ar = new AanRegController(dc, hs);
 		this.dc = dc;
 		try 
 		{
@@ -51,7 +49,7 @@ public class TaalSchermController extends GridPane
 	public void btnNederlandsAfhandeling() 
 	{
 		Taal taal = new Taal("NL");
-		hs.update(ar);
+		hs.update(new AanRegController(dc, hs));
 	}
 	
 	
@@ -60,7 +58,7 @@ public class TaalSchermController extends GridPane
 	public void btnFrançaisAfhandeling() 
 	{
 		Taal taal = new Taal("FR");
-		hs.update(ar);
+		hs.update(new AanRegController(dc, hs));
 	}
 	
 	// Event Listener on Button[#btnEnglish].onAction
@@ -68,7 +66,7 @@ public class TaalSchermController extends GridPane
 	public void btnEnglishAfhandeling() 
 	{
 		 Taal taal = new Taal("EN");
-		 hs.update(ar);
+		 hs.update(new AanRegController(dc, hs));
 	}
 	
 }

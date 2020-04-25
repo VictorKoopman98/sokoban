@@ -17,16 +17,12 @@ public class Hoofdpaneel2Controller extends GridPane
 	private Button btnVerlaten;
 	private DomeinController dc;
 	private HoofdSchermController hs;
-	private Hoofdpaneel1Controller hp1;
-	
-	
 	
 	public Hoofdpaneel2Controller(DomeinController dc, HoofdSchermController hs)
 	{
 		super();
 		this.dc = dc;
 		this.hs = hs;
-		hp1 = new Hoofdpaneel1Controller(dc, hs);
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Hoofdpaneel2.fxml"));
@@ -49,6 +45,6 @@ public class Hoofdpaneel2Controller extends GridPane
 	@FXML
 	public void btnVerlatenAfhandeling(ActionEvent event) 
 	{
-		hs.update(hp1);
+		hs.update(new Hoofdpaneel1Controller(dc, hs));
 	}
 }

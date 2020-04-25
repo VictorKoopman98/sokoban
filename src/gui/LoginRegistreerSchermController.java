@@ -18,7 +18,6 @@ public class LoginRegistreerSchermController  extends GridPane
 	private int aantalRijen;
 	private Label lblGebruikersnaam, lblWachtwoord, lblNaam,lblVoornaam;
 	private TextField txfGebruikersnaam, txfWachtwoord, txfNaam, txfVoornaam;
-	private Hoofdpaneel1Controller hp1;
 	
 	public LoginRegistreerSchermController(DomeinController dc, HoofdSchermController hs, int aantalRijen)
 	{	
@@ -26,7 +25,6 @@ public class LoginRegistreerSchermController  extends GridPane
 		this.dc = dc;
 		this.hs = hs;
 		this.aantalRijen = aantalRijen;
-		hp1 = new Hoofdpaneel1Controller(dc, hs);
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginRegistreerScherm.fxml"));
@@ -63,6 +61,6 @@ public class LoginRegistreerSchermController  extends GridPane
 	@FXML
 	public void btnLoginRegistreerAfhandeling(ActionEvent event) 
 	{
-		hs.update(hp1);
+		hs.update(new Hoofdpaneel1Controller(dc, hs));
 	}
 }
