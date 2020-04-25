@@ -26,7 +26,7 @@ public class SpelwijzigenController extends GridPane
 		this.hs = hs;
 		try 
 		{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("SpelMaken.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelwijzigen.fxml"));
 			loader.setController(this);
 			loader.setRoot(this);
 			loader.load();

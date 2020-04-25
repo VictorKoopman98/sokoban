@@ -28,13 +28,14 @@ public class SpelMakenSchermController extends GridPane {
 		this.hs = hs;
 		try 
 		{
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("SpelMaken.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SpelMakenScherm.fxml"));
 			loader.setController(this);
 			loader.setRoot(this);
 			loader.load();
 		} catch (Exception ex) 
 		{
-			System.out.println(ex.getMessage());
+			//System.out.println(ex.getMessage());
+			ex.printStackTrace();
 		}
 	}
 	
