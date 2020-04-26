@@ -60,5 +60,6 @@ public class SpeelSpelController extends GridPane
 		String gekozenSpel = cmbSpelltjes.getSelectionModel().getSelectedItem();
 		dc.selecteerSpel(gekozenSpel);
 		dc.selecteerSpelbord(gekozenSpel);
+		hs.update(new VoltooiSpelbordSchermController(dc, hs));
 	}
 }
