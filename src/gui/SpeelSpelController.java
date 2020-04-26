@@ -42,6 +42,7 @@ public class SpeelSpelController extends GridPane
 		}
 		btnVerlaten.setText(Taal.getText("terugGui"));
 		cmbSpelltjes.setPromptText(Taal.getText("promptCboSpelletjes"));
+		btnSpeelSpel.setText(Taal.getText("speelSpelGui"));
 		
 		String[] namen = dc.geefLijstSpellen();
 		List<String> namenList = Arrays.asList(namen);

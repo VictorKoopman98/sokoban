@@ -61,7 +61,7 @@ public class SpelMakenSchermController extends GridPane {
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
-		
+		hs.update(new VoltooiSpelbordSchermController(dc, hs));
 	}
 	@FXML
 	public void btnTerugAfhandeling(ActionEvent event) {

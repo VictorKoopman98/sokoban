@@ -57,7 +57,7 @@ public class UC6Test
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());	
-		input.close();
+		
 	}
 	
 	
