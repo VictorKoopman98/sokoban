@@ -18,8 +18,9 @@
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
    <children>
-      <ComboBox fx:id="cmbSpelltjes" onAction="#cmbSpelletjesAfhandeling" prefHeight="25.0" prefWidth="180.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button fx:id="btnVerlaten" mnemonicParsing="false" onAction="#btnVerlatenAfhandeling" text="Verlaten" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <ComboBox fx:id="cmbSpelltjes" prefHeight="25.0" prefWidth="180.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="btnVerlaten" mnemonicParsing="false" onAction="#btnVerlatenAfhandeling" prefWidth="70.0" text="Verlaten" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Button fx:id="btnSpeelSpel" mnemonicParsing="false" onAction="#btnSpeelSpelAfhandeling" prefWidth="70.0" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
    </children>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

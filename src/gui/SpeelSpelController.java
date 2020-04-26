@@ -14,16 +14,18 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 
-public class Hoofdpaneel2Controller extends GridPane
+public class SpeelSpelController extends GridPane
 {
 	@FXML
 	private ComboBox<String> cmbSpelltjes;
 	@FXML
 	private Button btnVerlaten;
+	@FXML
+	private Button btnSpeelSpel;
 	private DomeinController dc;
 	private HoofdSchermController hs;
 	
-	public Hoofdpaneel2Controller(DomeinController dc, HoofdSchermController hs)
+	public SpeelSpelController(DomeinController dc, HoofdSchermController hs)
 	{
 		super();
 		this.dc = dc;
@@ -46,16 +48,16 @@ public class Hoofdpaneel2Controller extends GridPane
 		cmbSpelltjes.setItems(FXCollections.observableList(namenList));
 	}
 
-	// Event Listener on ComboBox[#cmbSpelltjes].onAction
-	@FXML
-	public void cmbSpelletjesAfhandeling(ActionEvent event) 
-	{
-		
-	}
 	// Event Listener on Button[#btnVerlaten].onAction
 	@FXML
 	public void btnVerlatenAfhandeling(ActionEvent event) 
 	{
 		hs.update(new Hoofdpaneel1Controller(dc, hs));
+	}
+	@FXML
+	public void btnSpeelSpelAfhandeling(ActionEvent event) {
+		String gekozenSpel = cmbSpelltjes.getSelectionModel().getSelectedItem();
+		dc.selecteerSpel(gekozenSpel);
+		dc.selecteerSpelbord(gekozenSpel);
 	}
 }
