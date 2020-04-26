@@ -9,7 +9,7 @@ import persistentie.SpelbordMapper;
 
 public class SpelbordRepository 
 {
-	private static SpelbordMapper spelbordMapper;
+	private SpelbordMapper spelbordMapper;
 	private Spelbord spelbord;	
 	
 	public SpelbordRepository() 
@@ -18,7 +18,7 @@ public class SpelbordRepository
 	}
 	
 	
-	public static Spelbord geefSpelbord(String spelnaam) 
+	public Spelbord geefSpelbord(String spelnaam) 
 	{
 		Spelbord spelbord = spelbordMapper.geefSpelbord(spelnaam);
 		if (spelbord != null) 
@@ -54,13 +54,4 @@ public class SpelbordRepository
 	{
 		spelbordMapper.updateSpelbord(volgnummer, velden, spelnaam);
 	}
-	
-//	public void verwijderSpelbord(int volgnummer, String naamSpel) 
-//	{
-//		this.spelborden.remove(this.spelbord);
-//		spelbordMapper.verwijderSpelbord(volgnummer, naamSpel);
-//	}
-//	
-//	
-	
 }

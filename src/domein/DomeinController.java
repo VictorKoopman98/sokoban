@@ -175,21 +175,6 @@ public class DomeinController
     	this.spel.maakNieuwSpelbord(volgnummer);	
     }
     
- /*   public String[] geefLijstSpelborden()    //array maken van namen van spellen
- //   {
- //   	
- //         String[] overzichtSpelborden = new String[spelbordRepository.geefSpelbordenLijst().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
- //         
- //         for(int i = 0; i < spelbordRepository.geefSpelbordenLijst().size(); i++) 
- //         {
- //       	  overzichtSpelborden [i] = spelbordRepository.geefSpelbordenLijst()    //elke naam wordt opgevraagd
-          }
-          
-          return overzichtSpelborden;
-    }
-    
- */   
-    
     public void wijzigSpelbord(int x, int y, int actie) 
     {
     	this.spel.wijzigSpelbord(x, y, actie);
@@ -212,13 +197,6 @@ public class DomeinController
     {
     	return this.spel.getSpelbord();
     }
-    
-    
-//    public void verwijderSpelbord(int volgnummer, String naamSpel) 
-//    {
-//		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
-//	}
-    
     
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
     {

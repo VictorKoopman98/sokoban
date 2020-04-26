@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root alignment="CENTER" hgap="20.0" type="GridPane" vgap="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" hgap="30.0" type="GridPane" vgap="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
@@ -24,10 +24,11 @@
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>
    <children>
-      <Label text="Spellen" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Label text="Spelborden" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <ComboBox fx:id="cmbSpellen" onAction="#cmbSpellenAfhandeling" prefWidth="150.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <ComboBox fx:id="cmbSpelborden" onAction="#cmbSpelbordenAfhandeling" prefWidth="150.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Button fx:id="btnWijzig" mnemonicParsing="false" onAction="#btnWijzigAfhandeling" text="Wijzig" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label fx:id="lblSpellen" prefHeight="17.0" prefWidth="261.0" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label fx:id="lblSpelborden" prefHeight="17.0" prefWidth="293.0" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <ComboBox fx:id="cmbSpellen" onAction="#cmbSpellenAfhandeling" prefHeight="25.0" prefWidth="280.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <ComboBox fx:id="cmbSpelborden" prefHeight="25.0" prefWidth="234.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Button fx:id="btnWijzig" mnemonicParsing="false" onAction="#btnWijzigAfhandeling" prefHeight="25.0" prefWidth="157.0" text="Wijzig" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#btnTerugAfhandeling" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
    </children>
 </fx:root>
