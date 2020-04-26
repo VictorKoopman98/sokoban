@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import domein.DomeinController;
@@ -49,8 +50,19 @@ public class LoginRegistreerSchermController  extends GridPane
 		{
 			arrayLabel[i] = new Label(waardeLabel[i]);
 			this.add(arrayLabel[i], 0, i);
-			arrayTextField[i] = new TextField();
-			this.add(arrayTextField[i], 1, i);
+			
+			if (i != 1)
+			{
+				
+				arrayTextField[i] = new TextField();
+				this.add(arrayTextField[i], 1, i);	
+			}
+			else 
+			{
+				arrayTextField[i] = new PasswordField();
+				this.add(arrayTextField[i], 1, i);
+			}
+			
 		}
 		if(aantalRijen == 2)
 			btnLoginRegistreer.setText(Taal.getText("meldAanGui"));
