@@ -25,7 +25,7 @@ public class UC7Test
 		int volgnummer = 0;
 		int gekozenVolgnummerSpelbord;
 		
-		String [] spelletjes = DomeinController.geefLijstSpellen();
+		String [] spelletjes = dc.geefLijstSpellen();
 		
 		do {
 			for(int i = 0; i < spelletjes.length; i++)

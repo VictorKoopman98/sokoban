@@ -67,7 +67,7 @@ public class DomeinController
     }
     
     
-    public static String[] geefLijstSpellen()    //array maken van namen van spellen
+    public String[] geefLijstSpellen()    //array maken van namen van spellen
     {
     	
           String[] namen = new String[SpelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen

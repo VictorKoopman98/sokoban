@@ -18,7 +18,7 @@ public class UC3Test
 	public UC3Test (DomeinController dc) 
 	{
 		this.dc =dc;
-		spelletjes = DomeinController.geefLijstSpellen();
+		spelletjes = dc.geefLijstSpellen();
 		uc4Test = new UC4Test(dc);
 	}
 	
@@ -129,7 +129,7 @@ public class UC3Test
 	
 	private String zetIndexOmInNaam(int index) 
 	{
-		List<String> lijst = Arrays.asList(DomeinController.geefLijstSpellen());
+		List<String> lijst = Arrays.asList(dc.geefLijstSpellen());
 		String naam = lijst.get(index);
 		return naam;
 	}
