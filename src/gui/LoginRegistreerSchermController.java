@@ -2,6 +2,7 @@ package gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,7 +18,7 @@ public class LoginRegistreerSchermController  extends GridPane
 	private HoofdSchermController hs;
 	private int aantalRijen;
 	private Label lblGebruikersnaam, lblWachtwoord, lblNaam,lblVoornaam;
-	private TextField txfGebruikersnaam, txfWachtwoord, txfNaam, txfVoornaam;
+	private TextField[] arrayTextField;
 	
 	public LoginRegistreerSchermController(DomeinController dc, HoofdSchermController hs, int aantalRijen)
 	{	
@@ -42,7 +43,7 @@ public class LoginRegistreerSchermController  extends GridPane
 	{
 		Label[] arrayLabel = {lblGebruikersnaam,lblWachtwoord,lblNaam,lblVoornaam};
 		String[] waardeLabel = {Taal.getText("geefGebruikersnaam"), Taal.getText("geefWachtwoord"), Taal.getText("naam"), Taal.getText("voornaam")};
-		TextField[] arrayTextField = {txfGebruikersnaam, txfWachtwoord, txfNaam, txfVoornaam};
+		arrayTextField = new TextField[aantalRijen];
 		
 		for(int i = 0; i < aantalRijen; i++)
 		{
@@ -51,16 +52,47 @@ public class LoginRegistreerSchermController  extends GridPane
 			arrayTextField[i] = new TextField();
 			this.add(arrayTextField[i], 1, i);
 		}
-		if(aantalRijen == 4)
-			btnLoginRegistreer.setText("Registreer");
+		if(aantalRijen == 2)
+			btnLoginRegistreer.setText(Taal.getText("meldAanGui"));
 		else
-			btnLoginRegistreer.setText("Meld aan");
+			btnLoginRegistreer.setText(Taal.getText("registreerGui"));
 	}
 
 	// Event Listener on Button[#btnLoginRegistreer].onAction
 	@FXML
 	public void btnLoginRegistreerAfhandeling(ActionEvent event) 
 	{
-		hs.update(new Hoofdpaneel1Controller(dc, hs));
+		try {
+			if (aantalRijen == 2)
+				dc.meldAan(arrayTextField[0].getText(), arrayTextField[1].getText());
+			else if (aantalRijen == 4)
+				dc.registreer(arrayTextField[0].getText(), arrayTextField[1].getText(), false, arrayTextField[2].getText(), arrayTextField[3].getText());
+			hs.update(new Hoofdpaneel1Controller(dc, hs));
+		}
+		catch(IllegalArgumentException e)
+		{
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle(Taal.getText("fouteLogin"));
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+		}
+		
+		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

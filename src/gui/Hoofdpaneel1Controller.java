@@ -48,12 +48,13 @@ public class Hoofdpaneel1Controller  extends GridPane
 		{
 			
 			
-			btnWijzigSpel = new Button("Wijzig spel");
+			btnWijzigSpel = new Button(Taal.getText("wijzigSpelGui"));
 			btnWijzigSpel.setPrefHeight(25);
 			btnWijzigSpel.setPrefWidth(180);
 			btnWijzigSpel.setAlignment(Pos.CENTER);
+			
 			this.add(btnWijzigSpel, 0, 1, 2, 1);
-			btnMaakNieuwSpel = new Button("Maak nieuw spel");
+			btnMaakNieuwSpel = new Button(Taal.getText("maakNieuwSpelGui"));
 			btnMaakNieuwSpel.setPrefHeight(25);
 			btnMaakNieuwSpel.setPrefWidth(180);
 			btnMaakNieuwSpel.setAlignment(Pos.CENTER);
@@ -75,6 +76,9 @@ public class Hoofdpaneel1Controller  extends GridPane
 				hs.update(new SpelMakenSchermController(dc, hs));
 			}
 		});
+		
+		btnSpeelSpel.setText(Taal.getText("speelSpelGui"));
+		btnAfmelden.setText(Taal.getText("afmeldenGui"));
 	}
 	
 	// Event Listener on Button[#btnSpeelSpel].onAction

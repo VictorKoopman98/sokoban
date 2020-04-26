@@ -33,6 +33,8 @@ public class Hoofdpaneel2Controller extends GridPane
 		{
 			System.out.println(ex.getMessage());
 		}
+		btnVerlaten.setText(Taal.getText("terugGui"));
+		cmbSpelltjes.setPromptText(Taal.getText("promptCboSpelletjes"));
 	}
 
 	// Event Listener on ComboBox[#cmbSpelltjes].onAction

@@ -48,7 +48,7 @@ public class DomeinController
             setSpeler(gevondenSpeler);
         } else 
         {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException(Taal.getText("fouteLoginMelding"));
         }
 	}
 	
@@ -84,6 +84,8 @@ public class DomeinController
     public void selecteerSpel(String naam)
     {
         this.spel = spelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
+        spel.selecteerSpel();
+        
     }
      
     

@@ -20,6 +20,7 @@ public class AanRegController extends GridPane
 	{
 		this.dc = dc;
 		this.hs = hs;
+		
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AanReg.fxml"));
@@ -30,7 +31,10 @@ public class AanRegController extends GridPane
 		{
 			System.out.println(ex.getMessage());
 		}
+		btnAanmelden.setText(Taal.getText("meldAanGui"));
+		btnRegistreren.setText(Taal.getText("registreerGui"));
 	}
+	
 
 	// Event Listener on Button[#btnAanmelden].onAction
 	@FXML

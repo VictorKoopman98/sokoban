@@ -19,7 +19,7 @@ public class Spel
 	{
 		this.setNaamSpel(naamSpel);
 		spelbordRepository = new SpelbordRepository();
-		spelbordenLijst = geefSpelbordenLijst();
+		
 	}	
 	
 	
@@ -103,7 +103,7 @@ public class Spel
 	{
 		if (naam == null || naam.length() == 0)
 		{ 
-		    throw new IllegalArgumentException(Taal.getText("spelNaamVerplicht"));   //exception gooien als spelnaam niet is ingevuld
+		    throw new IllegalArgumentException(Taal.getText("spelnaamVerplicht"));   //exception gooien als spelnaam niet is ingevuld
 		} else if (bevatSpatie(naam) == true)
 		{
 		    throw new IllegalArgumentException(Taal.getText("spelnaamGeenSpatie"));    //exception gooien als spelnaam spaties bevat
@@ -175,6 +175,10 @@ public class Spel
 	public Man geefMan() 
 	{
 		return huidigSpelbord.getMan();
+	}
+	
+	public void selecteerSpel() {
+		spelbordenLijst = geefSpelbordenLijst();
 	}
 	
 	
