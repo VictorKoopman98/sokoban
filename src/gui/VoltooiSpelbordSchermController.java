@@ -11,7 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class VoltooiSpelbordSchermController extends GridPane{
+public class VoltooiSpelbordSchermController extends GridPane
+{
 	@FXML
 	private GridPane gridSpelbord;
 	@FXML
@@ -50,7 +51,7 @@ public class VoltooiSpelbordSchermController extends GridPane{
 		btnOmhoog.setText(Taal.getText("omhoog"));
 		btnLinks.setText(Taal.getText("links"));
 		btnRechts.setText(Taal.getText("rechts"));		
-		lblAantalVerplaatsingenBoodschap.setText(Taal.getText("aantalVerplaatsingen"));
+		lblAantalVerplaatsingenBoodschap.setText(Taal.getText("verplaatsingen"));
 		lblAantalVerplaatsingen.setText("0");
 		
 		buildGUI();
