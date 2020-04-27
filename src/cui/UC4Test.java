@@ -2,6 +2,7 @@ package cui;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import domein.DomeinController;
@@ -24,7 +25,7 @@ public class UC4Test
 			   omlaag = Taal.getText("omlaag"),
 			   momenteel = Taal.getText("momenteel"),
 			   isEr = Taal.getText("isEr"),
-			   zijnEr = Taal.getText("isEr"),
+			   zijnEr = Taal.getText("zijnEr"),
 			   verplaatsing = Taal.getText("verplaatsing"),
 			   verplaatsingen = Taal.getText("verplaatsingen"),
 			   verlaten = Taal.getText("heeftSpelbordVerlaten");
@@ -70,9 +71,7 @@ public class UC4Test
 					
 					System.out.printf("%n%s %s %d %s.%n",momenteel,dc.geefAantalVerplaatsingen() == 1? isEr : zijnEr, 
 							dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? verplaatsing : verplaatsingen);
-					
-					System.out.println();
-					
+										
 					if(!dc.eindeSpelbordBereikt())
 					{
 						actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
@@ -82,7 +81,7 @@ public class UC4Test
 			}
 			else if(actie == 3)   //spelbord verlaten
 			{
-				System.out.printf("%s %s", dc.geefGebruikersnaam(),verlaten);
+				System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),verlaten);
 			}
 		}while(!dc.eindeSpelbordBereikt() && actie != 3);
 	}
@@ -96,36 +95,34 @@ public class UC4Test
 			   spelTerugZetten = Taal.getText("spelTerugzetten"),
 			   spelbordVerlaten = Taal.getText("spelbordVerlaten"),
 			   geefNummer = Taal.getText("geefNummer"),
-			   ongeldigeActie = Taal.getText("ongeldigActie");
+			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   getalIngeven = Taal.getText("getalIngeven");
 
 		boolean blijvenHerhalen = true; 
 		int keuze = -1;
 		do {
 			try {
-				System.out.printf("%s%n",nieuwVerpl);
+				System.out.printf("%n%s%n",nieuwVerpl);
 				
 				System.out.printf("%s%n",spelTerugZetten);
 				
 				System.out.printf("%s%n",spelbordVerlaten);
 				
-				System.out.printf("%s",geefNummer);
+				System.out.printf("%s ",geefNummer);
 		
 				keuze = input.nextInt();
-				
-				System.out.println();
-				
-				if (keuze > 0 && keuze < 4) 
-				{
-					blijvenHerhalen = false;
-				}
-				else if(keuze < 1 || keuze > 3 || keuze != (int)keuze)
+								
+				if(keuze < 1 || keuze > 3)
 				{
 					throw new IllegalArgumentException(ongeldigeActie);
-				}	
+				}
+				blijvenHerhalen = false;
+			}catch(InputMismatchException e) {
+				System.out.printf("%n%s%n", getalIngeven);
+				input.next();
 			}
-			catch(IllegalArgumentException e)
-			{
-				System.err.println(e);
+			catch(IllegalArgumentException e){
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		} while (blijvenHerhalen);
 		return keuze;
@@ -140,13 +137,14 @@ public class UC4Test
 			   omhoog = Taal.getText("omhoog8"),
 			   omlaag = Taal.getText("omlaag2"),
 			   geefNummer = Taal.getText("geefNummer"),
-			   ongeldigeRichting = Taal.getText("ongeldigRichting");
+			   ongeldigeRichting = Taal.getText("ongeldigeRichting"),
+			   getalIngeven = Taal.getText("getalIngeven");
 		
 		int keuze = -1;
 		boolean blijvenHerhalenFlag = true;
 		do {
 			try {
-				System.out.printf("%s%n",links);
+				System.out.printf("%n%s%n",links);
 				
 				System.out.printf("%s%n",rechts);
 				
@@ -154,28 +152,27 @@ public class UC4Test
 				
 				System.out.printf("%s%n",omlaag);
 				
-				System.out.printf("%s",geefNummer);
+				System.out.printf("%s ",geefNummer);
 				keuze = input.nextInt();
-				
-				System.out.println();
-				
+								
 				List<Integer> richtingen = new ArrayList<Integer>();
 				richtingen.add(4);
 				richtingen.add(8);
 				richtingen.add(6);
 				richtingen.add(2);
-				if (richtingen.contains(keuze)) 
-				{
-					blijvenHerhalenFlag = false;
-				}
-				else if(!richtingen.contains(keuze) || keuze != (int)keuze)
+				
+				if(!richtingen.contains(keuze))
 				{
 					throw new IllegalArgumentException(ongeldigeRichting);
 				}
+				blijvenHerhalenFlag = false;
+			}catch(InputMismatchException e) {
+				System.out.printf("%n%s%n", getalIngeven);
+				input.next();
 			}
 			catch(IllegalArgumentException e)
 			{
-				System.err.println(e);
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		} while (blijvenHerhalenFlag);
 		return keuze;

@@ -23,24 +23,30 @@ public class SokobanApplicatie
 		       stop = Taal.getText("stop"),
 		       keuze = Taal.getText("keuze"),
 		       keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
-		       keuzeMismatch = Taal.getText("getalIngeven");      
+		       keuzeMismatch = Taal.getText("getalIngeven"); 
+		
+		int keuze1 = 0;
+		boolean flag = true;
 		do {
 			try {
 				System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n-----------------------------%n%s", 
 						"menu1",aanmelden,registreer,stop,keuze);
+				keuze1 = input.nextInt();
 				
-				int keuze1 = input.nextInt();
 				if(keuze1 > 3 || keuze1 < 1)
 				{
 					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}
-				return keuze1;
+				flag = false;
+			}catch(IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 			catch(InputMismatchException e){
-				System.out.printf(keuzeMismatch);
+				System.out.printf("%n%s%n", keuzeMismatch);
 				input.next();
 			}
-		}while(true);
+		}while(flag);
+		return keuze1;
 	}
 	
 	public int toonHoofdpaneel2() 
@@ -55,40 +61,42 @@ public class SokobanApplicatie
 		       keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 		       spelAfmelden = Taal.getText("afmeldenSpelO"),
 		       keuzeMismatch = Taal.getText("getalIngeven");
+	    
+	    int keuze1 = 0;
+	    boolean flag = true;
 		do {
 			try {
-					int keuze1 = 0;
-					if (domeincontroller.getSpeler().isAdminrechten()) 
-					{
-						System.out.printf("%n%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", 
-								"menu2", spelen, nieuwSpel, wijzigSpel, afmelden,keuze);
-						
-						keuze1 = input.nextInt();
-						if(keuze1 > 4 || keuze1 < 1)
-						{
-							throw new IllegalArgumentException(keuzeOutOfBounds);
-						}
+				if (domeincontroller.getSpeler().isAdminrechten()) 
+				{
+					System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", 
+							"menu2", spelen, nieuwSpel, wijzigSpel, afmelden,keuze);
+					
+					keuze1 = input.nextInt();
+					if(keuze1 > 4 || keuze1 < 1){
+						throw new IllegalArgumentException(keuzeOutOfBounds);
 					}
-					else 
-					{
-						System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",spelen,spelAfmelden,keuze);
-						
-						keuze1 = input.nextInt();
-						if(keuze1 > 2 || keuze1 < 1)
-						{
-							throw new IllegalArgumentException(keuzeOutOfBounds);
-						}if (keuze1 == 2) 
-						{
-							keuze1 = 4;
-						}
-					}
-					return keuze1;
 				}
-				catch(InputMismatchException e) {
-					System.out.printf(keuzeMismatch);
-					input.next();
+				else {
+					System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n-----------------------------%n%s", "menu2",spelen,spelAfmelden,keuze);
+					keuze1 = input.nextInt();
+					
+					if(keuze1 > 2 || keuze1 < 1){
+						throw new IllegalArgumentException(keuzeOutOfBounds);
+					}if (keuze1 == 2) 
+					{
+						keuze1 = 4;
+					}
+				}
+				flag = false;
+			}catch(IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
-		}while(true);
+			catch(InputMismatchException e) {
+				System.out.printf("%n%s%n", keuzeMismatch);
+				input.next();
+			}
+		}while(flag);
+		return keuze1;
 	}
 
 	public void run()    //verschillende use cases in volgorde laten runnen

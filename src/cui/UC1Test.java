@@ -21,8 +21,10 @@ public class UC1Test
 		String geefGebruikersnaam = Taal.getText("geefGebruikersnaam"),
 			   geefWachtwoord = Taal.getText("geefWachtwoord"),
 			   isAangemeld = Taal.getText("aangemeld");
+		
 		String gebruikersnaam = "";
 		String wachtwoord = "";
+		
 		boolean blijvenHerhalenFlag = true;
 //		blijft herhalen zolang flag = true maar indien wachtwoord en gebruikersnaam juist zijn => flag wordt false,
 //		anders skipt het die stap en gaat direct naar exceptions.
@@ -39,11 +41,10 @@ public class UC1Test
                dc.meldAan(gebruikersnaam, wachtwoord);
                blijvenHerhalenFlag = false;
                
-               System.out.printf("%n%s %s", dc.geefGebruikersnaam(),isAangemeld);
+               System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),isAangemeld);
             } 
             catch (IllegalArgumentException e){
-                System.out.println(e);
-                
+                System.out.printf("%n%s%n", e.getMessage()); 
             } 
         } while (blijvenHerhalenFlag);	
 	}

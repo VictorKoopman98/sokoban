@@ -57,7 +57,7 @@ public class UC3Test
 				System.out.println(e);
 			}	
 			catch(InputMismatchException e) {
-				System.out.printf("\n%s",getalIngeven);
+				System.out.printf("\n%s%n",getalIngeven);
 				input.next();
 			}
 			
@@ -77,19 +77,19 @@ public class UC3Test
 			{
 				uc4Test.voltooiSpelbord(spelnaam);  //methode voltooiSpelbord van UC4 wordt uitgevoerd
 				
-				System.out.printf("%n%s %s %d %s %d %s.%n%n", dc.geefGebruikersnaam(), heeft,dc.geefAantalSpelbordenVoltooid(), vanDe,
+				System.out.printf("%n%s %s %d %s %d %s.%n", dc.geefGebruikersnaam(), heeft,dc.geefAantalSpelbordenVoltooid(), vanDe,
 						dc.geefAantalSpelborden(),spelbordVoltooid);
 			}
 			if (!dc.isSpelVoltooid()) {
 				actie = toonActiesSpel();
 			}
 			else {
-				System.out.printf("%s %s", dc.geefGebruikersnaam(),huidigSpelbordVoltooid);
+				System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),huidigSpelbordVoltooid);
 			}
 		}while(actie!=2 && !dc.isSpelVoltooid());
 		if (actie == 2) 
 		{
-			System.out.printf("%n%s %s", dc.geefGebruikersnaam(),spelVerlaten);
+			System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),spelVerlaten);
 		}
 	}
 	
@@ -100,7 +100,8 @@ public class UC3Test
 		String spelbordVoltooid = Taal.getText("spelbordVoltooidO"),
 			   spelVerlaten = Taal.getText("spelVerlatenO"),
 			   keuzeMaken = Taal.getText("keuze"),
-			   ongeldigeActie = Taal.getText("ongeldigActie");
+			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   keuzeMismatch = Taal.getText("getalIngeven");
 		
 		int keuze = -1;
 		boolean blijvenHerhalen = true;
@@ -110,7 +111,6 @@ public class UC3Test
 			{
 				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",spelbordVoltooid,spelVerlaten,keuzeMaken);
 				keuze = input.nextInt();
-				System.out.println();
 				if (keuze < 0 || keuze > 3 || keuze != (int)keuze) {
 					throw new IllegalArgumentException(ongeldigeActie);
 				}
@@ -118,9 +118,12 @@ public class UC3Test
 				{
 					blijvenHerhalen = false;
 				}	
+			}catch(InputMismatchException e) {
+				System.out.printf("%n%s%n", keuzeMismatch);
+				input.next();
 			}
 			catch(IllegalArgumentException e){
-				System.err.println(e);
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		} while (blijvenHerhalen && !dc.isSpelVoltooid());
 		return keuze;

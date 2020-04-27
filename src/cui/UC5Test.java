@@ -8,7 +8,6 @@ import java.util.InputMismatchException;
 
 public class UC5Test 
 {
-	
 	private DomeinController dc;
 	private UC6Test uc6test;
 	
@@ -18,9 +17,10 @@ public class UC5Test
 		this.uc6test = new UC6Test(dc);
 	}
 	
-	
 	public void maakNieuwSpel() 
 	{
+		Scanner input = new Scanner(System.in);
+		
         String spelnaam = "";
         
         String geefSpelnaam = Taal.getText("geefSpelnaamNieuweSpel"),
@@ -31,11 +31,8 @@ public class UC5Test
         
 		boolean blijvenHerhalenFlag = true;
 		int aantalSpelborden = 0;
-		do 
-		{
-			Scanner input = new Scanner(System.in);
-			try 
-			{
+		do {
+			try {
 				System.out.printf("%n%s",geefSpelnaam);
 				spelnaam = input.nextLine();
 				
@@ -50,23 +47,19 @@ public class UC5Test
 				int actie = toonActies();
 				
 				do {
-					if (actie == 1) 
-					{
+					if (actie == 1) {
 						uc6test.maakNieuwSpelbord(aantalSpelborden+1);
 						aantalSpelborden++;
 						
 						actie = toonActies();
 					}
-					else if (actie == 2) 
-					{
+					else if (actie == 2) {
 						System.out.printf("%s %s%n%n", dc.geefGebruikersnaam(),stopAanmaken);
 					}
 				}while ( actie != 2);
-
 			}
-			catch (IllegalArgumentException e) 
-			{
-				System.err.println(e);
+			catch (IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		} while(blijvenHerhalenFlag);
 		
@@ -85,17 +78,14 @@ public class UC5Test
 			   keuze = Taal.getText("keuze"),
 			   ongeldigeActie = Taal.getText("ongeldigActie"),
 			   getalIngeven = Taal.getText("getalIngeven");
-		
 		do
 		{
 			try {
-
 				System.out.printf("%n%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",
 						nieuwSpelbord,stoppen,keuze);
 				int actie = input.nextInt();
 				
-				if(actie < 1 || actie > 2)
-				{
+				if(actie < 1 || actie > 2){
 					throw new IllegalArgumentException(ongeldigeActie);
 				}	
 				return actie;

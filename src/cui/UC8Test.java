@@ -15,10 +15,15 @@ public class UC8Test
 		this.dc = dc;
 	}
 	
-	
 	public void wijzigSpelbord(String spelnaam, int volgnummer)
 	{
 		Scanner input = new Scanner(System.in);
+		
+		String geefRij = Taal.getText("geefRij"),
+			   geefKolom = Taal.getText("geefKolom"),
+			   getalIngeven = Taal.getText("getalIngeven"),
+			   spelbordBijgewerkt = Taal.getText("spelbordBijgewerkt");
+		
 		boolean blijvenHerhalenFlag = true;
 		int keuze = 0;
 		
@@ -28,53 +33,57 @@ public class UC8Test
 		
 		dc.toonSpelbord();
 		
-	
-		
 		do {
-			try 
-			{
-				keuze = toonMogelijkeActies();	
+			try {
+				keuze = toonMogelijkeActies();
+				
 				int x = 1;
 				int y = 1;
+				
 				if (keuze != 6) {
-					System.out.printf("%s",Taal.getText("geefRij"));
+					System.out.printf("%n%s ",geefRij);
 					x = input.nextInt();
 					
-					System.out.printf("%n%s ",Taal.getText("geefKolom"));
+					System.out.printf("%n%s ",geefKolom);
 					y = input.nextInt();
 				}
-				
 				dc.wijzigSpelbord(x-1, y-1, keuze);
+				
 				if (keuze == 6) {
 					blijvenHerhalenFlag = false;
-				}
-				else {
+				}else {
 					dc.toonSpelbord();
-				}
-				
-				
-				
+				}	
 			}
-			catch(IllegalArgumentException e)
-			{
-				System.err.println(e);
+			catch(IllegalArgumentException e){
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 			catch(InputMismatchException e) {
-				System.out.printf("%s",Taal.getText("getalIngeven"));
+				System.out.printf("%n%s%n",getalIngeven);
 				input.next();
 			}
 		}while (blijvenHerhalenFlag);
 		
 		dc.updateSpelbord(dc.geefVolgnummer(),dc.geefVelden(), dc.geefNaamSpel());
-		System.out.printf("%s",Taal.getText("spelbordBijgewerkt"));
+		System.out.printf("%n%s%n",spelbordBijgewerkt);
 	}
-	
 	
 	private int toonMogelijkeActies() 
 	{
+		Scanner input = new Scanner(System.in);
+		
+		String acties = Taal.getText("mogelijkeActie"),
+			   maakDoel = Taal.getText("maakDoel"),
+			   maakMuur = Taal.getText("maakMuur"),
+			   zetMan = Taal.getText("zetMan"),
+			   zetKist = Taal.getText("zetKist"),
+			   maakLeeg = Taal.getText("maakVeldLeeg"),
+			   stop = Taal.getText("stopWijziging"),
+			   maakKeuze = Taal.getText("keuze"),
+			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   getalIngeven = Taal.getText("getalIngeven");
+			   
 		do {
-			Scanner input = new Scanner(System.in);
-
 			try {		        
 				System.out.printf("%n%s%n"
 						+ "%s%n"
@@ -82,21 +91,20 @@ public class UC8Test
 						+ "%s%n"
 						+ "%s%n"
 						+ "%s%n"
-						+ "%s%n",Taal.getText("mogelijkeActie"),Taal.getText("maakDoel"),Taal.getText("maakMuur"),Taal.getText("zetMan")
-						,Taal.getText("zetKist"),Taal.getText("maakVeldLeeg"),Taal.getText("stopWijziging"));
+						+ "%s%n",acties,maakDoel,maakMuur,zetMan,zetKist,maakLeeg,stop);
 		        
-				
-				System.out.printf("%s",Taal.getText("keuze"));
+				System.out.printf("%s",maakKeuze);
 				int keuze = input.nextInt();
 				
-				if(keuze < 1 || keuze > 6)
-				{
-					throw new IllegalArgumentException(Taal.getText("ongeldigActie"));
+				if(keuze < 1 || keuze > 6){
+					throw new IllegalArgumentException(ongeldigeActie);
 				}	
 				return keuze;
+			}catch(IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 			catch(InputMismatchException e) {
-				System.out.printf("%s",Taal.getText("getalIngeven"));
+				System.out.printf("%n%s%n", getalIngeven);
 				input.next();
 			}
 		}while(true);

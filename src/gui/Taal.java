@@ -63,8 +63,10 @@ public class Taal
 	
 	public String kiesTaal()
     {
-		int taal = 0;
 		Scanner input = new Scanner(System.in);
+		
+		int taal = 0;
+		
 		do
 		{
 		    System.out.printf("1.Kies een taal (NL)%n2.Choose a language (EN)%n3.Choisissez une langue (FR): ");
@@ -73,18 +75,17 @@ public class Taal
 		    	taal = input.nextInt();
 				if (!((taal == 1 || taal == 2 ||  taal == 3 )))
 				{
-				    throw new IllegalArgumentException("Verkeerde input/ Wrong input/ Entrée incorrecte");
+				    throw new IllegalArgumentException("\nVerkeerde input/ Wrong input/ Entrée incorrecte\n");
 				}
-		    } catch (IllegalArgumentException ie)
-		    
-		    {
-			System.out.println(ie.getMessage());
+		    } catch (IllegalArgumentException ie){
+		    	System.out.println(ie.getMessage());
 		    }
-		    catch(InputMismatchException e)
-		    {
-		    	System.out.println("Er moet een nummer gekozen worden !");
+		    catch(InputMismatchException e){
+		    	System.out.println("\nKies een nummer/ Choisissez un nombre/ choose a number\n");
+		    	input.next();
 		    }
 		} while (!(taal == 1 || taal == 3 || taal == 2));
+		
 		String taalString ="";
 		switch(taal)
 		{

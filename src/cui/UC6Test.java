@@ -6,7 +6,6 @@ import gui.Taal;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-
 public class UC6Test 
 {
 	private DomeinController dc;
@@ -21,7 +20,7 @@ public class UC6Test
 		Scanner input = new Scanner(System.in);
 		
 		String geefRij = Taal.getText("geefRij"),
-				geefKolom = Taal.getText("geefKolom");
+			   geefKolom = Taal.getText("geefKolom");
 		
 		System.out.println();
 
@@ -39,27 +38,22 @@ public class UC6Test
 				System.out.printf("%n%s",geefKolom);
 				int y = input.nextInt();
 				System.out.println();
-				try {
-					dc.wijzigSpelbord(x-1, y-1, keuze);	
-				}
-				catch(IllegalArgumentException e){
-					System.err.println(e);
-				}
+				
+				dc.wijzigSpelbord(x-1, y-1, keuze);	
 				
 				dc.toonSpelbord();
 				
 				keuze = toonMogelijkeActies();
 			}
-			catch(IllegalArgumentException e)
-			{
-				System.err.println(e);
+			catch(IllegalArgumentException e){
+				System.out.printf("%n%s%n", e.getMessage());
+			}catch(InputMismatchException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		}while (keuze != 6);
 		
 		dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());	
-		
 	}
-	
 	
 	private int toonMogelijkeActies() 
 	{
@@ -75,7 +69,6 @@ public class UC6Test
 				keuzeMaken = Taal.getText("keuze"),
 				ongeldigeActie = Taal.getText("ongeldigActie"),
 				getalINgeven = Taal.getText("getalIngeven");
-
 		do {
 			try {
 				System.out.printf("%n%s%n"
@@ -96,12 +89,13 @@ public class UC6Test
 				return keuze;
 			}
 			catch(InputMismatchException e){
-				System.out.printf("%s",getalINgeven);
+				System.out.printf("%n%s%n",getalINgeven);
+				input.next();
+			}catch(IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
 			}
 		}while(true);
 		
 	}
-	
-	
 
 }
