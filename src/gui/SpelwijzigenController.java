@@ -66,6 +66,8 @@ public class SpelwijzigenController extends GridPane
 	public void cmbSpellenAfhandeling(ActionEvent event) 
 	{
 		String gekozenSpel = cmbSpellen.getSelectionModel().getSelectedItem();
+		
+		
 		int[] volgnummers = dc.geefVolgnummerSpelborden(gekozenSpel);
 		List<String> volgnummersLijst = new ArrayList<String>();
 		for (int i = 0; i < volgnummers.length; i++)

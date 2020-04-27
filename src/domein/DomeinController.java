@@ -237,14 +237,26 @@ public class DomeinController
     	{
     		for(int j = 0; j < 10; j++)
     		{
-    			char karakter = 'o';
-    			if (spelbord.getSpelbord()[i][j].isMuur()) {
+    			char karakter = 'O';
+    			if (spelbord.getSpelbord()[i][j].isMuur()) 
+    			{
                     karakter = 'M';
-                } else if (spelbord.getSpelbord()[i][j].isDoel()) {
-                    karakter = 'D';
-                } else if (spelbord.getSpelbord()[i][j].isMan()) {
+                }
+    			else if (spelbord.getSpelbord()[i][j].isDoel() && spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j]))
+    			{
+    				karakter = 'F';
+    			}
+    			else if (spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
+    			{
                     karakter = 'X';
-                } else if (spelbord.getSpelbord()[i][j].isKist()) {
+                }
+    			else if (spelbord.getSpelbord()[i][j].isDoel()) 
+    			{
+                    karakter = 'D';
+                } 
+    			
+                else if (spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j])) 
+                {
                     karakter = 'K';
                 }  
     			velden[i][j] = karakter;

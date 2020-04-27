@@ -35,6 +35,7 @@ public class Spelbord
 				if (spelbord[i][j].isMan()) 
 				{
 					man = new Man(velden[i][j]);
+					velden[i][j].setIsMan(true);
 				}
 				else if (spelbord[i][j].isKist()) 
 				{
@@ -45,6 +46,7 @@ public class Spelbord
 		}
 		if (man == null) {
 			man = new Man(spelbord[5][5]);
+			spelbord[5][5].setIsMan(true);
 		}
 	}
 	
@@ -297,7 +299,7 @@ public class Spelbord
 	
 	public void wijzigSpelbord(int x, int y, int actie) 
 	{
-		if(actie < 1 || actie > 6 || actie != (int)actie)
+		if(actie < 1 || actie > 6)
 		{
 			throw new IllegalArgumentException(Taal.getText("ongeldigActie"));
 		}

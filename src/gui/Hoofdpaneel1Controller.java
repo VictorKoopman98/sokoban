@@ -85,7 +85,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 	@FXML
 	public void btnSpeelSpelAfhandeling(ActionEvent event) 
 	{
-		hs.update(new SpeelSpelController(dc, hs));
+		hs.update(new Hoofdpaneel2Controller(dc, hs));
 	}
 	// Event Listener on Button[#btnAfmelden].onAction
 	@FXML

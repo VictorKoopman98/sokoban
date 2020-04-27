@@ -22,7 +22,7 @@ public class Start_Up extends Application
 		try {
 			DomeinController dc = new DomeinController();
 			HoofdSchermController hs = new HoofdSchermController(dc);
-			Scene scene = new Scene(hs, 400, 400);
+			Scene scene = new Scene(hs, 400, 300);
 //			Image icon = new Image(getClass().getResourceAsStream("/images/icon.png"));
 //			primaryStage.getIcons().add(icon);
 			primaryStage.setScene(scene);
