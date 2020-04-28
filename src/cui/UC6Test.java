@@ -21,6 +21,7 @@ public class UC6Test
 		
 		String geefRij = Taal.getText("geefRij"),
 			   geefKolom = Taal.getText("geefKolom");
+		boolean blijvenHerhalenFlag = true;
 		
 		System.out.println();
 
@@ -42,6 +43,12 @@ public class UC6Test
 				dc.wijzigSpelbord(x-1, y-1, keuze);	
 				
 				dc.toonSpelbord();
+			
+				if (keuze == 6)
+				{
+					dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());
+					blijvenHerhalenFlag = false;
+				}
 				
 				keuze = toonMogelijkeActies();
 			}
@@ -50,9 +57,14 @@ public class UC6Test
 			}catch(InputMismatchException e) {
 				System.out.printf("%n%s%n", e.getMessage());
 			}
-		}while (keuze != 6);
+			catch(NullPointerException e)
+			{
+				System.out.printf("%n%s%n", Taal.getText("manVerplicht"));
+				
+			}
+			
+		}while (blijvenHerhalenFlag);
 		
-		dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());	
 	}
 	
 	private int toonMogelijkeActies() 

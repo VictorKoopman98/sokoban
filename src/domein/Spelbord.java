@@ -140,7 +140,7 @@ public class Spelbord
                 {
                     output[i][j] = 'X'; //veld met een muur op is W (wall)
                 } 
-                else if (spelbord[i][j] == man.getVeld()) 
+                else if (man != null && spelbord[i][j] == man.getVeld()) 
                 {
                     output[i][j] = 'M';//veld dat een man bevat (Man)
                 } 
@@ -152,7 +152,7 @@ public class Spelbord
                 {
                     output[i][j] = '?';//veld met doel(Goal)
                 }
-                else if (!spelbord[i][j].isDoel() && !maakVeldenVanKistenLijst().contains(spelbord[i][j])  && spelbord[i][j] != man.getVeld()) 
+                else if (!spelbord[i][j].isDoel() && !maakVeldenVanKistenLijst().contains(spelbord[i][j])) 
                 {
                     output[i][j] = '.';//Leeg veld(Nothing)
                 } 

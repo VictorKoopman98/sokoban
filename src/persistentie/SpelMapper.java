@@ -47,9 +47,9 @@ public class SpelMapper
     }
 
    
-    public static List<Spel> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
+    public static List<String> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
     {
-		List<Spel> spel = new ArrayList<>();
+		List<String> spelnamen = new ArrayList<>();
 	
 		try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
 				PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spel"))
@@ -62,7 +62,7 @@ public class SpelMapper
 		                    
 				    String naam = rs.getString("naamSpel");
 		            //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
-				    spel.add(new Spel(naam));
+				    spelnamen.add(naam);
 				}
 		    }
 		} 
@@ -71,7 +71,7 @@ public class SpelMapper
 		    throw new RuntimeException(ex);
 		}
 	
-		return spel;
+		return spelnamen;
 
     }
 

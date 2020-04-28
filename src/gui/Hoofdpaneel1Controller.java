@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -44,7 +45,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 	
 	private void buildGui()
 	{
-		if(true)
+		if(dc.isAdmin())
 		{
 			
 			
@@ -52,30 +53,31 @@ public class Hoofdpaneel1Controller  extends GridPane
 			btnWijzigSpel.setPrefHeight(25);
 			btnWijzigSpel.setPrefWidth(180);
 			btnWijzigSpel.setAlignment(Pos.CENTER);
+			this.add(btnWijzigSpel, 0, 1);
 			
-			this.add(btnWijzigSpel, 0, 1, 2, 1);
 			btnMaakNieuwSpel = new Button(Taal.getText("maakNieuwSpelGui"));
 			btnMaakNieuwSpel.setPrefHeight(25);
 			btnMaakNieuwSpel.setPrefWidth(180);
 			btnMaakNieuwSpel.setAlignment(Pos.CENTER);
-			this.add(btnMaakNieuwSpel, 0, 2, 2, 1);
+			this.add(btnMaakNieuwSpel, 0, 2);
+			GridPane.setHalignment(btnMaakNieuwSpel, HPos.CENTER);
+			GridPane.setHalignment(btnWijzigSpel, HPos.CENTER);
+			btnWijzigSpel.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					hs.update(new SpelwijzigenController(dc, hs));
+				}
+			});
+			
+			btnMaakNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					hs.update(new SpelMakenSchermController(dc, hs));
+				}
+			});
 		}
-		
-		btnWijzigSpel.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) 
-			{
-				hs.update(new SpelwijzigenController(dc, hs));
-			}
-		});
-		
-		btnMaakNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) 
-			{
-				hs.update(new SpelMakenSchermController(dc, hs));
-			}
-		});
 		
 		btnSpeelSpel.setText(Taal.getText("speelSpelGui"));
 		btnAfmelden.setText(Taal.getText("afmeldenGui"));

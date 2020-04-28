@@ -69,15 +69,12 @@ public class DomeinController
     
     public String[] geefLijstSpellen()    //array maken van namen van spellen
     {
-    	
-          String[] namen = new String[SpelRepository.geefSpellenList().size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
-          
-          for(int i = 0; i < SpelRepository.geefSpellenList().size(); i++) 
-          {
-        	  namen [i] = SpelRepository.geefSpellenList().get(i).getNaamSpel();     //elke naam wordt opgevraagd
-          }
-          
-          return namen;
+    	String[] namen = new String[spelRepository.geefSpellenList().size()];
+    	for (int i = 0; i < namen.length; i++)
+    	{
+    		namen[i] = spelRepository.geefSpellenList().get(i);
+    	}
+    	return namen;
     }
     
     
@@ -85,7 +82,6 @@ public class DomeinController
     {
         this.spel = spelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
         spel.selecteerSpel();
-        
     }
      
     
@@ -98,16 +94,7 @@ public class DomeinController
     public int geefAantalSpelbordenVoltooid()
     {
     	return this.spel.geefAantalSpelbordenVoltooid();       //geeft terug hoeveel voltooide spelborden het spel heeft
-    }
-    
-    
-    public Spel zetNaamOmInSpel(String naam) 
-    {
-    	List<String> lijstje = Arrays.asList(geefLijstSpellen());        //zet array van geefLijstSpellen om naar list
-    	int index = lijstje.indexOf(naam);             //zoekt index van de opgeven naam
-    	return SpelRepository.geefSpellenList().get(index);           // naam omzetten naar een spel 
-    }
-      
+    }      
     
     public void toonSpelbord() 
     {

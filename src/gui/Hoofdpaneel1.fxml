@@ -13,11 +13,10 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
    </rowConstraints>
    <columnConstraints>
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="300.0" />
    </columnConstraints>
    <children>
-      <Button fx:id="btnSpeelSpel" mnemonicParsing="false" onAction="#btnSpeelSpelAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Speel spel" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Button fx:id="btnAfmelden" mnemonicParsing="false" onAction="#btnAfmeldenAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Afmelden" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <Button fx:id="btnSpeelSpel" mnemonicParsing="false" onAction="#btnSpeelSpelAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Speel spel" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Button fx:id="btnAfmelden" mnemonicParsing="false" onAction="#btnAfmeldenAfhandeling" prefHeight="25.0" prefWidth="180.0" text="Afmelden" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
    </children>
 </fx:root>

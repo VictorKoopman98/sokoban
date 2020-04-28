@@ -10,7 +10,7 @@ import persistentie.SpelMapper;
 public class SpelRepository
 {
 	private static SpelMapper spelMapper;
-	private static List<Spel> spellen = new ArrayList<>();    
+	private static List<String> spellen = new ArrayList<>();    
     
     public SpelRepository()
     {
@@ -45,7 +45,7 @@ public class SpelRepository
     }
 
     
-    public static List<Spel> geefSpellenList()      //lijst van spellen uit databank halen
+    public List<String> geefSpellenList()      //lijst van spellen uit databank halen
     {
     	spellen = SpelMapper.geefSpellen();
     	
