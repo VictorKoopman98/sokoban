@@ -36,13 +36,13 @@ public class Start_Up extends Application
 	
 	public static void main(String[] args) 
 	{
-		Taal taal = new Taal();
-		DomeinController dc = new DomeinController();
-		SokobanApplicatie sa = new SokobanApplicatie(dc);
+//		Taal taal = new Taal();
+//		DomeinController dc = new DomeinController();
+//		SokobanApplicatie sa = new SokobanApplicatie(dc);
+//		
+//		sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
 		
-		sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
-		
-//		launch(args);
+		launch(args);
 	}
 	
 
