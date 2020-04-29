@@ -87,13 +87,14 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 		ivDoel = new ImageView(doelImage);
 		ivKist = new ImageView(kistImage);
 		ivLeegVeld = new ImageView(leegVeldImage);
+		this.getChildren().addAll(ivMuur, ivMan, ivDoel, ivKist, ivLeegVeld);
 		
 		lblRij.setText(Taal.getText("rij"));
 		lblKolom.setText(Taal.getText("kolom"));
 		btnToevoegen.setText(Taal.getText("toevoegen"));
 		btnOpslaan.setText(Taal.getText("opslaan"));
 		btnAnnuleren.setText(Taal.getText("annuleren"));
-		
+				
 		lblRij.setVisible(false);
 		lblKolom.setVisible(false);
 		txfRij.setVisible(false);
