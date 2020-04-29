@@ -27,44 +27,35 @@ public class UC6Test
 		
 		dc.toonSpelbord();
 		
-		int keuze = toonMogelijkeActies();
+		int keuze = 0;
 
-		while (blijvenHerhalenFlag && keuze != 6) {
+		do {
 			try{
-				System.out.printf("%n%s",geefRij);
-				int x = input.nextInt();
-				
-				System.out.printf("%n%s",geefKolom);
-				int y = input.nextInt();
-				System.out.println();
-				
-				dc.wijzigSpelbord(x-1, y-1, keuze);	
-				
-				dc.toonSpelbord();
-			
-				if (keuze == 6)
-				{
+				keuze = toonMogelijkeActies();
+				if(keuze != 6) {
+					System.out.printf("%n%s ",geefRij);
+					int x = input.nextInt();
+					
+					System.out.printf("%n%s ",geefKolom);
+					int y = input.nextInt();
+					System.out.println();
+					
+					dc.wijzigSpelbord(x-1, y-1, keuze);	
+					
+					dc.toonSpelbord();
+				}else{
 					dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());
 					blijvenHerhalenFlag = false;
 				}
-				
 			}
 			catch(IllegalArgumentException e){
 				System.out.printf("%n%s%n", e.getMessage());
 			}catch(InputMismatchException e) {
 				System.out.printf("%n%s%n", e.getMessage());
+			}catch(NullPointerException e){
+				System.out.printf("%n%s%n", Taal.getText("manVerplicht"));	
 			}
-			catch(NullPointerException e)
-			{
-				System.out.printf("%n%s%n", Taal.getText("manVerplicht"));
-				
-			}
-			finally {
-				if (keuze != 6)
-					keuze = toonMogelijkeActies();
-			}
-			
-		}
+		}while(blijvenHerhalenFlag);
 		
 	}
 	

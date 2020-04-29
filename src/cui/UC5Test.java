@@ -44,6 +44,7 @@ public class UC5Test
 				uc6test.maakNieuwSpelbord(aantalSpelborden+1);
 				aantalSpelborden++;
 				
+				
 				int actie = toonActies();
 				
 				do {
