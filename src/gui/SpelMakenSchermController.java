@@ -64,7 +64,7 @@ public class SpelMakenSchermController extends GridPane {
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
-		Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, 1), 1000, 700);
+		Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, 1), 1200, 700);
 		Stage stage = (Stage) this.getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
