@@ -23,15 +23,13 @@ public class UC6Test
 			   geefKolom = Taal.getText("geefKolom");
 		boolean blijvenHerhalenFlag = true;
 		
-		System.out.println();
-
 		dc.maakNieuwSpelbord(volgnummer); 
 		
 		dc.toonSpelbord();
 		
 		int keuze = toonMogelijkeActies();
-		
-		do {
+
+		while (blijvenHerhalenFlag && keuze != 6) {
 			try{
 				System.out.printf("%n%s",geefRij);
 				int x = input.nextInt();
@@ -50,7 +48,6 @@ public class UC6Test
 					blijvenHerhalenFlag = false;
 				}
 				
-				keuze = toonMogelijkeActies();
 			}
 			catch(IllegalArgumentException e){
 				System.out.printf("%n%s%n", e.getMessage());
@@ -62,8 +59,12 @@ public class UC6Test
 				System.out.printf("%n%s%n", Taal.getText("manVerplicht"));
 				
 			}
+			finally {
+				if (keuze != 6)
+					keuze = toonMogelijkeActies();
+			}
 			
-		}while (blijvenHerhalenFlag);
+		}
 		
 	}
 	

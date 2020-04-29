@@ -54,7 +54,7 @@ public class UC5Test
 						actie = toonActies();
 					}
 					else if (actie == 2) {
-						System.out.printf("%s %s%n%n", dc.geefGebruikersnaam(),stopAanmaken);
+						System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
 					}
 				}while ( actie != 2);
 			}
@@ -65,7 +65,7 @@ public class UC5Test
 		
 		dc.selecteerSpel(spelnaam);
 		
-		System.out.printf("%s %s %d %s", dc.geefNaamSpel(),aangemaakt,aantalSpelborden, aantalSpelborden <= 1 ? spelbord: spelborden);
+		System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,aantalSpelborden, aantalSpelborden <= 1 ? spelbord: spelborden);
 	}
 	
 	
@@ -81,7 +81,7 @@ public class UC5Test
 		do
 		{
 			try {
-				System.out.printf("%n%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",
+				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",
 						nieuwSpelbord,stoppen,keuze);
 				int actie = input.nextInt();
 				

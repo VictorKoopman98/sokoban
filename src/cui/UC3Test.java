@@ -80,10 +80,10 @@ public class UC3Test
 				System.out.printf("%n%s %s %d %s %d %s.%n", dc.geefGebruikersnaam(), heeft,dc.geefAantalSpelbordenVoltooid(), vanDe,
 						dc.geefAantalSpelborden(),spelbordVoltooid);
 			}
-			if (!dc.isSpelVoltooid()) {
+			if (!dc.isSpelVoltooid() && actie != 2) {
 				actie = toonActiesSpel();
 			}
-			else {
+			else if (actie != 2){
 				System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),huidigSpelbordVoltooid);
 			}
 		}while(actie!=2 && !dc.isSpelVoltooid());

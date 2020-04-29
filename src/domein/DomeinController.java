@@ -172,6 +172,20 @@ public class DomeinController
     
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
+    	int aantalKisten = 0;
+    	int aantalDoelen = 0;
+    	for (int i = 0; i < 10; i++)
+    	{
+    		for (int j = 0; i < 10; j++)
+    		{
+    			if (velden[i][j] == 'K')
+    				aantalKisten++;
+    			if (velden[i][j] == 'D')
+    				aantalDoelen++;
+    		}
+    	}
+    	if (aantalKisten != aantalDoelen)
+    		throw new IllegalArgumentException(Taal.getText("aantalKisten"));
     	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
     }
     
