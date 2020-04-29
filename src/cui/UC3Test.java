@@ -100,7 +100,7 @@ public class UC3Test
 		String spelbordVoltooid = Taal.getText("spelbordVoltooidO"),
 			   spelVerlaten = Taal.getText("spelVerlatenO"),
 			   keuzeMaken = Taal.getText("keuze"),
-			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 			   keuzeMismatch = Taal.getText("getalIngeven");
 		
 		int keuze = -1;
@@ -112,7 +112,7 @@ public class UC3Test
 				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",spelbordVoltooid,spelVerlaten,keuzeMaken);
 				keuze = input.nextInt();
 				if (keuze < 0 || keuze > 3 || keuze != (int)keuze) {
-					throw new IllegalArgumentException(ongeldigeActie);
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}
 				if (keuze > 0 && keuze < 3) 
 				{

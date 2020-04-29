@@ -79,7 +79,7 @@ public class UC6Test
 				maakVeldLeeg = Taal.getText("maakVeldLeeg"),
 				stopWijzigen = Taal.getText("stopWijziging"),
 				keuzeMaken = Taal.getText("keuze"),
-				ongeldigeActie = Taal.getText("ongeldigActie"),
+						keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 				getalINgeven = Taal.getText("getalIngeven");
 		do {
 			try {
@@ -96,7 +96,7 @@ public class UC6Test
 				
 				if(keuze < 1 || keuze > 6)
 				{
-					throw new IllegalArgumentException(ongeldigeActie);
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}	
 				return keuze;
 			}

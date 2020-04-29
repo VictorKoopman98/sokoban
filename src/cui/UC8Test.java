@@ -80,7 +80,7 @@ public class UC8Test
 			   maakLeeg = Taal.getText("maakVeldLeeg"),
 			   stop = Taal.getText("stopWijziging"),
 			   maakKeuze = Taal.getText("keuze"),
-			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 			   getalIngeven = Taal.getText("getalIngeven");
 			   
 		do {
@@ -97,7 +97,7 @@ public class UC8Test
 				int keuze = input.nextInt();
 				
 				if(keuze < 1 || keuze > 6){
-					throw new IllegalArgumentException(ongeldigeActie);
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}	
 				return keuze;
 			}catch(IllegalArgumentException e) {

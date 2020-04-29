@@ -76,7 +76,7 @@ public class UC5Test
 		String nieuwSpelbord = Taal.getText("nieuwSpelbord"),
 			   stoppen = Taal.getText("stoppen"),
 			   keuze = Taal.getText("keuze"),
-			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 			   getalIngeven = Taal.getText("getalIngeven");
 		do
 		{
@@ -86,7 +86,7 @@ public class UC5Test
 				int actie = input.nextInt();
 				
 				if(actie < 1 || actie > 2){
-					throw new IllegalArgumentException(ongeldigeActie);
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}	
 				return actie;
 			}

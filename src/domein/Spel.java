@@ -32,15 +32,16 @@ public class Spel
 		return spelbordRepository.geefSpelbordenLijst(naamSpel);
 	}
 	
-	public void selecteerSpelbord(String spelnaam) {
-		for (int i = 0; i<spelbordenLijst.size(); i++) { 
+	public void selecteerSpelbord(String spelnaam) 
+	{
+		for (int i = 0; i < spelbordenLijst.size(); i++) 
+		{ 
 			if (!spelbordenLijst.get(i).isVoltooid()) {
 				huidigSpelbord = spelbordenLijst.get(i);
 				break;
 			}
 		}
 	}
-	
 	
 	public int geefAantalSpelborden() 
 	{
@@ -150,9 +151,6 @@ public class Spel
 	{
 		huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
 	}
-	
-	
-	
 	
 	public void toonSpelbord()
 	{

@@ -31,6 +31,7 @@ public class UC4Test
 		
 		dc.selecteerSpelbord(spelnaam);
 		
+//		dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
 		dc.toonSpelbord();  //spelbord tonen
 		
 		int actie = toonActiesSpelbord();
@@ -80,6 +81,7 @@ public class UC4Test
 				System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),verlaten);
 				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
 			}
+			
 		}while(!dc.eindeSpelbordBereikt() && actie != 3);
 	}
 	
@@ -91,7 +93,7 @@ public class UC4Test
 			   spelTerugZetten = Taal.getText("spelTerugzetten"),
 			   spelbordVerlaten = Taal.getText("spelbordVerlaten"),
 			   geefNummer = Taal.getText("geefNummer"),
-			   ongeldigeActie = Taal.getText("ongeldigActie"),
+			   keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 			   getalIngeven = Taal.getText("getalIngeven");
 
 		boolean blijvenHerhalen = true; 
@@ -110,7 +112,7 @@ public class UC4Test
 								
 				if(keuze < 1 || keuze > 3)
 				{
-					throw new IllegalArgumentException(ongeldigeActie);
+					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}
 				blijvenHerhalen = false;
 			}catch(InputMismatchException e) {
