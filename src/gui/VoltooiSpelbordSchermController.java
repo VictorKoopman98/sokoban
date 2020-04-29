@@ -7,16 +7,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-
 import java.util.Optional;
-
 import domein.DomeinController;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
-
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -45,6 +43,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 	{
 		this.dc = dc;
 		this.hs = hs;
+		
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("VoltooiSpelbordScherm.fxml"));
@@ -55,6 +54,37 @@ public class VoltooiSpelbordSchermController extends GridPane
 		{
 			System.out.println(ex.getMessage());
 		}
+		
+		btnOmhoog.setFocusTraversable(false);
+		btnRechts.setFocusTraversable(false);
+		btnLinks.setFocusTraversable(false);
+		btnAfsluiten.setFocusTraversable(false);
+		
+		btnOmlaag.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent event) {
+				// TODO Auto-generated method stub
+				switch(event.getCode())
+				{
+				case UP:
+					dc.verplaatsMan("omhoog");
+					break;
+				case DOWN:
+					dc.verplaatsMan("omlaag");
+					break;
+				case LEFT:
+					dc.verplaatsMan("links");
+					break;
+				case RIGHT:
+					dc.verplaatsMan("rechts");
+					break;
+				default:
+					break;
+				}
+				buildGUI();
+			}
+		});
+		
 		
 		btnOmlaag.setText(Taal.getText("omlaag"));
 		btnOmhoog.setText(Taal.getText("omhoog"));
@@ -67,7 +97,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 		buildGUI();
 	}
 	
-	private void buildGUI()
+	public void buildGUI()
 	{
 		
 		char[][] veldenStrings = dc.geefVelden();
@@ -181,6 +211,4 @@ public class VoltooiSpelbordSchermController extends GridPane
 		if (result.get() == ButtonType.CANCEL)
 			alert.close();
 	}
-	
-	
 }

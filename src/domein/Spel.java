@@ -32,10 +32,8 @@ public class Spel
 		return spelbordRepository.geefSpelbordenLijst(naamSpel);
 	}
 	
-	public void selecteerSpelbord(String spelnaam) 
-	{
-		for (int i = 0; i < spelbordenLijst.size(); i++) 
-		{ 
+	public void selecteerSpelbord(String spelnaam) {
+		for (int i = 0; i < spelbordenLijst.size(); i++) { 
 			if (!spelbordenLijst.get(i).isVoltooid()) {
 				huidigSpelbord = spelbordenLijst.get(i);
 				break;

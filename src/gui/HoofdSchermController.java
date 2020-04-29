@@ -1,8 +1,11 @@
 package gui;
 
 import domein.DomeinController;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -24,7 +27,7 @@ public class HoofdSchermController extends BorderPane
 		{
 			System.out.println(ex.getMessage());
 		}
-		this.setCenter(new TaalSchermController(dc, this));
+		this.update(new TaalSchermController(dc, this));
 	}
 	
 	public void update(Pane scherm)
