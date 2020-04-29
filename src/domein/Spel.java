@@ -33,7 +33,7 @@ public class Spel
 	}
 	
 	public void selecteerSpelbord(String spelnaam) {
-		for (int i = 0; i<spelbordenLijst.size(); i++) { 
+		for (int i = 0; i < spelbordenLijst.size(); i++) { 
 			if (!spelbordenLijst.get(i).isVoltooid()) {
 				huidigSpelbord = spelbordenLijst.get(i);
 				break;
