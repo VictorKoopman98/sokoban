@@ -250,13 +250,15 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.OK)
 				{
-					Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, volgnummer++, 1, 2), 1200, 700);
+					Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, ++volgnummer, 1, 2), 1200, 700);
 					Stage stage = (Stage) this.getScene().getWindow();
 					stage.setScene(scene);
 					stage.show();
 				}
 				if (result.get() == ButtonType.CANCEL) {
-					hs.update(new Hoofdpaneel1Controller(dc, hs));
+					Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+					Stage stage = (Stage) (getScene().getWindow());
+					stage.setScene(hs.getScene());
 				}
 			}
 			catch(IllegalArgumentException e) {
@@ -271,7 +273,7 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK)
 			{
-				Hoofdpaneel2Controller hp2 = new Hoofdpaneel2Controller(dc, hs);
+				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
 				Stage stage = (Stage) (getScene().getWindow());
 				stage.setScene(hs.getScene());
 			}
