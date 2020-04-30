@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -59,14 +61,21 @@ public class Hoofdpaneel2Controller extends GridPane
 	}
 	@FXML
 	public void btnSpeelSpelAfhandeling(ActionEvent event) {
-		String gekozenSpel = cmbSpelltjes.getSelectionModel().getSelectedItem();
-		dc.selecteerSpel(gekozenSpel);
-		dc.selecteerSpelbord(gekozenSpel);
-		VoltooiSpelbordSchermController vssc = new VoltooiSpelbordSchermController(dc, hs);
-		Scene scene = new Scene(vssc, 1000, 700);
-		Stage secondaryStage = (Stage) this.getScene().getWindow();
-		secondaryStage.setScene(scene);
-		secondaryStage.show();
+		try {
+			String gekozenSpel = cmbSpelltjes.getSelectionModel().getSelectedItem();
+			dc.selecteerSpel(gekozenSpel);
+			dc.selecteerSpelbord(gekozenSpel);
+			VoltooiSpelbordSchermController vssc = new VoltooiSpelbordSchermController(dc, hs);
+			Scene scene = new Scene(vssc, 1000, 700);
+			Stage secondaryStage = (Stage) this.getScene().getWindow();
+			secondaryStage.setScene(scene);
+			secondaryStage.show();
+		}
+		catch(NullPointerException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText(Taal.getText("spelSelecterenGui"));
+			alert.showAndWait();
+		}
 		
 	}
 }

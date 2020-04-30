@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -83,13 +85,22 @@ public class SpelwijzigenController extends GridPane
 	@FXML
 	public void btnWijzigAfhandeling(ActionEvent event) 
 	{
-		String gekozenSpel = cmbSpellen.getSelectionModel().getSelectedItem();
-		dc.selecteerSpel(gekozenSpel);
-		
-		Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs,1, 2, cmbSpelborden.getSelectionModel().getSelectedIndex() + 1), 1200, 700);
-		Stage stage = (Stage) this.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();	
+		try {
+			String gekozenSpel = cmbSpellen.getSelectionModel().getSelectedItem();
+			dc.selecteerSpel(gekozenSpel);
+			
+			Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs,1, 2, cmbSpelborden.getSelectionModel().getSelectedIndex() + 1), 1200, 700);
+			Stage stage = (Stage) this.getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();		
+		}
+		catch(NullPointerException e)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			System.out.println(e.getCause());
+			alert.setContentText(Taal.getText("spelSelecterenGui"));
+			alert.showAndWait();
+		}
 	}
 	@FXML
 	public void btnTerugAfhandeling(ActionEvent event) 

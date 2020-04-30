@@ -225,6 +225,12 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 			dc.wijzigSpelbord(Integer.parseInt(txfRij.getText()) - 1, Integer.parseInt(txfKolom.getText()) - 1, actie);
 			buildGUI();
 		}
+		catch(NumberFormatException e)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText(Taal.getText("getalIngeven"));
+			alert.showAndWait();
+		}
 		catch(IllegalArgumentException e)
 		{
 			Alert alert = new Alert(AlertType.ERROR);
@@ -237,6 +243,7 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 			alert.setContentText(Taal.getText("getalIngeven"));
 			alert.showAndWait();
 		}
+		
 	}
 	// Event Listener on Button[#btnOpslaan].onAction
 	@FXML
