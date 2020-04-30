@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import domein.DomeinController;
 import javafx.event.ActionEvent;
 
@@ -53,9 +55,8 @@ public class LoginRegistreerSchermController  extends GridPane
 			
 			if (i != 1)
 			{
-				
 				arrayTextField[i] = new TextField();
-				this.add(arrayTextField[i], 1, i);	
+				this.add(arrayTextField[i], 1, i);
 			}
 			else 
 			{
@@ -66,6 +67,7 @@ public class LoginRegistreerSchermController  extends GridPane
 		}
 		if(aantalRijen == 2)
 			btnLoginRegistreer.setText(Taal.getText("meldAanGui"));
+			
 		else
 			btnLoginRegistreer.setText(Taal.getText("registreerGui"));
 	}
