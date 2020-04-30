@@ -233,9 +233,10 @@ public class VoltooiSpelbordSchermController extends GridPane
 			}
 			if (result.get() == ButtonType.CANCEL)
 			{
-				Hoofdpaneel2Controller hp2 = new Hoofdpaneel2Controller(dc, hs);
+				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+				Scene scene = new Scene(hp1, 400, 300);
 				Stage stage = (Stage) (getScene().getWindow());
-				stage.setScene(hs.getScene());
+				stage.setScene(scene);
 			}
 		}
 		else {
@@ -245,9 +246,10 @@ public class VoltooiSpelbordSchermController extends GridPane
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK)
 			{
-				Hoofdpaneel2Controller hp2 = new Hoofdpaneel2Controller(dc, hs);
+				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+				Scene scene = new Scene(hp1, 400, 300);
 				Stage stage = (Stage) (getScene().getWindow());
-				stage.setScene(hs.getScene());
+				stage.setScene(scene);
 			}
 		}
 		
