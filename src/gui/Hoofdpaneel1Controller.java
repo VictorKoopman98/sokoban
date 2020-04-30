@@ -93,6 +93,7 @@ public class Hoofdpaneel1Controller  extends GridPane
 	@FXML
 	public void btnAfmeldenAfhandeling(ActionEvent event) 
 	{
+		
 		hs.update(new AanRegController(dc, hs));
 	}
 }

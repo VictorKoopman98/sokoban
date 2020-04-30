@@ -25,6 +25,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
    </rowConstraints>
    <columnConstraints>
       <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
@@ -79,7 +80,7 @@
          <font>
             <Font name="Times New Roman" size="13.0" />
          </font></Button>
-      <Button fx:id="btnAfsluiten" mnemonicParsing="false" onAction="#btnAfsluitenAfhandeling" prefHeight="26.0" prefWidth="278.0" text="Button" GridPane.columnSpan="3" GridPane.rowIndex="11">
+      <Button fx:id="btnAfsluiten" mnemonicParsing="false" onAction="#btnAfsluitenAfhandeling" prefHeight="26.0" prefWidth="278.0" text="Button" GridPane.columnSpan="3" GridPane.rowIndex="14">
          <font>
             <Font name="Times New Roman" size="13.0" />
          </font></Button>
@@ -91,6 +92,11 @@
          <font>
             <Font name="Times New Roman" size="13.0" />
          </font></Label>
+      <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetAfhandeling" prefHeight="26.0" prefWidth="278.0" text="Button" GridPane.columnSpan="3" GridPane.rowIndex="12">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font>
+      </Button>
    </children>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

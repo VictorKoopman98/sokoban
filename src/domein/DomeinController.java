@@ -172,6 +172,12 @@ public class DomeinController
     
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
+    	controleerSpelbord(velden, volgnummer, spelnaam);
+    	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
+    }
+    
+    private void controleerSpelbord(char[][] velden, int volgnummer, String spelnaam)
+    {
     	int aantalKisten = 0;
     	int aantalDoelen = 0;
     	for (int i = 0; i < 10; i++)
@@ -186,7 +192,9 @@ public class DomeinController
     	}
     	if (aantalKisten != aantalDoelen)
     		throw new IllegalArgumentException(Taal.getText("aantalKisten"));
-    	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
+    	else if (aantalKisten < 1 || aantalDoelen < 1)
+    		throw new IllegalArgumentException(Taal.getText("minstens1KistEnDoel"));
+    	
     }
     
     
@@ -225,6 +233,7 @@ public class DomeinController
     
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
+    	controleerSpelbord(velden, volgnummer, spelnaam);
     	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     

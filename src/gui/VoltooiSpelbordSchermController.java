@@ -38,6 +38,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 	private Label lblAantalVerplaatsingen;
 	private DomeinController dc;
 	private HoofdSchermController hs;
+	@FXML
+	private Button btnReset;
 	
 	public VoltooiSpelbordSchermController(DomeinController dc, HoofdSchermController hs)
 	{
@@ -59,6 +61,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 		btnRechts.setFocusTraversable(false);
 		btnLinks.setFocusTraversable(false);
 		btnAfsluiten.setFocusTraversable(false);
+		btnReset.setFocusTraversable(false);
 		
 		btnOmlaag.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -95,6 +98,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 		lblAantalVerplaatsingenBoodschap.setText(Taal.getText("verplaatsingen"));
 		lblAantalVerplaatsingen.setText("0");
 		btnAfsluiten.setText(Taal.getText("closeGui"));
+		btnReset.setText(Taal.getText("resetGUI"));
 		
 		buildGUI();
 	}
@@ -196,6 +200,12 @@ public class VoltooiSpelbordSchermController extends GridPane
 		if (dc.eindeSpelbordBereikt())
 			eindeSpelbordAfhandeling();
 	}
+	@FXML
+	public void btnResetAfhandeling(ActionEvent event) {
+		dc.selecteerSpelbord(dc.geefNaamSpel());
+		dc.resetSpelbord(dc.geefNaamSpel(), dc.geefVolgnummer());
+		buildGUI();
+	}
 	// Event Listener on Button[#btnAfsluiten].onAction
 	@FXML
 	public void btnAfsluitenAfhandeling(ActionEvent event) {
@@ -208,9 +218,9 @@ public class VoltooiSpelbordSchermController extends GridPane
 		if (result.get() == ButtonType.OK)
 		{
 			Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
-			Scene scene = new Scene(hp1, 400, 300);
 			Stage stage = (Stage) (getScene().getWindow());
-			stage.setScene(scene);
+			stage.setScene(hs.getScene());
+			hs.update(hp1);
 		}
 			
 		if (result.get() == ButtonType.CANCEL)
@@ -234,9 +244,9 @@ public class VoltooiSpelbordSchermController extends GridPane
 			if (result.get() == ButtonType.CANCEL)
 			{
 				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
-				Scene scene = new Scene(hp1, 400, 300);
 				Stage stage = (Stage) (getScene().getWindow());
-				stage.setScene(scene);
+				stage.setScene(hs.getScene());
+				hs.update(hp1);
 			}
 		}
 		else {
@@ -247,9 +257,9 @@ public class VoltooiSpelbordSchermController extends GridPane
 			if (result.get() == ButtonType.OK)
 			{
 				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
-				Scene scene = new Scene(hp1, 400, 300);
 				Stage stage = (Stage) (getScene().getWindow());
-				stage.setScene(scene);
+				stage.setScene(hs.getScene());
+				hs.update(hp1);
 			}
 		}
 		
