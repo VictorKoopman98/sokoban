@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <fx:root hgap="10.0" type="GridPane" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
@@ -71,13 +72,34 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="lblRij" text="Label" GridPane.rowIndex="6" />
-      <Label fx:id="lblKolom" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <TextField fx:id="txfRij" maxWidth="-Infinity" prefWidth="20.0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-      <TextField fx:id="txfKolom" maxWidth="-Infinity" prefWidth="20.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-      <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#btnToevoegenAfhandeling" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#btnOpslaanAfhandeling" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="12" />
-      <Button fx:id="btnAnnuleren" mnemonicParsing="false" onAction="#btnAnnulerenAfhandeling" text="Button" GridPane.rowIndex="12" />
+      <Label fx:id="lblRij" text="Label" GridPane.rowIndex="6">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Label>
+      <Label fx:id="lblKolom" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Label>
+      <TextField fx:id="txfRij" maxWidth="-Infinity" prefWidth="20.0" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txfKolom" maxWidth="-Infinity" prefWidth="20.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></TextField>
+      <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#btnToevoegenAfhandeling" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#btnOpslaanAfhandeling" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="12">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnAnnuleren" mnemonicParsing="false" onAction="#btnAnnulerenAfhandeling" text="Button" GridPane.rowIndex="12">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Button>
    </children>
    <padding>
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />

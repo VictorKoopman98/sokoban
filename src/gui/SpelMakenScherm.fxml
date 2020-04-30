@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <fx:root alignment="CENTER" hgap="20.0" type="GridPane" vgap="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <rowConstraints>
@@ -22,10 +23,25 @@
       <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
    </padding>
    <children>
-      <Button fx:id="btnMaakSpel" mnemonicParsing="false" onAction="#btnSpelMakenAfhandeling" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-      <Label prefHeight="17.0" prefWidth="0.0" />
-      <TextField fx:id="txfSpelMaken" GridPane.columnIndex="1" />
-      <Label fx:id="lblSpelMaken" prefHeight="17.0" prefWidth="125.0" />
-      <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#btnTerugAfhandeling" prefHeight="25.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button fx:id="btnMaakSpel" mnemonicParsing="false" onAction="#btnSpelMakenAfhandeling" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Button>
+      <Label prefHeight="17.0" prefWidth="0.0">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Label>
+      <TextField fx:id="txfSpelMaken" GridPane.columnIndex="1">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></TextField>
+      <Label fx:id="lblSpelMaken" prefHeight="17.0" prefWidth="125.0">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Label>
+      <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#btnTerugAfhandeling" prefHeight="25.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font name="Times New Roman" size="13.0" />
+         </font></Button>
    </children>
 </fx:root>
