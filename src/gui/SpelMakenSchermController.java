@@ -56,6 +56,10 @@ public class SpelMakenSchermController extends GridPane {
 		try {
 			dc.maakNieuwSpel(txfSpelMaken.getText());
 			dc.selecteerSpel(txfSpelMaken.getText());
+			Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, 1, 1, 2), 1200, 700);
+			Stage stage = (Stage) this.getScene().getWindow();
+			stage.setScene(scene);
+			stage.show();
 		}
 		catch(IllegalArgumentException e){
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -63,13 +67,10 @@ public class SpelMakenSchermController extends GridPane {
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
-		Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, 1, 1, 2), 1200, 700);
-		Stage stage = (Stage) this.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
 	}
 	@FXML
-	public void btnTerugAfhandeling(ActionEvent event) {
+	public void btnTerugAfhandeling(ActionEvent event) 
+	{
 		hs.update(new Hoofdpaneel1Controller(dc, hs));
 	}
 }
