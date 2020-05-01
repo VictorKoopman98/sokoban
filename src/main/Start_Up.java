@@ -27,6 +27,7 @@ public class Start_Up extends Application
 			primaryStage.getIcons().add(icon);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("SOKOBAN");
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			primaryStage.show();
 		} catch(Exception e) {
