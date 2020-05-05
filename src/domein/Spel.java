@@ -147,7 +147,9 @@ public class Spel
 
 	public void resetSpelbord(String spelnaam, int volgnummer) 
 	{
+		int index = spelbordenLijst.indexOf(huidigSpelbord);
 		huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
+		spelbordenLijst.set(index, huidigSpelbord);
 	}
 	
 	public void toonSpelbord()
