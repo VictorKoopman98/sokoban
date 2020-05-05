@@ -199,4 +199,9 @@ public class Spel
 	{
 		huidigSpelbord = spelbord;
 	}
+	
+	public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
+    {
+    	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
+    }
 }

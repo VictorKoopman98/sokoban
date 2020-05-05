@@ -12,7 +12,7 @@ public class DomeinController
 	private final SpelRepository spelRepository;
 	private Speler speler;
 	private Spel spel;
-	private final SpelbordRepository spelbordRepository; 	
+	private final SpelbordRepository spelbordRepository;
 	
 	public DomeinController()   //Constructor om een DomeinController aan te maken
 	{
@@ -194,7 +194,6 @@ public class DomeinController
     		throw new IllegalArgumentException(Taal.getText("aantalKisten"));
     	else if (aantalKisten < 1 || aantalDoelen < 1)
     		throw new IllegalArgumentException(Taal.getText("minstens1KistEnDoel"));
-    	
     }
     
     
@@ -234,7 +233,7 @@ public class DomeinController
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
-    	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
+    	spel.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
     public char[][] geefVelden()
