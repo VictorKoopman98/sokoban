@@ -233,7 +233,7 @@ public class DomeinController
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
-    	spel.updateSpelbord(volgnummer, velden, spelnaam);
+    	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
     public char[][] geefVelden()

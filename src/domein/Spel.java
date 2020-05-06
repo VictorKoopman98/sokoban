@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class Spel 
 {
 	private String naamSpel;
-	Spelbord huidigSpelbord;
-	SpelbordRepository spelbordRepository;
-	List<Spelbord> spelbordenLijst = new ArrayList<Spelbord>();
+	private Spelbord huidigSpelbord;
+	private SpelbordRepository spelbordRepository;
+	private List<Spelbord> spelbordenLijst = new ArrayList<Spelbord>();
 	
 
 	public Spel(String naamSpel) 
@@ -201,9 +201,4 @@ public class Spel
 	{
 		huidigSpelbord = spelbord;
 	}
-	
-	public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
-    {
-    	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
-    }
 }

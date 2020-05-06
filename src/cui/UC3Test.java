@@ -54,7 +54,7 @@ public class UC3Test
 			}
 			catch(IllegalArgumentException e)
 			{
-				System.out.println(e);
+				System.out.printf("%n%s%n", e.getMessage());
 			}	
 			catch(InputMismatchException e) {
 				System.out.printf("\n%s%n",getalIngeven);
