@@ -7,6 +7,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import domein.DomeinController;
 import javafx.event.ActionEvent;
@@ -22,6 +23,15 @@ public class Hoofdpaneel1Controller  extends GridPane
 	private HoofdSchermController hs;
 	private Button btnWijzigSpel;
 	private Button btnMaakNieuwSpel;
+	@FXML
+	private Label lblAangemeld;
+	private Boolean isAangemeld = null;
+
+	public Hoofdpaneel1Controller(DomeinController dc, HoofdSchermController hs, Boolean aangemeld) {
+		this(dc, hs);
+		this.isAangemeld = aangemeld;
+		buildGui();
+	}
 	
 
 	public Hoofdpaneel1Controller(DomeinController dc, HoofdSchermController hs)
@@ -81,6 +91,18 @@ public class Hoofdpaneel1Controller  extends GridPane
 		
 		btnSpeelSpel.setText(Taal.getText("speelSpelGui"));
 		btnAfmelden.setText(Taal.getText("afmeldenGui"));
+		if (this.isAangemeld == null)
+			lblAangemeld.setVisible(false);
+		else if(this.isAangemeld == true)
+		{
+			lblAangemeld.setVisible(true);
+			lblAangemeld.setText(String.format("%s %s", dc.geefGebruikersnaam(), Taal.getText("aangemeld")));
+		}
+		else if(this.isAangemeld == false)
+		{
+			lblAangemeld.setVisible(true);
+			lblAangemeld.setText(String.format("%s %s", dc.geefGebruikersnaam(), Taal.getText("geregistreerdEnAangemeld")));
+		}
 	}
 	
 	// Event Listener on Button[#btnSpeelSpel].onAction

@@ -78,10 +78,16 @@ public class LoginRegistreerSchermController  extends GridPane
 	{
 		try {
 			if (aantalRijen == 2)
+			{
 				dc.meldAan(arrayTextField[0].getText(), arrayTextField[1].getText());
+				hs.update(new Hoofdpaneel1Controller(dc, hs, true));
+			}
+
 			else if (aantalRijen == 4)
+			{
 				dc.registreer(arrayTextField[0].getText(), arrayTextField[1].getText(), false, arrayTextField[2].getText(), arrayTextField[3].getText());
-			hs.update(new Hoofdpaneel1Controller(dc, hs));
+				hs.update(new Hoofdpaneel1Controller(dc, hs, false));
+			}
 		}
 		catch(IllegalArgumentException e)
 		{

@@ -37,13 +37,43 @@ public class Start_Up extends Application
 	
 	public static void main(String[] args) 
 	{
-//		Taal taal = new Taal();
-//		DomeinController dc = new DomeinController();
-//		SokobanApplicatie sa = new SokobanApplicatie(dc);
-//		
-//		sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
 		
-		launch(args);
+		int keuze = maakKeuze();
+		if (keuze == 1) {
+			Taal taal = new Taal();
+			DomeinController dc = new DomeinController();
+			SokobanApplicatie sa = new SokobanApplicatie(dc);
+			
+			sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
+		}
+		
+		else
+			launch(args);
+	}
+	
+	private static int maakKeuze() {
+		int keuze = 0;
+		boolean blijvenHerhalenFlag = true;
+		Scanner sc = new Scanner(System.in);
+		do {
+			try {
+				System.out.printf("1. CUI%n"
+						+ "2. GUI%n"
+						+ "Keuze/Choix/Choice: ");
+				keuze = sc.nextInt();
+				if (keuze < 1 || keuze > 2)
+					throw new IllegalArgumentException("Geen geldige keuze/No valid choice/Choix incorrecte");
+				blijvenHerhalenFlag = false;
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Geef een getal in/Give a number/Donnez un chiffre!");
+				sc.next();
+			}
+			catch(IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+		}while(blijvenHerhalenFlag);
+		return keuze;
 	}
 	
 
