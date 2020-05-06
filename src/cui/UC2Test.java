@@ -41,20 +41,20 @@ public class UC2Test
                     System.out.printf("\n%s",geefWw);
                     wachtwoord = input.next();
                     
-                    System.out.printf("\n%s",geefNaam);
+                    System.out.printf("\n%s: ",geefNaam);
                     naam = input.next();
                     
-                    System.out.printf("\n%s",geefVoornaam);
+                    System.out.printf("\n%s: ",geefVoornaam);
                     voornaam = input.next();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);
                     blijvenHerhalenFlag = false;
                     
-                    System.out.printf("%n%s %s", dc.geefGebruikersnaam(),inDatabank);
+                    System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),inDatabank);
                 } 
                 catch (IllegalArgumentException e)
                 {
-                    System.out.println(e.getMessage());
+                    System.out.printf("%n%s%n", e.getMessage());
                 } 
                 
             } while (blijvenHerhalenFlag);

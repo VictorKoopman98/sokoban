@@ -37,11 +37,11 @@ public class Start_Up extends Application
 	
 	public static void main(String[] args) 
 	{
-		
+
 		int keuze = maakKeuze();
 		if (keuze == 1) {
 			Taal taal = new Taal();
-			DomeinController dc = new DomeinController();
+			DomeinController dc = new DomeinController(); 
 			SokobanApplicatie sa = new SokobanApplicatie(dc);
 			
 			sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
