@@ -32,7 +32,8 @@ public class UC4Test
 		dc.selecteerSpelbord(spelnaam);
 		
 //		dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
-		dc.toonSpelbord();  //spelbord tonen
+		toonSpelbord(dc.geefVelden());  //spelbord tonen
+		
 		
 		int actie = toonActiesSpelbord();
 			
@@ -40,7 +41,7 @@ public class UC4Test
 			if(actie == 2)   //indien spelbord willen resetten
 			{
 				dc.resetSpelbord(spelnaam, dc.geefVolgnummer());
-				dc.toonSpelbord();
+				toonSpelbord(dc.geefVelden());
 				actie = toonActiesSpelbord();
 			}
 			else if(actie == 1)  //indien verplaatsing willen uitvoeren
@@ -65,7 +66,7 @@ public class UC4Test
 						}
 						dc.verplaatsMan(richtingMan);
 										
-						dc.toonSpelbord();
+						toonSpelbord(dc.geefVelden());
 						
 						System.out.printf("%n%s %s %d %s.%n",momenteel,dc.geefAantalVerplaatsingen() == 1? isEr : zijnEr, 
 								dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? verplaatsing : verplaatsingen);
@@ -179,5 +180,15 @@ public class UC4Test
 			}
 		} while (blijvenHerhalenFlag);
 		return keuze;
+	}
+	
+	private void toonSpelbord(char[][] spelbord)
+	{
+		for(int i = 0; i < spelbord.length; i++) {
+			for(int j = 0; j < spelbord[i].length; j++) {
+				System.out.printf(" %s ",spelbord[i][j]);
+			}
+			System.out.printf("%n");
+		}
 	}
 }

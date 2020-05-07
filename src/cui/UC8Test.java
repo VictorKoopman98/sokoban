@@ -31,7 +31,7 @@ public class UC8Test
 		
 		dc.selecteerSpelbordMetVolgnummer(volgnummer, spelnaam);
 		
-		dc.toonSpelbord();
+		toonSpelbord(dc.geefVelden());
 		
 		do {
 			try {
@@ -52,7 +52,7 @@ public class UC8Test
 				if (keuze == 6) {
 					blijvenHerhalenFlag = false;
 				}else {
-					dc.toonSpelbord();
+					toonSpelbord(dc.geefVelden());
 				}	
 			}
 			catch(IllegalArgumentException e){
@@ -109,5 +109,15 @@ public class UC8Test
 			}
 		}while(true);
 		
+	}
+	
+	private void toonSpelbord(char[][] spelbord)
+	{
+		for(int i = 0; i < spelbord.length; i++) {
+			for(int j = 0; j < spelbord[i].length; j++) {
+				System.out.printf(" %s ",spelbord[i][j]);
+			}
+			System.out.printf("%n");
+		}
 	}
 }

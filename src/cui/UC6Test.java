@@ -25,7 +25,7 @@ public class UC6Test
 		
 		dc.maakNieuwSpelbord(volgnummer); 
 		
-		dc.toonSpelbord();
+		toonSpelbord(dc.geefVelden());
 		
 		int keuze = 0;
 
@@ -42,7 +42,7 @@ public class UC6Test
 					
 					dc.wijzigSpelbord(x-1, y-1, keuze);	
 					
-					dc.toonSpelbord();
+					toonSpelbord(dc.geefVelden());
 				}else{
 					try {
 						dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());
@@ -110,6 +110,16 @@ public class UC6Test
 			}
 		}while(true);
 		
+	}
+	
+	private void toonSpelbord(char[][] spelbord)
+	{
+		for(int i = 0; i < spelbord.length; i++) {
+			for(int j = 0; j < spelbord[i].length; j++) {
+				System.out.printf(" %s ",spelbord[i][j]);
+			}
+			System.out.printf("%n");
+		}
 	}
 
 }

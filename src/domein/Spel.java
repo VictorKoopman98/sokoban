@@ -22,7 +22,10 @@ public class Spel
 		
 	}	
 	
-	
+	public void setSpelbord(Spelbord spelbord)
+	{
+		this.huidigSpelbord = spelbord;
+	}
 	public Spelbord getSpelbord() 
 	{
 		return this.huidigSpelbord;
@@ -145,16 +148,16 @@ public class Spel
 	}
 	
 
-	public void resetSpelbord(String spelnaam, int volgnummer) 
-	{
-		int index = spelbordenLijst.indexOf(huidigSpelbord);
-		huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
-		spelbordenLijst.set(index, huidigSpelbord);
-	}
+//	public void resetSpelbord(String spelnaam, int volgnummer) 
+//	{
+//		int index = spelbordenLijst.indexOf(huidigSpelbord);
+//		huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
+//		spelbordenLijst.set(index, huidigSpelbord);
+//	}
 	
-	public void toonSpelbord()
+	public char[][] geefVelden()
 	{
-		huidigSpelbord.toonSpelbord();
+		return huidigSpelbord.geefVelden();
 	}
 	
 	

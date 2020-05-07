@@ -96,9 +96,9 @@ public class DomeinController
     	return this.spel.geefAantalSpelbordenVoltooid();       //geeft terug hoeveel voltooide spelborden het spel heeft
     }      
     
-    public void toonSpelbord() 
+    public char[][] geefVelden() 
     {
-    	this.spel.toonSpelbord();
+    	return this.spel.geefVelden();
     }
     
     public void selecteerSpelbord(String spelnaam) {
@@ -114,7 +114,10 @@ public class DomeinController
 
     public void resetSpelbord(String spelnaam, int volgnummer) 
     {
-    	this.spel.resetSpelbord(spelnaam, volgnummer);
+    	int index = spel.geefSpelbordenLijst().indexOf(spel.getSpelbord());
+		Spelbord huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
+		spel.geefSpelbordenLijst().set(index, huidigSpelbord);
+		spel.setHuidigSpelbord(huidigSpelbord);
     }
     
 
@@ -256,42 +259,42 @@ public class DomeinController
     	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
-    public char[][] geefVelden()
-    {
-    	char[][] velden = new char[10][10];
-    	
-    	Spelbord spelbord = geefSpelbord();
-    	
-    	for(int i = 0; i < 10; i++)
-    	{
-    		for(int j = 0; j < 10; j++)
-    		{
-    			char karakter = 'O';
-    			if (spelbord.getSpelbord()[i][j].isMuur()) 
-    			{
-                    karakter = 'M';
-                }
-    			else if (spelbord.getSpelbord()[i][j].isDoel() && spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j]))
-    			{
-    				karakter = 'F';
-    			}
-    			else if (spelbord.getMan() != null && spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
-    			{
-                    karakter = 'X';
-                }
-    			else if (spelbord.getSpelbord()[i][j].isDoel()) 
-    			{
-                    karakter = 'D';
-                } 
-    			
-                else if (spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j])) 
-                {
-                    karakter = 'K';
-                }  
-    			velden[i][j] = karakter;
-    		}
-    	}
-    	return velden;
-    }
+//    public char[][] geefVelden()
+//    {
+//    	char[][] velden = new char[10][10];
+//    	
+//    	Spelbord spelbord = geefSpelbord();
+//    	
+//    	for(int i = 0; i < 10; i++)
+//    	{
+//    		for(int j = 0; j < 10; j++)
+//    		{
+//    			char karakter = 'O';
+//    			if (spelbord.getSpelbord()[i][j].isMuur()) 
+//    			{
+//                    karakter = 'M';
+//                }
+//    			else if (spelbord.getSpelbord()[i][j].isDoel() && spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j]))
+//    			{
+//    				karakter = 'F';
+//    			}
+//    			else if (spelbord.getMan() != null && spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
+//    			{
+//                    karakter = 'X';
+//                }
+//    			else if (spelbord.getSpelbord()[i][j].isDoel()) 
+//    			{
+//                    karakter = 'D';
+//                } 
+//    			
+//                else if (spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j])) 
+//                {
+//                    karakter = 'K';
+//                }  
+//    			velden[i][j] = karakter;
+//    		}
+//    	}
+//    	return velden;
+//    }
 
 }

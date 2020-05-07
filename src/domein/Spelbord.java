@@ -123,7 +123,7 @@ public class Spelbord
 	} 
 
 	
-	public void toonSpelbord() 
+	public char[][] geefVelden() 
     {
         char[][] output = new char[10][10];
         
@@ -155,14 +155,9 @@ public class Spelbord
                 {
                     output[i][j] = 'K';//veld met een kist (Kist)
                 }    
-                System.out.printf(" %s ",output[i][j]);
-            }
-            
-            System.out.printf("%n");
-            
+            }            
         }
-        
-        
+        return output;
     }
 	
 	
