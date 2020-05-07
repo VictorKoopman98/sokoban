@@ -28,7 +28,7 @@ public class Hoofdpaneel2Controller extends GridPane
 	private Button btnSpeelSpel;
 	private DomeinController dc;
 	private HoofdSchermController hs;
-	
+	//fazkhvfa"
 	public Hoofdpaneel2Controller(DomeinController dc, HoofdSchermController hs)
 	{
 		super();
