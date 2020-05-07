@@ -304,7 +304,7 @@ public class DomeinController
     	String[] namen = new String[spelRepository.geefLijstSpellenSpeler(gebruikersnaam).size()];
     	for (int i = 0; i < namen.length; i++)
     	{
-    		namen[i] = spelRepository.geefSpellenList().get(i);
+    		namen[i] = spelRepository.geefLijstSpellenSpeler(gebruikersnaam).get(i);
     	}
     	return namen;
     }
