@@ -55,7 +55,11 @@ public class UC5Test
 						actie = toonActies();
 					}
 					else if (actie == 2) {
-						System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
+						if(dc.geefAantalSpelborden() > 0)
+							System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
+						else {
+							dc.verwijderSpel(spelnaam);
+						}
 					}
 				}while ( actie != 2);
 			}

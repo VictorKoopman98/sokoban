@@ -44,14 +44,27 @@ public class UC6Test
 					
 					dc.toonSpelbord();
 				}else{
-					dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());
-					blijvenHerhalenFlag = false;
+					try {
+						dc.voegSpelbordToe(dc.geefVelden(),dc.geefVolgnummer(),  dc.geefNaamSpel());
+						blijvenHerhalenFlag = false;
+					}
+					catch(IllegalArgumentException e){
+						System.out.printf("%n%s%n", e.getMessage());
+						System.out.printf("%nWilt U het spelbord blijven wijzigen of verwijderen?%n"
+								+ "1. Blijven wijzigen%n"
+								+ "2. Verwijderen%n"
+								+ "Uw keuze: ");
+						int keuze2 = input.nextInt();
+						if (keuze2 == 2)
+							blijvenHerhalenFlag = false;
+					}
 				}
 			}
 			catch(IllegalArgumentException e){
 				System.out.printf("%n%s%n", e.getMessage());
 			}catch(InputMismatchException e) {
 				System.out.printf("%n%s%n", e.getMessage());
+				input.next();
 			}catch(NullPointerException e){
 				System.out.printf("%n%s%n", Taal.getText("manVerplicht"));	
 			}
