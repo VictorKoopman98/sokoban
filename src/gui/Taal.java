@@ -69,7 +69,7 @@ public class Taal
 		
 		do
 		{
-		    System.out.printf("1.Kies een taal (NL)%n2.Choose a language (EN)%n3.Choisissez une langue (FR): ");
+		    System.out.printf("%n1.Kies een taal (NL)%n2.Choose a language (EN)%n3.Choisissez une langue (FR): ");
 		    try
 		    {
 		    	taal = input.nextInt();

@@ -87,6 +87,7 @@ public class UC4Test
 			}
 			
 		}while(!dc.eindeSpelbordBereikt() && actie != 3);
+		System.out.printf("%n%s %s %d %s",dc.geefGebruikersnaam(), Taal.getText("spelbordVoltooid2"), dc.geefAantalVerplaatsingen(), Taal.getText("verplaatsingen"));
 	}
 	
 	private int toonActiesSpelbord()  //methode voor de acties van het spelbord weer te geven
