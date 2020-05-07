@@ -54,7 +54,6 @@ public class UC6Test
 						int keuze2 = input.nextInt();
 						if (keuze2 == 2)
 						{
-							dc.verwijderSpelbord(dc.geefVolgnummer(), dc.geefNaamSpel());
 							blijvenHerhalenFlag = false;
 						}
 					}

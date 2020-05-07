@@ -9,8 +9,7 @@ import persistentie.SpelMapper;
 
 public class SpelRepository
 {
-	private SpelMapper spelMapper;
-	private List<String> spellen = new ArrayList<>();    
+	private SpelMapper spelMapper;	
     
     public SpelRepository()
     {
@@ -47,9 +46,12 @@ public class SpelRepository
     
     public List<String> geefSpellenList()      //lijst van spellen uit databank halen
     {
-    	spellen = SpelMapper.geefSpellen();
-    	
-        return spellen;
+    	return spelMapper.geefSpellen();
+    }
+    
+    public List<String> geefLijstSpellenSpeler(String gebruikersnaam)
+    {
+    	return spelMapper.geefSpellenSpeler(gebruikersnaam);
     }
     
     public void verwijderSpel(String naamSpel)

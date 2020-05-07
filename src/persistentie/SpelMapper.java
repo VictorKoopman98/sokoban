@@ -46,7 +46,7 @@ public class SpelMapper
     }
 
    
-    public static List<String> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
+    public List<String> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
     {
 		List<String> spelnamen = new ArrayList<>();
 	
@@ -92,7 +92,7 @@ public class SpelMapper
     public void verwijderSpel(String naamSpel)
     {
     	try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("DELETE * FROM ID222177_g39.Spel WHERE naamSpel = ?"))
+        		PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spel WHERE naamSpel = ?"))
         {      
     		query.setString(1, naamSpel);
     		query.executeUpdate();
@@ -100,6 +100,31 @@ public class SpelMapper
         {
             throw new RuntimeException(ex);
         }
+    }
+    
+    public List<String> geefSpellenSpeler(String gebruikersnaam)
+    {
+		List<String> spelnamen = new ArrayList<>();
+		try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+				PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spel WHERE naamMaker = ?"))
+		{
+			query.setString(1, gebruikersnaam);
+		    try (ResultSet rs = query.executeQuery())
+		    {
+				while (rs.next())
+				{
+		                    
+				    String naam = rs.getString("naamSpel");
+		            //List<Spelbord> spelborden = sbm.geefSpelborden(spelId);
+				    spelnamen.add(naam);
+				}
+		    }
+		} 
+		catch (SQLException ex)
+		{
+		    throw new RuntimeException(ex);
+		}
+		return spelnamen;
     }
 
 }

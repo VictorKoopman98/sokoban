@@ -299,6 +299,11 @@ public class DomeinController
     	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
+    public String[] geefLijstSpellenSpeler(String gebruikersnaam)
+    {
+    	this.spelRepository.geefLijstSpellenSpeler(gebruikersnaam);
+    }
+    
 //    public char[][] geefVelden()
 //    {
 //    	char[][] velden = new char[10][10];

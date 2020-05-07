@@ -35,7 +35,7 @@ public class UC7Test
 		int volgnummer = 0;
 		int gekozenVolgnummerSpelbord;
 		
-		String [] spelletjes = dc.geefLijstSpellen();
+		String [] spelletjes = dc.geefLijstSpellenSpeler(dc.geefGebruikersnaam());
 		
 		boolean flag = true;
 		do {
