@@ -137,11 +137,20 @@ public class DomeinController
     public void maakNieuwSpel(String naamSpel) 
     {
     	Spel nieuwSpel = new Spel(naamSpel);
-    	
-    	spelRepository.voegSpelToe(nieuwSpel);
+    	this.spel = nieuwSpel;
     } 
     
-   
+    public Spel geefHuidigSpel()
+    {
+    	return this.spel;
+    }
+    
+   public void voegSpelToe(String spelnaam)
+   {
+	   if (this.geefAantalSpelborden() == 0)
+		   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
+	   spelRepository.voegSpelToe(this.spel);
+   }
     
     
     public String geefNaamSpel() 
@@ -176,6 +185,7 @@ public class DomeinController
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
+    	this.spel.geefSpelbordenLijst().add(this.geefSpelbord());
     	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
     }
     
@@ -183,6 +193,7 @@ public class DomeinController
     {
     	int aantalKisten = 0;
     	int aantalDoelen = 0;
+    	int aantalMannen = 0;
     	for (int i = 0; i < 10; i++)
     	{
     		for (int j = 0; j < 10; j++)
@@ -191,8 +202,14 @@ public class DomeinController
     				aantalKisten++;
     			if (velden[i][j] == 'D')
     				aantalDoelen++;
+    			if (velden[i][j] == 'X')
+    				aantalMannen++;
     		}
     	}
+    	if (aantalMannen == 0)
+    		throw new IllegalArgumentException(Taal.getText("manVerplicht"));
+    	else if (aantalMannen > 1)
+    		throw new IllegalArgumentException(Taal.getText("max1Man"));
     	if (aantalKisten != aantalDoelen)
     		throw new IllegalArgumentException(Taal.getText("aantalKisten"));
     	else if (aantalKisten < 1 || aantalDoelen < 1)
@@ -258,7 +275,7 @@ public class DomeinController
     			{
     				karakter = 'F';
     			}
-    			else if (spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
+    			else if (spelbord.getMan() != null && spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
     			{
                     karakter = 'X';
                 }

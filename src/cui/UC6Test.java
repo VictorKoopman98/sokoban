@@ -50,10 +50,7 @@ public class UC6Test
 					}
 					catch(IllegalArgumentException e){
 						System.out.printf("%n%s%n", e.getMessage());
-						System.out.printf("%nWilt U het spelbord blijven wijzigen of verwijderen?%n"
-								+ "1. Blijven wijzigen%n"
-								+ "2. Verwijderen%n"
-								+ "Uw keuze: ");
+						System.out.printf("%n%s", Taal.getText("wijzigenOfVerwijderen"));
 						int keuze2 = input.nextInt();
 						if (keuze2 == 2)
 							blijvenHerhalenFlag = false;

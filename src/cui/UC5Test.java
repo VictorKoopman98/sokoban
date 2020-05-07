@@ -37,49 +37,54 @@ public class UC5Test
 				spelnaam = input.nextLine();
 				
 				dc.maakNieuwSpel(spelnaam);
-				blijvenHerhalenFlag = false;
+								
+				uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);				
 				
-				dc.selecteerSpel(spelnaam);
-				
-				uc6test.maakNieuwSpelbord(aantalSpelborden+1);
-				aantalSpelborden++;
-				
-				
-				int actie = toonActies();
+				int actie = toonActies(true);
+				boolean blijvenHerhalenFlag2 = true;
 				
 				do {
 					if (actie == 1) {
-						uc6test.maakNieuwSpelbord(aantalSpelborden+1);
-						aantalSpelborden++;
+						uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);
 						
-						actie = toonActies();
+						actie = toonActies(true);
 					}
 					else if (actie == 2) {
-						if(dc.geefAantalSpelborden() > 0)
+						try {
+							dc.voegSpelToe(dc.geefNaamSpel());
 							System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
-						else {
-							dc.verwijderSpel(spelnaam);
+							System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,aantalSpelborden, aantalSpelborden <= 1 ? spelbord: spelborden);
+							blijvenHerhalenFlag = false;
+							blijvenHerhalenFlag2 = false;
+						}
+						catch(IllegalArgumentException e)
+						{
+							System.out.printf("%n%s%n", e.getMessage());
+							actie = toonActies(false);
+							if (actie == 2)
+							{
+								blijvenHerhalenFlag = false;
+								blijvenHerhalenFlag2 = false;
+							}
 						}
 					}
-				}while ( actie != 2);
+				}while (blijvenHerhalenFlag2);
 			}
 			catch (IllegalArgumentException e) {
 				System.out.printf("%n%s%n", e.getMessage());
 			}
 		} while(blijvenHerhalenFlag);
-		
-		dc.selecteerSpel(spelnaam);
-		
-		System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,aantalSpelborden, aantalSpelborden <= 1 ? spelbord: spelborden);
+				
 	}
 	
 	
-	private int toonActies() 
+	private int toonActies(boolean stoppenBool) 
 	{	
 		Scanner input = new Scanner(System.in);
 		
 		String nieuwSpelbord = Taal.getText("nieuwSpelbord"),
 			   stoppen = Taal.getText("stoppen"),
+			   stoppen2 = Taal.getText("stoppenEnVerwijderen"),
 			   keuze = Taal.getText("keuze"),
 			   keuzeOutOfBounds = Taal.getText("keuzeNietBeschikbaar"),
 			   getalIngeven = Taal.getText("getalIngeven");
@@ -87,7 +92,7 @@ public class UC5Test
 		{
 			try {
 				System.out.printf("%n-----------------------------%n %s%n %s%n-----------------------------%n%s ",
-						nieuwSpelbord,stoppen,keuze);
+						nieuwSpelbord, stoppenBool ? stoppen : stoppen2 ,keuze);
 				int actie = input.nextInt();
 				
 				if(actie < 1 || actie > 2){
