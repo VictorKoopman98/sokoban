@@ -19,8 +19,7 @@ public class UC4Test
 	
 	public void voltooiSpelbord(String spelnaam)  //methode om het spelbord te voltooien
 	{
-		String 
-			   momenteel = Taal.getText("momenteel"),
+		String momenteel = Taal.getText("momenteel"),
 			   isEr = Taal.getText("isEr"),
 			   zijnEr = Taal.getText("zijnEr"),
 			   verplaatsing = Taal.getText("verplaatsing"),

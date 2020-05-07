@@ -54,4 +54,9 @@ public class SpelbordRepository
 	{
 		spelbordMapper.updateSpelbord(volgnummer, velden, spelnaam);
 	}
+	
+	public void verwijderSpelbord(int volgnummer, String spelNaam)
+	{
+		spelbordMapper.verwijderSpelbord(volgnummer, spelNaam);
+	}
 }

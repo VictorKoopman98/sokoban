@@ -124,5 +124,18 @@ public class SpelbordMapper
     	vm.updateVelden(velden, volgnummer, spelnaam);
     }
     
+    public void verwijderSpelbord(int volgnummer, String naamSpel)
+    {
+    	try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE (volgnummer, naamSpel) VALUES(?,?)"))
+        {      
+    		query.setInt(1, volgnummer);
+    		query.setString(2, naamSpel);
+    		query.executeUpdate();
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+    }
     
 }

@@ -53,7 +53,10 @@ public class UC6Test
 						System.out.printf("%n%s", Taal.getText("wijzigenOfVerwijderen"));
 						int keuze2 = input.nextInt();
 						if (keuze2 == 2)
+						{
+							dc.verwijderSpelbord(dc.geefVolgnummer(), dc.geefNaamSpel());
 							blijvenHerhalenFlag = false;
+						}
 					}
 				}
 			}

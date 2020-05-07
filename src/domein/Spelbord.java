@@ -125,7 +125,7 @@ public class Spelbord
 	
 	public char[][] geefVelden() 
     {
-        char[][] output = new char[10][10];
+        char[][] velden = new char[10][10];
         
         for (int i = 0; i < 10; i++) 
         {
@@ -133,31 +133,31 @@ public class Spelbord
             {
                 if (spelbord[i][j].isMuur()) 
                 {
-                    output[i][j] = 'X'; //veld met een muur op is W (wall)
+                	velden[i][j] = 'X'; //veld met een muur op is W (wall)
                 } 
                 else if (man != null && spelbord[i][j] == man.getVeld()) 
                 {
-                    output[i][j] = 'M';//veld dat een man bevat (Man)
+                	velden[i][j] = 'M';//veld dat een man bevat (Man)
                 } 
                 else if (spelbord[i][j].isDoel() && maakVeldenVanKistenLijst().contains(spelbord[i][j])) 
                 {
-                    output[i][j] = 'O'; //veld met een doel en een kist op is F (Finished)
+                	velden[i][j] = 'O'; //veld met een doel en een kist op is F (Finished)
                 } 
                 else if (spelbord[i][j].isDoel()) 
                 {
-                    output[i][j] = '?';//veld met doel(Goal)
+                	velden[i][j] = '?';//veld met doel(Goal)
                 }
                 else if (!spelbord[i][j].isDoel() && !maakVeldenVanKistenLijst().contains(spelbord[i][j])) 
                 {
-                    output[i][j] = '.';//Leeg veld(Nothing)
+                	velden[i][j] = '.';//Leeg veld(Nothing)
                 } 
                 else if (maakVeldenVanKistenLijst().contains(spelbord[i][j])) 
                 {
-                    output[i][j] = 'K';//veld met een kist (Kist)
+                	velden[i][j] = 'K';//veld met een kist (Kist)
                 }    
             }            
         }
-        return output;
+        return velden;
     }
 	
 	

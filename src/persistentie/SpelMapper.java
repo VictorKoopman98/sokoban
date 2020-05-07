@@ -13,9 +13,8 @@ import gui.Taal;
 
 public class SpelMapper
 {
-	private static Taal taalObj;
-	private static final String INSERT_SPEL = "INSERT INTO ID222177_g39.Spel (naamSpel)"
-            + "VALUES (?)";
+	private static final String INSERT_SPEL = "INSERT INTO ID222177_g39.Spel (naamSpel, naamMaker)"
+            + "VALUES (?,?)";
 	SpelbordMapper sbm = new SpelbordMapper();
 
     //Methode om een spel met een bepaald spelnaam uit de databank te halen
@@ -76,13 +75,27 @@ public class SpelMapper
     }
 
 
-    public void voegSpelToe(Spel spel)   //Methode om het spel op te slaan in de databank
+    public void voegSpelToe(String naamSpel, String gebruikersnaam)   //Methode om het spel op te slaan in de databank
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
         		PreparedStatement query = conn.prepareStatement(INSERT_SPEL))
         {            
-            query.setString(1, spel.getNaamSpel());
+            query.setString(1, naamSpel);
+            query.setString(2, gebruikersnaam);
             query.executeUpdate();
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    public void verwijderSpel(String naamSpel)
+    {
+    	try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
+        		PreparedStatement query = conn.prepareStatement("DELETE * FROM ID222177_g39.Spel WHERE naamSpel = ?"))
+        {      
+    		query.setString(1, naamSpel);
+    		query.executeUpdate();
         } catch (SQLException ex)
         {
             throw new RuntimeException(ex);

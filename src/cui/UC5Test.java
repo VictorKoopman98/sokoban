@@ -36,7 +36,7 @@ public class UC5Test
 				System.out.printf("%n%s",geefSpelnaam);
 				spelnaam = input.nextLine();
 				
-				dc.maakNieuwSpel(spelnaam);
+				dc.maakNieuwSpel(spelnaam, dc.geefGebruikersnaam());
 								
 				uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);				
 				

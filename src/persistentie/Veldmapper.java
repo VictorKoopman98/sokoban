@@ -58,11 +58,11 @@ public class Veldmapper
 	                	boolean isMuur = false;
 	                	boolean isMan = false;
 	                	boolean isKist = false;
-	                    if (velden[i][j] == 'M') {
+	                    if (velden[i][j] == 'X') {
 	                        isMuur = true;
-	                    } else if (velden[i][j] == 'D') {
+	                    } else if (velden[i][j] == '?') {
 	                        isDoel = true;
-	                    } else if (velden[i][j] == 'X') {
+	                    } else if (velden[i][j] == 'M') {
 	                        isMan = true;
 	                    } else if (velden[i][j] == 'K') {
 	                        isKist = true;
@@ -102,11 +102,11 @@ public class Veldmapper
                 	boolean isMuur = false;
                 	boolean isMan = false;
                 	boolean isKist = false;
-                    if (velden[i][j] == 'M') {
+                    if (velden[i][j] == 'X') {
                         isMuur = true;
-                    } else if (velden[i][j] == 'D') {
+                    } else if (velden[i][j] == '?') {
                         isDoel = true;
-                    } else if (velden[i][j] == 'X') {
+                    } else if (velden[i][j] == 'M') {
                         isMan = true;
                     } else if (velden[i][j] == 'K') {
                         isKist = true;

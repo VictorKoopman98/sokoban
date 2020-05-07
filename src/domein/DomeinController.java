@@ -165,9 +165,10 @@ public class DomeinController
     }
     
     
-    public void maakNieuwSpel(String naamSpel) 
+    public void maakNieuwSpel(String naamSpel, String gebruikersnaam) 
     {
     	Spel nieuwSpel = new Spel(naamSpel);
+    	spelRepository.voegSpelToe(naamSpel, gebruikersnaam);
     	this.spel = nieuwSpel;
     } 
     
@@ -176,13 +177,24 @@ public class DomeinController
     	return this.spel;
     }
     
-   public void voegSpelToe(String spelnaam)
-   {
+    public void voegSpelToe(String naamSpel)
+    {
 	   if (this.geefAantalSpelborden() == 0)
+	   {
+		   this.verwijderSpel(naamSpel);
 		   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
-	   spelRepository.voegSpelToe(this.spel);
-   }
+	   }
+    }
     
+    public void verwijderSpel(String naamSpel)
+    {
+    	this.spelRepository.verwijderSpel(naamSpel);
+    }
+    
+    public void verwijderSpelbord(int volgnummer, String naamSpel)
+    {
+    	this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
+    }
     
     public String geefNaamSpel() 
     {
@@ -231,9 +243,9 @@ public class DomeinController
     		{
     			if (velden[i][j] == 'K')
     				aantalKisten++;
-    			if (velden[i][j] == 'D')
+    			if (velden[i][j] == '?')
     				aantalDoelen++;
-    			if (velden[i][j] == 'X')
+    			if (velden[i][j] == 'M')
     				aantalMannen++;
     		}
     	}

@@ -9,8 +9,8 @@ import persistentie.SpelMapper;
 
 public class SpelRepository
 {
-	private static SpelMapper spelMapper;
-	private static List<String> spellen = new ArrayList<>();    
+	private SpelMapper spelMapper;
+	private List<String> spellen = new ArrayList<>();    
     
     public SpelRepository()
     {
@@ -35,13 +35,13 @@ public class SpelRepository
     }
     
     
-    public void voegSpelToe(Spel spel)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
+    public void voegSpelToe(String naamSpel, String gebruikersnaam)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
     {
-		if (bestaatSpel(spel.getNaamSpel()))
+		if (bestaatSpel(naamSpel))
 		{
 		    throw new IllegalArgumentException(Taal.getText("spelBestaat"));
 		}
-		spelMapper.voegSpelToe(spel);
+		spelMapper.voegSpelToe(naamSpel, gebruikersnaam);
     }
 
     
@@ -50,6 +50,11 @@ public class SpelRepository
     	spellen = SpelMapper.geefSpellen();
     	
         return spellen;
+    }
+    
+    public void verwijderSpel(String naamSpel)
+    {
+    	spelMapper.verwijderSpel(naamSpel);
     }
     	
 }

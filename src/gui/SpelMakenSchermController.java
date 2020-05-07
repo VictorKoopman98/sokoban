@@ -54,7 +54,7 @@ public class SpelMakenSchermController extends GridPane {
 	public void btnSpelMakenAfhandeling(ActionEvent event) 
 	{
 		try {
-			dc.maakNieuwSpel(txfSpelMaken.getText());
+			dc.maakNieuwSpel(txfSpelMaken.getText(), dc.geefGebruikersnaam());
 			dc.selecteerSpel(txfSpelMaken.getText());
 			Scene scene = new Scene(new maakNieuwSpelbordSchermController(dc, hs, 1, 1, 2), 1200, 700);
 			Stage stage = (Stage) this.getScene().getWindow();
