@@ -86,22 +86,56 @@ public class UC7Test
 					
 					volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
 					
+					int keuzeVerwijderen = verwijderenOfWijzigen();
+					if (keuzeVerwijderen == 2)
+						uc8test.wijzigSpelbord(spelnaam, volgnummer);
+					else {
+						if (dc.geefAantalSpelborden() == 1)
+						{
+							System.out.printf(Taal.getText("verwijderenOngeldig"));	
+						}
+						else
+						{
+							dc.verwijderSpelbord(volgnummer, spelnaam);
+						}
+					}
+					
 					blijvenHerhalenFlag = false;
 				}catch(IllegalArgumentException e) {
 					System.out.printf("%n%s%n", e.getMessage());
-				}catch(InputMismatchException e) {
+				}catch(InputMismatchException e) { 
 					System.out.printf("%n%s%n", getalIngeven);
 					input.next();
 				}
 			}while(blijvenHerhalenFlag);
-			
-			uc8test.wijzigSpelbord(spelnaam, volgnummer);
 			
 			keuze = toonActies();
 		}while(keuze != 2);
 		
 		System.out.printf("%n%s '%s' %s %d %s%n",hetSpel,spelnaam, spelGewijzigdEnBevat,
 				dc.geefAantalSpelborden(), dc.geefAantalSpelborden() ==1 ? spelbord : spelborden);
+	}
+	
+	private int verwijderenOfWijzigen()
+	{
+		Scanner sc = new Scanner(System.in);
+		int keuze = 0;
+		boolean blijvenHerhalenFlag = true;
+		do {
+			try {
+				System.out.printf("%n%s",Taal.getText("verwijderenOfWijzigenSpelbord"));
+				keuze = sc.nextInt();
+				if (keuze < 1 || keuze > 2)
+					throw new IllegalArgumentException(Taal.getText("keuzeNietBeschikbaar"));
+				blijvenHerhalenFlag = false;
+			}catch(IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+			catch(InputMismatchException e) {
+				System.out.println(Taal.getText("getalIngeven"));
+			}
+		}while(blijvenHerhalenFlag);
+		return keuze;
 	}
 	
 	private int toonActies() 
