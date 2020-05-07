@@ -14,6 +14,11 @@ public class DomeinController
 	private Spel spel;
 	private final SpelbordRepository spelbordRepository;
 	
+	
+	/**
+	 * 
+	 *  Constructor om een DomeinController aan te maken
+	 */
 	public DomeinController()   //Constructor om een DomeinController aan te maken
 	{
 		this.spelRepository = new SpelRepository();
@@ -21,24 +26,43 @@ public class DomeinController
 		spelbordRepository = new SpelbordRepository();		
 	}
 	
-	
+	/**
+	 * Methode om de gebruikersnaam van een speler terug te gegven
+	 * 
+	 * @return geeft de gebruikersnaam van een speler terug
+	 */
 	public String geefGebruikersnaam()    //Methode om de gebruikersnaam van een speler terug te gegven
 	{
 		return this.speler.getGebruikersnaam();
 	}
 	
-	
+	/**
+	 * Methode om de speler in stellen die het spel zal spelen
+	 * 
+	 * @param speler object van de klasse Speler die het spel zal spelen
+	 */
 	public void setSpeler(Speler speler)   //Methode om de speler in te stellen die het spel zal spelen
 	{
 		this.speler = speler;
 	}
 	
+	/**
+	 * Methode om de speler teerug te geven
+	 * 
+	 * @return geef speler terug
+	 */
 	public Speler getSpeler()
 	{
 		return speler;
 	}
 	
-	
+	/**
+     * Methode om te kunnen aanmelden
+     *
+     * @param gebruikersnaam gebruikersnaam van de persson die zich wil
+     * aanmelden
+     * @param wachtwoord wachtwoord van de persoon die zich wil aanmelden
+     */
 	public void meldAan(String gebruikersnaam, String wachtwoord)     //methode om een speler aan te melden
 	{
         Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
@@ -52,7 +76,11 @@ public class DomeinController
         }
 	}
 	
-	
+	/**
+     * Methode om te kijken of de speler een admin is
+     *
+     * @return geeft terug of de speler wel/geen admin is
+     */
     public boolean isAdmin()     //Methode om te kijken of de speler een admin is
     {
         return this.speler.isAdminrechten();
