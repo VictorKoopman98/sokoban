@@ -41,10 +41,8 @@ public class SpelMapper
 		{
 		    throw new RuntimeException(ex);
 		}
-	
 		return spel;
     }
-
    
     public List<String> geefSpellen() // Methode om een lijst van spellen uit de databank te halen
     {
@@ -53,7 +51,6 @@ public class SpelMapper
 		try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
 				PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spel"))
 		{
-		    
 		    try (ResultSet rs = query.executeQuery())
 		    {
 				while (rs.next())
@@ -69,9 +66,7 @@ public class SpelMapper
 		{
 		    throw new RuntimeException(ex);
 		}
-	
 		return spelnamen;
-
     }
 
 

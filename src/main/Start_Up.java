@@ -62,11 +62,11 @@ public class Start_Up extends Application
 						+ "Keuze/Choix/Choice: ");
 				keuze = sc.nextInt();
 				if (keuze < 1 || keuze > 2)
-					throw new IllegalArgumentException("Geen geldige keuze/No valid choice/Choix incorrecte");
+					throw new IllegalArgumentException("\nGeen geldige keuze/No valid choice/Choix incorrecte\n");
 				blijvenHerhalenFlag = false;
 			}
 			catch(InputMismatchException e) {
-				System.out.println("Geef een getal in/Give a number/Donnez un chiffre!");
+				System.out.println("\nGeef een getal in/Give a number/Donnez un chiffre!\n");
 				sc.next();
 			}
 			catch(IllegalArgumentException e) {
@@ -75,6 +75,4 @@ public class Start_Up extends Application
 		}while(blijvenHerhalenFlag);
 		return keuze;
 	}
-	
-
 }

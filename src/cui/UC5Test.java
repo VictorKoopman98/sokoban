@@ -30,7 +30,6 @@ public class UC5Test
         	   spelborden = Taal.getText("spelborden");
         
 		boolean blijvenHerhalenFlag = true;
-		int aantalSpelborden = 0;
 		do {
 			try {
 				System.out.printf("%n%s",geefSpelnaam);
@@ -53,7 +52,7 @@ public class UC5Test
 						try {
 							dc.voegSpelToe(dc.geefNaamSpel());
 							System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
-							System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,aantalSpelborden, aantalSpelborden <= 1 ? spelbord: spelborden);
+							System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
 							blijvenHerhalenFlag = false;
 							blijvenHerhalenFlag2 = false;
 						}
