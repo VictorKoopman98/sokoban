@@ -180,6 +180,7 @@ public class DomeinController
     {
     	int aantalKisten = 0;
     	int aantalDoelen = 0;
+    	int aantalMannen = 0;
     	for (int i = 0; i < 10; i++)
     	{
     		for (int j = 0; j < 10; j++)
@@ -188,9 +189,15 @@ public class DomeinController
     				aantalKisten++;
     			if (velden[i][j] == 'D')
     				aantalDoelen++;
+    			if (velden[i][j] == 'X')
+    				aantalMannen++;
     		}
     	}
-    	if (aantalKisten != aantalDoelen)
+    	if(aantalMannen > 1)
+    		throw new IllegalArgumentException(Taal.getText("max1Man"));
+    	else if(aantalMannen < 1)
+    		throw new IllegalArgumentException(Taal.getText("manVerplicht"));
+    	else if (aantalKisten != aantalDoelen)
     		throw new IllegalArgumentException(Taal.getText("aantalKisten"));
     	else if (aantalKisten < 1 || aantalDoelen < 1)
     		throw new IllegalArgumentException(Taal.getText("minstens1KistEnDoel"));
@@ -255,7 +262,7 @@ public class DomeinController
     			{
     				karakter = 'F';
     			}
-    			else if (spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
+    			else if (spelbord.getMan() != null && spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
     			{
                     karakter = 'X';
                 }

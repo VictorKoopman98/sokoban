@@ -44,10 +44,7 @@ public class Spelbord
 				}
 			}
 		}
-		if (man == null) {
-			man = new Man(spelbord[5][5]);
-			spelbord[5][5].setIsMan(true);
-		}
+		
 	}
 	
 	
@@ -146,7 +143,7 @@ public class Spelbord
                 {
                     output[i][j] = 'O'; //veld met een doel en een kist op is F (Finished)
                 } 
-                else if (spelbord[i][j].isDoel() && spelbord[i][j] != man.getVeld()) 
+                else if (spelbord[i][j].isDoel()) 
                 {
                     output[i][j] = '?';//veld met doel(Goal)
                 }

@@ -66,7 +66,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 		btnOmlaag.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
-				// TODO Auto-generated method stub
 				try {
 					switch(event.getCode())
 					{
