@@ -301,7 +301,12 @@ public class DomeinController
     
     public String[] geefLijstSpellenSpeler(String gebruikersnaam)
     {
-    	this.spelRepository.geefLijstSpellenSpeler(gebruikersnaam);
+    	String[] namen = new String[spelRepository.geefLijstSpellenSpeler(gebruikersnaam).size()];
+    	for (int i = 0; i < namen.length; i++)
+    	{
+    		namen[i] = spelRepository.geefSpellenList().get(i);
+    	}
+    	return namen;
     }
     
 //    public char[][] geefVelden()
@@ -331,7 +336,7 @@ public class DomeinController
 //    			{
 //                    karakter = 'D';
 //                } 
-//    			
+//    			s
 //                else if (spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j])) 
 //                {
 //                    karakter = 'K';
