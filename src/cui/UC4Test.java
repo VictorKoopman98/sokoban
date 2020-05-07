@@ -47,31 +47,35 @@ public class UC4Test
 			{
 				do
 				{
-					int richting = kiesRichting();
-					
-					if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
-					{
-						 richtingMan = "links";
-					}else if(richting == 6)
-					{
-						 richtingMan = "rechts";
-					}else if(richting == 8)
-					{
-						 richtingMan = "omhoog";
-					}else if(richting == 2)
-					{
-						 richtingMan = "omlaag";
-					}
-					dc.verplaatsMan(richtingMan);
-									
-					dc.toonSpelbord();
-					
-					System.out.printf("%n%s %s %d %s.%n",momenteel,dc.geefAantalVerplaatsingen() == 1? isEr : zijnEr, 
-							dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? verplaatsing : verplaatsingen);
+					try {
+						int richting = kiesRichting();
+						
+						if(richting == 4)   //de opties voor de verplaatsing van de man worden terug omgezet naar strings ipv getallen
+						{
+							 richtingMan = "links";
+						}else if(richting == 6)
+						{
+							 richtingMan = "rechts";
+						}else if(richting == 8)
+						{
+							 richtingMan = "omhoog";
+						}else if(richting == 2)
+						{
+							 richtingMan = "omlaag";
+						}
+						dc.verplaatsMan(richtingMan);
 										
-					if(!dc.eindeSpelbordBereikt())
-					{
-						actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
+						dc.toonSpelbord();
+						
+						System.out.printf("%n%s %s %d %s.%n",momenteel,dc.geefAantalVerplaatsingen() == 1? isEr : zijnEr, 
+								dc.geefAantalVerplaatsingen(), dc.geefAantalVerplaatsingen() == 1 ? verplaatsing : verplaatsingen);
+											
+						if(!dc.eindeSpelbordBereikt())
+						{
+							actie = toonActiesSpelbord();  //verichte keuze in toonActiesSpelbord omztten naar "actie"
+						}
+					}catch(IllegalArgumentException e) {
+						System.out.printf("%n%s%n", e.getMessage());
 					}
 				}
 				while(!dc.eindeSpelbordBereikt() && actie != 3 && actie != 2);   //blijf verplaatsen tot dat einde spelbord bereikt is

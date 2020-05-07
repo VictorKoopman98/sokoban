@@ -284,6 +284,8 @@ public class Spelbord
 				verplaatsingOk = true;
 			}
     	}
+    	if (!verplaatsingOk)
+    		throw new IllegalArgumentException(Taal.getText("ongeldigeRichting"));
     	return verplaatsingOk;
     }
 	
