@@ -50,7 +50,11 @@ public class UC5Test
 					}
 					else if (actie == 2) {
 						try {
-							dc.voegSpelToe(dc.geefNaamSpel());
+							if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
+							   {
+								   dc.verwijderSpel(spelnaam);
+								   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
+							   }
 							System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
 							System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
 							blijvenHerhalenFlag = false;

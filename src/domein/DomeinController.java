@@ -177,14 +177,14 @@ public class DomeinController
     	return this.spel;
     }
     
-    public void voegSpelToe(String naamSpel)
-    {
-	   if (this.geefAantalSpelborden() == 0)
-	   {
-		   this.verwijderSpel(naamSpel);
-		   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
-	   }
-    }
+//    public void voegSpelToe(String naamSpel)
+//    {
+//	   if (this.geefAantalSpelborden() == 0)
+//	   {
+//		   this.verwijderSpel(naamSpel);
+//		   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
+//	   }
+//    }
     
     public void verwijderSpel(String naamSpel)
     {
@@ -287,10 +287,8 @@ public class DomeinController
     
     public void selecteerSpelbordMetVolgnummer(int volgnummer, String spelnaam)
     {
-    	
     	Spelbord spelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
     	spel.setHuidigSpelbord(spelbord);
-    	
     }
     
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)

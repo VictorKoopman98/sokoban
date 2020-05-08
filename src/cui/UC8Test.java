@@ -50,7 +50,15 @@ public class UC8Test
 				dc.wijzigSpelbord(x-1, y-1, keuze);
 				
 				if (keuze == 6) {
-					blijvenHerhalenFlag = false;
+					try {
+						dc.updateSpelbord(dc.geefVolgnummer(),dc.geefVelden(), dc.geefNaamSpel());
+						blijvenHerhalenFlag = false;
+					}catch(IllegalArgumentException e) {
+						System.out.printf("%n%s%n", e.getMessage());
+						int keuze2 = keuzeWijzigenOfVerwijderen();
+						if(keuze2 == 1)
+							blijvenHerhalenFlag = false;
+					}
 				}else {
 					toonSpelbord(dc.geefVelden());
 				}	
@@ -64,7 +72,7 @@ public class UC8Test
 			}
 		}while (blijvenHerhalenFlag);
 		
-		dc.updateSpelbord(dc.geefVolgnummer(),dc.geefVelden(), dc.geefNaamSpel());
+		
 		System.out.printf("%n%s%n",spelbordBijgewerkt);
 	}
 	
@@ -119,5 +127,27 @@ public class UC8Test
 			}
 			System.out.printf("%n");
 		}
+	}
+	
+	private int keuzeWijzigenOfVerwijderen()
+	{
+		Scanner input = new Scanner(System.in);
+		boolean flag = true;
+		int keuze = 0;
+		do {
+			try {
+				System.out.printf("%n%s", Taal.getText("wijzigenOfOngedaanMaken"));
+				keuze = input.nextInt();
+				if(keuze > 2 || keuze < 0) {
+					throw new IllegalArgumentException(Taal.getText("keuzeNietBeschikbaar"));
+				}
+			}catch(InputMismatchException e){
+				System.out.printf("%n%s%n",Taal.getText("getalIngeven"));
+				input.next();
+			}catch(IllegalArgumentException e) {
+				System.out.printf("%n%s%n", e.getMessage());
+			}
+		}while(flag);
+		return keuze;
 	}
 }

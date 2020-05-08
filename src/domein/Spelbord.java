@@ -19,35 +19,6 @@ public class Spelbord
 	private ArrayList<Kist> kisten = new ArrayList<Kist>();
 	private Man man;
 	
-	
-	public static void main(String[] args) 
-	{
-		Veld[][] spelbord = new Veld[10][10];
-		for (int i = 0; i<10; i++) {
-			for (int j = 0; j<10; j++) 
-			{
-				spelbord[i][j] = new Veld(i,j,false,false,false,false);
-			}
-		}
-		Man man = new Man(spelbord[5][5]);
-	
-		for (int i = 0; i<10; i++) {
-			for (int j = 0; j<10; j++) 
-			{
-				if (spelbord[i][j].isMan()) 
-				{
-					man = new Man(spelbord[i][j]);
-				}
-				else if (spelbord[i][j].isKist()) 
-				{
-					Kist kist = new Kist(spelbord[i][j]);
-//					kisten.add(kist);
-				}
-			}
-		}
-	}
-	
-	
 	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
 		this.volgnummer = volgnummer;
