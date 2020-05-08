@@ -173,7 +173,7 @@ public class Spel
 	}
 	
 	
-	public Man geefMan() 
+	public Man geefMan()  
 	{
 		return huidigSpelbord.getMan();
 	}
