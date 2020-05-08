@@ -30,7 +30,7 @@ public class UC6Test
 		int keuze = 0;
 
 		do {
-			try{
+			try{ 
 				keuze = toonMogelijkeActies();
 				if(keuze != 6) {
 					System.out.printf("%n%s ",geefRij);
