@@ -15,27 +15,52 @@ public class Spelbord
 	private int locatieManY=-1; //locatie van de kolom
 	private int volgnummer;
 	
-	Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
-	ArrayList<Kist> kisten = new ArrayList<Kist>();
-	Man man;
+	private Veld[][] spelbord; //[[Veld(x, y)][Veld(x, y][Veld(x, y)]]
+	private ArrayList<Kist> kisten = new ArrayList<Kist>();
+	private Man man;
 	
-
+	
+	public static void main(String[] args) 
+	{
+		Veld[][] spelbord = new Veld[10][10];
+		for (int i = 0; i<10; i++) {
+			for (int j = 0; j<10; j++) 
+			{
+				spelbord[i][j] = new Veld(i,j,false,false,false,false);
+			}
+		}
+		Man man = new Man(spelbord[5][5]);
+	
+		for (int i = 0; i<10; i++) {
+			for (int j = 0; j<10; j++) 
+			{
+				if (spelbord[i][j].isMan()) 
+				{
+					man = new Man(spelbord[i][j]);
+				}
+				else if (spelbord[i][j].isKist()) 
+				{
+					Kist kist = new Kist(spelbord[i][j]);
+//					kisten.add(kist);
+				}
+			}
+		}
+	}
+	
+	
 	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
 		this.volgnummer = volgnummer;
 		this.isVoltooid = false;
 		this.aantalVerplaatsingen = 0;
-
 		this.spelbord = velden;
 
 		for (int i = 0; i<10; i++) {
-			for (int j = 0; j<10; j++) {
-				
-				
+			for (int j = 0; j<10; j++) 
+			{
 				if (spelbord[i][j].isMan()) 
 				{
-					man = new Man(velden[i][j]);
-					velden[i][j].setIsMan(true);
+					man = new Man(spelbord[i][j]);
 				}
 				else if (spelbord[i][j].isKist()) 
 				{
@@ -44,7 +69,6 @@ public class Spelbord
 				}
 			}
 		}
-		
 	}
 	
 	
@@ -53,13 +77,11 @@ public class Spelbord
 		return this.volgnummer;
 	}
 	
-	
 	public void setVolgnummer(int nummer) 
 	{
 		this.volgnummer = nummer;
 	}
 	
-
 	public List<Veld> maakVeldenVanKistenLijst() 
 	{
 		List<Veld> veldenVanKistenLijst = new ArrayList<Veld>();
@@ -72,57 +94,47 @@ public class Spelbord
 	    return veldenVanKistenLijst;
 	}
 	
-	
 	private void bepaalLocatieMan() 
 	{
 		locatieManX = getMan().getVeld().getX();
 		locatieManY = getMan().getVeld().getY();
 	}
 	
-	
 	public List<Kist> getKisten() 
 	{
 		return kisten;
 	}
 
-	
-	
 	public Man getMan() 
 	{
 		return man;	
 	}
 	
-
 	public Veld[][] getSpelbord() 
 	{
 		return spelbord;
 	} 
-	
 	
 	public int getAantalVerplaatsingen() 
 	{
 		return this.aantalVerplaatsingen;
 	}
 	
-
 	public void setAantalVerplaatsingen(int aantalVerplaatsingen) 
 	{
 		this.aantalVerplaatsingen = aantalVerplaatsingen;
 	}
 
-	
 	public boolean isVoltooid()
 	{
 		return this.isVoltooid;
 	}
 	
-
 	public void setIsVoltooid(boolean isVoltooid) 
 	{
 		this.isVoltooid = isVoltooid;
 	} 
 
-	
 	public char[][] geefVelden() 
     {
         char[][] velden = new char[10][10];
@@ -159,7 +171,6 @@ public class Spelbord
         }
         return velden;
     }
-	
 	
 	public void verplaatsMan(String richting) 
 	{
@@ -229,7 +240,6 @@ public class Spelbord
 	
 	public boolean isVerplaatsingOK(String richting) 
 	{
-		
 		bepaalLocatieMan();
 		boolean verplaatsingOk = false;
 		int verplaatsingX = 0;
@@ -257,7 +267,6 @@ public class Spelbord
     		verplaatsingX = 1;
     		grens = 9;
     	}
-    	
     	if (richting.equals("omhoog") || richting.equals("omlaag")) {
 	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManX == grens 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
@@ -280,7 +289,6 @@ public class Spelbord
     		throw new IllegalArgumentException(Taal.getText("ongeldigeRichting"));
     	return verplaatsingOk;
     }
-	
 	
 	public void wijzigSpelbord(int x, int y, int actie) 
 	{
