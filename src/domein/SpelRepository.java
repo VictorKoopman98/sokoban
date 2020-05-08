@@ -11,12 +11,22 @@ public class SpelRepository
 {
 	private SpelMapper spelMapper;	
     
+	
+	/**
+	 * Conctructor om SpelRepository aan te maken
+	 * 
+	 */
     public SpelRepository()
     {
         spelMapper = new SpelMapper();
     }
     
-    
+    /**
+     * Methode om een spel met bepaalde naam terug te geven
+     *
+     * @param naam  van het spel
+     * @return geeft het spel met bepaalde naam terug
+     */
     public Spel geefSpel(String naam)
     { 
         Spel spel = spelMapper.geefSpel(naam);
@@ -27,14 +37,22 @@ public class SpelRepository
         return null;
     }
     
- 
+    /**
+     * Methode om na te gaan of het spel bestaat of niet
+     * 
+     * @param spelnaam naam van het spel
+     * @return geeft het spel terug
+     */
     private boolean bestaatSpel(String spelnaam) 
     {
     	return spelMapper.geefSpel(spelnaam) != null;
     }
     
-    
-    public void voegSpelToe(String naamSpel, String gebruikersnaam)     //Methode om een speler toe te voegen in de databank, @param speler spelerobject dat aangemaakt moet worden in de databank
+    /**
+     * Methode om een spel toe te voegen aan het attribuut spellen
+     * @param spel is een spel dat aangemaakt wordt in de domeincontroller
+     */
+    public void voegSpelToe(String naamSpel, String gebruikersnaam)    
     {
 		if (bestaatSpel(naamSpel))
 		{
@@ -43,17 +61,34 @@ public class SpelRepository
 		spelMapper.voegSpelToe(naamSpel, gebruikersnaam);
     }
 
-    
-    public List<String> geefSpellenList()      //lijst van spellen uit databank halen
+    /**
+     * Methode om een lijst met spellen terug te geven
+     *
+     * @return geeft een lijst met alle spellen terug
+     */
+    public List<String> geefSpellenList()      
     {
     	return spelMapper.geefSpellen();
     }
     
+    
+    /**
+     * Methode om lijst van spellen van de speler van bepaalde gebruikersnaam terug te geven
+     * 
+     * @param gebruikersnaam naam van de gebuiker die ingelogd is
+     * @return geeft de lijst van namen van spellen terug
+     */
     public List<String> geefLijstSpellenSpeler(String gebruikersnaam)
     {
     	return spelMapper.geefSpellenSpeler(gebruikersnaam);
     }
     
+    
+    /**
+     * Methode om het spel te verwijderen met bepaalde naam
+     * 
+     * @param naamSpel gekozen naam voor het verwijderen van het spel
+     */
     public void verwijderSpel(String naamSpel)
     {
     	spelMapper.verwijderSpel(naamSpel);

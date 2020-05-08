@@ -31,7 +31,7 @@ public class DomeinController
 	 * 
 	 * @return geeft de gebruikersnaam van een speler terug
 	 */
-	public String geefGebruikersnaam()    //Methode om de gebruikersnaam van een speler terug te gegven
+	public String geefGebruikersnaam()    
 	{
 		return this.speler.getGebruikersnaam();
 	}
@@ -41,7 +41,7 @@ public class DomeinController
 	 * 
 	 * @param speler object van de klasse Speler die het spel zal spelen
 	 */
-	public void setSpeler(Speler speler)   //Methode om de speler in te stellen die het spel zal spelen
+	public void setSpeler(Speler speler)   
 	{
 		this.speler = speler;
 	}
@@ -63,7 +63,7 @@ public class DomeinController
      * aanmelden
      * @param wachtwoord wachtwoord van de persoon die zich wil aanmelden
      */
-	public void meldAan(String gebruikersnaam, String wachtwoord)     //methode om een speler aan te melden
+	public void meldAan(String gebruikersnaam, String wachtwoord)    
 	{
         Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
 
@@ -81,21 +81,34 @@ public class DomeinController
      *
      * @return geeft terug of de speler wel/geen admin is
      */
-    public boolean isAdmin()     //Methode om te kijken of de speler een admin is
+    public boolean isAdmin()    
     {
         return this.speler.isAdminrechten();
     }
 
-    
-    public void registreer(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)   //registreren van speler + aanmelden
+    /**
+     * Methode om te kunnen registreren
+     *
+     * @param gebruikersnaam gekozen gebruikersnaam door de gebruiker
+     * @param wachtwoord gekozen wachtwoord door de gebruiker
+     * @param adminrechten boolean om aan te duiden of de gebruiker adminrechten
+     * heeft. Standaard op false
+     * @param naam achternaam van de gebruiker
+     * @param voornaam voornaam van de gebruiker
+     */
+    public void registreer(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)
     {
         Speler nieuweSpeler = new Speler(gebruikersnaam, wachtwoord, adminrechten, naam, voornaam);
         setSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);
     }
     
-    
-    public String[] geefLijstSpellen()    //array maken van namen van spellen
+    /**
+     * Methode om de namen van de spellen terug te geven
+     * 
+     * @return geeft de namen van de spellen terug
+     */
+    public String[] geefLijstSpellen()    
     {
     	String[] namen = new String[spelRepository.geefSpellenList().size()];
     	for (int i = 0; i < namen.length; i++)
@@ -105,41 +118,67 @@ public class DomeinController
     	return namen;
     }
     
-    
+    /**
+     * Methode om een spel te selecteren met een bepaald naam
+     * 
+     * @param naam naam van het spel dat gekozen wordt.
+     */
     public void selecteerSpel(String naam)
     {
-        this.spel = spelRepository.geefSpel(naam);      // naam van het spel wordt geselecteerd
+        this.spel = spelRepository.geefSpel(naam);      
         spel.selecteerSpel();
     }
      
-    
+    /**
+     * 
+     * Methode om  aantal spelborden terug te geven
+     * 
+     * @return geeft het aantal spelborden terug
+     */
     public int geefAantalSpelborden()
     {
-    	return this.spel.geefAantalSpelborden();      //geeft terug hoeveel spelborden het spel heeft
+    	return this.spel.geefAantalSpelborden();      
     }
     
-    
+    /**
+     * Methode om het aantal voltooide spelborden weer te geven
+     *
+     * @return geeft het aantal voltooide spelborden terug
+     */
     public int geefAantalSpelbordenVoltooid()
     {
-    	return this.spel.geefAantalSpelbordenVoltooid();       //geeft terug hoeveel voltooide spelborden het spel heeft
+    	return this.spel.geefAantalSpelbordenVoltooid();       
     }      
-    
+    /**
+     * Methode om de velden te tonen
+     * 
+     */
     public char[][] geefVelden() 
     {
     	return this.spel.geefVelden();
     }
-    
+    /**
+     * Methode om een spelbord te selecteren met een bepaalde naam
+     * 
+     * @param spelnaam naam van het spelbord dat gekozen wordt
+     */
     public void selecteerSpelbord(String spelnaam) {
     	this.spel.selecteerSpelbord(spelnaam);
     }
     
-   
+    /**
+     * Methode om de man te verplaatsen in een bepaalde richting
+     * 
+     * @param richting geeft de richting waarnaar de man zicht moet verplaatsen
+     */
     public void verplaatsMan(String richting) 
     {
     	this.spel.verplaatsMan(richting);
     }
     
-
+    /**
+     * Methode om het spelbord te resetten
+     */
     public void resetSpelbord(String spelnaam, int volgnummer) 
     {
     	int index = spel.geefSpelbordenLijst().indexOf(spel.getSpelbord());
@@ -148,13 +187,21 @@ public class DomeinController
 		spel.setHuidigSpelbord(huidigSpelbord);
     }
     
-
+    /**
+     * Methode om het aantal verplaatsingen terug te geven
+     * 
+     * @return geeft het aantal verplaatsingen van het mannetje terug
+     */
     public int geefAantalVerplaatsingen()   //methode om het aantal verplaatsingen terug te geven
     {
     	return this.spel.geefAantalVerplaatsingen();
     }
     
-    
+    /**
+     * Methode om na te gaan of het spelbord bereikt is
+     * 
+     * @return geeft aan of het spelbord wel/niet bereikt is
+     */
     public boolean eindeSpelbordBereikt()  //methode om te kijken of het einde van het spelbord bereikt is
     {
     	if(spel.isSpelbordVoltooid() == true)
@@ -164,14 +211,22 @@ public class DomeinController
     	return false;
     }
     
-    
+    /**
+     * Methode om een nieuw spel aan te maken met een bepaalde naam
+     * 
+     * @param naamSpel naam dat het spel zal krijgen
+     */
     public void maakNieuwSpel(String naamSpel, String gebruikersnaam) 
     {
     	Spel nieuwSpel = new Spel(naamSpel);
     	spelRepository.voegSpelToe(naamSpel, gebruikersnaam);
     	this.spel = nieuwSpel;
     } 
-    
+    /**
+     * Methode die het huidig spel terug geeft
+     * 
+     * @return geeft het huidig spel terug
+     */
     public Spel geefHuidigSpel()
     {
     	return this.spel;
@@ -186,45 +241,82 @@ public class DomeinController
 //	   }
 //    }
     
+    /**
+     * Methode om het spel te verwijderen met bepaalde naam
+     * 
+     * @param naamSpel gekozen naam voor het verwijderen van het spel
+     */
     public void verwijderSpel(String naamSpel)
     {
     	this.spelRepository.verwijderSpel(naamSpel);
     }
     
+    /**
+     * Methode om het spelbord te verwijderen met bepaalde naam en volgnummer
+     * 
+     * @param volgnummer volgnummer van het spel dat verwijdert moet worden
+     * @param naamSpel gekozen naam van het spel dat verwijdert moet worden
+     */
     public void verwijderSpelbord(int volgnummer, String naamSpel)
     {
     	this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
     }
-    
+    /**
+     * Methode om naam van het spel terug te geven
+     * 
+     * @return geeft naam van spel terug
+     */
     public String geefNaamSpel() 
     {
     	return this.spel.getNaamSpel();
     }
     
-    
+    /**
+     * Methode om het spel in te stellen die gespeeld zal worden
+     *  
+     * @param spel spel dat gekozen wordt
+     */
     public void setSpel(Spel spel) 
     { 
     	this.spel = spel;
     }
     
-    
+    /**
+     * Methode om na te gaan of het spel voltooid is
+     *  
+     * @return geeft aan of het spel wel/niet voltooid is
+     */
     public boolean isSpelVoltooid() 
     {
     	return this.spel.isSpelVoltooid();
     }
     
-    
+    /**
+     * Methode om een nieuw spelbord aan te maken met een bepaald volgnummer
+     * 
+     * @param volgnummer volgnummer dat het spelbord zal toegewezen krijgen
+     */
     public void maakNieuwSpelbord(int volgnummer) 
     {
     	this.spel.maakNieuwSpelbord(volgnummer);	
     }
     
+    /**
+     * Methode om het spelbord te wijzigen met het aantal rijen en kolommen 
+     * 
+     * @param x x-coordinaat(rij) dat zal wijzigen
+     * @param y y-coordinaat(kolom) dat zal wijzigen
+     * @param actie beschikbare keuze om het spelbord te wijzigen(doel,man,muur,kist,veld)
+     */
     public void wijzigSpelbord(int x, int y, int actie) 
     {
     	this.spel.wijzigSpelbord(x, y, actie);
     }
     
-    
+    /**
+     * Methode om een spelbord toe te voegen aan een spel.
+     *
+     */
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
@@ -232,6 +324,12 @@ public class DomeinController
     	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
     }
     
+    
+    /**
+     * 
+     * Methode om het spelbord te controleren
+     *
+     */
     private void controleerSpelbord(char[][] velden, int volgnummer, String spelnaam)
     {
     	int aantalKisten = 0;
@@ -259,44 +357,71 @@ public class DomeinController
     		throw new IllegalArgumentException(Taal.getText("minstens1KistEnDoel"));
     }
     
-    
+    /**
+     * Methode om het volgnummer van het spelbord terug te geven
+     * 
+     * @return geeft volgnummer terug
+     */
     public int geefVolgnummer() 
     {
     	return this.spel.geefVolgnummer();
     }
     
-    
+    /**
+     * Methode om spelbord van een bepaalde spel terug te geven
+     * 
+     * @return geeft spelbord terug van een spel
+     */
     public Spelbord geefSpelbord() 
     {
     	return this.spel.getSpelbord();
     }
     
+    /**
+     * Methode om volgnummer van een spelbord met een bepaalde spelnaam terug te geven
+     * 
+     * @param spelnaam naam dat gekozen wordt
+     * @return geeft namen van van spelborden terug
+     */
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
     {
     	
-          int[] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      // array van namen van de spellen word aangemaakt in de groote van het aantal spellen
-          
+          int[] namen = new int[spelbordRepository.geefSpelbordenLijst(spelnaam).size()];      
           for(int i = 0; i < spelbordRepository.geefSpelbordenLijst(spelnaam).size(); i++) 
           {
-        	  namen [i] = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getVolgnummer();     //elke naam wordt opgevraagd
+        	  namen [i] = spelbordRepository.geefSpelbordenLijst(spelnaam).get(i).getVolgnummer();    
           }
           
           return namen;
     }
     
-    
+    /**
+     * Methode om een spelborde met volgnummer te selecteren met een bepaalde volgnummer en spelnaam
+     * 
+     * @param volgnummer volgnummer dat gekozen wordt voor het selecteren van het spelbord
+     * @param spelnaam naam dat gekozen wordt voor het selecteren van het spelbord
+     */
     public void selecteerSpelbordMetVolgnummer(int volgnummer, String spelnaam)
     {
     	Spelbord spelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
     	spel.setHuidigSpelbord(spelbord);
     }
     
+    /**
+     * Methode om het spelbord up te daten nadat een wijziging is toegebracht
+     */
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
     	spelbordRepository.updateSpelbord(volgnummer, velden, spelnaam);
     }
     
+    /**
+     * Methode om lijst van spellen van de speler van bepaalde gebruikersnaam terug te geven
+     * 
+     * @param gebruikersnaam naam van de gebuiker die ingelogd is
+     * @return geeft de lijst van namen van spellen terug
+     */
     public String[] geefLijstSpellenSpeler(String gebruikersnaam)
     {
     	String[] namen = new String[spelRepository.geefLijstSpellenSpeler(gebruikersnaam).size()];

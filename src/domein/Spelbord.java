@@ -19,6 +19,13 @@ public class Spelbord
 	private ArrayList<Kist> kisten = new ArrayList<Kist>();
 	private Man man;
 	
+	 /**
+     * Constructor om een spelbord aan te maken
+     *
+     * @param volgnummer volgnummer van het spelbord in het huidige spel
+     * @param velden velden meegeven die het spelbord bevat, al dan niet
+     * ingevuld
+     */
 	public Spelbord(int volgnummer, Veld[][] velden) 
 	{
 		this.volgnummer = volgnummer;
@@ -42,17 +49,30 @@ public class Spelbord
 		}
 	}
 	
-	
+	/**
+     * Methode om het volgnummer van het spelbord terug te geven
+     *
+     * @return geeft het volgnummer van het spelbord terug
+     */
 	public int getVolgnummer()  
 	{
 		return this.volgnummer;
 	}
 	
+	/**
+     * Methode om het volgnummer te zetten van het spelbord dat gespeeld moet worden
+     * @param volgnummer geeft aan welk spelbord er gespeeld zal worden
+     */
 	public void setVolgnummer(int nummer) 
 	{
 		this.volgnummer = nummer;
 	}
 	
+	/**
+	 * Methode om een lijst van velden van kisten aan te maken
+	 * 
+	 * @return geeft lijst van velden van kiste terug
+	 */
 	public List<Veld> maakVeldenVanKistenLijst() 
 	{
 		List<Veld> veldenVanKistenLijst = new ArrayList<Veld>();
@@ -65,47 +85,90 @@ public class Spelbord
 	    return veldenVanKistenLijst;
 	}
 	
+	/**
+	 * Methode om locatie van man te bepalen
+	 * 
+	 */
 	private void bepaalLocatieMan() 
 	{
 		locatieManX = getMan().getVeld().getX();
 		locatieManY = getMan().getVeld().getY();
 	}
 	
+	/**
+	 * Methode om kisten terug te geven
+	 * 
+	 * @return geeft kisten terug
+	 */
 	public List<Kist> getKisten() 
 	{
 		return kisten;
 	}
 
+	/**
+	 * Methode om een man terug te geven
+	 * 
+	 * @return geeft man terug
+	 */
 	public Man getMan() 
 	{
 		return man;	
 	}
 	
+	/**
+	 * Methode om spelborden terug te geven
+	 * 
+	 * @return geeft spelbord terg
+	 */
 	public Veld[][] getSpelbord() 
 	{
 		return spelbord;
 	} 
 	
+	/**
+	 * Methode om het aatal verplaatsingen terug te geven
+	 * 
+	 * @return geeft aantal verplaatsingen terug
+	 */
 	public int getAantalVerplaatsingen() 
 	{
 		return this.aantalVerplaatsingen;
 	}
 	
+	/**
+	 * Methode om het aantal verplaatsingen in te stellen
+	 * 
+	 * @param aantalVerplaatsingen  het aantalVerplaatsingen dat gekozen wordt 
+	 */
 	public void setAantalVerplaatsingen(int aantalVerplaatsingen) 
 	{
 		this.aantalVerplaatsingen = aantalVerplaatsingen;
 	}
 
+	/**
+	 * Methode om na te gaan of het spelbord voltooid is
+	 * 
+	 * @return geeft aan of het spelbord wel/niet voltooid is
+	 */
 	public boolean isVoltooid()
 	{
 		return this.isVoltooid;
 	}
 	
+	/**
+	 * Methode om het spelbord in te stellen of het voltooid is of niet
+	 * 
+	 * @param isVoltooid geeft aan of het volooid is of niet
+	 */
 	public void setIsVoltooid(boolean isVoltooid) 
 	{
 		this.isVoltooid = isVoltooid;
 	} 
 
+	/**
+     * Methode om het spelbord weer te geven
+     *
+     */
 	public char[][] geefVelden() 
     {
         char[][] velden = new char[10][10];
@@ -143,6 +206,11 @@ public class Spelbord
         return velden;
     }
 	
+	/**
+     * Methode om de man te verplaatsen in een richting
+     *
+     * @param richting geeft de richting aan waarnaar de man zich verplaatst
+     */
 	public void verplaatsMan(String richting) 
 	{
 		bepaalLocatieMan();
@@ -184,6 +252,10 @@ public class Spelbord
     	isEindeSpelbordBereikt();
     }
 		
+	/**
+	 * Methode om na te gaan of het spelbord wel/niet bereikt is
+	 * 
+	 */
 	private void isEindeSpelbordBereikt() 
 	{
 		int aantalDoelen = 0;
@@ -209,6 +281,12 @@ public class Spelbord
 		}
 	}
 	
+	/**
+	 * Methode om na te gaan of de verplaatsing van de man ok is of niet
+	 * 
+	 * @param richting geeft de richting waar de man naar toe verplaatst wordt
+	 * @return geeft of de verplaatsing wel/niet ok is
+	 */
 	public boolean isVerplaatsingOK(String richting) 
 	{
 		bepaalLocatieMan();
@@ -261,6 +339,13 @@ public class Spelbord
     	return verplaatsingOk;
     }
 	
+	 /**
+     * Methode om het spelbord te wijzigen 
+     * 
+     * @param x x-coordinaat(rij) dat zal wijzigen
+     * @param y y-coordinaat(kolom) dat zal wijzigen
+     * @param actie beschikbare keuze om het spelbord te wijzigen(doel,man,muur,kist,veld)
+     */
 	public void wijzigSpelbord(int x, int y, int actie) 
 	{
 		if(actie < 1 || actie > 6)

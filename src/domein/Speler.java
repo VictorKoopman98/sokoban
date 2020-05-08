@@ -10,7 +10,16 @@ public class Speler
     private String naam;
     private String voornaam;
     
-    public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)   //methode om een speler object aan te maken (constructors)
+    
+    /**
+     * Constructor om een speler object aan te maken met of zonder adminrechten
+     * @param gebruikersnaam gebruikersnaam die de speler kiest
+     * @param wachtwoord wachtwoord die de speler kiest
+     * @param adminrechten kijken of de speler wel/geen adminrechten krijgt
+     * @param naam familienaam van de speler 
+     * @param voornaam voornaam van de speler
+     */
+    public Speler(String gebruikersnaam, String wachtwoord, boolean adminrechten, String naam, String voornaam)   
     {
 	this.setGebruikersnaam(gebruikersnaam);
 	this.setWachtwoord(wachtwoord);
@@ -25,72 +34,96 @@ public class Speler
         this(gebruikersnaam, wachtwoord, false, naam, voornaam);
     }
     
-
-    public String getGebruikersnaam()    //Methode om de gebruikersnaam van een speler terug te geven
+    /**
+     * Methode om de gebruikersnaam van een speler terug te geven
+     * @return geeft de gebruikersnaam van de speler terug
+     */
+    public String getGebruikersnaam()    
     {
 	return this.gebruikersnaam;
     }
 
-    
-    public String getWachtwoord()     //Methode om het wachtwoord van een speler terug te geven
+    /**
+     * Methode om het wachtwoord van een speler terug te geven
+     * @return geeft het wachtwoord van een speler terug
+     */
+    public String getWachtwoord()   
     {
 	return this.wachtwoord;
     }
 
-    
-    public boolean isAdminrechten()    //Methode om te kijken of een speler adminrechten heeft
+    /**
+     * Methode om te kijken of een speler adminrechten heeft
+     * @return geeft terug of de speler wel/geen adminrechten heeft
+     */
+    public boolean isAdminrechten()    
     {
 	return this.adminrechten;
     }
 
-   
-    public String getNaam()    //Methode om de familienaam van een speler terug te krijgen
+    /**
+     * Methode om de familienaam van een speler terug te krijgen
+     * @return geeft de familienaam van de speler terug
+     */
+    public String getNaam()    
     {
 	return this.naam;
     }
 
-    
-    public String getVoornaam()    //Methode om de voornaam van een speler terug te krijgen
+    /**
+     * Methode om de voornaam van een speler terug te krijgen
+     * @return geeft de voornaam van de speler terug
+     */
+    public String getVoornaam()    
     {
 	return this.voornaam;
     }
 
-   
-    public void setGebruikersnaam(String gebruikersnaam)    //Methode om de gebruikersnaam van een speler in te stellen
+    /**
+     * Methode om de gebruikersnaam van een speler in te stellen
+     * @param gebruikersnaam gebruikersnaam die de speler kiest
+     */
+    public void setGebruikersnaam(String gebruikersnaam)   
     {
 		if (gebruikersnaam == null || gebruikersnaam.length() == 0)
 		{
-		    throw new IllegalArgumentException(Taal.getText("gebruikersnaamVerplicht"));   //exception gooien als beruikersnaam niet is ingevuld
+		    throw new IllegalArgumentException(Taal.getText("gebruikersnaamVerplicht"));  
 		} else if (gebruikersnaam.length() < 8)
 		{
-		    throw new IllegalArgumentException(Taal.getText("gebruikersnaamMinstens"));    //exception gooien als gebruikersnaam te kort is
+		    throw new IllegalArgumentException(Taal.getText("gebruikersnaamMinstens"));    
 		}else 
 		{
 		this.gebruikersnaam = gebruikersnaam;
 		}
     }
 
-    
-    public void setWachtwoord(String wachtwoord)   //Methode om het wachtwoord van de speler in te stellen
+    /**
+     * Methode om het wachtwoord van de speler in te stellen
+     * @param wachtwoord wachtwoord die de speler kiest 
+     */
+    public void setWachtwoord(String wachtwoord)   
     {
 		if (wachtwoord == null || wachtwoord.length() == 0)
 		{
-		    throw new IllegalArgumentException(Taal.getText("wachtwoordVerplicht"));   //exception gooien als wachtwoord neit ingevuld is
+		    throw new IllegalArgumentException(Taal.getText("wachtwoordVerplicht"));   
 		} else if (isCorrectWachtwoord(wachtwoord) == false)
 		{
-		    throw new IllegalArgumentException(Taal.getText("wachtwoordMinstens"));   //exception gooien als wachtwoord niet klopt => zie tekst
+		    throw new IllegalArgumentException(Taal.getText("wachtwoordMinstens"));   
 		} else 
 		{
 		this.wachtwoord = wachtwoord;
 	    }
 	}
 
-    
-    private boolean isCorrectWachtwoord(String wachtwoord)   //methode om te kijken of wachtwoord lang genoeg is + methode om te kijken of het een hoofdletter, kleine letter en cijfer heeft word hier ook in uitgevoerd
+    /**
+     * @param wachtwoord ingegeven wachtwoord dat moet gecontroleerd worden op geldigheid
+     * @return geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters.
+     */
+    private boolean isCorrectWachtwoord(String wachtwoord)   
     {
-    	if(wachtwoord.length() > 7)   //als wachtwoord groter is dan 7 voer volgende stappen uit else => false
+    	if(wachtwoord.length() > 7)   
     	{
-    		if(checkWachtwoord(wachtwoord))    //als checkWachtwoord true oplevert => true
+    		if(checkWachtwoord(wachtwoord))   
     		{
     			return true;
     		}
@@ -105,8 +138,13 @@ public class Speler
     	}
     }
     
-    
-    private static boolean checkWachtwoord(String wachtwoord)     //methode om te kijken of het wachtwoord een kleine, grote letter heeft en een cijfer
+    /**
+     * Methode om na te gaan of het wachtwoord een kleine, grote letter heeft en een cijfer.
+     * 
+     * @param wachtwoord ingegeven dat moet gecontroleerd worden op geldigheid
+     * @return geeft boolean terug of het wachtwoord geldig is voor de gewenste parameters
+     */
+    private static boolean checkWachtwoord(String wachtwoord)     
     {
     	boolean heeftNummer = false; 
     	boolean heeftHoofdletter = false; 
@@ -115,21 +153,21 @@ public class Speler
     	
     	for(int i = 0; i < wachtwoord.length(); i++)
     	{
-    		c = wachtwoord.charAt(i);    //i wordt omgezet naar c wat elk karakter uit het wachtwoord voorstel en wordt overlopen
+    		c = wachtwoord.charAt(i);    
     		
-    		if(Character.isDigit(c))    //indien c een cijfer is => true
+    		if(Character.isDigit(c))    
     		{
     			heeftNummer = true;
     		}
-    		else if(Character.isUpperCase(c))    //indien c een grote letter is => true
+    		else if(Character.isUpperCase(c))   
     		{
     			heeftHoofdletter = true;
     		}
-    		else if(Character.isLowerCase(c))     //indien c een kleine letter is => true 
+    		else if(Character.isLowerCase(c))   
     		{
     			heeftKleineLetter = true;
     		}
-    		if(heeftNummer && heeftHoofdletter && heeftKleineLetter)    //indien alle drie true => true
+    		if(heeftNummer && heeftHoofdletter && heeftKleineLetter)   
     		{
     			return true;
     		}
