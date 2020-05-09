@@ -52,6 +52,9 @@ public class UC5Test
 						try {
 							if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
 							   {
+									actie = toonActies(false);
+									i
+//									System.out.printf("%n%s%n%s%n%s", Taal.getText("nieuwSpelbord"), Taal.getText("stoppen"), Taal.getText("keuze"));
 								   dc.verwijderSpel(spelnaam);
 								   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
 							   }

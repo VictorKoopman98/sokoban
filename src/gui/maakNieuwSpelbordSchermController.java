@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
@@ -270,9 +271,23 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 				}
 			}
 			catch(IllegalArgumentException e) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setContentText(e.getMessage());
-				alert.showAndWait();
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setContentText(String.format("%s%n%s",e.getMessage(),Taal.getText("spelbordVerwijderenOfWijzigenGui")));
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.CANCEL)
+				{
+					dc.verwijderSpelbord(volgnummer, dc.geefNaamSpel());
+					if (dc.geefAantalSpelborden() == 0)
+					{
+						Alert alert2 = new Alert(AlertType.CONFIRMATION);
+						alert2.setContentText(String.format("%s%n%s", Taal.getText("minstens1Spelbord"), Taal.getText("SpelVerwijderenOfBlijvenWijzigenGui")));
+						Optional<ButtonType> result2 = alert.showAndWait();
+						if (result2.get() == ButtonType.CANCEL)
+						{
+							dc.verwijderSpel(dc.geefNaamSpel());
+						}
+					}
+				}
 			}
 		}else if(optie == 2) {
 			dc.updateSpelbord(volgnummerTeWijzigenSpelbord, dc.geefVelden(),dc.geefNaamSpel());

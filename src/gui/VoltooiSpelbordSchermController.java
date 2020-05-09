@@ -40,6 +40,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 	private HoofdSchermController hs;
 	@FXML
 	private Button btnReset;
+	@FXML
+	private Label lblFout;
 	
 	public VoltooiSpelbordSchermController(DomeinController dc, HoofdSchermController hs)
 	{
@@ -86,9 +88,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 					}
 				}
 				catch(IllegalArgumentException e) {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setContentText(e.getMessage());
-					alert.showAndWait();
+					lblFout.setText(Taal.getText("ongeldigeRichting"));
+					lblFout.setVisible(true);
 				}
 				buildGUI();
 				if (dc.eindeSpelbordBereikt())
@@ -113,7 +114,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 	{
 		
 		char[][] veldenStrings = dc.geefVelden();
-		
+		lblFout.setVisible(false);
 		Image muurImage = new Image(getClass().getResourceAsStream("/images/cobble.jpg"));
 		Image leegVeldImage = new Image(getClass().getResourceAsStream("/images/grass.jpg"));
 		Image doelImage = new Image(getClass().getResourceAsStream("/images/grassDoel.jpg"));
@@ -181,9 +182,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			lblFout.setText(Taal.getText("ongeldigeRichting"));
+			lblFout.setVisible(true);
 		}
 		
 	}
@@ -197,9 +197,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			lblFout.setText(Taal.getText("ongeldigeRichting"));
+			lblFout.setVisible(true);
 		}
 	}
 	// Event Listener on Button[#btnRechts].onAction
@@ -212,9 +211,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			lblFout.setText(Taal.getText("ongeldigeRichting"));
+			lblFout.setVisible(true);
 		}
 	}
 	// Event Listener on Button[#btnOmhoog].onAction
@@ -227,9 +225,8 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			lblFout.setText(Taal.getText("ongeldigeRichting"));
+			lblFout.setVisible(true);
 		}
 	}
 	@FXML

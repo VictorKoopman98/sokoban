@@ -249,7 +249,11 @@ public class DomeinController
      */
     public void verwijderSpelbord(int volgnummer, String naamSpel)
     {
-    	this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
+    	this.selecteerSpel(naamSpel);
+    	if (this.geefAantalSpelborden() > 1)
+    		this.spelbordRepository.verwijderSpelbord(volgnummer, naamSpel);
+    	else
+    		throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
     }
     /**
      * Methode om naam van het spel terug te geven

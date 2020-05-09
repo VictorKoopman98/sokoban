@@ -317,7 +317,7 @@ public class Spelbord
     		grens = 9;
     	}
     	if (richting.equals("omhoog") || richting.equals("omlaag")) {
-	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManX == grens 
+	    	if ( !(locatieManX == grens || spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur()
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && locatieManX == grens-verplaatsingX) ) )
@@ -326,7 +326,7 @@ public class Spelbord
 			}
     	}
     	if (richting.equals("links") || richting.equals("rechts")) {
-	    	if ( !( spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur() || locatieManY == grens 
+	    	if ( !(locatieManY == grens || spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY].isMuur()
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2]) ) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && spelbord[locatieManX + verplaatsingX*2][locatieManY + verplaatsingY*2].isMuur()) 
 					|| (maakVeldenVanKistenLijst().contains(spelbord[locatieManX + verplaatsingX][locatieManY + verplaatsingY]) && locatieManY == grens-verplaatsingY) ) )
