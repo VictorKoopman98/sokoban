@@ -121,31 +121,31 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 			{
 				switch(veldenStrings[i-1][j-1])
 				{
-				case 'M':
+				case 'X':
 					ImageView muur = new ImageView(muurImage);
 					muur.setFitHeight(getMaxHeight());
 					muur.setFitWidth(getMaxWidth());
 					gridSpelbord.add(muur, j, i);
 					break;
-				case 'X':
+				case 'M':
 					ImageView man = new ImageView(manImage);
 					man.setFitHeight(getMaxHeight());
 					man.setFitWidth(getMaxWidth());
 					gridSpelbord.add(man, j, i);
 					break;
-				case 'D':
+				case '?':
 					ImageView doel = new ImageView(doelImage);
 					doel.setFitHeight(getMaxHeight());
 					doel.setFitWidth(getMaxWidth());
 					gridSpelbord.add(doel, j, i);
 					break;
-				case 'O':
+				case '.':
 					ImageView leegVeld = new ImageView(leegVeldImage);
 					leegVeld.setFitHeight(getMaxHeight());
 					leegVeld.setFitWidth(getMaxWidth());
 					gridSpelbord.add(leegVeld, j, i);
 					break;
-				case 'F':
+				case 'O':
 					ImageView kistOk = new ImageView(kistOkImage);
 					kistOk.setFitHeight(getMaxHeight());
 					kistOk.setFitWidth(getMaxWidth());

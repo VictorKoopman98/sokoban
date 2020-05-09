@@ -392,7 +392,7 @@ public class Spelbord
 					}
 				}
 			}
-			if (man.getVeld() ==  spelbord[x][y]) {
+			if (man != null && man.getVeld() ==  spelbord[x][y]) {
 				man = null;
 			}
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);

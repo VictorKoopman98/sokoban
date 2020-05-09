@@ -32,7 +32,6 @@ public class UC7Test
 		
 		int gekozenSpel;
 		String spelnaam = null;
-		int volgnummer = 0;
 		int gekozenVolgnummerSpelbord;
 		
 		String [] spelletjes = dc.geefLijstSpellenSpeler(dc.geefGebruikersnaam());
@@ -84,11 +83,10 @@ public class UC7Test
 					if(gekozenVolgnummerSpelbord < 1 || gekozenVolgnummerSpelbord > volgnummersSpelborden.length)
 						throw new IllegalArgumentException(keuzeNietBeschikbaar);
 					
-					volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
 					
 					int keuzeVerwijderen = verwijderenOfWijzigen();
 					if (keuzeVerwijderen == 2)
-						uc8test.wijzigSpelbord(spelnaam, volgnummer);
+						uc8test.wijzigSpelbord(spelnaam, gekozenVolgnummerSpelbord);
 					else {
 						if (dc.geefAantalSpelborden() == 1)
 						{
@@ -96,7 +94,7 @@ public class UC7Test
 						}
 						else
 						{
-							dc.verwijderSpelbord(volgnummer, spelnaam);
+							dc.verwijderSpelbord(gekozenVolgnummerSpelbord, spelnaam);
 						}
 					}
 					
