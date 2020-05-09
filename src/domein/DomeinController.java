@@ -41,7 +41,7 @@ public class DomeinController
 	 * 
 	 * @param speler object van de klasse Speler die het spel zal spelen
 	 */
-	public void setSpeler(Speler speler)   
+	private void setSpeler(Speler speler)   
 	{
 		this.speler = speler;
 	}
@@ -276,7 +276,7 @@ public class DomeinController
      *  
      * @param spel spel dat gekozen wordt
      */
-    public void setSpel(Spel spel) 
+    private void setSpel(Spel spel) 
     { 
     	this.spel = spel;
     }
@@ -320,7 +320,7 @@ public class DomeinController
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
     	controleerSpelbord(velden, volgnummer, spelnaam);
-    	this.spel.geefSpelbordenLijst().add(this.geefSpelbord());
+    	this.spel.geefSpelbordenLijst().add(this.spel.getSpelbord());
     	this.spelbordRepository.voegSpelbordToe(velden, volgnummer,spelnaam);
     }
     
@@ -365,16 +365,6 @@ public class DomeinController
     public int geefVolgnummer() 
     {
     	return this.spel.geefVolgnummer();
-    }
-    
-    /**
-     * Methode om spelbord van een bepaalde spel terug te geven
-     * 
-     * @return geeft spelbord terug van een spel
-     */
-    public Spelbord geefSpelbord() 
-    {
-    	return this.spel.getSpelbord();
     }
     
     /**
