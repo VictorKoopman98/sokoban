@@ -88,16 +88,13 @@ public class UC7Test
 					if (keuzeVerwijderen == 2)
 						uc8test.wijzigSpelbord(spelnaam, gekozenVolgnummerSpelbord);
 					else {
-						if (dc.geefAantalSpelborden() == 1)
-						{
-							System.out.printf(Taal.getText("verwijderenOngeldig"));	
+						if (dc.geefAantalSpelborden() == 1){
+							System.out.printf("%n%s%n", Taal.getText("minstens2Spelborden"));	
 						}
-						else
-						{
+						else{
 							dc.verwijderSpelbord(gekozenVolgnummerSpelbord, spelnaam);
 						}
 					}
-					
 					blijvenHerhalenFlag = false;
 				}catch(IllegalArgumentException e) {
 					System.out.printf("%n%s%n", e.getMessage());
@@ -130,7 +127,8 @@ public class UC7Test
 				System.out.println(e.getMessage());
 			}
 			catch(InputMismatchException e) {
-				System.out.println(Taal.getText("getalIngeven"));
+				System.out.printf("%n%s%n", Taal.getText("getalIngeven"));
+				sc.next();
 			}
 		}while(blijvenHerhalenFlag);
 		return keuze;
@@ -141,7 +139,6 @@ public class UC7Test
 		Scanner input = new Scanner(System.in);
 		
 		String wijzigSpelbord = Taal.getText("wijzigSpelbord"),
-		       spelVerlaten = Taal.getText("spelVerlaten"),
 		       keuzeMaken = Taal.getText("keuze"),
 		       ongeldigeActie = Taal.getText("ongeldigActie"),
 		       getalIngeven = Taal.getText("getalIngeven"),

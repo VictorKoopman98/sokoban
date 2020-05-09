@@ -29,58 +29,48 @@ public class UC5Test
         	   spelbord = Taal.getText("spelbord"),
         	   spelborden = Taal.getText("spelborden");
         
+        boolean flag = true;
+        do {
+        	try {
+            	System.out.printf("%n%s",geefSpelnaam);
+    			spelnaam = input.nextLine();
+    			
+    			dc.maakNieuwSpel(spelnaam, dc.geefGebruikersnaam());				
+    			
+    			flag = false;
+            }catch (IllegalArgumentException e) {
+    			System.out.printf("%n%s%n", e.getMessage());
+    		}
+        }while(flag);
+        
+        
 		boolean blijvenHerhalenFlag = true;
 		do {
-			try {
-				System.out.printf("%n%s",geefSpelnaam);
-				spelnaam = input.nextLine();
-				
-				dc.maakNieuwSpel(spelnaam, dc.geefGebruikersnaam());
-								
-				uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);				
-				
-				int actie = toonActies(true);
-				boolean blijvenHerhalenFlag2 = true;
-				
-				do {
-					if (actie == 1) {
-						uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);
-						
-						actie = toonActies(true);
-					}
-					else if (actie == 2) {
-						try {
-							if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
-							   {
-									actie = toonActies(false);
-									i
-//									System.out.printf("%n%s%n%s%n%s", Taal.getText("nieuwSpelbord"), Taal.getText("stoppen"), Taal.getText("keuze"));
-								   dc.verwijderSpel(spelnaam);
-								   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
-							   }
-							System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
-							System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
+			uc6test.maakNieuwSpelbord(dc.geefHuidigSpel().geefAantalSpelborden()+1);
+			
+			int actie = toonActies(true);
+			
+			if (actie == 2) 
+			{
+					if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
+				    {
+						System.out.printf("%n%s%n", Taal.getText("minstens1Spelbord"));
+						actie = toonActies(false);
+						if(actie == 2) {
+							dc.verwijderSpel(spelnaam);
+							System.out.printf("%n%s%n", Taal.getText("spelVerwijderd"));
 							blijvenHerhalenFlag = false;
-							blijvenHerhalenFlag2 = false;
 						}
-						catch(IllegalArgumentException e)
-						{
-							System.out.printf("%n%s%n", e.getMessage());
-							actie = toonActies(false);
-							if (actie == 2)
-							{
-								blijvenHerhalenFlag = false;
-								blijvenHerhalenFlag2 = false;
-							}
-						}
+				    }
+					else
+					{
+						System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
+						System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
+						blijvenHerhalenFlag = false;
 					}
-				}while (blijvenHerhalenFlag2);
-			}
-			catch (IllegalArgumentException e) {
-				System.out.printf("%n%s%n", e.getMessage());
-			}
-		} while(blijvenHerhalenFlag);
+				}
 				
+		}while (blijvenHerhalenFlag);		
 	}
 	
 	
