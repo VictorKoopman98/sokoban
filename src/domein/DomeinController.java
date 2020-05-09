@@ -272,16 +272,6 @@ public class DomeinController
     }
     
     /**
-     * Methode om het spel in te stellen die gespeeld zal worden
-     *  
-     * @param spel spel dat gekozen wordt
-     */
-    private void setSpel(Spel spel) 
-    { 
-    	this.spel = spel;
-    }
-    
-    /**
      * Methode om na te gaan of het spel voltooid is
      *  
      * @return geeft aan of het spel wel/niet voltooid is
