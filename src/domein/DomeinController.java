@@ -47,16 +47,6 @@ public class DomeinController
 	}
 	
 	/**
-	 * Methode om de speler teerug te geven
-	 * 
-	 * @return geef speler terug
-	 */
-	public Speler getSpeler()
-	{
-		return speler;
-	}
-	
-	/**
      * Methode om te kunnen aanmelden
      *
      * @param gebruikersnaam gebruikersnaam van de persson die zich wil

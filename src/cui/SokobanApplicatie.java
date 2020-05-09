@@ -66,7 +66,7 @@ public class SokobanApplicatie
 	    boolean flag = true;
 		do {
 			try {
-				if (domeincontroller.getSpeler().isAdminrechten()) 
+				if (domeincontroller.isAdmin()) 
 				{
 					System.out.printf("%n\t%8S%n-----------------------------%n%s%n%s%n%s%n%s%n-----------------------------%n%s", 
 							"menu2", spelen, nieuwSpel, wijzigSpel, afmelden,keuze);
