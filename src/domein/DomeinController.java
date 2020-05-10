@@ -3,12 +3,34 @@ package domein;
 import gui.Taal;
 
 
+/**
+ * Date: 10/05/2020
+ * @author lenna
+ * @version 1.0
+ *
+ */
 public class DomeinController
 {
+	
+	/**
+	 * SpelerRepository
+	 */
 	private final SpelerRepository spelerRepository;
+	/**
+	 * SpelRepository
+	 */
 	private final SpelRepository spelRepository;
+	/**
+	 * Speler
+	 */
 	private Speler speler;
+	/**
+	 * Spel
+	 */
 	private Spel spel;
+	/**
+	 * SpelbordRepository
+	 */
 	private final SpelbordRepository spelbordRepository;
 	
 	
