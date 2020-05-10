@@ -126,9 +126,9 @@ public class SpelbordMapper
     
     public void verwijderSpelbord(int volgnummer, String naamSpel)
     {
-//    	vm.verwijderVelden(naamSpel, volgnummer);
+    	vm.verwijderVelden(naamSpel, volgnummer);
     	try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord volgnummer = ?, naamSpel = ?)"))
+        		PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Spelbord WHERE volgnummer = ? AND naamSpel = ?"))
         {      
     		query.setInt(1, volgnummer);
     		query.setString(2, naamSpel);

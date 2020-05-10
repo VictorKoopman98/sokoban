@@ -74,11 +74,12 @@ public class UC7Test
 
 					for(int i = 0; i < volgnummersSpelborden.length; i++)
 					{
-						System.out.printf("%n%s %d:%n", spelbord1,volgnummersSpelborden[i]);      //i+1 want getal ingeven is niet gelijk aan index
+						System.out.printf("%n%s %d%n", spelbord1, i + 1);      //i+1 want getal ingeven is niet gelijk aan index
 					}
 					System.out.printf("%n%s",keuzeMaken);
 					
 					gekozenVolgnummerSpelbord = input.nextInt();    //gekozen spelbord wordt ingegeven aan de hand van een getal
+					int volgnummer = volgnummersSpelborden[gekozenVolgnummerSpelbord - 1];
 					
 					if(gekozenVolgnummerSpelbord < 1 || gekozenVolgnummerSpelbord > volgnummersSpelborden.length)
 						throw new IllegalArgumentException(keuzeNietBeschikbaar);
@@ -86,13 +87,13 @@ public class UC7Test
 					
 					int keuzeVerwijderen = verwijderenOfWijzigen();
 					if (keuzeVerwijderen == 2)
-						uc8test.wijzigSpelbord(spelnaam, gekozenVolgnummerSpelbord);
+						uc8test.wijzigSpelbord(spelnaam, volgnummer);
 					else {
 						if (dc.geefAantalSpelborden() == 1){
 							System.out.printf("%n%s%n", Taal.getText("minstens2Spelborden"));	
 						}
 						else{
-							dc.verwijderSpelbord(gekozenVolgnummerSpelbord, spelnaam);
+							dc.verwijderSpelbord(volgnummer, spelnaam);
 						}
 					}
 					blijvenHerhalenFlag = false;
