@@ -1,7 +1,5 @@
 package domein;
 
-import domein.Spelbord;
-import domein.SpelbordRepository;
 import gui.Taal;
 
 import java.util.List;
@@ -214,14 +212,6 @@ public class Spel
 	{
 		return huidigSpelbord.getSpelbord();
 	}
-	
-
-//	public void resetSpelbord(String spelnaam, int volgnummer) 
-//	{
-//		int index = spelbordenLijst.indexOf(huidigSpelbord);
-//		huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
-//		spelbordenLijst.set(index, huidigSpelbord);
-//	}
 	
 	/**
 	 * Methode om het spelbord te tonen
