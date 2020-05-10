@@ -141,6 +141,7 @@ public class UC8Test
 				if(keuze > 2 || keuze < 0) {
 					throw new IllegalArgumentException(Taal.getText("keuzeNietBeschikbaar"));
 				}
+				flag = false;
 			}catch(InputMismatchException e){
 				System.out.printf("%n%s%n",Taal.getText("getalIngeven"));
 				input.next();
