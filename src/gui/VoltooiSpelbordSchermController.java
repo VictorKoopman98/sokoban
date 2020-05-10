@@ -262,8 +262,9 @@ public class VoltooiSpelbordSchermController extends GridPane
 		{
 			alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle(Taal.getText("volgendSpelbordTitel"));
-			String string = String.format("%n%s %s %d %s",dc.geefGebruikersnaam(), Taal.getText("spelbordVoltooid2"), dc.geefAantalVerplaatsingen(), Taal.getText("verplaatsingen"));
-			alert.setContentText(String.format("%s%n%s", string, Taal.getText("volgendSpelbord")));
+			String string1 = String.format("%d %s %d %s", dc.geefAantalSpelbordenVoltooid(), Taal.getText("vanDe"), dc.geefAantalSpelborden(), Taal.getText("zijnVoltooid"));
+			String string2 = String.format("%n%s %s %d %s",dc.geefGebruikersnaam(), Taal.getText("spelbordVoltooid2"), dc.geefAantalVerplaatsingen(), Taal.getText("verplaatsingen"));
+			alert.setContentText(String.format("%s%n%s%n%s", string2, string1, Taal.getText("volgendSpelbord")));
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK)
 			{
