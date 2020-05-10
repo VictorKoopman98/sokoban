@@ -95,9 +95,11 @@ public class UC5Test
 					throw new IllegalArgumentException(keuzeOutOfBounds);
 				}	
 				return actie;
-			}
+			}catch (IllegalArgumentException e) {
+    			System.out.printf("%n%s%n", e.getMessage());
+    		}
 			catch(InputMismatchException e) {
-				System.out.printf("%s",getalIngeven);
+				System.out.printf("%n%s%n",getalIngeven);
 				input.next();
 			}
 		}while(true);

@@ -37,7 +37,6 @@ public class Start_Up extends Application
 	
 	public static void main(String[] args) 
 	{
-
 		int keuze = maakKeuze();
 		if (keuze == 1) {
 			Taal taal = new Taal();
@@ -46,7 +45,6 @@ public class Start_Up extends Application
 			
 			sa.run();    //run methode van sokobanapplicatie wordt uitgevoerd
 		}
-		
 		else
 			launch(args);
 	}
