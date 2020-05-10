@@ -52,23 +52,23 @@ public class UC5Test
 			
 			if (actie == 2) 
 			{
-					if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
-				    {
-						System.out.printf("%n%s%n", Taal.getText("minstens1Spelbord"));
-						actie = toonActies(false);
-						if(actie == 2) {
-							dc.verwijderSpel(spelnaam);
-							System.out.printf("%n%s%n", Taal.getText("spelVerwijderd"));
-							blijvenHerhalenFlag = false;
-						}
-				    }
-					else
-					{
-						System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
-						System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
+				if (dc.geefHuidigSpel().geefAantalSpelborden() == 0)
+			    {
+					System.out.printf("%n%s%n", Taal.getText("minstens1Spelbord"));
+					actie = toonActies(false);
+					if(actie == 2) {
+						dc.verwijderSpel(spelnaam);
+						System.out.printf("%n%s%n", Taal.getText("spelVerwijderd"));
 						blijvenHerhalenFlag = false;
 					}
+			    }
+				else
+				{
+					System.out.printf("%n%s %s%n", dc.geefGebruikersnaam(),stopAanmaken);
+					System.out.printf("%n%s %s %d %s%n", dc.geefNaamSpel(),aangemaakt,dc.geefAantalSpelborden(), dc.geefAantalSpelborden() == 1 ? spelbord: spelborden);
+					blijvenHerhalenFlag = false;
 				}
+			}
 				
 		}while (blijvenHerhalenFlag);		
 	}

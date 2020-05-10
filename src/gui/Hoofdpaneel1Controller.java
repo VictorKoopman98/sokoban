@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
 import domein.DomeinController;
 import javafx.event.ActionEvent;
@@ -76,7 +78,13 @@ public class Hoofdpaneel1Controller  extends GridPane
 				@Override
 				public void handle(ActionEvent event) 
 				{
-					hs.update(new SpelwijzigenController(dc, hs));
+					if(dc.geefLijstSpellenSpeler(dc.geefGebruikersnaam()).length > 0)
+						hs.update(new SpelwijzigenController(dc, hs));
+					else {
+						Alert alert = new Alert(AlertType.WARNING);
+						alert.setContentText(Taal.getText("geenSpelborden"));
+						alert.showAndWait();
+					}
 				}
 			});
 			

@@ -41,10 +41,10 @@ public class UC2Test
                     System.out.printf("\n%s",geefWw);
                     wachtwoord = input.next();
                     
-                    System.out.printf("\n%s: ",geefNaam);
+                    System.out.printf("\n%s",geefNaam);
                     naam = input.next();
                     
-                    System.out.printf("\n%s: ",geefVoornaam);
+                    System.out.printf("\n%s",geefVoornaam);
                     voornaam = input.next();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);

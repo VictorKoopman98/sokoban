@@ -39,11 +39,16 @@ public class UC7Test
 		boolean flag = true;
 		do {
 			try {
-				for(int i = 0; i < spelletjes.length; i++)
-				{
-					System.out.printf("%n%s %d: %s%n", spelletje,i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+				if(spelletjes.length > 0) {
+					for(int i = 0; i < spelletjes.length; i++)
+					{
+						System.out.printf("%n%s %d: %s%n", spelletje,i+1, spelletjes[i]);      //i+1 want getal ingeven is niet gelijk aan index
+					}
+				}else if(spelletjes.length == 0) {
+					System.out.printf("%n%s%n", Taal.getText("geenSpelborden"));
+					flag = false;
+					break;
 				}
-
 				System.out.printf("%n%s",keuzeMaken);
 				gekozenSpel = input.nextInt();    //gekozen spel wordt ingegeven aan de hand van een getal
 				if(gekozenSpel <= 0 && gekozenSpel > spelletjes.length) {
