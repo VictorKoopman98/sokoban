@@ -231,7 +231,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 	}
 	@FXML
 	public void btnResetAfhandeling(ActionEvent event) {
-//		dc.selecteerSpelbord(dc.geefNaamSpel());
 		dc.resetSpelbord(dc.geefNaamSpel(), dc.geefVolgnummer());
 		buildGUI();
 	}

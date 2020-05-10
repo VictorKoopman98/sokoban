@@ -14,7 +14,7 @@ public class Veldmapper
 	 // Methode om de velden die bij een spelbord horen uit de databank te kunnen halen
      //volgnummer unieke identiteit van het spelbord waartoe de velden behore
 	
-	public static Veld[][] geefVelden(int volgnummer, String spelnaam) 
+	public Veld[][] geefVelden(int volgnummer, String spelnaam) 
 	{
         Veld[][] velden = new Veld[10][10];
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);

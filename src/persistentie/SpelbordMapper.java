@@ -35,7 +35,7 @@ public class SpelbordMapper
             {
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
-                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
+                    velden = vm.geefVelden(volgnummer, spelnaam);
                     spelbord = new Spelbord(volgnummer, velden);
                 }
             }
@@ -52,14 +52,15 @@ public class SpelbordMapper
         Veld[][] velden;
         
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE naamSpel = ?")) {
+        		PreparedStatement query = conn.prepareStatement("SELECT * FROM ID222177_g39.Spelbord WHERE volgnummer = ? AND naamSpel = ?")) {
             
-            query.setString(1, spelnaam);
+        	query.setInt(1, volgnummer);
+            query.setString(2, spelnaam);
             try (ResultSet rs = query.executeQuery()) 
             {
                 while (rs.next()) 
                 {
-                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
+                    velden = vm.geefVelden(volgnummer, spelnaam);
                     spelbord = new Spelbord(volgnummer, velden);
                 }
             }
@@ -86,7 +87,7 @@ public class SpelbordMapper
                 while (rs.next()) {
                     int volgnummer = rs.getInt("volgnummer");
 
-                    velden = Veldmapper.geefVelden(volgnummer, spelnaam);
+                    velden = vm.geefVelden(volgnummer, spelnaam);
                     spelborden.add(new Spelbord(volgnummer, velden));
                 }
             }

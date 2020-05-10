@@ -59,6 +59,7 @@ public class SpelwijzigenController extends GridPane
 		cmbSpellen.setPromptText(Taal.getText("promptCboSpelletjes"));
 		cmbSpelborden.setPromptText(Taal.getText("promptCboSpelbordenGui"));
 		btnWijzig.setText(Taal.getText("wijzigSpelGui"));
+		btnVerwijder.setText(Taal.getText("verwijderGui"));
 		btnTerug.setText(Taal.getText("terugGui"));
 		
 		

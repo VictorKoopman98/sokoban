@@ -171,9 +171,7 @@ public class DomeinController
      */
     public void resetSpelbord(String spelnaam, int volgnummer) 
     {
-    	int index = spel.geefSpelbordenLijst().indexOf(spel.getSpelbord());
 		Spelbord huidigSpelbord = spelbordRepository.geefSpelbordMetVolgnummer(volgnummer, spelnaam);
-		spel.geefSpelbordenLijst().set(index, huidigSpelbord);
 		spel.setHuidigSpelbord(huidigSpelbord);
     }
     

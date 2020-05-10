@@ -304,6 +304,14 @@ public class Spel
 	 */
 	public void setHuidigSpelbord(Spelbord spelbord)
 	{
+		int index = 0;
+		for (int i = 0; i < spelbordenLijst.size(); i++) {
+			if (!spelbordenLijst.get(i).isVoltooid()) {
+				index = i;
+				break;
+			}
+		}
+		spelbordenLijst.set(index, spelbord);
 		huidigSpelbord = spelbord;
 	}
 }
