@@ -107,6 +107,8 @@ public class UC7Test
 				}catch(InputMismatchException e) { 
 					System.out.printf("%n%s%n", getalIngeven);
 					input.next();
+				}catch(ArrayIndexOutOfBoundsException e) {
+					System.out.printf("%n%s%n", keuzeNietBeschikbaar);
 				}
 			}while(blijvenHerhalenFlag);
 			
