@@ -25,7 +25,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class maakNieuwSpelbordSchermController extends GridPane{
+public class maakNieuwSpelbordSchermController extends GridPane
+{
 	@FXML
 	private ImageView ivMuur;
 	@FXML
@@ -244,7 +245,6 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 			alert.setContentText(Taal.getText("getalIngeven"));
 			alert.showAndWait();
 		}
-		
 	}
 	// Event Listener on Button[#btnOpslaan].onAction
 	@FXML
@@ -276,11 +276,10 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == ButtonType.CANCEL)
 				{
-					dc.verwijderSpelbord(volgnummer, dc.geefNaamSpel());
 					if (dc.geefAantalSpelborden() == 0)
 					{
 						Alert alert2 = new Alert(AlertType.CONFIRMATION);
-						alert2.setContentText(String.format("%s%n%s", Taal.getText("minstens1Spelbord"), Taal.getText("SpelVerwijderenOfBlijvenWijzigenGui")));
+						alert2.setContentText(String.format("%s%n%s", Taal.getText("minstens1Spelbord"), Taal.getText("spelVerwijderenOfWijzigenGui")));
 						Optional<ButtonType> result2 = alert.showAndWait();
 						if (result2.get() == ButtonType.CANCEL)
 						{
@@ -290,16 +289,29 @@ public class maakNieuwSpelbordSchermController extends GridPane{
 				}
 			}
 		}else if(optie == 2) {
-			dc.updateSpelbord(volgnummerTeWijzigenSpelbord, dc.geefVelden(),dc.geefNaamSpel());
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setContentText(Taal.getText("spelbordBijgewerkt"));
-			Optional<ButtonType> result = alert.showAndWait();
-			if (result.get() == ButtonType.OK)
-			{
-				Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
-				Stage stage = (Stage) (getScene().getWindow());
-				stage.setScene(hs.getScene());
-				hs.update(hp1);
+			try {
+				dc.updateSpelbord(volgnummerTeWijzigenSpelbord, dc.geefVelden(),dc.geefNaamSpel());
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setContentText(Taal.getText("spelbordBijgewerkt"));
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.OK)
+				{
+					Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+					Stage stage = (Stage) (getScene().getWindow());
+					stage.setScene(hs.getScene());
+					hs.update(hp1);
+				}
+			}catch(IllegalArgumentException e) {
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setContentText(String.format("%s%n%s",e.getMessage(),Taal.getText("ongedaanMakenOfVerderAanpassenGui")));
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.CANCEL)
+				{
+					Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+					Stage stage = (Stage) (getScene().getWindow());
+					stage.setScene(hs.getScene());
+					hs.update(hp1);
+				}
 			}
 		}
 	}

@@ -281,7 +281,9 @@ public class VoltooiSpelbordSchermController extends GridPane
 		else {
 			alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle(Taal.getText("eindeSpelTitel"));
-			alert.setContentText(String.format("%s %s", dc.geefGebruikersnaam(), Taal.getText("huidigSpelVoltooid")));
+			String string1 = String.format("%d %s %d %s", dc.geefAantalSpelbordenVoltooid(), Taal.getText("vanDe"), dc.geefAantalSpelborden(), Taal.getText("zijnVoltooid"));
+			String string2 = String.format("%n%s %s %d %s",dc.geefGebruikersnaam(), Taal.getText("spelbordVoltooid2"), dc.geefAantalVerplaatsingen(), Taal.getText("verplaatsingen"));
+			alert.setContentText(String.format("%s%n%s%n%s %s",string2, string1, dc.geefGebruikersnaam(), Taal.getText("huidigSpelVoltooid")));
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK)
 			{

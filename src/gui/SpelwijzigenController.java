@@ -73,7 +73,7 @@ public class SpelwijzigenController extends GridPane
 	public void cmbSpellenAfhandeling(ActionEvent event) 
 	{
 		String gekozenSpel = cmbSpellen.getSelectionModel().getSelectedItem();
-		
+		dc.selecteerSpel(gekozenSpel);
 		
 		int[] volgnummers = dc.geefVolgnummerSpelborden(gekozenSpel);
 		List<String> volgnummersLijst = new ArrayList<String>();
@@ -100,8 +100,11 @@ public class SpelwijzigenController extends GridPane
 		catch(NullPointerException e)
 		{
 			Alert alert = new Alert(AlertType.ERROR);
-			System.out.println(e.getCause());
 			alert.setContentText(Taal.getText("spelSelecterenGui"));
+			alert.showAndWait();
+		}catch(NumberFormatException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText(Taal.getText("promptCboSpelbordenGui"));
 			alert.showAndWait();
 		}
 	}
@@ -118,9 +121,7 @@ public class SpelwijzigenController extends GridPane
 	{
 		try {
 			if(dc.geefAantalSpelborden() == 1) {
-				Alert alert = new Alert(AlertType.WARNING);
-				alert.setContentText(Taal.getText("minstens2Spelborden"));
-				alert.showAndWait();
+				throw new IllegalArgumentException(Taal.getText("minstens2Spelborden"));
 			}
 			else {
 				dc.verwijderSpelbord(Integer.parseInt(cmbSpelborden.getValue()), cmbSpellen.getValue());
@@ -136,7 +137,6 @@ public class SpelwijzigenController extends GridPane
 		catch(NullPointerException e)
 		{
 			Alert alert = new Alert(AlertType.ERROR);
-			System.out.println(e.getCause());
 			alert.setContentText(Taal.getText("spelSelecterenGui"));
 			alert.showAndWait();
 		}		

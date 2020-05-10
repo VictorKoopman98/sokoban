@@ -130,7 +130,10 @@ public class SokobanApplicatie
 								new UC5Test(domeincontroller).maakNieuwSpel();
 								break;
 							case 3:
-								new UC7Test(domeincontroller).wijzigSpel();
+								if(domeincontroller.geefLijstSpellenSpeler(domeincontroller.geefGebruikersnaam()).length == 0) {
+									System.out.printf("%n%s%n", Taal.getText("geenSpelborden"));
+								}else 
+									new UC7Test(domeincontroller).wijzigSpel();
 								break;
 							}
 						}while(keuze2 != 4);
