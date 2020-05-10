@@ -138,6 +138,7 @@ public class UC8Test
 			try {
 				System.out.printf("%n%s", Taal.getText("wijzigenOfOngedaanMaken"));
 				keuze = input.nextInt();
+				System.out.println();
 				if(keuze > 2 || keuze < 0) {
 					throw new IllegalArgumentException(Taal.getText("keuzeNietBeschikbaar"));
 				}
