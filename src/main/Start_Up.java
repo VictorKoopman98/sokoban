@@ -8,7 +8,6 @@ import cui.SokobanApplicatie;
 import domein.DomeinController;
 import gui.HoofdSchermController;
 import gui.Taal;
-import gui.TaalSchermController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

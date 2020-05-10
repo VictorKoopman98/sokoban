@@ -1,8 +1,5 @@
 package domein;
 
-import java.util.Arrays;
-import java.util.List;
-
 import gui.Taal;
 
 
@@ -220,15 +217,6 @@ public class DomeinController
     	return this.spel;
     }
     
-//    public void voegSpelToe(String naamSpel)
-//    {
-//	   if (this.geefAantalSpelborden() == 0)
-//	   {
-//		   this.verwijderSpel(naamSpel);
-//		   throw new IllegalArgumentException(Taal.getText("minstens1Spelbord"));
-//	   }
-//    }
-    
     /**
      * Methode om het spel te verwijderen met bepaalde naam
      * 
@@ -403,43 +391,4 @@ public class DomeinController
     	}
     	return namen;
     }
-    
-//    public char[][] geefVelden()
-//    {
-//    	char[][] velden = new char[10][10];
-//    	
-//    	Spelbord spelbord = geefSpelbord();
-//    	
-//    	for(int i = 0; i < 10; i++)
-//    	{
-//    		for(int j = 0; j < 10; j++)
-//    		{
-//    			char karakter = 'O';
-//    			if (spelbord.getSpelbord()[i][j].isMuur()) 
-//    			{
-//                    karakter = 'M';
-//                }
-//    			else if (spelbord.getSpelbord()[i][j].isDoel() && spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j]))
-//    			{
-//    				karakter = 'F';
-//    			}
-//    			else if (spelbord.getMan() != null && spelbord.getMan().getVeld() == spelbord.getSpelbord()[i][j]) 
-//    			{
-//                    karakter = 'X';
-//                }
-//    			else if (spelbord.getSpelbord()[i][j].isDoel()) 
-//    			{
-//                    karakter = 'D';
-//                } 
-//    			s
-//                else if (spelbord.maakVeldenVanKistenLijst().contains(spelbord.getSpelbord()[i][j])) 
-//                {
-//                    karakter = 'K';
-//                }  
-//    			velden[i][j] = karakter;
-//    		}
-//    	}
-//    	return velden;
-//    }
-
 }

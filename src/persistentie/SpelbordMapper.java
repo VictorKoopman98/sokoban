@@ -10,7 +10,6 @@ import java.util.List;
 
 import domein.Spelbord;
 import domein.Veld;
-import gui.Taal;
 
 public class SpelbordMapper
 {
