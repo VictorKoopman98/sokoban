@@ -289,6 +289,11 @@ public class maakNieuwSpelbordSchermController extends GridPane
 							stage.setScene(hs.getScene());
 							hs.update(hp1);
 						}
+					}else {
+						Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+						Stage stage = (Stage) (getScene().getWindow());
+						stage.setScene(hs.getScene());
+						hs.update(hp1);
 					}
 				}
 			}
