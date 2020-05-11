@@ -63,7 +63,7 @@ public class Veld
 	/**
 	 * Methode om op het veld een object van kist te plaatsen
 	 * 
-	 * @return kist object van klasse kist
+	 * @param kist geeft aan of het veld al dan niet een kist bevat
 	 */
 	public void setIsKist(boolean kist) 
 	{
@@ -73,7 +73,7 @@ public class Veld
 	/**
 	 * Methode om na te gaan of het een muur is of niet
 	 * 
-	 * @return geeft muur terug 
+	 * @return geeft terug of er al dan niet een muur in het veld staat
 	 */
 	public boolean isMuur() 
 	{

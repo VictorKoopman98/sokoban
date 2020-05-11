@@ -50,6 +50,9 @@ public class SpelbordRepository
 	/**
      * Methode om een spelbord toe te voegen aan een spel.
      *
+     * @param velden karakters die de inhoud van de velden voorstellen
+     * @param volgnummer het volgnummer van het op te slaan spelbord
+     * @param spelnaam van het op te slaan spel
      */
 	public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
 	{
@@ -80,8 +83,11 @@ public class SpelbordRepository
 	
 
 	/**
-	 *  Methode om het spelborden up to date nadat een wijziging is toegebracht
-	 *  
+	 * Methode om het spelborden up to date nadat een wijziging is toegebracht
+	 * 
+	 * @param velden karakters die de inhoud van de velden voorstellen
+     * @param volgnummer het volgnummer van het up te daten spelbord
+     * @param spelnaam van het up te daten spel
 	 */
 	public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
 	{
@@ -94,8 +100,8 @@ public class SpelbordRepository
      * @param volgnummer volgnummer van het spel dat verwijdert moet worden
      * @param naamSpel gekozen naam van het spel dat verwijdert moet worden
      */
-	public void verwijderSpelbord(int volgnummer, String spelNaam)
+	public void verwijderSpelbord(int volgnummer, String naamSpel)
 	{
-		spelbordMapper.verwijderSpelbord(volgnummer, spelNaam);
+		spelbordMapper.verwijderSpelbord(volgnummer, naamSpel);
 	}
 }

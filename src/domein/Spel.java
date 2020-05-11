@@ -15,7 +15,7 @@ public class Spel
 	/**
      * Constructor om een spel aan te maken
      *
-     * @param naam de naam van het spel
+     * @param naamSpel de naam van het spel
      */
 	public Spel(String naamSpel) 
 	{
@@ -56,7 +56,7 @@ public class Spel
 	 /**
      * Methode om een spelbord te selecteren met bepaald spelnam
      *
-     * @param spelnam bepaalt welk naam gekozen wordt
+     * @param spelnaam bepaalt welk naam gekozen wordt
      */
 	public void selecteerSpelbord(String spelnaam) {
 		for (int i = 0; i < spelbordenLijst.size(); i++) { 
@@ -216,6 +216,7 @@ public class Spel
 	/**
 	 * Methode om het spelbord te tonen
 	 * 
+	 * @return geeft een array van karakters terug die elk de inhoud van een veld voorstellen
 	 */
 	public char[][] geefVelden()
 	{
