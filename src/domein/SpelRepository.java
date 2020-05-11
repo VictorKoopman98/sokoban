@@ -50,7 +50,8 @@ public class SpelRepository
     
     /**
      * Methode om een spel toe te voegen aan het attribuut spellen
-     * @param spel is een spel dat aangemaakt wordt in de domeincontroller
+     * @param naamSpel de naam van het spel dat wordt aangemaakt
+     * @param gebruikersnaam de gebruikersnaam van de persoon die het spel aanmaakt
      */
     public void voegSpelToe(String naamSpel, String gebruikersnaam)    
     {

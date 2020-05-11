@@ -161,13 +161,14 @@ public class DomeinController
     /**
      * Methode om de velden te tonen
      * 
+     * @return geeft de soort van de velden terug aan de hand van karakters
      */
     public char[][] geefVelden() 
     {
     	return this.spel.geefVelden();
     }
     /**
-     * Methode om een spelbord te selecteren met een bepaalde naam
+     * Methode om het eerste niet-voltooide spelbord te selecteren van een bepaald spel
      * 
      * @param spelnaam naam van het spelbord dat gekozen wordt
      */
@@ -187,6 +188,9 @@ public class DomeinController
     
     /**
      * Methode om het spelbord te resetten
+     * 
+     * @param spelnaam de naam van het spel
+     * @param volgnummer het volgnummer van het te resetten spelbord
      */
     public void resetSpelbord(String spelnaam, int volgnummer) 
     {
@@ -205,9 +209,9 @@ public class DomeinController
     }
     
     /**
-     * Methode om na te gaan of het spelbord bereikt is
+     * Methode om na te gaan of het spelbord voltooid is
      * 
-     * @return geeft aan of het spelbord wel/niet bereikt is
+     * @return isVoltooid geeft aan of het spelbord wel/niet voltooid is
      */
     public boolean eindeSpelbordBereikt()  //methode om te kijken of het einde van het spelbord bereikt is
     {
@@ -222,6 +226,7 @@ public class DomeinController
      * Methode om een nieuw spel aan te maken met een bepaalde naam
      * 
      * @param naamSpel naam dat het spel zal krijgen
+     * @param gebruikersnaam de gebruiker die het spel aanmaakt
      */
     public void maakNieuwSpel(String naamSpel, String gebruikersnaam) 
     {
@@ -308,6 +313,9 @@ public class DomeinController
     /**
      * Methode om een spelbord toe te voegen aan een spel.
      *
+     * @param velden de karakters die per veld voorstellen wat er in staat
+     * @param volgnummer het volgnummer van het spelbord
+     * @param spelnaam de spelnaam van het spel
      */
     public void voegSpelbordToe(char[][] velden, int volgnummer, String spelnaam) 
     {
@@ -321,6 +329,9 @@ public class DomeinController
      * 
      * Methode om het spelbord te controleren
      *
+     * @param velden de karakters die per veld voorstellen wat er in staat
+     * @param volgnummer het volgnummer van het spelbord
+     * @param spelnaam de spelnaam van het spel
      */
     private void controleerSpelbord(char[][] velden, int volgnummer, String spelnaam)
     {
@@ -363,7 +374,7 @@ public class DomeinController
      * Methode om volgnummer van een spelbord met een bepaalde spelnaam terug te geven
      * 
      * @param spelnaam naam dat gekozen wordt
-     * @return geeft namen van van spelborden terug
+     * @return geeft de volgnummers van van spelborden terug
      */
     public int[] geefVolgnummerSpelborden(String spelnaam)    //array maken van namen van spellen
     {
@@ -391,6 +402,10 @@ public class DomeinController
     
     /**
      * Methode om het spelbord up te daten nadat een wijziging is toegebracht
+     * 
+     * @param velden de karakters die per veld voorstellen wat er in staat
+     * @param volgnummer het volgnummer van het spelbord
+     * @param spelnaam de spelnaam van het spel
      */
     public void updateSpelbord(int volgnummer, char[][] velden, String spelnaam)
     {

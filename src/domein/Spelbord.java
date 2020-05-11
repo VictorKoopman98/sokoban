@@ -63,9 +63,9 @@ public class Spelbord
      * Methode om het volgnummer te zetten van het spelbord dat gespeeld moet worden
      * @param volgnummer geeft aan welk spelbord er gespeeld zal worden
      */
-	public void setVolgnummer(int nummer) 
+	public void setVolgnummer(int volgnummer) 
 	{
-		this.volgnummer = nummer;
+		this.volgnummer = volgnummer;
 	}
 	
 	/**
@@ -168,6 +168,8 @@ public class Spelbord
 	/**
      * Methode om het spelbord weer te geven
      *
+     *
+     *@return geeft een array van verschillende karakters aan de hand van de inhoud van de velden
      */
 	public char[][] geefVelden() 
     {
