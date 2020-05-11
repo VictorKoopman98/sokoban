@@ -280,10 +280,14 @@ public class maakNieuwSpelbordSchermController extends GridPane
 					{
 						Alert alert2 = new Alert(AlertType.CONFIRMATION);
 						alert2.setContentText(String.format("%s%n%s", Taal.getText("minstens1Spelbord"), Taal.getText("spelVerwijderenOfWijzigenGui")));
-						Optional<ButtonType> result2 = alert.showAndWait();
+						Optional<ButtonType> result2 = alert2.showAndWait();
 						if (result2.get() == ButtonType.CANCEL)
 						{
 							dc.verwijderSpel(dc.geefNaamSpel());
+							Hoofdpaneel1Controller hp1 = new Hoofdpaneel1Controller(dc, hs);
+							Stage stage = (Stage) (getScene().getWindow());
+							stage.setScene(hs.getScene());
+							hs.update(hp1);
 						}
 					}
 				}
