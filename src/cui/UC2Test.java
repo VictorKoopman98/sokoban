@@ -36,10 +36,10 @@ public class UC2Test
                 try
                 {
                     System.out.printf("\n%s",geefGebruikersnaam);
-                    gebruikersnaam = input.next();
+                    gebruikersnaam = input.nextLine();
 
                     System.out.printf("\n%s",geefWw);
-                    wachtwoord = input.next();
+                    wachtwoord = input.nextLine();
                     
                     System.out.printf("\n%s",geefNaam);
                     naam = input.nextLine();
