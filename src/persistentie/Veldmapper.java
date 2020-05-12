@@ -116,18 +116,6 @@ public class Veldmapper
             throw new RuntimeException(ex);
         }
     }
-    
-    public void verwijderVelden(String naamSpel, int volgnummer)
-    {
-    	try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-        		PreparedStatement query = conn.prepareStatement("DELETE FROM ID222177_g39.Veld WHERE naamSpel = ? AND volgnummer = ?")){
-        	query.setString(1, naamSpel);
-        	query.setInt(2, volgnummer);
-        	query.executeUpdate();
-        }catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
 }
 
 
