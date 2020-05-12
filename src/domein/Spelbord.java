@@ -372,10 +372,6 @@ public class Spelbord
 		}
 		else if (actie == 3) 
 		{	
-			if (this.man != null) 
-			{
-				throw new IllegalArgumentException(Taal.getText("spelbordMetEenMan"));
-			}
 			this.man = new Man(spelbord[x][y]);
             spelbord[x][y].setIsMan(true);
 		}
@@ -398,22 +394,6 @@ public class Spelbord
 				man = null;
 			}
 			spelbord[x][y] = new Veld(x, y, false, false, false, false);
-		}
-		else if ( actie == 6) 
-		{
-			int aantalDoelen = 0;
-			for (int i = 0; i<10;i++) {
-				for (int j = 0; j<10;j++) {
-					if(spelbord[i][j].isDoel()) 
-					{
-						aantalDoelen++;
-					}
-				}
-			}
-			if(kisten.size() != aantalDoelen) 
-			{
-				throw new IllegalArgumentException(Taal.getText("aantalKisten"));
-			}
 		}
 	}
 }

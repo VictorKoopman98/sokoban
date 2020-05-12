@@ -93,6 +93,7 @@ public class UC7Test
 						}
 						else{
 							dc.verwijderSpelbord(volgnummer, spelnaam);
+							System.out.println(Taal.getText("spelbordVerwijderd"));
 						}
 					}
 					blijvenHerhalenFlag = false;

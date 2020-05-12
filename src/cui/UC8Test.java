@@ -64,6 +64,7 @@ public class UC8Test
 				}	
 			}
 			catch(IllegalArgumentException e){
+				System.out.println("ik ben hier");
 				System.out.printf("%n%s%n", e.getMessage());
 			}
 			catch(InputMismatchException e) {
