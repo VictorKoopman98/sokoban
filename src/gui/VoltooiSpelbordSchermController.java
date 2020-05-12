@@ -85,12 +85,11 @@ public class VoltooiSpelbordSchermController extends GridPane
 					default:
 						break;
 					}
+					buildGUI();
 				}
 				catch(IllegalArgumentException e) {
-					lblFout.setText(Taal.getText("ongeldigeRichting"));
 					lblFout.setVisible(true);
 				}
-				buildGUI();
 				if (dc.eindeSpelbordBereikt())
 					eindeSpelbordAfhandeling();
 			}
@@ -105,6 +104,7 @@ public class VoltooiSpelbordSchermController extends GridPane
 		lblAantalVerplaatsingen.setText("0");
 		btnAfsluiten.setText(Taal.getText("closeGui"));
 		btnReset.setText(Taal.getText("resetGUI"));
+		lblFout.setText(Taal.getText("ongeldigeRichting"));
 		
 		buildGUI();
 	}
@@ -181,7 +181,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			lblFout.setText(Taal.getText("ongeldigeRichting"));
 			lblFout.setVisible(true);
 		}
 		
@@ -196,7 +195,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			lblFout.setText(Taal.getText("ongeldigeRichting"));
 			lblFout.setVisible(true);
 		}
 	}
@@ -210,7 +208,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			lblFout.setText(Taal.getText("ongeldigeRichting"));
 			lblFout.setVisible(true);
 		}
 	}
@@ -224,7 +221,6 @@ public class VoltooiSpelbordSchermController extends GridPane
 				eindeSpelbordAfhandeling();
 		}
 		catch(IllegalArgumentException e) {
-			lblFout.setText(Taal.getText("ongeldigeRichting"));
 			lblFout.setVisible(true);
 		}
 	}
