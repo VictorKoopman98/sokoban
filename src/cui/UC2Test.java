@@ -42,10 +42,10 @@ public class UC2Test
                     wachtwoord = input.next();
                     
                     System.out.printf("\n%s",geefNaam);
-                    naam = input.next();
+                    naam = input.nextLine();
                     
                     System.out.printf("\n%s",geefVoornaam);
-                    voornaam = input.next();
+                    voornaam = input.nextLine();
                     
                     dc.registreer(gebruikersnaam, wachtwoord, false, naam, voornaam);
                     blijvenHerhalenFlag = false;

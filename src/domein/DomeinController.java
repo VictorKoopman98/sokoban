@@ -74,6 +74,11 @@ public class DomeinController
      */
 	public void meldAan(String gebruikersnaam, String wachtwoord)    
 	{
+		if(gebruikersnaam == null || gebruikersnaam.length() == 0)
+			throw new IllegalArgumentException(Taal.getText("gebruikersnaamVerplicht"));
+		else if(wachtwoord == null || wachtwoord.length() == 0)
+			throw new IllegalArgumentException(Taal.getText("wachtwoordVerplicht"));
+			
         Speler gevondenSpeler = spelerRepository.geefSpeler(gebruikersnaam, wachtwoord);
 
         if (gevondenSpeler != null) 
