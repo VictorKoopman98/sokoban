@@ -46,6 +46,8 @@ public class Start_Up extends Application
 		}
 		else
 			launch(args);
+		
+		System.exit(0);
 	}
 	
 	private static int maakKeuze() {
