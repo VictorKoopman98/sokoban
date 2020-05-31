@@ -239,12 +239,6 @@ public class maakNieuwSpelbordSchermController extends GridPane
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
-		catch(InputMismatchException e)
-		{
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText(Taal.getText("getalIngeven"));
-			alert.showAndWait();
-		}
 	}
 	// Event Listener on Button[#btnOpslaan].onAction
 	@FXML
